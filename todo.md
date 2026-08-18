@@ -16,3 +16,9 @@
 - [x] Thiết kế luồng trả lời cho các mẫu hỏi–đáp trong Sổ tay câu.
 - [x] Thêm bài luyện gõ câu trả lời, ghi nhận đáp án và chuyển tiếp bằng Enter.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Học 82 mục từ vựng
+
+- [x] Chuyển 82 mục đã ghi chú thành danh sách flashcard học được.
+- [x] Thêm chế độ lật thẻ, đánh dấu đã nhớ/cần ôn và phím Enter để chuyển mục.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

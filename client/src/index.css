@@ -162,6 +162,7 @@ a { color: inherit; }
 .mode-card--cream { color: var(--ink); background-color: #f8efd9; background-image: repeating-linear-gradient(to bottom, transparent 0 28px, rgba(22,58,95,.07) 29px 30px); border: 1px solid rgba(22,58,95,.12); }
 .mode-card--article { color: #5d4705; background-color: #f3df9e; background-image: linear-gradient(135deg, rgba(255,255,255,.32) 25%, transparent 25%), repeating-linear-gradient(to bottom, transparent 0 28px, rgba(95,69,4,.07) 29px 30px); }
 .mode-card--sage { color: #244b3a; background: var(--sage); }
+.mode-card--vocabulary { color: #603b31; background-color: #f3d8cd; background-image: repeating-linear-gradient(to bottom, transparent 0 28px, rgba(96,59,49,.07) 29px 30px); }
 
 .flashcard-layout { display: grid; grid-template-columns: minmax(0, 1fr) 225px; align-items: center; gap: 25px; }
 .flashcard { min-width: 0; }
@@ -180,6 +181,13 @@ a { color: inherit; }
 .flip-prompt { display: flex; align-items: center; gap: 7px; color: var(--ink-soft); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
 .meaning-vietnamese { margin: 0; color: var(--coral); font-family: "Fraunces", serif; font-size: clamp(42px, 5.5vw, 69px); font-style: italic; font-weight: 600; letter-spacing: -.06em; line-height: 1; }
 .meaning-english { margin: 14px 0 0; color: var(--ink-soft); font-size: 15px; font-weight: 700; }
+.vocabulary-flashcard .flashcard-face h2 { max-width: 690px; font-size: clamp(37px, 5.4vw, 69px); }
+.vocabulary-front-prompt { margin: 15px 0 0; color: var(--ink-soft); font-size: 12px; font-weight: 700; }
+.vocabulary-note { max-width: 360px; margin: 16px 0 0; padding: 9px 11px; color: var(--sage-ink); border-left: 3px solid var(--mustard); background: var(--sage); font-size: 12px; font-weight: 700; line-height: 1.5; }
+.vocabulary-study-note { min-height: 275px; display: flex; align-items: center; background: #f3d8cd; transform: rotate(-1.2deg); }
+.vocabulary-study-note > div { padding: 25px 20px; }
+.vocabulary-study-note p { margin: 15px 0 0; color: #603b31; }
+.vocabulary-study-note span { display: block; margin-top: 17px; color: rgba(96,59,49,.7); font-size: 10px; font-weight: 700; line-height: 1.5; }
 .grammar-note { max-width: 300px; margin: auto 0 0; padding: 11px 13px; color: var(--sage-ink); background: var(--sage); font-size: 11px; line-height: 1.45; }
 .flashcard-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
 .review-button, .remember-button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-size: 12px; font-weight: 800; transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out); }

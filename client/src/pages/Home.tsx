@@ -23,7 +23,7 @@ import {
 import { articleExercises, articleNotes, conversationPatterns, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, sheetSource, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
-type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "word" | "meaning" | "notebook";
+type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "word" | "meaning" | "notebook" | "vocabulary";
 
 const normalize = (value: string) =>
   value
@@ -41,6 +41,7 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   word: "Điền từ",
   meaning: "Điền nghĩa",
   notebook: "Sổ tay câu",
+  vocabulary: "Học 82 từ",
 };
 
 const navItems = [
@@ -51,6 +52,7 @@ const navItems = [
   { id: "word" as const, label: "Điền từ", icon: PenLine },
   { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
   { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
+  { id: "vocabulary" as const, label: "Học 82 từ", icon: Layers },
 ];
 
 function PaperLabel({ children, tone = "mustard" }: { children: React.ReactNode; tone?: "mustard" | "sage" | "navy" }) {
@@ -98,6 +100,8 @@ export default function Home() {
   const [articleAnswer, setArticleAnswer] = useState("");
   const [conversationIndex, setConversationIndex] = useState(0);
   const [conversationAnswer, setConversationAnswer] = useState("");
+  const [vocabularyIndex, setVocabularyIndex] = useState(0);
+  const [vocabularyBack, setVocabularyBack] = useState(false);
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
@@ -106,6 +110,8 @@ export default function Home() {
   const meaningVerb = verbs[(activeIndex + 13) % verbs.length];
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
+  const vocabularyEntries = vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
+  const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -128,6 +134,17 @@ export default function Home() {
     if (status === "known") setKnown((value) => value + 1);
     else setReview((value) => value + 1);
     nextFlash();
+  };
+
+  const nextVocabulary = () => {
+    setVocabularyIndex((value) => (value + 1) % vocabularyEntries.length);
+    setVocabularyBack(false);
+  };
+
+  const markVocabulary = (status: "known" | "review") => {
+    if (status === "known") setKnown((value) => value + 1);
+    else setReview((value) => value + 1);
+    nextVocabulary();
   };
 
   const checkConjugation = (event: FormEvent) => {
@@ -310,6 +327,12 @@ export default function Home() {
                       <span>Gọi đúng động từ tiếng Pháp</span>
                       <ArrowRight size={18} />
                     </button>
+                    <button className="mode-card mode-card--vocabulary" onClick={() => changeMode("vocabulary")}>
+                      <Bookmark size={24} />
+                      <strong>Học 82 từ</strong>
+                      <span>Quốc tịch, nghề, giấy tờ…</span>
+                      <ArrowRight size={18} />
+                    </button>
                   </div>
                 </div>
               </section>
@@ -367,6 +390,63 @@ export default function Home() {
                     <div>
                       <PaperLabel tone="mustard">MẸO NHỎ</PaperLabel>
                       <p>Đừng lật ngay. Hãy thử gọi nghĩa trước khi kiểm tra.</p>
+                    </div>
+                  </aside>
+                </div>
+              </section>
+            )}
+
+            {mode === "vocabulary" && (
+              <section className="flashcard-view vocabulary-study-view">
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học 82 từ" description="Tự gọi nghĩa trước, lật thẻ để kiểm tra rồi đánh dấu mức độ nhớ. Enter chuyển ngay sang mục mới." number="07" />
+                <div className="flashcard-layout">
+                  <div className={`flashcard vocabulary-flashcard ${vocabularyBack ? "flashcard--back" : ""}`}>
+                    <button
+                      className="flashcard-main"
+                      onClick={() => setVocabularyBack((value) => !value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          event.preventDefault();
+                          nextVocabulary();
+                        }
+                      }}
+                      aria-label="Lật thẻ từ vựng; nhấn Enter để sang từ tiếp theo"
+                    >
+                      <div className="flashcard-corner" />
+                      <div className="flashcard-face flashcard-face--front">
+                        <PaperLabel tone="navy">{vocabularyEntry.group}</PaperLabel>
+                        <p className="flashcard-index">{String(vocabularyIndex + 1).padStart(2, "0")} / {String(vocabularyEntries.length).padStart(2, "0")}</p>
+                        <div>
+                          <h2>{vocabularyEntry.french}</h2>
+                          <p className="vocabulary-front-prompt">Bạn nhớ nghĩa tiếng Việt chứ?</p>
+                        </div>
+                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để lật · Enter để sang từ</span>
+                      </div>
+                      <div className="flashcard-face flashcard-face--back">
+                        <PaperLabel tone="sage">NGHĨA</PaperLabel>
+                        <div>
+                          <p className="meaning-vietnamese">{vocabularyEntry.vietnamese}</p>
+                          {vocabularyEntry.note && <p className="vocabulary-note">{vocabularyEntry.note}</p>}
+                        </div>
+                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để xem lại · Enter để sang từ</span>
+                      </div>
+                    </button>
+                    <div className="flashcard-actions">
+                      <button className="review-button" onClick={() => markVocabulary("review")}>
+                        <RotateCcw size={17} />
+                        Cần ôn lại
+                      </button>
+                      <button className="remember-button" onClick={() => markVocabulary("known")}>
+                        <Check size={18} />
+                        Đã nhớ rồi
+                      </button>
+                    </div>
+                  </div>
+                  <aside className="flashcard-side-note vocabulary-study-note">
+                    <div>
+                      <PaperLabel tone="mustard">CÁCH ÔN</PaperLabel>
+                      <p>Đọc to từ tiếng Pháp. Gọi nghĩa trước. Lật thẻ sau khi đã cố nhớ.</p>
+                      <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
                     </div>
                   </aside>
                 </div>
