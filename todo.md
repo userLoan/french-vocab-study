@@ -10,3 +10,9 @@
 - [x] Tạo dữ liệu cho bài điền mạo từ với aimer và các câu ví dụ.
 - [x] Thêm sổ tay hỏi–đáp, các nhóm từ vựng và lối vào trên giao diện.
 - [x] Kiểm tra bản dựng, giao diện và lưu phiên bản bàn giao.
+
+# Luyện Sổ tay câu
+
+- [x] Thiết kế luồng trả lời cho các mẫu hỏi–đáp trong Sổ tay câu.
+- [x] Thêm bài luyện gõ câu trả lời, ghi nhận đáp án và chuyển tiếp bằng Enter.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

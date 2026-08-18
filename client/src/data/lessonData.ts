@@ -38,20 +38,25 @@ export type ConversationPattern = {
   question: string;
   answer: string;
   note: string;
+  practice: {
+    accepts: string[];
+    hint: string;
+    example: string;
+  };
 };
 
 export const conversationPatterns: ConversationPattern[] = [
-  { id: "name", title: "Hỏi tên", question: "Comment tu t'appelles ?", answer: "Je m'appelle [prénom].", note: "Bạn bè dùng tu; lịch sự dùng Comment vous vous appelez ? / Je m'appelle…" },
-  { id: "age", title: "Hỏi tuổi", question: "Tu as quel âge ?", answer: "J'ai [nombre] ans.", note: "Dùng avoir, không dùng être: J'ai 23 ans." },
-  { id: "nationality", title: "Hỏi quốc tịch", question: "Tu es de quelle nationalité ?", answer: "Je suis [nationalité].", note: "Ví dụ: Je suis suisse. Je suis japonaise." },
-  { id: "origin", title: "Hỏi quê quán", question: "Tu viens d'où ?", answer: "Je viens de / du / d'[pays].", note: "Ví dụ: Je viens du Japon. Je viens d'Italie." },
-  { id: "home", title: "Hỏi nơi ở", question: "Tu habites où ?", answer: "J'habite à [ville] / en [pays].", note: "Ví dụ: J'habite à Lyon. J'habite en France." },
-  { id: "likes", title: "Hỏi sở thích", question: "Tu aimes la musique ?", answer: "Oui, j'aime la musique. / Non, je n'aime pas la musique.", note: "Sau aimer, thường dùng mạo từ xác định: le, la, l', les." },
-  { id: "likes-list", title: "Hỏi thích gì", question: "Tu aimes quoi ?", answer: "J'aime le cinéma, l'art et les langues.", note: "Liệt kê các sở thích bằng et ở mục cuối." },
-  { id: "job", title: "Hỏi nghề nghiệp", question: "Tu fais quel métier ?", answer: "Je suis [métier]. / Je travaille dans [lieu].", note: "Ví dụ: Je suis informaticienne. Je travaille dans un bureau." },
-  { id: "status", title: "Hỏi tình trạng gia đình", question: "Tu es marié(e) ?", answer: "Oui, je suis marié(e). / Non, je suis célibataire.", note: "Thay đổi đuôi giống khi cần: marié / mariée." },
-  { id: "documents", title: "Hỏi giấy tờ", question: "Quels documents avez-vous ?", answer: "J'ai un passeport et une carte d'identité.", note: "Trong ngữ cảnh hành chính, dùng vous lịch sự." },
-  { id: "address", title: "Hỏi địa chỉ", question: "Quelle est votre adresse ?", answer: "J'habite au numéro [x], rue [nom], à [ville].", note: "Dùng votre và vous khi giao tiếp trang trọng." },
+  { id: "name", title: "Hỏi tên", question: "Comment tu t'appelles ?", answer: "Je m'appelle [prénom].", note: "Bạn bè dùng tu; lịch sự dùng Comment vous vous appelez ? / Je m'appelle…", practice: { accepts: ["je m'appelle"], hint: "Bắt đầu bằng Je m'appelle…, sau đó thay bằng tên của bạn.", example: "Je m'appelle Claire." } },
+  { id: "age", title: "Hỏi tuổi", question: "Tu as quel âge ?", answer: "J'ai [nombre] ans.", note: "Dùng avoir, không dùng être: J'ai 23 ans.", practice: { accepts: ["j'ai"], hint: "Dùng avoir: J'ai + số + ans.", example: "J'ai 23 ans." } },
+  { id: "nationality", title: "Hỏi quốc tịch", question: "Tu es de quelle nationalité ?", answer: "Je suis [nationalité].", note: "Ví dụ: Je suis suisse. Je suis japonaise.", practice: { accepts: ["je suis"], hint: "Bắt đầu bằng Je suis…, rồi chọn quốc tịch phù hợp.", example: "Je suis vietnamienne." } },
+  { id: "origin", title: "Hỏi quê quán", question: "Tu viens d'où ?", answer: "Je viens de / du / d'[pays].", note: "Ví dụ: Je viens du Japon. Je viens d'Italie.", practice: { accepts: ["je viens de", "je viens du", "je viens d'"], hint: "Chọn de / du / d' theo tên đất nước.", example: "Je viens du Vietnam." } },
+  { id: "home", title: "Hỏi nơi ở", question: "Tu habites où ?", answer: "J'habite à [ville] / en [pays].", note: "Ví dụ: J'habite à Lyon. J'habite en France.", practice: { accepts: ["j'habite a", "j'habite en", "j'habite au", "j'habite aux"], hint: "Dùng à + thành phố; en / au / aux + đất nước.", example: "J'habite à Hanoï." } },
+  { id: "likes", title: "Hỏi sở thích", question: "Tu aimes la musique ?", answer: "Oui, j'aime la musique. / Non, je n'aime pas la musique.", note: "Sau aimer, thường dùng mạo từ xác định: le, la, l', les.", practice: { accepts: ["oui j'aime", "non je n'aime pas"], hint: "Có thể trả lời khẳng định hoặc phủ định, nhưng nhớ dùng mạo từ.", example: "Oui, j'aime la musique." } },
+  { id: "likes-list", title: "Hỏi thích gì", question: "Tu aimes quoi ?", answer: "J'aime le cinéma, l'art et les langues.", note: "Liệt kê các sở thích bằng et ở mục cuối.", practice: { accepts: ["j'aime"], hint: "Bắt đầu bằng J'aime…, rồi liệt kê điều bạn thích.", example: "J'aime le cinéma et les langues." } },
+  { id: "job", title: "Hỏi nghề nghiệp", question: "Tu fais quel métier ?", answer: "Je suis [métier]. / Je travaille dans [lieu].", note: "Ví dụ: Je suis informaticienne. Je travaille dans un bureau.", practice: { accepts: ["je suis", "je travaille"], hint: "Nói nghề bằng Je suis… hoặc nơi làm việc bằng Je travaille dans…", example: "Je suis étudiante." } },
+  { id: "status", title: "Hỏi tình trạng gia đình", question: "Tu es marié(e) ?", answer: "Oui, je suis marié(e). / Non, je suis célibataire.", note: "Thay đổi đuôi giống khi cần: marié / mariée.", practice: { accepts: ["oui je suis", "non je suis"], hint: "Trả lời Oui / Non, rồi dùng je suis…", example: "Non, je suis célibataire." } },
+  { id: "documents", title: "Hỏi giấy tờ", question: "Quels documents avez-vous ?", answer: "J'ai un passeport et une carte d'identité.", note: "Trong ngữ cảnh hành chính, dùng vous lịch sự.", practice: { accepts: ["j'ai"], hint: "Liệt kê giấy tờ sau J'ai…", example: "J'ai un passeport et une carte d'identité." } },
+  { id: "address", title: "Hỏi địa chỉ", question: "Quelle est votre adresse ?", answer: "J'habite au numéro [x], rue [nom], à [ville].", note: "Dùng votre và vous khi giao tiếp trang trọng.", practice: { accepts: ["j'habite"], hint: "Bắt đầu bằng J'habite…, sau đó đi từ số nhà đến thành phố.", example: "J'habite au numéro 12, rue des Fleurs, à Lyon." } },
 ];
 
 export type VocabularyGroup = {

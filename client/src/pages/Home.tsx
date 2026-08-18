@@ -96,6 +96,8 @@ export default function Home() {
   const [meaningAnswer, setMeaningAnswer] = useState("");
   const [articleIndex, setArticleIndex] = useState(0);
   const [articleAnswer, setArticleAnswer] = useState("");
+  const [conversationIndex, setConversationIndex] = useState(0);
+  const [conversationAnswer, setConversationAnswer] = useState("");
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
@@ -103,6 +105,7 @@ export default function Home() {
   const wordVerb = verbs[(activeIndex + 7) % verbs.length];
   const meaningVerb = verbs[(activeIndex + 13) % verbs.length];
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
+  const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -170,6 +173,15 @@ export default function Home() {
     if (isCorrect) setCorrect((value) => value + 1);
     setArticleIndex((value) => (value + 1) % articleExercises.length);
     setArticleAnswer("");
+  };
+
+  const checkConversation = (event: FormEvent) => {
+    event.preventDefault();
+    const answer = normalize(conversationAnswer);
+    const isCorrect = conversationPattern.practice.accepts.some((opening) => answer.startsWith(normalize(opening)));
+    if (isCorrect) setCorrect((value) => value + 1);
+    setConversationIndex((value) => (value + 1) % conversationPatterns.length);
+    setConversationAnswer("");
   };
 
   return (
@@ -520,7 +532,47 @@ export default function Home() {
 
             {mode === "notebook" && (
               <section className="notebook-view">
-                <ModeHeader eyebrow="NÓI & HIỂU" title="Sổ tay câu" description="Mẫu hỏi–đáp để giới thiệu bản thân, nói về sở thích, nghề nghiệp và thông tin thường dùng." number="06" />
+                <ModeHeader eyebrow="NÓI & HIỂU" title="Sổ tay câu" description="Tự trả lời trước, rồi dùng sổ tay để kiểm tra mẫu câu. Nhấn Enter để chuyển ngay sang câu tiếp theo." number="06" />
+                <section className="conversation-practice">
+                  <div className="practice-heading">
+                    <div>
+                      <PaperLabel tone="mustard">LUYỆN PHẢN XẠ</PaperLabel>
+                      <h2>Nghe câu hỏi, tự trả lời</h2>
+                    </div>
+                    <span>{String(conversationIndex + 1).padStart(2, "0")} / {String(conversationPatterns.length).padStart(2, "0")}</span>
+                  </div>
+                  <div className="conversation-drill-layout">
+                    <form className="conversation-drill" onSubmit={checkConversation}>
+                      <PaperLabel tone="sage">{conversationPattern.title}</PaperLabel>
+                      <div className="drill-question">
+                        <span>HỎI</span>
+                        <p>{conversationPattern.question}</p>
+                      </div>
+                      <label className="drill-answer">
+                        <span>BẠN TRẢ LỜI</span>
+                        <input
+                          autoFocus
+                          aria-label={`Câu trả lời cho: ${conversationPattern.question}`}
+                          value={conversationAnswer}
+                          onChange={(event) => setConversationAnswer(event.target.value)}
+                          placeholder="Gõ câu trả lời bằng tiếng Pháp"
+                        />
+                      </label>
+                      <div className="drill-actions">
+                        <button className="primary-button" type="submit">Câu tiếp <ArrowRight size={18} /></button>
+                        <span>Nhấn Enter để chuyển tiếp</span>
+                      </div>
+                    </form>
+                    <aside className="conversation-model">
+                      <PaperLabel tone="navy">MẪU GỢI Ý</PaperLabel>
+                      <p>{conversationPattern.practice.hint}</p>
+                      <details>
+                        <summary>Xem một câu trả lời mẫu <ChevronRight size={15} /></summary>
+                        <strong>{conversationPattern.practice.example}</strong>
+                      </details>
+                    </aside>
+                  </div>
+                </section>
                 <section className="conversation-section">
                   <div className="section-heading">
                     <div>
