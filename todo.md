@@ -22,3 +22,9 @@
 - [x] Chuyển 82 mục đã ghi chú thành danh sách flashcard học được.
 - [x] Thêm chế độ lật thẻ, đánh dấu đã nhớ/cần ôn và phím Enter để chuyển mục.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Điền đáp án cho 82 từ
+
+- [x] Xác định đáp án chấp nhận được khi học Pháp sang Việt và Việt sang Pháp.
+- [x] Thêm chọn chiều học, ô nhập đáp án, chấm điểm và Enter chuyển tiếp.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

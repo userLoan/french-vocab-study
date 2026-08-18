@@ -101,7 +101,9 @@ export default function Home() {
   const [conversationIndex, setConversationIndex] = useState(0);
   const [conversationAnswer, setConversationAnswer] = useState("");
   const [vocabularyIndex, setVocabularyIndex] = useState(0);
-  const [vocabularyBack, setVocabularyBack] = useState(false);
+  const [vocabularyDirection, setVocabularyDirection] = useState<"french-to-vietnamese" | "vietnamese-to-french">("french-to-vietnamese");
+  const [vocabularyAnswer, setVocabularyAnswer] = useState("");
+  const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
@@ -112,6 +114,8 @@ export default function Home() {
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const vocabularyEntries = vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
+  const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
+  const vocabularyExpected = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -138,12 +142,25 @@ export default function Home() {
 
   const nextVocabulary = () => {
     setVocabularyIndex((value) => (value + 1) % vocabularyEntries.length);
-    setVocabularyBack(false);
+    setVocabularyAnswer("");
   };
 
-  const markVocabulary = (status: "known" | "review") => {
-    if (status === "known") setKnown((value) => value + 1);
+  const changeVocabularyDirection = (direction: "french-to-vietnamese" | "vietnamese-to-french") => {
+    setVocabularyDirection(direction);
+    setVocabularyAnswer("");
+    setVocabularyFeedback(null);
+  };
+
+  const checkVocabulary = (event: FormEvent) => {
+    event.preventDefault();
+    const answerSource = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
+    const acceptedAnswers = answerSource
+      .split(" / ")
+      .flatMap((answer) => [answer, answer.replace("(e)", ""), answer.replace("(e)", "e")]);
+    const isCorrect = acceptedAnswers.some((answer) => normalize(vocabularyAnswer) === normalize(answer));
+    if (isCorrect) setCorrect((value) => value + 1);
     else setReview((value) => value + 1);
+    setVocabularyFeedback({ isCorrect, expected: vocabularyExpected });
     nextVocabulary();
   };
 
@@ -398,55 +415,53 @@ export default function Home() {
 
             {mode === "vocabulary" && (
               <section className="flashcard-view vocabulary-study-view">
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học 82 từ" description="Tự gọi nghĩa trước, lật thẻ để kiểm tra rồi đánh dấu mức độ nhớ. Enter chuyển ngay sang mục mới." number="07" />
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học 82 từ" description="Chọn chiều học, tự gõ đáp án và nhấn Enter để chấm rồi chuyển ngay sang mục tiếp theo." number="07" />
                 <div className="flashcard-layout">
-                  <div className={`flashcard vocabulary-flashcard ${vocabularyBack ? "flashcard--back" : ""}`}>
-                    <button
-                      className="flashcard-main"
-                      onClick={() => setVocabularyBack((value) => !value)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter") {
-                          event.preventDefault();
-                          nextVocabulary();
-                        }
-                      }}
-                      aria-label="Lật thẻ từ vựng; nhấn Enter để sang từ tiếp theo"
-                    >
-                      <div className="flashcard-corner" />
-                      <div className="flashcard-face flashcard-face--front">
-                        <PaperLabel tone="navy">{vocabularyEntry.group}</PaperLabel>
-                        <p className="flashcard-index">{String(vocabularyIndex + 1).padStart(2, "0")} / {String(vocabularyEntries.length).padStart(2, "0")}</p>
-                        <div>
-                          <h2>{vocabularyEntry.french}</h2>
-                          <p className="vocabulary-front-prompt">Bạn nhớ nghĩa tiếng Việt chứ?</p>
-                        </div>
-                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để lật · Enter để sang từ</span>
-                      </div>
-                      <div className="flashcard-face flashcard-face--back">
-                        <PaperLabel tone="sage">NGHĨA</PaperLabel>
-                        <div>
-                          <p className="meaning-vietnamese">{vocabularyEntry.vietnamese}</p>
-                          {vocabularyEntry.note && <p className="vocabulary-note">{vocabularyEntry.note}</p>}
-                        </div>
-                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để xem lại · Enter để sang từ</span>
-                      </div>
-                    </button>
-                    <div className="flashcard-actions">
-                      <button className="review-button" onClick={() => markVocabulary("review")}>
-                        <RotateCcw size={17} />
-                        Cần ôn lại
-                      </button>
-                      <button className="remember-button" onClick={() => markVocabulary("known")}>
-                        <Check size={18} />
-                        Đã nhớ rồi
-                      </button>
+                  <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
+                    <div className="vocabulary-recall-top">
+                      <PaperLabel tone="navy">{vocabularyEntry.group}</PaperLabel>
+                      <span>{String(vocabularyIndex + 1).padStart(2, "0")} / {String(vocabularyEntries.length).padStart(2, "0")}</span>
                     </div>
-                  </div>
+                    <div className="vocabulary-direction" aria-label="Chọn chiều học">
+                      <button type="button" className={vocabularyDirection === "french-to-vietnamese" ? "is-active" : ""} onClick={() => changeVocabularyDirection("french-to-vietnamese")}>PHÁP → VIỆT</button>
+                      <button type="button" className={vocabularyDirection === "vietnamese-to-french" ? "is-active" : ""} onClick={() => changeVocabularyDirection("vietnamese-to-french")}>VIỆT → PHÁP</button>
+                    </div>
+                    <div className="vocabulary-prompt">
+                      <span>{vocabularyDirection === "french-to-vietnamese" ? "TỪ TIẾNG PHÁP" : "NGHĨA TIẾNG VIỆT"}</span>
+                      <h2>{vocabularyPrompt}</h2>
+                      {vocabularyEntry.note && <small>{vocabularyEntry.note}</small>}
+                    </div>
+                    <label className="vocabulary-answer">
+                      <span>{vocabularyDirection === "french-to-vietnamese" ? "NHẬP NGHĨA TIẾNG VIỆT" : "NHẬP TỪ TIẾNG PHÁP"}</span>
+                      <input
+                        autoFocus
+                        aria-label={vocabularyDirection === "french-to-vietnamese" ? `Nghĩa tiếng Việt của ${vocabularyEntry.french}` : `Từ tiếng Pháp của ${vocabularyEntry.vietnamese}`}
+                        value={vocabularyAnswer}
+                        onChange={(event) => setVocabularyAnswer(event.target.value)}
+                        placeholder={vocabularyDirection === "french-to-vietnamese" ? "Gõ nghĩa tiếng Việt" : "Gõ từ tiếng Pháp"}
+                      />
+                    </label>
+                    <div className="vocabulary-submit-row">
+                      <button className="primary-button" type="submit">Kiểm tra & tiếp <ArrowRight size={18} /></button>
+                      <span>Nhấn Enter để chấm và sang mục mới</span>
+                    </div>
+                  </form>
                   <aside className="flashcard-side-note vocabulary-study-note">
                     <div>
-                      <PaperLabel tone="mustard">CÁCH ÔN</PaperLabel>
-                      <p>Đọc to từ tiếng Pháp. Gọi nghĩa trước. Lật thẻ sau khi đã cố nhớ.</p>
-                      <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
+                      <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                      {vocabularyFeedback ? (
+                        <>
+                          <p className={vocabularyFeedback.isCorrect ? "vocabulary-feedback vocabulary-feedback--correct" : "vocabulary-feedback vocabulary-feedback--review"}>
+                            {vocabularyFeedback.isCorrect ? "Đúng rồi — tiếp tục giữ nhịp." : `Cần ôn lại. Đáp án: ${vocabularyFeedback.expected}`}
+                          </p>
+                          <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
+                        </>
+                      ) : (
+                        <>
+                          <p>Chọn một chiều học rồi tự gõ đáp án. Chấp nhận cả các từ có dấu tiếng Pháp.</p>
+                          <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
+                        </>
+                      )}
                     </div>
                   </aside>
                 </div>
