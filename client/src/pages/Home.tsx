@@ -9,11 +9,9 @@ import {
   Bookmark,
   Check,
   ChevronRight,
-  CircleCheck,
   Clock3,
   Languages,
   Layers,
-  Lightbulb,
   Menu,
   PenLine,
   RotateCcw,
@@ -25,7 +23,6 @@ import {
 import { pronouns, sheetSource, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "word" | "meaning";
-type Result = "correct" | "incorrect" | null;
 
 const normalize = (value: string) =>
   value
@@ -53,24 +50,6 @@ const navItems = [
 
 function PaperLabel({ children, tone = "mustard" }: { children: React.ReactNode; tone?: "mustard" | "sage" | "navy" }) {
   return <span className={`paper-label paper-label--${tone}`}>{children}</span>;
-}
-
-function ResultNote({ result, expected }: { result: Result; expected: string }) {
-  if (!result) return null;
-
-  return result === "correct" ? (
-    <div className="result-note result-note--correct" role="status">
-      <CircleCheck size={18} />
-      <span>Chính xác. Cứ giữ nhịp này.</span>
-    </div>
-  ) : (
-    <div className="result-note result-note--incorrect" role="status">
-      <Lightbulb size={18} />
-      <span>
-        Đáp án: <strong>{expected}</strong>. Đánh dấu lại để gặp từ này sớm hơn.
-      </span>
-    </div>
-  );
 }
 
 function ModeHeader({ eyebrow, title, description, number }: { eyebrow: string; title: string; description: string; number: string }) {
@@ -108,11 +87,8 @@ export default function Home() {
   const [correct, setCorrect] = useState(0);
   const [conjugationIndex, setConjugationIndex] = useState(0);
   const [conjugationAnswer, setConjugationAnswer] = useState("");
-  const [conjugationResult, setConjugationResult] = useState<Result>(null);
   const [wordAnswer, setWordAnswer] = useState("");
-  const [wordResult, setWordResult] = useState<Result>(null);
   const [meaningAnswer, setMeaningAnswer] = useState("");
-  const [meaningResult, setMeaningResult] = useState<Result>(null);
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
@@ -146,41 +122,38 @@ export default function Home() {
   const checkConjugation = (event: FormEvent) => {
     event.preventDefault();
     const isCorrect = normalize(conjugationAnswer) === normalize(conjugationVerb.forms[conjugationPronoun]);
-    setConjugationResult(isCorrect ? "correct" : "incorrect");
     if (isCorrect) setCorrect((value) => value + 1);
+    nextConjugation();
   };
 
   const nextConjugation = () => {
     setConjugationIndex((value) => value + 1);
     setConjugationAnswer("");
-    setConjugationResult(null);
   };
 
   const checkWord = (event: FormEvent) => {
     event.preventDefault();
     const isCorrect = normalize(wordAnswer) === normalize(wordVerb.infinitive);
-    setWordResult(isCorrect ? "correct" : "incorrect");
     if (isCorrect) setCorrect((value) => value + 1);
+    nextWord();
   };
 
   const nextWord = () => {
     setActiveIndex((value) => (value + 1) % verbs.length);
     setWordAnswer("");
-    setWordResult(null);
   };
 
   const checkMeaning = (event: FormEvent) => {
     event.preventDefault();
     const accepted = [meaningVerb.meaning, meaningVerb.english];
     const isCorrect = accepted.some((answer) => normalize(meaningAnswer) === normalize(answer));
-    setMeaningResult(isCorrect ? "correct" : "incorrect");
     if (isCorrect) setCorrect((value) => value + 1);
+    nextMeaning();
   };
 
   const nextMeaning = () => {
     setActiveIndex((value) => (value + 1) % verbs.length);
     setMeaningAnswer("");
-    setMeaningResult(null);
   };
 
   return (
@@ -312,7 +285,17 @@ export default function Home() {
                 <ModeHeader eyebrow="NHẬN MẶT TỪ" title="Flashcards" description="Lật thẻ, đọc to và tự đánh giá độ nhớ của bạn." number="01" />
                 <div className="flashcard-layout">
                   <div className={`flashcard ${flashBack ? "flashcard--back" : ""}`}>
-                    <button className="flashcard-main" onClick={() => setFlashBack((value) => !value)} aria-label="Lật flashcard">
+                    <button
+                      className="flashcard-main"
+                      onClick={() => setFlashBack((value) => !value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          event.preventDefault();
+                          nextFlash();
+                        }
+                      }}
+                      aria-label="Lật flashcard; nhấn Enter để sang thẻ tiếp theo"
+                    >
                       <div className="flashcard-corner" />
                       <div className="flashcard-face flashcard-face--front">
                         <PaperLabel tone="navy">{flashVerb.group}</PaperLabel>
@@ -321,7 +304,7 @@ export default function Home() {
                           <h2>{flashVerb.infinitive}</h2>
                           <VerbMeta verb={flashVerb} />
                         </div>
-                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để lật thẻ</span>
+                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để lật · Enter để sang thẻ</span>
                       </div>
                       <div className="flashcard-face flashcard-face--back">
                         <PaperLabel tone="sage">NGHĨA</PaperLabel>
@@ -330,7 +313,7 @@ export default function Home() {
                           <p className="meaning-english">{flashVerb.english}</p>
                         </div>
                         {flashVerb.note && <p className="grammar-note">{flashVerb.note}</p>}
-                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để xem lại từ</span>
+                        <span className="flip-prompt"><RotateCcw size={15} /> Chạm để xem lại · Enter để sang thẻ</span>
                       </div>
                     </button>
                     <div className="flashcard-actions">
@@ -357,7 +340,7 @@ export default function Home() {
 
             {mode === "conjugation" && (
               <section className="exercise-view">
-                <ModeHeader eyebrow="THÌ HIỆN TẠI" title="Conjugation" description="Điền dạng chia thích hợp, sau đó đối chiếu cả hàng." number="02" />
+                <ModeHeader eyebrow="THÌ HIỆN TẠI" title="Conjugation" description="Điền dạng chia thích hợp; Enter sẽ chuyển thẳng sang ngôi kế tiếp." number="02" />
                 <div className="exercise-layout">
                   <form className="exercise-card" onSubmit={checkConjugation}>
                     <div className="exercise-card-top">
@@ -377,18 +360,12 @@ export default function Home() {
                         value={conjugationAnswer}
                         onChange={(event) => setConjugationAnswer(event.target.value)}
                         placeholder="điền dạng chia"
-                        disabled={Boolean(conjugationResult)}
                       />
                     </div>
                     <div className="exercise-actions">
-                      {!conjugationResult ? (
-                        <button className="primary-button" type="submit">Kiểm tra <ArrowRight size={18} /></button>
-                      ) : (
-                        <button className="primary-button" type="button" onClick={nextConjugation}>Ngôi kế tiếp <ArrowRight size={18} /></button>
-                      )}
-                      <span>Nhấn Enter để kiểm tra</span>
+                      <button className="primary-button" type="submit">Sang ngôi kế <ArrowRight size={18} /></button>
+                      <span>Nhấn Enter để chuyển tiếp</span>
                     </div>
-                    <ResultNote result={conjugationResult} expected={conjugationVerb.forms[conjugationPronoun]} />
                   </form>
 
                   <aside className="conjugation-guide">
@@ -399,7 +376,7 @@ export default function Home() {
                         {pronouns.map((pronoun) => (
                           <div key={pronoun} className={pronoun === conjugationPronoun ? "form-row form-row--active" : "form-row"}>
                             <span>{pronoun}</span>
-                            <strong>{conjugationResult ? conjugationVerb.forms[pronoun] : "······"}</strong>
+                            <strong>······</strong>
                           </div>
                         ))}
                       </div>
@@ -427,15 +404,9 @@ export default function Home() {
                       value={wordAnswer}
                       onChange={(event) => setWordAnswer(event.target.value)}
                       placeholder="viết bằng tiếng Pháp"
-                      disabled={Boolean(wordResult)}
                     />
-                    {!wordResult ? (
-                      <button className="primary-button" type="submit">Kiểm tra <ArrowRight size={18} /></button>
-                    ) : (
-                      <button className="primary-button" type="button" onClick={nextWord}>Từ tiếp <ArrowRight size={18} /></button>
-                    )}
+                    <button className="primary-button" type="submit">Từ tiếp <ArrowRight size={18} /></button>
                   </div>
-                  <ResultNote result={wordResult} expected={wordVerb.infinitive} />
                 </form>
                 <div className="hint-strip">
                   <Stamp size={22} />
@@ -461,15 +432,9 @@ export default function Home() {
                       value={meaningAnswer}
                       onChange={(event) => setMeaningAnswer(event.target.value)}
                       placeholder="nhập nghĩa bạn nhớ"
-                      disabled={Boolean(meaningResult)}
                     />
-                    {!meaningResult ? (
-                      <button className="primary-button" type="submit">Kiểm tra <ArrowRight size={18} /></button>
-                    ) : (
-                      <button className="primary-button" type="button" onClick={nextMeaning}>Từ tiếp <ArrowRight size={18} /></button>
-                    )}
+                    <button className="primary-button" type="submit">Từ tiếp <ArrowRight size={18} /></button>
                   </div>
-                  <ResultNote result={meaningResult} expected={`${meaningVerb.meaning} · ${meaningVerb.english}`} />
                 </form>
                 <div className="meaning-cue">
                   <div className="cue-dot" />
