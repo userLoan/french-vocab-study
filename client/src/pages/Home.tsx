@@ -20,9 +20,10 @@ import {
   Type,
   X,
 } from "lucide-react";
+import { articleExercises, articleNotes, conversationPatterns, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, sheetSource, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
-type Mode = "overview" | "flashcards" | "conjugation" | "word" | "meaning";
+type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "word" | "meaning" | "notebook";
 
 const normalize = (value: string) =>
   value
@@ -36,16 +37,20 @@ const normalize = (value: string) =>
 const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   flashcards: "Flashcards",
   conjugation: "Conjugation",
+  articles: "Mạo từ",
   word: "Điền từ",
   meaning: "Điền nghĩa",
+  notebook: "Sổ tay câu",
 };
 
 const navItems = [
   { id: "overview" as const, label: "Bàn học", icon: BookOpen },
   { id: "flashcards" as const, label: "Flashcards", icon: Layers },
   { id: "conjugation" as const, label: "Conjugation", icon: Languages },
+  { id: "articles" as const, label: "Mạo từ", icon: Stamp },
   { id: "word" as const, label: "Điền từ", icon: PenLine },
   { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
+  { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
 ];
 
 function PaperLabel({ children, tone = "mustard" }: { children: React.ReactNode; tone?: "mustard" | "sage" | "navy" }) {
@@ -89,12 +94,15 @@ export default function Home() {
   const [conjugationAnswer, setConjugationAnswer] = useState("");
   const [wordAnswer, setWordAnswer] = useState("");
   const [meaningAnswer, setMeaningAnswer] = useState("");
+  const [articleIndex, setArticleIndex] = useState(0);
+  const [articleAnswer, setArticleAnswer] = useState("");
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
   const conjugationPronoun = pronouns[conjugationIndex % pronouns.length];
   const wordVerb = verbs[(activeIndex + 7) % verbs.length];
   const meaningVerb = verbs[(activeIndex + 13) % verbs.length];
+  const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -156,6 +164,14 @@ export default function Home() {
     setMeaningAnswer("");
   };
 
+  const checkArticle = (event: FormEvent) => {
+    event.preventDefault();
+    const isCorrect = normalize(articleAnswer) === normalize(articleExercise.article);
+    if (isCorrect) setCorrect((value) => value + 1);
+    setArticleIndex((value) => (value + 1) % articleExercises.length);
+    setArticleAnswer("");
+  };
+
   return (
     <main className="app-shell">
       <button className="mobile-menu-toggle" onClick={() => setMobileOpen((open) => !open)} aria-label="Mở điều hướng">
@@ -198,8 +214,8 @@ export default function Home() {
           <div className="rail-note">
             <Sparkles size={18} />
             <p>
-              Hôm nay, mình học từng từ một.
-              <span>{verbs.length} động từ từ bảng của bạn đã sẵn sàng.</span>
+              Hôm nay, mình học từng câu một.
+              <span>Động từ, mạo từ và mẫu hỏi–đáp đã sẵn sàng.</span>
             </p>
           </div>
           <a href={sheetSource.url} target="_blank" rel="noreferrer" className="source-link">
@@ -235,16 +251,17 @@ export default function Home() {
                       để nói bằng tiếng Pháp.
                     </h1>
                     <p>
-                      Bạn đang ôn nhóm động từ hiện tại. Chọn một nhịp học ngắn, rõ và lặp lại vừa đủ để nhớ lâu hơn.
+                      Bạn đang ôn động từ, mạo từ và những mẫu câu đầu tiên. Chọn một nhịp học ngắn, rõ và lặp lại vừa đủ để nhớ lâu hơn.
                     </p>
-                    <button className="primary-button" onClick={() => changeMode("flashcards")}>
-                      Bắt đầu với {flashVerb.infinitive}
+                    <button className="primary-button" onClick={() => changeMode("articles")}>
+                      Luyện aimer với le · la
                       <ArrowRight size={18} />
                     </button>
                   </div>
                   <div className="hero-visual" aria-hidden="true">
                     <img src="/manus-storage/carnet-hero-desk_48646ec8.jpg" alt="" />
                     <span className="hero-stamp">bonjour</span>
+                    <span className="hero-photo-caption">page 01 · notes du matin</span>
                   </div>
                 </div>
 
@@ -254,7 +271,7 @@ export default function Home() {
                       <p className="section-kicker">CHỌN CÁCH ÔN</p>
                       <h2>Một nhịp học phù hợp lúc này</h2>
                     </div>
-                    <span>{verbs.length} động từ · thì hiện tại</span>
+                    <span>{verbs.length} động từ · {vocabularyGroups.length} chủ đề mới</span>
                   </div>
                   <div className="mode-grid">
                     <button className="mode-card mode-card--blue" onClick={() => changeMode("flashcards")}>
@@ -267,6 +284,12 @@ export default function Home() {
                       <Languages size={24} />
                       <strong>Conjugation</strong>
                       <span>Điền đúng ngôi hiện tại</span>
+                      <ArrowRight size={18} />
+                    </button>
+                    <button className="mode-card mode-card--article" onClick={() => changeMode("articles")}>
+                      <Stamp size={24} />
+                      <strong>Mạo từ</strong>
+                      <span>le · la · l' · les với aimer</span>
                       <ArrowRight size={18} />
                     </button>
                     <button className="mode-card mode-card--sage" onClick={() => changeMode("word")}>
@@ -386,9 +409,58 @@ export default function Home() {
               </section>
             )}
 
+            {mode === "articles" && (
+              <section className="article-view">
+                <ModeHeader eyebrow="AIMER + MẠO TỪ" title="Điền mạo từ" description="Chọn le, la, l' hoặc les. Nhấn Enter để lưu đáp án và chuyển ngay sang câu mới." number="03" />
+                <div className="article-layout">
+                  <form className="article-card" onSubmit={checkArticle}>
+                    <div className="article-card-top">
+                      <div>
+                        <PaperLabel tone="mustard">CÂU {String(articleIndex + 1).padStart(2, "0")}</PaperLabel>
+                        <p>Điền mạo từ xác định vào chỗ trống.</p>
+                      </div>
+                      <span className="article-count">{articleIndex + 1} / {articleExercises.length}</span>
+                    </div>
+                    <div className="article-sentence" aria-label="Câu điền mạo từ">
+                      <span>{articleExercise.subject}</span>
+                      <input
+                        autoFocus
+                        aria-label={`Mạo từ trước từ ${articleExercise.noun}`}
+                        value={articleAnswer}
+                        onChange={(event) => setArticleAnswer(event.target.value)}
+                        placeholder="?"
+                      />
+                      <span>{articleExercise.noun}.</span>
+                    </div>
+                    <div className="article-support">
+                      <span className="article-cue">Gợi ý: {articleExercise.cue}</span>
+                      <span>{articleExercise.vietnamese}</span>
+                    </div>
+                    <button className="primary-button" type="submit">Câu tiếp theo <ArrowRight size={18} /></button>
+                  </form>
+
+                  <aside className="article-rulebook">
+                    <div className="rulebook-heading">
+                      <PaperLabel tone="navy">NHỚ NHANH</PaperLabel>
+                      <p>Mạo từ xác định</p>
+                    </div>
+                    {articleNotes.map((rule) => (
+                      <div className="article-rule" key={rule.article}>
+                        <strong>{rule.article}</strong>
+                        <div>
+                          <span>{rule.label}</span>
+                          <p>{rule.example}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </aside>
+                </div>
+              </section>
+            )}
+
             {mode === "word" && (
               <section className="exercise-view">
-                <ModeHeader eyebrow="GỌI TÊN TỪ" title="Điền từ" description="Từ nghĩa tiếng Việt, gọi đúng infinitif tiếng Pháp." number="03" />
+                <ModeHeader eyebrow="GỌI TÊN TỪ" title="Điền từ" description="Từ nghĩa tiếng Việt, gọi đúng infinitif tiếng Pháp." number="04" />
                 <form className="recall-card" onSubmit={checkWord}>
                   <div className="recall-topline">
                     <PaperLabel tone="sage">TỪ VỰNG</PaperLabel>
@@ -417,7 +489,7 @@ export default function Home() {
 
             {mode === "meaning" && (
               <section className="exercise-view">
-                <ModeHeader eyebrow="NHỚ NGHĨA" title="Điền nghĩa" description="Bạn đã nhìn ra động từ này chưa? Viết nghĩa Việt hoặc Anh đều được." number="04" />
+                <ModeHeader eyebrow="NHỚ NGHĨA" title="Điền nghĩa" description="Bạn đã nhìn ra động từ này chưa? Viết nghĩa Việt hoặc Anh đều được." number="05" />
                 <form className="recall-card recall-card--meaning" onSubmit={checkMeaning}>
                   <div className="recall-topline">
                     <PaperLabel tone="navy">FRANÇAIS</PaperLabel>
@@ -443,6 +515,67 @@ export default function Home() {
                     <p>Hãy thử ghép động từ này với <em>je</em> trước khi kiểm tra nghĩa.</p>
                   </div>
                 </div>
+              </section>
+            )}
+
+            {mode === "notebook" && (
+              <section className="notebook-view">
+                <ModeHeader eyebrow="NÓI & HIỂU" title="Sổ tay câu" description="Mẫu hỏi–đáp để giới thiệu bản thân, nói về sở thích, nghề nghiệp và thông tin thường dùng." number="06" />
+                <section className="conversation-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">HỎI & TRẢ LỜI</p>
+                      <h2>Những câu nên nhớ ngay</h2>
+                    </div>
+                    <span>{conversationPatterns.length} mẫu đối thoại</span>
+                  </div>
+                  <div className="conversation-grid">
+                    {conversationPatterns.map((pattern) => (
+                      <article className="conversation-card" key={pattern.id}>
+                        <PaperLabel tone={pattern.id === "likes" || pattern.id === "likes-list" ? "mustard" : "sage"}>{pattern.title}</PaperLabel>
+                        <div className="conversation-turn">
+                          <span>HỎI</span>
+                          <p>{pattern.question}</p>
+                        </div>
+                        <div className="conversation-turn conversation-turn--answer">
+                          <span>ĐÁP</span>
+                          <p>{pattern.answer}</p>
+                        </div>
+                        <p className="conversation-note">{pattern.note}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="lexicon-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">KHO TỪ VỰNG</p>
+                      <h2>Từ tài liệu của bạn</h2>
+                    </div>
+                    <span>{vocabularyGroups.reduce((total, group) => total + group.entries.length, 0)} mục đã ghi chú</span>
+                  </div>
+                  <div className="lexicon-list">
+                    {vocabularyGroups.map((group, index) => (
+                      <details className="lexicon-group" key={group.id} open={index < 2}>
+                        <summary>
+                          <span className="lexicon-number">0{index + 1}</span>
+                          <span><strong>{group.title}</strong><small>{group.caption}</small></span>
+                          <ChevronRight size={18} />
+                        </summary>
+                        <div className="vocabulary-grid">
+                          {group.entries.map((entry) => (
+                            <article className="vocabulary-entry" key={entry.french}>
+                              <strong>{entry.french}</strong>
+                              <span>{entry.vietnamese}</span>
+                              {entry.note && <small>{entry.note}</small>}
+                            </article>
+                          ))}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
               </section>
             )}
           </section>

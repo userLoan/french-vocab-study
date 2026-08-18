@@ -73,3 +73,5 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Quy tắc màu nhấn:** Encre Marine là màu mực chủ đạo; Moutarde chỉ dành cho hành động/điểm chú ý, Sage dành cho phản hồi đúng/hỗ trợ, và nâu đỏ chỉ được dùng như nét mực sửa bài hiếm khi cần biểu thị sai.
 - **Quy tắc chất liệu:** mọi bề mặt học và tiến độ cần gợi cảm giác giấy, sổ ghi, băng keo, con dấu hoặc phần lề vở; tránh các khối thống kê mang cảm giác SaaS.
 - **Quy tắc logo:** biểu tượng phải thể hiện rõ mẩu giấy gấp thành dấu sắc và nét chim mực xanh; wordmark “carnet” mang tính biên tập, không dùng kiểu chữ mặc định.
+- **Gáy sổ & điều hướng:** thanh trái hoạt động như mục lục dán giấy, có đường chỉ lề, dấu chỉ mục và tab giấy cắt; không được trở thành sidebar SaaS thông thường.
+- **Ảnh học tập:** ảnh bàn học luôn được xử lý như ảnh dán vào carnet bằng băng keo, mép cắt nhẹ, bóng giấy và chú thích mực nhỏ.
