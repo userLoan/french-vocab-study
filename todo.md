@@ -93,3 +93,8 @@
 
 - [x] Rà soát mã định danh của từng bảng từ vựng trong dropdown.
 - [x] Liên kết dropdown với đúng bảng chủ đề, kiểm tra và lưu phiên bản sửa lỗi.
+
+# Làm rõ Quel / Quelle
+
+- [x] Thêm bảng phân biệt giống và số cho Quel, Quelle, Quels, Quelles.
+- [x] Kiểm tra nội dung, bản dựng và lưu phiên bản cập nhật.

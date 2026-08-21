@@ -18,7 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
+import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
@@ -766,6 +766,25 @@ export default function Home() {
                       <article className="question-word-card" key={item.word}>
                         <strong>{item.word}</strong>
                         <span>{item.meaning}</span>
+                        <p>{item.example}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="quel-agreement-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">QUEL / QUELLE</p>
+                      <h2>Chọn theo giống và số của danh từ</h2>
+                    </div>
+                    <span>4 dạng</span>
+                  </div>
+                  <div className="quel-agreement-grid">
+                    {quelForms.map((item) => (
+                      <article className="quel-agreement-card" key={item.form}>
+                        <strong>{item.form}</strong>
+                        <span>{item.agreement}</span>
                         <p>{item.example}</p>
                       </article>
                     ))}

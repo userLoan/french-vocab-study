@@ -278,6 +278,13 @@ export const questionWords = [
   { word: "Que / Qu'est-ce que / Quoi", meaning: "cái gì", example: "Que fais-tu ? · Qu'est-ce que tu achètes ? · Tu achètes quoi ?" },
 ];
 
+export const quelForms = [
+  { form: "Quel", agreement: "Giống đực · số ít", example: "Quel âge as-tu ?" },
+  { form: "Quelle", agreement: "Giống cái · số ít", example: "Quelle adresse est correcte ?" },
+  { form: "Quels", agreement: "Giống đực · số nhiều", example: "Quels pays visitez-vous ?" },
+  { form: "Quelles", agreement: "Giống cái · số nhiều", example: "Quelles photos aimez-vous ?" },
+];
+
 export const questionForms = [
   { title: "Cách 1 · Ngữ điệu", formula: "Tu es vietnamien ?", note: "Đảo giọng lên ở cuối câu. Phù hợp hội thoại thân mật.", example: "Tu habites où ?" },
   { title: "Cách 2 · Est-ce que", formula: "Est-ce que tu es vietnamien ?", note: "Thêm est-ce que trước câu trần thuật. Dễ dùng, trung tính.", example: "Où est-ce que tu habites ?" },
@@ -304,6 +311,8 @@ export const questionExercises: QuestionExercise[] = [
   { id: "when-inversion", before: "", after: "travailles-tu ?", answer: "quand", note: "Từ để hỏi đứng đầu trong cấu trúc đảo ngữ." },
   { id: "what-casual", before: "Tu achètes", after: "?", answer: "quoi", note: "Quoi thường đứng sau động từ trong hội thoại thân mật." },
   { id: "age", before: "", after: "âge as-tu ?", answer: "quel", note: "Âge là danh từ giống đực số ít: quel âge." },
+  { id: "address", before: "", after: "adresse est correcte ?", answer: "quelle", note: "Adresse là danh từ giống cái số ít: quelle adresse." },
+  { id: "countries", before: "", after: "pays visitez-vous ?", answer: "quels", note: "Pays là danh từ giống đực số nhiều: quels pays." },
   { id: "photos", before: "", after: "photos avez-vous ?", answer: "quelles", note: "Photos là giống cái số nhiều: quelles photos." },
   { id: "how-much", before: "", after: "ça coûte ?", answer: "combien", note: "Combien dùng để hỏi số lượng hoặc giá tiền." },
   { id: "why", before: "", after: "tu aimes le croissant ?", answer: "pourquoi", note: "Pourquoi dùng để hỏi nguyên nhân." },

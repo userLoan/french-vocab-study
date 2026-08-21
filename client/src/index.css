@@ -385,12 +385,21 @@ a { color: inherit; }
 .question-feedback-card > span { display: block; margin-top: 15px; color: rgba(104,74,117,.76); font-size: 10px; font-weight: 700; line-height: 1.55; }
 .question-feedback--correct { color: var(--sage-ink) !important; }
 .question-feedback--review { color: #8b4235 !important; }
-.question-word-section, .question-form-section, .question-examples-section { margin-top: 49px; }
+.question-word-section, .quel-agreement-section, .question-form-section, .question-examples-section { margin-top: 49px; }
 .question-word-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .question-word-card { min-height: 148px; padding: 17px 16px; background: #f7efd8; box-shadow: inset 0 0 0 1px rgba(118,95,51,.14); }
 .question-word-card strong { display: block; color: var(--ink); font-family: "Fraunces", serif; font-size: 19px; letter-spacing: -.04em; line-height: 1.08; }
 .question-word-card span { display: block; margin-top: 6px; color: #684a75; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 .question-word-card p { margin: 12px 0 0; color: var(--ink-soft); font-size: 10px; font-weight: 700; line-height: 1.45; }
+.quel-agreement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.quel-agreement-card { min-height: 151px; padding: 19px 20px 17px; background: #fbf7ed; box-shadow: inset 0 0 0 1px rgba(118,95,51,.14); }
+.quel-agreement-card:nth-child(2) { background: #f7efd8; }
+.quel-agreement-card:nth-child(3) { background: #d8e6e4; }
+.quel-agreement-card:nth-child(4) { background: #ece3d4; }
+.quel-agreement-card strong, .quel-agreement-card span { display: block; }
+.quel-agreement-card strong { color: var(--ink); font-family: "Fraunces", serif; font-size: 29px; letter-spacing: -.05em; }
+.quel-agreement-card span { margin-top: 7px; color: #684a75; font-size: 10px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
+.quel-agreement-card p { margin: 16px 0 0; padding-top: 9px; color: var(--ink-soft); border-top: 1px dashed rgba(22,58,95,.2); font-family: "Fraunces", serif; font-size: 15px; font-weight: 600; letter-spacing: -.025em; }
 .question-form-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .question-form-card { min-height: 253px; padding: 20px 18px; background: #fbf7ed; box-shadow: 0 11px 25px rgba(76,63,35,.07), inset 0 0 0 1px rgba(118,95,51,.13); }
 .question-form-card:nth-child(2) { background: #f7efd8; transform: rotate(-.45deg); }
@@ -568,7 +577,7 @@ a { color: inherit; }
   .question-sentence { font-size: 35px; gap: 9px; }
   .question-sentence input { width: 101px; }
   .question-submit-row { align-items: flex-start; flex-direction: column; }
-  .question-word-grid, .question-form-grid { grid-template-columns: 1fr; }
+  .question-word-grid, .quel-agreement-grid, .question-form-grid { grid-template-columns: 1fr; }
   .question-example-list { overflow-x: auto; }
   .question-example-row { min-width: 680px; }
   .vocabulary-grid { grid-template-columns: 1fr; }
