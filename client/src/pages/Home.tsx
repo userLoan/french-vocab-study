@@ -118,6 +118,7 @@ export default function Home() {
   const [conversationIndex, setConversationIndex] = useState(0);
   const [conversationAnswer, setConversationAnswer] = useState("");
   const [vocabularyIndex, setVocabularyIndex] = useState(0);
+  const [vocabularyTopic, setVocabularyTopic] = useState("all");
   const [vocabularyDirection, setVocabularyDirection] = useState<"french-to-vietnamese" | "vietnamese-to-french">("french-to-vietnamese");
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
@@ -135,7 +136,9 @@ export default function Home() {
   const conjugationQuestionNumber = (conjugationIndex % conjugationCases.length) + 1;
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
-  const vocabularyEntries = vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
+  const selectedVocabularyGroup = vocabularyGroups.find((group) => group.id === vocabularyTopic);
+  const vocabularyTopicLabel = selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
+  const vocabularyEntries = (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
   const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
   const vocabularyExpected = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
@@ -172,6 +175,13 @@ export default function Home() {
 
   const changeVocabularyDirection = (direction: "french-to-vietnamese" | "vietnamese-to-french") => {
     setVocabularyDirection(direction);
+    setVocabularyAnswer("");
+    setVocabularyFeedback(null);
+  };
+
+  const changeVocabularyTopic = (topic: string) => {
+    setVocabularyTopic(topic);
+    setVocabularyIndex(0);
     setVocabularyAnswer("");
     setVocabularyFeedback(null);
   };
@@ -424,7 +434,18 @@ export default function Home() {
 
             {mode === "vocabulary" && (
               <section className="flashcard-view vocabulary-study-view">
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học 82 từ" description="Chọn chiều học, tự gõ đáp án và nhấn Enter để chấm rồi chuyển ngay sang mục tiếp theo." number="07" />
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn chủ đề và chiều học, tự gõ đáp án rồi nhấn Enter để chấm và sang mục tiếp theo." number="07" />
+                <div className="vocabulary-topic-picker" aria-label="Chọn chủ đề từ vựng">
+                  <span>CHỌN CHỦ ĐỀ</span>
+                  <div className="vocabulary-topic-options">
+                    <button type="button" className={vocabularyTopic === "all" ? "is-active" : ""} onClick={() => changeVocabularyTopic("all")}>Tất cả · 82</button>
+                    {vocabularyGroups.map((group) => (
+                      <button key={group.id} type="button" className={vocabularyTopic === group.id ? "is-active" : ""} onClick={() => changeVocabularyTopic(group.id)}>
+                        {group.title} · {group.entries.length}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
                     <div className="vocabulary-recall-top">
@@ -463,12 +484,12 @@ export default function Home() {
                           <p className={vocabularyFeedback.isCorrect ? "vocabulary-feedback vocabulary-feedback--correct" : "vocabulary-feedback vocabulary-feedback--review"}>
                             {vocabularyFeedback.isCorrect ? "Đúng rồi — tiếp tục giữ nhịp." : `Cần ôn lại. Đáp án: ${vocabularyFeedback.expected}`}
                           </p>
-                          <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
+                          <span>{vocabularyEntries.length} mục trong chủ đề {vocabularyTopicLabel.toLowerCase()}.</span>
                         </>
                       ) : (
                         <>
                           <p>Chọn một chiều học rồi tự gõ đáp án. Chấp nhận cả các từ có dấu tiếng Pháp.</p>
-                          <span>{vocabularyEntries.length} mục được xếp theo nhóm để học từng nhịp nhỏ.</span>
+                          <span>{vocabularyEntries.length} mục trong chủ đề {vocabularyTopicLabel.toLowerCase()}.</span>
                         </>
                       )}
                     </div>

@@ -78,3 +78,8 @@
 
 - [x] Rà soát 42 động từ và 6 ngôi hiện tại để bảo đảm đủ 252 trường hợp.
 - [x] Điều chỉnh luồng bài luyện, kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Từ vựng theo chủ đề
+
+- [x] Tạo bộ chọn cho năm nhóm từ vựng và giới hạn bài luyện theo nhóm đã chọn.
+- [x] Kiểm tra hai chiều học, Enter, bản dựng và lưu phiên bản cập nhật.
