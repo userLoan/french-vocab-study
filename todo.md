@@ -83,3 +83,8 @@
 
 - [x] Tạo bộ chọn cho năm nhóm từ vựng và giới hạn bài luyện theo nhóm đã chọn.
 - [x] Kiểm tra hai chiều học, Enter, bản dựng và lưu phiên bản cập nhật.
+
+# Tinh gọn bộ chọn chủ đề
+
+- [x] Thay dãy nút chủ đề bằng dropdown gọn, có số lượng từ từng nhóm.
+- [x] Kiểm tra thao tác chọn chủ đề, bản dựng và giao diện sau khi tinh gọn.

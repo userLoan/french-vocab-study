@@ -17,6 +17,7 @@ import {
   Stamp,
   X,
 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
@@ -435,16 +436,21 @@ export default function Home() {
             {mode === "vocabulary" && (
               <section className="flashcard-view vocabulary-study-view">
                 <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn chủ đề và chiều học, tự gõ đáp án rồi nhấn Enter để chấm và sang mục tiếp theo." number="07" />
-                <div className="vocabulary-topic-picker" aria-label="Chọn chủ đề từ vựng">
-                  <span>CHỌN CHỦ ĐỀ</span>
-                  <div className="vocabulary-topic-options">
-                    <button type="button" className={vocabularyTopic === "all" ? "is-active" : ""} onClick={() => changeVocabularyTopic("all")}>Tất cả · 82</button>
-                    {vocabularyGroups.map((group) => (
-                      <button key={group.id} type="button" className={vocabularyTopic === group.id ? "is-active" : ""} onClick={() => changeVocabularyTopic(group.id)}>
-                        {group.title} · {group.entries.length}
-                      </button>
-                    ))}
-                  </div>
+                <div className="vocabulary-topic-picker">
+                  <span>CHỦ ĐỀ ĐANG HỌC</span>
+                  <Select value={vocabularyTopic} onValueChange={changeVocabularyTopic}>
+                    <SelectTrigger className="vocabulary-topic-select" aria-label="Chọn chủ đề từ vựng">
+                      <SelectValue placeholder="Chọn chủ đề" />
+                    </SelectTrigger>
+                    <SelectContent className="vocabulary-topic-select-content" position="popper" align="start">
+                      <SelectItem value="all">Tất cả chủ đề · 82 từ</SelectItem>
+                      {vocabularyGroups.map((group) => (
+                        <SelectItem key={group.id} value={group.id}>
+                          {group.title} · {group.entries.length} từ
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
