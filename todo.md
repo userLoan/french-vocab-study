@@ -40,3 +40,9 @@
 
 - [x] Xóa bốn dòng giới thiệu và ghi chú theo yêu cầu.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Chỉnh ghi chú mạo từ và giới từ
+
+- [x] Gỡ khối Mẹo nhỏ và các ví dụ mạo từ được chỉ định.
+- [x] Viết lại phần gợi ý giới từ chỉ nơi chốn với quy tắc đầy đủ.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

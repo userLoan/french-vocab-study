@@ -386,7 +386,7 @@ export default function Home() {
             {mode === "flashcards" && (
               <section className="flashcard-view">
                 <ModeHeader eyebrow="NHẬN MẶT TỪ" title="Flashcards" description="Lật thẻ, đọc to và tự đánh giá độ nhớ của bạn." number="01" />
-                <div className="flashcard-layout">
+                <div className="flashcard-layout flashcard-layout--solo">
                   <div className={`flashcard ${flashBack ? "flashcard--back" : ""}`}>
                     <button
                       className="flashcard-main"
@@ -430,13 +430,6 @@ export default function Home() {
                       </button>
                     </div>
                   </div>
-                  <aside className="flashcard-side-note">
-                    <img src="/manus-storage/carnet-flashcards_1d48fdc5.jpg" alt="Thẻ từ vựng trên bàn học" />
-                    <div>
-                      <PaperLabel tone="mustard">MẸO NHỎ</PaperLabel>
-                      <p>Đừng lật ngay. Hãy thử gọi nghĩa trước khi kiểm tra.</p>
-                    </div>
-                  </aside>
                 </div>
               </section>
             )}
@@ -584,7 +577,6 @@ export default function Home() {
                         <strong>{rule.article}</strong>
                         <div>
                           <span>{rule.label}</span>
-                          <p>{rule.example}</p>
                         </div>
                       </div>
                     ))}
@@ -620,7 +612,7 @@ export default function Home() {
                     </div>
                   </form>
                   <aside className="place-feedback-card">
-                    <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                    <PaperLabel tone="mustard">{placeFeedback ? "PHẢN HỒI" : "GỢI Ý GIỚI TỪ"}</PaperLabel>
                     {placeFeedback ? (
                       <>
                         <p className={placeFeedback.isCorrect ? "place-feedback place-feedback--correct" : "place-feedback place-feedback--review"}>
@@ -630,8 +622,8 @@ export default function Home() {
                       </>
                     ) : (
                       <>
-                        <p>Nhớ nhanh: thành phố dùng <em>à</em>; quốc gia xét giống và số.</p>
-                        <span>Gõ đáp án, rồi nhấn Enter.</span>
+                        <p>Thành phố dùng <em>à</em>. Quốc gia giống cái hoặc bắt đầu bằng nguyên âm dùng <em>en</em>; giống đực dùng <em>au</em>; số nhiều dùng <em>aux</em>.</p>
+                        <span>Điền à, au, en hoặc aux, rồi nhấn Enter để kiểm tra.</span>
                       </>
                     )}
                   </aside>
