@@ -139,6 +139,7 @@ export default function Home() {
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const selectedVocabularyGroup = vocabularyGroups.find((group) => group.id === vocabularyTopic);
   const vocabularyTopicLabel = selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
+  const displayedVocabularyGroups = selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups;
   const vocabularyEntries = (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
   const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
@@ -451,6 +452,29 @@ export default function Home() {
                       ))}
                     </SelectContent>
                   </Select>
+                </div>
+                <div className="vocabulary-selected-groups" aria-label="Bảng từ vựng theo chủ đề">
+                  {displayedVocabularyGroups.map((group, index) => (
+                    <details className="lexicon-group" key={group.id} open={Boolean(selectedVocabularyGroup)}>
+                      <summary>
+                        <span className="lexicon-number">{String(index + 1).padStart(2, "0")}</span>
+                        <span>
+                          <strong>{group.title}</strong>
+                          <small>{group.caption} · {group.entries.length} từ</small>
+                        </span>
+                        <ChevronRight size={18} />
+                      </summary>
+                      <div className="vocabulary-grid">
+                        {group.entries.map((entry) => (
+                          <article className="vocabulary-entry" key={entry.french}>
+                            <strong>{entry.french}</strong>
+                            <span>{entry.vietnamese}</span>
+                            {entry.note && <small>{entry.note}</small>}
+                          </article>
+                        ))}
+                      </div>
+                    </details>
+                  ))}
                 </div>
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>

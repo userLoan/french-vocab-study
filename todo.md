@@ -88,3 +88,8 @@
 
 - [x] Thay dãy nút chủ đề bằng dropdown gọn, có số lượng từ từng nhóm.
 - [x] Kiểm tra thao tác chọn chủ đề, bản dựng và giao diện sau khi tinh gọn.
+
+# Sửa phân tách bảng từ vựng
+
+- [x] Rà soát mã định danh của từng bảng từ vựng trong dropdown.
+- [x] Liên kết dropdown với đúng bảng chủ đề, kiểm tra và lưu phiên bản sửa lỗi.
