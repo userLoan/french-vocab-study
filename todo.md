@@ -68,3 +68,8 @@
 
 - [x] Gỡ lối vào Điền từ và Điền nghĩa trùng với Luyện 82 từ.
 - [x] Kiểm tra điều hướng và bản dựng sau khi tinh gọn.
+
+# Mở rộng bài luyện nơi chốn
+
+- [x] Bổ sung thêm thành phố và quốc gia vào bài luyện “Tôi sống ở đâu?”.
+- [x] Kiểm tra đáp án, bản dựng và giao diện sau khi mở rộng.
