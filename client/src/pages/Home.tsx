@@ -16,13 +16,12 @@ import {
   Menu,
   PenLine,
   RotateCcw,
-  Sparkles,
   Stamp,
   Type,
   X,
 } from "lucide-react";
 import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
-import { pronouns, sheetSource, verbs, type Pronoun, type Verb } from "@/data/verbs";
+import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "word" | "meaning" | "notebook" | "vocabulary";
 
@@ -289,19 +288,6 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="rail-bottom">
-          <div className="rail-note">
-            <Sparkles size={18} />
-            <p>
-              Hôm nay, mình học từng câu một.
-              <span>Động từ, mạo từ và mẫu hỏi–đáp đã sẵn sàng.</span>
-            </p>
-          </div>
-          <a href={sheetSource.url} target="_blank" rel="noreferrer" className="source-link">
-            <Bookmark size={15} />
-            Dữ liệu từ Sheets
-          </a>
-        </div>
       </aside>
 
       <section className="workspace">
@@ -329,9 +315,6 @@ export default function Home() {
                       <br />
                       để nói bằng tiếng Pháp.
                     </h1>
-                    <p>
-                      Bạn đang ôn động từ, mạo từ và những mẫu câu đầu tiên. Chọn một nhịp học ngắn, rõ và lặp lại vừa đủ để nhớ lâu hơn.
-                    </p>
                     <button className="primary-button" onClick={() => changeMode("articles")}>
                       Luyện aimer với le · la
                       <ArrowRight size={18} />
@@ -989,10 +972,6 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="tip-card margin-note">
-              <Check size={16} />
-              <p>Đừng cố nhớ hoàn hảo. Chỉ cần nhận ra từ tốt hơn lần trước.</p>
-            </div>
           </aside>
         </div>
       </section>

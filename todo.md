@@ -35,3 +35,8 @@
 - [x] Tạo bài học về quốc tịch, quốc gia, thành phố và giới từ à / au / en / aux.
 - [x] Tạo bài học về từ để hỏi và ba cách đặt câu hỏi kèm luyện phản xạ.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Dọn nội dung giao diện
+
+- [x] Xóa bốn dòng giới thiệu và ghi chú theo yêu cầu.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
