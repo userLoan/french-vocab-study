@@ -13,16 +13,14 @@ import {
   Layers,
   MessageCircle,
   Menu,
-  PenLine,
   RotateCcw,
   Stamp,
-  Type,
   X,
 } from "lucide-react";
 import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
-type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "word" | "meaning" | "notebook" | "vocabulary";
+type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
 
 const normalize = (value: string) =>
   value
@@ -39,8 +37,6 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   articles: "Mạo từ",
   places: "Quốc tịch & nơi chốn",
   questions: "Đặt câu hỏi",
-  word: "Điền từ",
-  meaning: "Điền nghĩa",
   notebook: "Sổ tay câu",
   vocabulary: "Học 82 từ",
 };
@@ -53,8 +49,6 @@ const navGroups = [
     items: [
       { id: "flashcards" as const, label: "Flashcards", icon: Layers },
       { id: "vocabulary" as const, label: "Luyện 82 từ", icon: Bookmark },
-      { id: "word" as const, label: "Điền từ", icon: PenLine },
-      { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
     ],
   },
   {
@@ -117,8 +111,6 @@ export default function Home() {
   const [correct, setCorrect] = useState(0);
   const [conjugationIndex, setConjugationIndex] = useState(0);
   const [conjugationAnswer, setConjugationAnswer] = useState("");
-  const [wordAnswer, setWordAnswer] = useState("");
-  const [meaningAnswer, setMeaningAnswer] = useState("");
   const [articleIndex, setArticleIndex] = useState(0);
   const [articleAnswer, setArticleAnswer] = useState("");
   const [conversationIndex, setConversationIndex] = useState(0);
@@ -137,8 +129,6 @@ export default function Home() {
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
   const conjugationPronoun = pronouns[conjugationIndex % pronouns.length];
-  const wordVerb = verbs[(activeIndex + 7) % verbs.length];
-  const meaningVerb = verbs[(activeIndex + 13) % verbs.length];
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const vocabularyEntries = vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
@@ -205,31 +195,6 @@ export default function Home() {
   const nextConjugation = () => {
     setConjugationIndex((value) => value + 1);
     setConjugationAnswer("");
-  };
-
-  const checkWord = (event: FormEvent) => {
-    event.preventDefault();
-    const isCorrect = normalize(wordAnswer) === normalize(wordVerb.infinitive);
-    if (isCorrect) setCorrect((value) => value + 1);
-    nextWord();
-  };
-
-  const nextWord = () => {
-    setActiveIndex((value) => (value + 1) % verbs.length);
-    setWordAnswer("");
-  };
-
-  const checkMeaning = (event: FormEvent) => {
-    event.preventDefault();
-    const accepted = [meaningVerb.meaning, meaningVerb.english];
-    const isCorrect = accepted.some((answer) => normalize(meaningAnswer) === normalize(answer));
-    if (isCorrect) setCorrect((value) => value + 1);
-    nextMeaning();
-  };
-
-  const nextMeaning = () => {
-    setActiveIndex((value) => (value + 1) % verbs.length);
-    setMeaningAnswer("");
   };
 
   const checkArticle = (event: FormEvent) => {
@@ -395,18 +360,6 @@ export default function Home() {
                       <MessageCircle size={24} />
                       <strong>Đặt câu hỏi</strong>
                       <span>Quel, où, quand, pourquoi…</span>
-                      <ArrowRight size={18} />
-                    </button>
-                    <button className="mode-card mode-card--sage" onClick={() => changeMode("word")}>
-                      <PenLine size={24} />
-                      <strong>Điền từ</strong>
-                      <span>Gọi đúng động từ tiếng Pháp</span>
-                      <ArrowRight size={18} />
-                    </button>
-                    <button className="mode-card mode-card--vocabulary" onClick={() => changeMode("vocabulary")}>
-                      <Bookmark size={24} />
-                      <strong>Học 82 từ</strong>
-                      <span>Quốc tịch, nghề, giấy tờ…</span>
                       <ArrowRight size={18} />
                     </button>
                   </div>
@@ -802,59 +755,6 @@ export default function Home() {
                     ))}
                   </div>
                 </section>
-              </section>
-            )}
-
-            {mode === "word" && (
-              <section className="exercise-view">
-                <ModeHeader eyebrow="GỌI TÊN TỪ" title="Điền từ" description="Từ nghĩa tiếng Việt, gọi đúng infinitif tiếng Pháp." number="04" />
-                <form className="recall-card" onSubmit={checkWord}>
-                  <div className="recall-topline">
-                    <PaperLabel tone="sage">TỪ VỰNG</PaperLabel>
-                    <span>Viết động từ ở dạng nguyên mẫu</span>
-                  </div>
-                  <p className="recall-prompt">Từ nào nghĩa là:</p>
-                  <h2>“{wordVerb.meaning}”</h2>
-                  <p className="recall-english">{wordVerb.english}</p>
-                  <div className="recall-answer-row">
-                    <input
-                      autoFocus
-                      aria-label="Động từ tiếng Pháp"
-                      value={wordAnswer}
-                      onChange={(event) => setWordAnswer(event.target.value)}
-                      placeholder="viết bằng tiếng Pháp"
-                    />
-                    <button className="primary-button" type="submit">Từ tiếp <ArrowRight size={18} /></button>
-                  </div>
-                </form>
-                <div className="hint-strip">
-                  <Stamp size={22} />
-                  <p><strong>Gợi ý:</strong> Có thể gõ không dấu nếu bàn phím chưa sẵn sàng; hệ thống vẫn chấp nhận.</p>
-                </div>
-              </section>
-            )}
-
-            {mode === "meaning" && (
-              <section className="exercise-view">
-                <ModeHeader eyebrow="NHỚ NGHĨA" title="Điền nghĩa" description="Bạn đã nhìn ra động từ này chưa? Viết nghĩa Việt hoặc Anh đều được." number="05" />
-                <form className="recall-card recall-card--meaning" onSubmit={checkMeaning}>
-                  <div className="recall-topline">
-                    <PaperLabel tone="navy">FRANÇAIS</PaperLabel>
-                    <span>Viết nghĩa bằng tiếng Việt hoặc tiếng Anh</span>
-                  </div>
-                  <p className="recall-prompt">Động từ này có nghĩa là:</p>
-                  <h2 className="french-answer">{meaningVerb.infinitive}</h2>
-                  <div className="recall-answer-row">
-                    <input
-                      autoFocus
-                      aria-label="Nghĩa của động từ"
-                      value={meaningAnswer}
-                      onChange={(event) => setMeaningAnswer(event.target.value)}
-                      placeholder="nhập nghĩa bạn nhớ"
-                    />
-                    <button className="primary-button" type="submit">Từ tiếp <ArrowRight size={18} /></button>
-                  </div>
-                </form>
               </section>
             )}
 

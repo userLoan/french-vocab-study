@@ -63,3 +63,8 @@
 - [x] Phân nhóm các chế độ học thành Từ vựng, Ngữ pháp và Giao tiếp.
 - [x] Thay danh sách dài bằng các nhóm có thể mở/đóng và điều hướng con.
 - [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
+
+# Gộp luyện từ vựng
+
+- [x] Gỡ lối vào Điền từ và Điền nghĩa trùng với Luyện 82 từ.
+- [x] Kiểm tra điều hướng và bản dựng sau khi tinh gọn.
