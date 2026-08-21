@@ -73,3 +73,8 @@
 
 - [x] Bổ sung thêm thành phố và quốc gia vào bài luyện “Tôi sống ở đâu?”.
 - [x] Kiểm tra đáp án, bản dựng và giao diện sau khi mở rộng.
+
+# Hoàn thiện Conjugation
+
+- [x] Rà soát 42 động từ và 6 ngôi hiện tại để bảo đảm đủ 252 trường hợp.
+- [x] Điều chỉnh luồng bài luyện, kiểm tra bản dựng và lưu phiên bản cập nhật.

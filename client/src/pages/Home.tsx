@@ -41,6 +41,8 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   vocabulary: "Học 82 từ",
 };
 
+const conjugationCases = verbs.flatMap((verb) => pronouns.map((pronoun) => ({ verb, pronoun })));
+
 const navGroups = [
   {
     id: "vocabulary",
@@ -127,8 +129,10 @@ export default function Home() {
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
 
   const flashVerb = verbs[activeIndex % verbs.length];
-  const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
-  const conjugationPronoun = pronouns[conjugationIndex % pronouns.length];
+  const conjugationCase = conjugationCases[conjugationIndex % conjugationCases.length];
+  const conjugationVerb = conjugationCase.verb;
+  const conjugationPronoun = conjugationCase.pronoun;
+  const conjugationQuestionNumber = (conjugationIndex % conjugationCases.length) + 1;
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const vocabularyEntries = vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
@@ -475,7 +479,7 @@ export default function Home() {
 
             {mode === "conjugation" && (
               <section className="exercise-view">
-                <ModeHeader eyebrow="THÌ HIỆN TẠI" title="Conjugation" description="Điền dạng chia thích hợp; Enter sẽ chuyển thẳng sang ngôi kế tiếp." number="02" />
+                <ModeHeader eyebrow="THÌ HIỆN TẠI" title="Conjugation" description="Luyện lần lượt 42 động từ × 6 ngôi = 252 câu; Enter chuyển sang câu kế tiếp." number="02" />
                 <div className="exercise-layout">
                   <form className="exercise-card" onSubmit={checkConjugation}>
                     <div className="exercise-card-top">
@@ -484,7 +488,7 @@ export default function Home() {
                         <h2>{conjugationVerb.infinitive}</h2>
                         <VerbMeta verb={conjugationVerb} />
                       </div>
-                      <span className="question-count">{conjugationIndex + 1} / 6</span>
+                      <span className="question-count">{conjugationQuestionNumber} / {conjugationCases.length}</span>
                     </div>
                     <div className="prompt-row">
                       <span className="pronoun-chip">{conjugationPronoun}</span>
@@ -498,7 +502,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="exercise-actions">
-                      <button className="primary-button" type="submit">Sang ngôi kế <ArrowRight size={18} /></button>
+                      <button className="primary-button" type="submit">Sang câu kế <ArrowRight size={18} /></button>
                       <span>Nhấn Enter để chuyển tiếp</span>
                     </div>
                   </form>
