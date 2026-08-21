@@ -45,17 +45,37 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   vocabulary: "Học 82 từ",
 };
 
-const navItems = [
-  { id: "overview" as const, label: "Bàn học", icon: BookOpen },
-  { id: "flashcards" as const, label: "Flashcards", icon: Layers },
-  { id: "conjugation" as const, label: "Conjugation", icon: Languages },
-  { id: "articles" as const, label: "Mạo từ", icon: Stamp },
-  { id: "places" as const, label: "Quốc tịch & nơi chốn", icon: Languages },
-  { id: "questions" as const, label: "Đặt câu hỏi", icon: MessageCircle },
-  { id: "word" as const, label: "Điền từ", icon: PenLine },
-  { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
-  { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
-  { id: "vocabulary" as const, label: "Học 82 từ", icon: Layers },
+const navGroups = [
+  {
+    id: "vocabulary",
+    label: "Từ vựng",
+    icon: Layers,
+    items: [
+      { id: "flashcards" as const, label: "Flashcards", icon: Layers },
+      { id: "vocabulary" as const, label: "Luyện 82 từ", icon: Bookmark },
+      { id: "word" as const, label: "Điền từ", icon: PenLine },
+      { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
+    ],
+  },
+  {
+    id: "grammar",
+    label: "Ngữ pháp",
+    icon: Stamp,
+    items: [
+      { id: "conjugation" as const, label: "Chia động từ", icon: Languages },
+      { id: "articles" as const, label: "Mạo từ", icon: Stamp },
+      { id: "places" as const, label: "Quốc tịch & nơi chốn", icon: Languages },
+    ],
+  },
+  {
+    id: "communication",
+    label: "Giao tiếp",
+    icon: MessageCircle,
+    items: [
+      { id: "questions" as const, label: "Đặt câu hỏi", icon: MessageCircle },
+      { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
+    ],
+  },
 ];
 
 function PaperLabel({ children, tone = "mustard" }: { children: React.ReactNode; tone?: "mustard" | "sage" | "navy" }) {
@@ -270,18 +290,34 @@ export default function Home() {
         <nav aria-label="Chế độ học">
           <p className="rail-caption">BÀN HỌC</p>
           <div className="nav-list">
-            {navItems.map((item) => {
-              const Icon = item.icon;
+            <button className={`nav-item ${mode === "overview" ? "nav-item--active" : ""}`} onClick={() => changeMode("overview")}>
+              <BookOpen size={19} strokeWidth={1.8} />
+              <span>Bàn học</span>
+              {mode === "overview" && <ChevronRight size={16} />}
+            </button>
+            {navGroups.map((group) => {
+              const GroupIcon = group.icon;
+              const isActiveGroup = group.items.some((item) => item.id === mode);
+
               return (
-                <button
-                  key={item.id}
-                  className={`nav-item ${mode === item.id ? "nav-item--active" : ""}`}
-                  onClick={() => changeMode(item.id)}
-                >
-                  <Icon size={19} strokeWidth={1.8} />
-                  <span>{item.label}</span>
-                  {mode === item.id && <ChevronRight size={16} />}
-                </button>
+                <details className={`nav-group ${isActiveGroup ? "nav-group--active" : ""}`} key={group.id} open={isActiveGroup}>
+                  <summary>
+                    <span className="nav-group-label"><GroupIcon size={17} strokeWidth={1.8} />{group.label}</span>
+                    <ChevronRight size={15} />
+                  </summary>
+                  <div className="nav-group-items">
+                    {group.items.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <button key={item.id} className={`nav-subitem ${mode === item.id ? "nav-subitem--active" : ""}`} onClick={() => changeMode(item.id)}>
+                          <Icon size={15} strokeWidth={1.8} />
+                          <span>{item.label}</span>
+                          {mode === item.id && <span className="nav-subitem-dot" aria-hidden="true" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </details>
               );
             })}
           </div>

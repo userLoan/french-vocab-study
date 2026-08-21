@@ -57,3 +57,9 @@
 - [ ] Xóa nhãn Phiên ngắn · 12 từ ở thanh đầu trang.
 - [x] Xóa nhãn Phiên ngắn · 12 từ ở thanh đầu trang.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Gộp điều hướng thanh bên
+
+- [x] Phân nhóm các chế độ học thành Từ vựng, Ngữ pháp và Giao tiếp.
+- [x] Thay danh sách dài bằng các nhóm có thể mở/đóng và điều hướng con.
+- [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
