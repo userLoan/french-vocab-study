@@ -51,3 +51,9 @@
 
 - [x] Xóa khối Nhớ bằng ngữ cảnh và phần mô tả đi kèm.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Gỡ nhãn phiên ngắn
+
+- [ ] Xóa nhãn Phiên ngắn · 12 từ ở thanh đầu trang.
+- [x] Xóa nhãn Phiên ngắn · 12 từ ở thanh đầu trang.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

@@ -9,7 +9,6 @@ import {
   Bookmark,
   Check,
   ChevronRight,
-  Clock3,
   Languages,
   Layers,
   MessageCircle,
@@ -295,10 +294,6 @@ export default function Home() {
           <div>
             <p className="topbar-date">{todayDate}</p>
             <p className="topbar-greeting">Bonjour, mình học tiếp nhé.</p>
-          </div>
-          <div className="topbar-status">
-            <Clock3 size={16} />
-            <span>Phiên ngắn · 12 từ</span>
           </div>
         </header>
 
