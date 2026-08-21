@@ -28,3 +28,10 @@
 - [x] Xác định đáp án chấp nhận được khi học Pháp sang Việt và Việt sang Pháp.
 - [x] Thêm chọn chiều học, ô nhập đáp án, chấm điểm và Enter chuyển tiếp.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Hai bài học mới
+
+- [x] Chuẩn hóa quy tắc quốc gia–thành phố và các mẫu câu hỏi từ tài liệu mới.
+- [x] Tạo bài học về quốc tịch, quốc gia, thành phố và giới từ à / au / en / aux.
+- [x] Tạo bài học về từ để hỏi và ba cách đặt câu hỏi kèm luyện phản xạ.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

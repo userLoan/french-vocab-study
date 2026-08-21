@@ -12,6 +12,7 @@ import {
   Clock3,
   Languages,
   Layers,
+  MessageCircle,
   Menu,
   PenLine,
   RotateCcw,
@@ -20,10 +21,10 @@ import {
   Type,
   X,
 } from "lucide-react";
-import { articleExercises, articleNotes, conversationPatterns, vocabularyGroups } from "@/data/lessonData";
+import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, sheetSource, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
-type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "word" | "meaning" | "notebook" | "vocabulary";
+type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "word" | "meaning" | "notebook" | "vocabulary";
 
 const normalize = (value: string) =>
   value
@@ -38,6 +39,8 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   flashcards: "Flashcards",
   conjugation: "Conjugation",
   articles: "Mạo từ",
+  places: "Quốc tịch & nơi chốn",
+  questions: "Đặt câu hỏi",
   word: "Điền từ",
   meaning: "Điền nghĩa",
   notebook: "Sổ tay câu",
@@ -49,6 +52,8 @@ const navItems = [
   { id: "flashcards" as const, label: "Flashcards", icon: Layers },
   { id: "conjugation" as const, label: "Conjugation", icon: Languages },
   { id: "articles" as const, label: "Mạo từ", icon: Stamp },
+  { id: "places" as const, label: "Quốc tịch & nơi chốn", icon: Languages },
+  { id: "questions" as const, label: "Đặt câu hỏi", icon: MessageCircle },
   { id: "word" as const, label: "Điền từ", icon: PenLine },
   { id: "meaning" as const, label: "Điền nghĩa", icon: Type },
   { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
@@ -104,6 +109,12 @@ export default function Home() {
   const [vocabularyDirection, setVocabularyDirection] = useState<"french-to-vietnamese" | "vietnamese-to-french">("french-to-vietnamese");
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
+  const [placeIndex, setPlaceIndex] = useState(0);
+  const [placeAnswer, setPlaceAnswer] = useState("");
+  const [placeFeedback, setPlaceFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [questionAnswer, setQuestionAnswer] = useState("");
+  const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
 
   const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationVerb = verbs[(activeIndex + conjugationIndex) % verbs.length];
@@ -116,6 +127,8 @@ export default function Home() {
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
   const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
   const vocabularyExpected = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
+  const placeExercise = placeExercises[placeIndex % placeExercises.length];
+  const questionExercise = questionExercises[questionIndex % questionExercises.length];
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -207,6 +220,26 @@ export default function Home() {
     if (isCorrect) setCorrect((value) => value + 1);
     setArticleIndex((value) => (value + 1) % articleExercises.length);
     setArticleAnswer("");
+  };
+
+  const checkPlace = (event: FormEvent) => {
+    event.preventDefault();
+    const isCorrect = normalize(placeAnswer) === normalize(placeExercise.answer);
+    if (isCorrect) setCorrect((value) => value + 1);
+    else setReview((value) => value + 1);
+    setPlaceFeedback({ isCorrect, expected: placeExercise.answer, note: placeExercise.note });
+    setPlaceIndex((value) => (value + 1) % placeExercises.length);
+    setPlaceAnswer("");
+  };
+
+  const checkQuestion = (event: FormEvent) => {
+    event.preventDefault();
+    const isCorrect = normalize(questionAnswer) === normalize(questionExercise.answer);
+    if (isCorrect) setCorrect((value) => value + 1);
+    else setReview((value) => value + 1);
+    setQuestionFeedback({ isCorrect, expected: questionExercise.answer, note: questionExercise.note });
+    setQuestionIndex((value) => (value + 1) % questionExercises.length);
+    setQuestionAnswer("");
   };
 
   const checkConversation = (event: FormEvent) => {
@@ -314,8 +347,8 @@ export default function Home() {
                 <div className="quick-section">
                   <div className="section-heading">
                     <div>
-                      <p className="section-kicker">CHỌN CÁCH ÔN</p>
-                      <h2>Một nhịp học phù hợp lúc này</h2>
+                      <p className="section-kicker">MỞ MỘT TỜ GIẤY</p>
+                      <h2>Chọn một nhịp học cho hôm nay</h2>
                     </div>
                     <span>{verbs.length} động từ · {vocabularyGroups.length} chủ đề mới</span>
                   </div>
@@ -336,6 +369,18 @@ export default function Home() {
                       <Stamp size={24} />
                       <strong>Mạo từ</strong>
                       <span>le · la · l' · les với aimer</span>
+                      <ArrowRight size={18} />
+                    </button>
+                    <button className="mode-card mode-card--places" onClick={() => changeMode("places")}>
+                      <Languages size={24} />
+                      <strong>Quốc tịch</strong>
+                      <span>à · au · en · aux với nơi chốn</span>
+                      <ArrowRight size={18} />
+                    </button>
+                    <button className="mode-card mode-card--questions" onClick={() => changeMode("questions")}>
+                      <MessageCircle size={24} />
+                      <strong>Đặt câu hỏi</strong>
+                      <span>Quel, où, quand, pourquoi…</span>
                       <ArrowRight size={18} />
                     </button>
                     <button className="mode-card mode-card--sage" onClick={() => changeMode("word")}>
@@ -562,6 +607,195 @@ export default function Home() {
                     ))}
                   </aside>
                 </div>
+              </section>
+            )}
+
+            {mode === "places" && (
+              <section className="places-view">
+                <ModeHeader eyebrow="QUỐC TỊCH & NƠI CHỐN" title="Tôi sống ở đâu?" description="Nối quốc tịch với đất nước, thành phố và giới từ phù hợp. Nhấn Enter để chấm, rồi sang câu tiếp theo." number="04" />
+                <section className="place-practice">
+                  <form className="place-recall-card" onSubmit={checkPlace}>
+                    <div className="place-recall-top">
+                      <PaperLabel tone="navy">LUYỆN GIỚI TỪ</PaperLabel>
+                      <span>{String(placeIndex + 1).padStart(2, "0")} / {String(placeExercises.length).padStart(2, "0")}</span>
+                    </div>
+                    <p className="place-prompt-label">Điền giới từ chỉ nơi chốn:</p>
+                    <div className="place-sentence">
+                      <span>{placeExercise.before}</span>
+                      <input
+                        autoFocus
+                        aria-label={`Giới từ trước ${placeExercise.place}`}
+                        value={placeAnswer}
+                        onChange={(event) => setPlaceAnswer(event.target.value)}
+                        placeholder="?"
+                      />
+                      <span>{placeExercise.place}.</span>
+                    </div>
+                    <div className="place-submit-row">
+                      <button className="primary-button" type="submit">Kiểm tra & tiếp <ArrowRight size={18} /></button>
+                      <span>à · au · en · aux</span>
+                    </div>
+                  </form>
+                  <aside className="place-feedback-card">
+                    <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                    {placeFeedback ? (
+                      <>
+                        <p className={placeFeedback.isCorrect ? "place-feedback place-feedback--correct" : "place-feedback place-feedback--review"}>
+                          {placeFeedback.isCorrect ? "Đúng rồi — bạn đã chọn đúng giới từ." : `Đáp án: ${placeFeedback.expected}`}
+                        </p>
+                        <span>{placeFeedback.note}</span>
+                      </>
+                    ) : (
+                      <>
+                        <p>Nhớ nhanh: thành phố dùng <em>à</em>; quốc gia xét giống và số.</p>
+                        <span>Gõ đáp án, rồi nhấn Enter.</span>
+                      </>
+                    )}
+                  </aside>
+                </section>
+
+                <section className="place-rule-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">NHỚ NHANH</p>
+                      <h2>Bốn giới từ cần thuộc</h2>
+                    </div>
+                    <span>với habiter · aller · travailler</span>
+                  </div>
+                  <div className="place-rule-grid">
+                    {placeRules.map((rule) => (
+                      <article className="place-rule-card" key={rule.preposition}>
+                        <strong>{rule.preposition}</strong>
+                        <span>{rule.label}</span>
+                        <p>{rule.example}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="nationality-ledger-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">THAM CHIẾU</p>
+                      <h2>Quốc tịch, quốc gia, thành phố</h2>
+                    </div>
+                    <span>{nationalityPlaces.length} dòng để ôn</span>
+                  </div>
+                  <div className="nationality-ledger">
+                    <div className="nationality-ledger-head"><span>IL / ELLE EST…</span><span>IL / ELLE HABITE…</span><span>THÀNH PHỐ</span></div>
+                    {nationalityPlaces.map((entry) => (
+                      <div className="nationality-ledger-row" key={entry.country}>
+                        <strong>{entry.nationality}</strong>
+                        <span><em>{entry.countryPreposition}</em> {entry.country}</span>
+                        <span><em>à</em> {entry.city}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </section>
+            )}
+
+            {mode === "questions" && (
+              <section className="questions-view">
+                <ModeHeader eyebrow="CÁCH ĐẶT CÂU HỎI" title="Hỏi sao cho tự nhiên?" description="Nhận diện từ để hỏi, chọn một trong ba cấu trúc và luyện phản xạ ngay trong câu." number="05" />
+                <section className="question-practice">
+                  <form className="question-recall-card" onSubmit={checkQuestion}>
+                    <div className="question-recall-top">
+                      <PaperLabel tone="navy">LUYỆN TỪ ĐỂ HỎI</PaperLabel>
+                      <span>{String(questionIndex + 1).padStart(2, "0")} / {String(questionExercises.length).padStart(2, "0")}</span>
+                    </div>
+                    <p className="question-prompt-label">Điền từ để hỏi phù hợp:</p>
+                    <div className="question-sentence">
+                      {questionExercise.before && <span>{questionExercise.before}</span>}
+                      <input
+                        autoFocus
+                        aria-label={`Từ để hỏi trong câu: ${questionExercise.before} ... ${questionExercise.after}`}
+                        value={questionAnswer}
+                        onChange={(event) => setQuestionAnswer(event.target.value)}
+                        placeholder="?"
+                      />
+                      <span>{questionExercise.after}</span>
+                    </div>
+                    <div className="question-submit-row">
+                      <button className="primary-button" type="submit">Kiểm tra & tiếp <ArrowRight size={18} /></button>
+                      <span>Nhấn Enter để chấm và sang câu mới</span>
+                    </div>
+                  </form>
+                  <aside className="question-feedback-card">
+                    <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                    {questionFeedback ? (
+                      <>
+                        <p className={questionFeedback.isCorrect ? "question-feedback question-feedback--correct" : "question-feedback question-feedback--review"}>
+                          {questionFeedback.isCorrect ? "Chính xác — giữ nhịp hỏi đáp này." : `Đáp án: ${questionFeedback.expected}`}
+                        </p>
+                        <span>{questionFeedback.note}</span>
+                      </>
+                    ) : (
+                      <>
+                        <p>Nhìn vị trí trống: đầu câu, sau động từ hay trước danh từ?</p>
+                        <span>Gõ một từ để hỏi, rồi nhấn Enter.</span>
+                      </>
+                    )}
+                  </aside>
+                </section>
+
+                <section className="question-word-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">TỪ ĐỂ HỎI</p>
+                      <h2>Những từ nên nhớ</h2>
+                    </div>
+                    <span>{questionWords.length} nhóm từ</span>
+                  </div>
+                  <div className="question-word-grid">
+                    {questionWords.map((item) => (
+                      <article className="question-word-card" key={item.word}>
+                        <strong>{item.word}</strong>
+                        <span>{item.meaning}</span>
+                        <p>{item.example}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="question-form-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">BA CÁCH HỎI</p>
+                      <h2>Cùng một ý, ba nhịp điệu</h2>
+                    </div>
+                    <span>từ thân mật đến trang trọng</span>
+                  </div>
+                  <div className="question-form-grid">
+                    {questionForms.map((form) => (
+                      <article className="question-form-card" key={form.title}>
+                        <PaperLabel tone="sage">{form.title}</PaperLabel>
+                        <h3>{form.formula}</h3>
+                        <p>{form.note}</p>
+                        <strong>{form.example}</strong>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="question-examples-section">
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-kicker">THỬ BIẾN ĐỔI</p>
+                      <h2>Hỏi cùng một điều theo ba cách</h2>
+                    </div>
+                  </div>
+                  <div className="question-example-list">
+                    {questionExamples.map((example) => (
+                      <article className="question-example-row" key={example.topic}>
+                        <strong>{example.topic}</strong>
+                        <span>{example.casual}</span>
+                        <span>{example.neutral}</span>
+                        <span>{example.formal}</span>
+                      </article>
+                    ))}
+                  </div>
+                </section>
               </section>
             )}
 

@@ -185,3 +185,100 @@ export const vocabularyGroups: VocabularyGroup[] = [
     ],
   },
 ];
+
+export const placeRules = [
+  { preposition: "à", label: "tên thành phố", example: "à Berlin · à New York · à Tokyo" },
+  { preposition: "au", label: "quốc gia giống đực", example: "au Canada · au Japon · au Portugal" },
+  { preposition: "en", label: "quốc gia giống cái / nguyên âm", example: "en France · en Italie · en Allemagne" },
+  { preposition: "aux", label: "quốc gia số nhiều", example: "aux États-Unis" },
+];
+
+export type NationalityPlace = {
+  nationality: string;
+  country: string;
+  countryPreposition: string;
+  city: string;
+};
+
+export const nationalityPlaces: NationalityPlace[] = [
+  { nationality: "allemand / allemande", country: "Allemagne", countryPreposition: "en", city: "Berlin" },
+  { nationality: "américain / américaine", country: "États-Unis", countryPreposition: "aux", city: "New York" },
+  { nationality: "anglais / anglaise", country: "Angleterre", countryPreposition: "en", city: "Londres" },
+  { nationality: "belge", country: "Belgique", countryPreposition: "en", city: "Bruxelles" },
+  { nationality: "canadien / canadienne", country: "Canada", countryPreposition: "au", city: "Montréal" },
+  { nationality: "chinois / chinoise", country: "Chine", countryPreposition: "en", city: "Pékin" },
+  { nationality: "colombien / colombienne", country: "Colombie", countryPreposition: "en", city: "Bogota" },
+  { nationality: "danois / danoise", country: "Danemark", countryPreposition: "au", city: "Copenhague" },
+  { nationality: "espagnol / espagnole", country: "Espagne", countryPreposition: "en", city: "Madrid" },
+  { nationality: "européen / européenne", country: "Europe", countryPreposition: "en", city: "Strasbourg" },
+  { nationality: "français / française", country: "France", countryPreposition: "en", city: "Toulouse" },
+  { nationality: "grec / grecque", country: "Grèce", countryPreposition: "en", city: "Athènes" },
+  { nationality: "italien / italienne", country: "Italie", countryPreposition: "en", city: "Venise" },
+  { nationality: "japonais / japonaise", country: "Japon", countryPreposition: "au", city: "Tokyo" },
+  { nationality: "malien / malienne", country: "Mali", countryPreposition: "au", city: "Bamako" },
+  { nationality: "mexicain / mexicaine", country: "Mexique", countryPreposition: "au", city: "Acapulco" },
+  { nationality: "norvégien / norvégienne", country: "Norvège", countryPreposition: "en", city: "Oslo" },
+  { nationality: "portugais / portugaise", country: "Portugal", countryPreposition: "au", city: "Lisbonne" },
+  { nationality: "suisse", country: "Suisse", countryPreposition: "en", city: "Lausanne" },
+];
+
+export type PlaceExercise = {
+  id: string;
+  before: string;
+  place: string;
+  answer: "à" | "au" | "en" | "aux";
+  note: string;
+};
+
+export const placeExercises: PlaceExercise[] = [
+  { id: "berlin", before: "J'habite", place: "Berlin", answer: "à", note: "Berlin là thành phố, dùng à." },
+  { id: "usa", before: "Elle habite", place: "États-Unis", answer: "aux", note: "États-Unis là quốc gia số nhiều, dùng aux." },
+  { id: "canada", before: "Il habite", place: "Canada", answer: "au", note: "Canada là quốc gia giống đực, dùng au." },
+  { id: "italie", before: "Nous habitons", place: "Italie", answer: "en", note: "Italie là quốc gia giống cái, dùng en." },
+  { id: "tokyo", before: "Tu habites", place: "Tokyo", answer: "à", note: "Tokyo là thành phố, dùng à." },
+  { id: "portugal", before: "Vous habitez", place: "Portugal", answer: "au", note: "Portugal là quốc gia giống đực, dùng au." },
+  { id: "france", before: "Je travaille", place: "France", answer: "en", note: "France là quốc gia giống cái, dùng en." },
+  { id: "newyork", before: "Ils habitent", place: "New York", answer: "à", note: "New York là thành phố, dùng à." },
+];
+
+export const questionWords = [
+  { word: "Quel / Quelle / Quels / Quelles", meaning: "nào, cái nào", example: "Quel âge ? · Quelle adresse ? · Quels pays ? · Quelles photos ?" },
+  { word: "Combien", meaning: "bao nhiêu", example: "Combien ça coûte ?" },
+  { word: "Où", meaning: "ở đâu", example: "Tu habites où ?" },
+  { word: "Quand", meaning: "khi nào", example: "Quand travailles-tu ?" },
+  { word: "Pourquoi", meaning: "tại sao", example: "Pourquoi tu aimes le croissant ?" },
+  { word: "Comment", meaning: "như thế nào", example: "Comment vous appelez-vous ?" },
+  { word: "Que / Qu'est-ce que / Quoi", meaning: "cái gì", example: "Que fais-tu ? · Qu'est-ce que tu achètes ? · Tu achètes quoi ?" },
+];
+
+export const questionForms = [
+  { title: "Cách 1 · Ngữ điệu", formula: "Tu es vietnamien ?", note: "Đảo giọng lên ở cuối câu. Phù hợp hội thoại thân mật.", example: "Tu habites où ?" },
+  { title: "Cách 2 · Est-ce que", formula: "Est-ce que tu es vietnamien ?", note: "Thêm est-ce que trước câu trần thuật. Dễ dùng, trung tính.", example: "Où est-ce que tu habites ?" },
+  { title: "Cách 3 · Đảo ngữ", formula: "Es-tu vietnamien ?", note: "Động từ đứng trước chủ ngữ. Văn phong trang trọng hơn.", example: "Où habites-tu ?" },
+];
+
+export const questionExamples = [
+  { topic: "aimer", casual: "Tu aimes quoi ?", neutral: "Qu'est-ce que tu aimes ?", formal: "Qu'aimes-tu ?" },
+  { topic: "acheter", casual: "Tu achètes quoi ?", neutral: "Qu'est-ce que tu achètes ?", formal: "Qu'achètes-tu ?" },
+  { topic: "travailler", casual: "Tu travailles quand ?", neutral: "Quand est-ce que tu travailles ?", formal: "Quand travailles-tu ?" },
+  { topic: "s'appeler", casual: "Tu t'appelles comment ?", neutral: "Comment est-ce que tu t'appelles ?", formal: "Comment t'appelles-tu ?" },
+];
+
+export type QuestionExercise = {
+  id: string;
+  before: string;
+  after: string;
+  answer: string;
+  note: string;
+};
+
+export const questionExercises: QuestionExercise[] = [
+  { id: "where-casual", before: "Tu habites", after: "?", answer: "où", note: "Đặt où sau động từ trong câu hỏi bằng ngữ điệu." },
+  { id: "when-inversion", before: "", after: "travailles-tu ?", answer: "quand", note: "Từ để hỏi đứng đầu trong cấu trúc đảo ngữ." },
+  { id: "what-casual", before: "Tu achètes", after: "?", answer: "quoi", note: "Quoi thường đứng sau động từ trong hội thoại thân mật." },
+  { id: "age", before: "", after: "âge as-tu ?", answer: "quel", note: "Âge là danh từ giống đực số ít: quel âge." },
+  { id: "photos", before: "", after: "photos avez-vous ?", answer: "quelles", note: "Photos là giống cái số nhiều: quelles photos." },
+  { id: "how-much", before: "", after: "ça coûte ?", answer: "combien", note: "Combien dùng để hỏi số lượng hoặc giá tiền." },
+  { id: "why", before: "", after: "tu aimes le croissant ?", answer: "pourquoi", note: "Pourquoi dùng để hỏi nguyên nhân." },
+  { id: "how", before: "", after: "vous appelez-vous ?", answer: "comment", note: "Comment dùng để hỏi cách thức hoặc tên." },
+];

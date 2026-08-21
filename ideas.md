@@ -75,3 +75,6 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Quy tắc logo:** biểu tượng phải thể hiện rõ mẩu giấy gấp thành dấu sắc và nét chim mực xanh; wordmark “carnet” mang tính biên tập, không dùng kiểu chữ mặc định.
 - **Gáy sổ & điều hướng:** thanh trái hoạt động như mục lục dán giấy, có đường chỉ lề, dấu chỉ mục và tab giấy cắt; không được trở thành sidebar SaaS thông thường.
 - **Ảnh học tập:** ảnh bàn học luôn được xử lý như ảnh dán vào carnet bằng băng keo, mép cắt nhẹ, bóng giấy và chú thích mực nhỏ.
+- **Mẩu giấy học:** các lựa chọn chế độ dưới ảnh bìa được bố trí như giấy rời trên bàn học; dùng lệch nhẹ, băng keo và nếp gấp thay vì một lưới ứng dụng đồng đều.
+- **Tông giấy:** các màu phụ chỉ là giấy cũ nhạt; Encre Marine, kem, mù tạt và xanh sage luôn dẫn dắt thị giác.
+- **Sổ điểm:** tiến độ và thống kê được trình bày như dấu mực, con dấu và cột sổ, không như widget năng suất tiêu chuẩn.
