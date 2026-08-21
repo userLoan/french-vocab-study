@@ -46,3 +46,8 @@
 - [x] Gỡ khối Mẹo nhỏ và các ví dụ mạo từ được chỉ định.
 - [x] Viết lại phần gợi ý giới từ chỉ nơi chốn với quy tắc đầy đủ.
 - [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.
+
+# Gỡ ghi chú ngữ cảnh
+
+- [x] Xóa khối Nhớ bằng ngữ cảnh và phần mô tả đi kèm.
+- [x] Kiểm tra bản dựng và lưu phiên bản cập nhật.

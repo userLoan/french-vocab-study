@@ -824,13 +824,6 @@ export default function Home() {
                     <button className="primary-button" type="submit">Từ tiếp <ArrowRight size={18} /></button>
                   </div>
                 </form>
-                <div className="meaning-cue">
-                  <div className="cue-dot" />
-                  <div>
-                    <p className="section-kicker">NHỚ BẰNG NGỮ CẢNH</p>
-                    <p>Hãy thử ghép động từ này với <em>je</em> trước khi kiểm tra nghĩa.</p>
-                  </div>
-                </div>
               </section>
             )}
 
@@ -907,7 +900,6 @@ export default function Home() {
                   <div className="section-heading">
                     <div>
                       <p className="section-kicker">KHO TỪ VỰNG</p>
-                      <h2>Từ tài liệu của bạn</h2>
                     </div>
                     <span>{vocabularyGroups.reduce((total, group) => total + group.entries.length, 0)} mục đã ghi chú</span>
                   </div>
