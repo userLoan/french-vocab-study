@@ -29,6 +29,7 @@ const normalize = (value: string) =>
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[’']/g, "'")
+    .replace(/\s*\/\s*/g, "/")
     .replace(/\s+/g, " ")
     .trim();
 
@@ -191,8 +192,7 @@ export default function Home() {
   const checkVocabulary = (event: FormEvent) => {
     event.preventDefault();
     const answerSource = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
-    const acceptedAnswers = answerSource
-      .split(" / ")
+    const acceptedAnswers = [answerSource, ...answerSource.split(/\s*\/\s*/)]
       .flatMap((answer) => [answer, answer.replace("(e)", ""), answer.replace("(e)", "e")]);
     const isCorrect = acceptedAnswers.some((answer) => normalize(vocabularyAnswer) === normalize(answer));
     if (isCorrect) setCorrect((value) => value + 1);

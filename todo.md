@@ -98,3 +98,8 @@
 
 - [x] Thêm bảng phân biệt giống và số cho Quel, Quelle, Quels, Quelles.
 - [x] Kiểm tra nội dung, bản dựng và lưu phiên bản cập nhật.
+
+# Chấm đáp án linh hoạt
+
+- [x] Chuẩn hóa khoảng trắng quanh dấu phân cách trong đáp án từ vựng.
+- [x] Kiểm tra các biến thể nhập và lưu phiên bản cập nhật.
