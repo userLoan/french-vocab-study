@@ -148,3 +148,8 @@
 - [x] Bổ sung nghĩa tiếng Anh cho các nhóm từ vựng.
 - [x] Thêm hai chiều Pháp–Anh và Anh–Pháp vào bài luyện.
 - [x] Kiểm tra đáp án, điều hướng, bản dựng và lưu phiên bản cập nhật.
+
+# Làm rõ họ gia đình
+
+- [x] Chỉnh diễn giải Nom(s) de famille thành họ theo bố hoặc mẹ.
+- [x] Kiểm tra, lưu phiên bản và bàn giao cập nhật.

@@ -174,7 +174,7 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
     entries: [
       { french: "le nom", vietnamese: "họ" },
       { french: "le prénom", vietnamese: "tên" },
-      { french: "Nom(s) de famille", vietnamese: "họ (trên biểu mẫu)" },
+      { french: "Nom(s) de famille", vietnamese: "họ theo bố/mẹ" },
       { french: "Nom(s) de jeune fille", vietnamese: "họ thời con gái / họ trước khi kết hôn" },
       { french: "Monsieur", vietnamese: "ông / ngài (cách gọi lịch sự)" },
       { french: "Madame", vietnamese: "bà / cô (cách gọi lịch sự)" },
