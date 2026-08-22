@@ -103,3 +103,8 @@
 
 - [x] Chuẩn hóa khoảng trắng quanh dấu phân cách trong đáp án từ vựng.
 - [x] Kiểm tra các biến thể nhập và lưu phiên bản cập nhật.
+
+# Trang học theo chủ đề
+
+- [x] Tạo danh sách năm chủ đề từ vựng với lối vào riêng.
+- [x] Mở bài luyện ở đường dẫn riêng cho từng chủ đề và kiểm tra điều hướng.

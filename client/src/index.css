@@ -264,6 +264,24 @@ a { color: inherit; }
 .vocabulary-submit-row > span { color: var(--ink-soft); font-size: 10px; font-weight: 700; }
 .vocabulary-feedback--correct { color: var(--sage-ink) !important; }
 .vocabulary-feedback--review { color: #8b4235 !important; }
+.vocabulary-topic-index .mode-header { margin-bottom: 30px; }
+.topic-route-list { display: grid; gap: 13px; }
+.topic-route-row { position: relative; display: grid; grid-template-columns: 68px minmax(0, 1fr) 26px; align-items: center; gap: 17px; min-height: 99px; padding: 17px 24px 17px 21px; overflow: hidden; color: var(--ink); border: 1px solid rgba(118,95,51,.18); background: #fcf8ee; box-shadow: 6px 7px 0 rgba(22,58,95,.08), inset 0 0 0 1px rgba(255,255,255,.55); text-decoration: none; transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), background-color 180ms var(--ease-out); }
+.topic-route-row::before { position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--mustard); content: ""; }
+.topic-route-row:nth-child(even)::before { background: #6f8c78; }
+.topic-route-row:hover { background: #fffdf7; box-shadow: 9px 9px 0 rgba(22,58,95,.12), inset 0 0 0 1px rgba(255,255,255,.65); transform: translateX(4px); }
+.topic-route-row:active { transform: translateX(2px) scale(.99); }
+.topic-route-row:focus-visible { outline: 2px solid var(--mustard); outline-offset: 4px; }
+.topic-route-number { color: var(--mustard); font-family: "Fraunces", serif; font-size: 39px; font-style: italic; font-weight: 600; line-height: 1; }
+.topic-route-copy { min-width: 0; }
+.topic-route-copy strong, .topic-route-copy small { display: block; }
+.topic-route-copy strong { font-family: "Fraunces", serif; font-size: clamp(23px, 3.3vw, 34px); font-weight: 600; letter-spacing: -.045em; line-height: 1.05; }
+.topic-route-copy small { margin-top: 8px; color: var(--ink-soft); font-size: 11px; font-weight: 700; line-height: 1.45; }
+.topic-route-row > svg { justify-self: end; color: var(--ink); transition: transform 180ms var(--ease-out); }
+.topic-route-row:hover > svg { transform: translateX(4px); }
+.topic-back-link { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 24px; color: var(--ink-soft); font-size: 11px; font-weight: 800; text-decoration: none; transition: color 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.topic-back-link:hover { color: var(--ink); transform: translateX(-2px); }
+.topic-back-link:focus-visible { outline: 2px solid var(--mustard); outline-offset: 4px; }
 .grammar-note { max-width: 300px; margin: auto 0 0; padding: 11px 13px; color: var(--sage-ink); background: var(--sage); font-size: 11px; line-height: 1.45; }
 .flashcard-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
 .review-button, .remember-button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-size: 12px; font-weight: 800; transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out); }
@@ -585,6 +603,10 @@ a { color: inherit; }
   .vocabulary-prompt { margin-top: 36px; }
   .vocabulary-prompt h2 { font-size: 39px; }
   .vocabulary-submit-row { align-items: flex-start; flex-direction: column; }
+  .topic-route-row { grid-template-columns: 43px minmax(0, 1fr) 20px; gap: 11px; min-height: 83px; padding: 14px 15px 14px 14px; }
+  .topic-route-number { font-size: 29px; }
+  .topic-route-copy strong { font-size: 25px; }
+  .topic-route-copy small { margin-top: 5px; font-size: 9px; }
   .lexicon-group summary { grid-template-columns: 35px 1fr 20px; padding: 12px 14px; }
   .lexicon-number { font-size: 23px; }
   .progress-panel { grid-template-columns: 1fr; }

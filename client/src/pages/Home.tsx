@@ -2,8 +2,9 @@
  * Carnet de Provence design reminder: editorial scrapbook composition with paper texture,
  * indigo ink hierarchy, mustard annotation tags, and intentionally generous reading space.
  */
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   BookOpen,
   Bookmark,
@@ -17,7 +18,7 @@ import {
   Stamp,
   X,
 } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link, useLocation } from "wouter";
 import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
@@ -106,7 +107,8 @@ function VerbMeta({ verb }: { verb: Verb }) {
 }
 
 export default function Home() {
-  const [mode, setMode] = useState<Mode>("overview");
+  const [location, navigate] = useLocation();
+  const [mode, setMode] = useState<Mode>(() => (window.location.pathname.startsWith("/vocabulary") ? "vocabulary" : "overview"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [flashBack, setFlashBack] = useState(false);
@@ -120,7 +122,6 @@ export default function Home() {
   const [conversationIndex, setConversationIndex] = useState(0);
   const [conversationAnswer, setConversationAnswer] = useState("");
   const [vocabularyIndex, setVocabularyIndex] = useState(0);
-  const [vocabularyTopic, setVocabularyTopic] = useState("all");
   const [vocabularyDirection, setVocabularyDirection] = useState<"french-to-vietnamese" | "vietnamese-to-french">("french-to-vietnamese");
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
@@ -138,9 +139,9 @@ export default function Home() {
   const conjugationQuestionNumber = (conjugationIndex % conjugationCases.length) + 1;
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
-  const selectedVocabularyGroup = vocabularyGroups.find((group) => group.id === vocabularyTopic);
+  const vocabularyTopic = location.match(/^\/vocabulary\/([^/]+)$/)?.[1] ?? null;
+  const selectedVocabularyGroup = vocabularyTopic ? vocabularyGroups.find((group) => group.id === vocabularyTopic) : undefined;
   const vocabularyTopicLabel = selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
-  const displayedVocabularyGroups = selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups;
   const vocabularyEntries = (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
   const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
@@ -155,7 +156,16 @@ export default function Home() {
     [],
   );
 
+  useEffect(() => {
+    if (location.startsWith("/vocabulary")) {
+      setMode("vocabulary");
+    } else if (mode === "vocabulary") {
+      setMode("overview");
+    }
+  }, [location, mode]);
+
   const changeMode = (nextMode: Mode) => {
+    navigate(nextMode === "vocabulary" ? "/vocabulary" : "/");
     setMode(nextMode);
     setMobileOpen(false);
   };
@@ -182,8 +192,7 @@ export default function Home() {
     setVocabularyFeedback(null);
   };
 
-  const changeVocabularyTopic = (topic: string) => {
-    setVocabularyTopic(topic);
+  const prepareVocabularyTopic = () => {
     setVocabularyIndex(0);
     setVocabularyAnswer("");
     setVocabularyFeedback(null);
@@ -434,48 +443,30 @@ export default function Home() {
               </section>
             )}
 
-            {mode === "vocabulary" && (
-              <section className="flashcard-view vocabulary-study-view">
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn chủ đề và chiều học, tự gõ đáp án rồi nhấn Enter để chấm và sang mục tiếp theo." number="07" />
-                <div className="vocabulary-topic-picker">
-                  <span>CHỦ ĐỀ ĐANG HỌC</span>
-                  <Select value={vocabularyTopic} onValueChange={changeVocabularyTopic}>
-                    <SelectTrigger className="vocabulary-topic-select" aria-label="Chọn chủ đề từ vựng">
-                      <SelectValue placeholder="Chọn chủ đề" />
-                    </SelectTrigger>
-                    <SelectContent className="vocabulary-topic-select-content" position="popper" align="start">
-                      <SelectItem value="all">Tất cả chủ đề · 82 từ</SelectItem>
-                      {vocabularyGroups.map((group) => (
-                        <SelectItem key={group.id} value={group.id}>
-                          {group.title} · {group.entries.length} từ
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="vocabulary-selected-groups" aria-label="Bảng từ vựng theo chủ đề">
-                  {displayedVocabularyGroups.map((group, index) => (
-                    <details className="lexicon-group" key={group.id} open={Boolean(selectedVocabularyGroup)}>
-                      <summary>
-                        <span className="lexicon-number">{String(index + 1).padStart(2, "0")}</span>
-                        <span>
-                          <strong>{group.title}</strong>
-                          <small>{group.caption} · {group.entries.length} từ</small>
-                        </span>
-                        <ChevronRight size={18} />
-                      </summary>
-                      <div className="vocabulary-grid">
-                        {group.entries.map((entry) => (
-                          <article className="vocabulary-entry" key={entry.french}>
-                            <strong>{entry.french}</strong>
-                            <span>{entry.vietnamese}</span>
-                            {entry.note && <small>{entry.note}</small>}
-                          </article>
-                        ))}
-                      </div>
-                    </details>
+            {mode === "vocabulary" && !selectedVocabularyGroup && (
+              <section className="vocabulary-topic-index">
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn một chủ đề để mở trang học riêng, rồi tự gõ đáp án và nhấn Enter để chuyển từ." number="07" />
+                <div className="topic-route-list" aria-label="Danh sách chủ đề từ vựng">
+                  {vocabularyGroups.map((group, index) => (
+                    <Link className="topic-route-row" href={`/vocabulary/${group.id}`} key={group.id} onClick={prepareVocabularyTopic}>
+                      <span className="topic-route-number">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="topic-route-copy">
+                        <strong>{group.title}</strong>
+                        <small>{group.caption} · {group.entries.length} từ</small>
+                      </span>
+                      <ChevronRight size={22} aria-hidden="true" />
+                    </Link>
                   ))}
                 </div>
+              </section>
+            )}
+
+            {mode === "vocabulary" && selectedVocabularyGroup && (
+              <section className="flashcard-view vocabulary-study-view">
+                <Link className="topic-back-link" href="/vocabulary" onClick={prepareVocabularyTopic}>
+                  <ArrowLeft size={16} /> Tất cả chủ đề
+                </Link>
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title={selectedVocabularyGroup.title} description={`${selectedVocabularyGroup.caption} Chọn chiều học, tự gõ đáp án rồi nhấn Enter để chấm và sang mục tiếp theo.`} number="07" />
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
                     <div className="vocabulary-recall-top">
