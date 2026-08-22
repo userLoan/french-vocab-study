@@ -129,3 +129,9 @@
 - [x] Trích xuất và chuẩn hóa từ vựng gia đình, cách xưng hô và các giai đoạn quan hệ.
 - [x] Thêm chủ đề mới vào danh sách, trang học riêng và bài luyện.
 - [x] Kiểm tra nội dung, điều hướng, bản dựng và lưu phiên bản cập nhật.
+
+# Họ và tên trên biểu mẫu
+
+- [x] Đối chiếu nhãn họ và tên từ ảnh biểu mẫu.
+- [x] Bổ sung các thuật ngữ vào chủ đề thông tin cá nhân và kiểm tra bài luyện.
+- [x] Kiểm tra bản dựng, lưu phiên bản và bàn giao cập nhật.
