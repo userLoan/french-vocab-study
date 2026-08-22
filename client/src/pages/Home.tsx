@@ -23,6 +23,23 @@ import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
+type VocabularyLanguage = "french" | "vietnamese" | "english";
+type VocabularyDirection = "french-to-vietnamese" | "vietnamese-to-french" | "french-to-english" | "english-to-french";
+
+const vocabularyDirectionOptions: ReadonlyArray<{
+  id: VocabularyDirection;
+  label: string;
+  promptLanguage: VocabularyLanguage;
+  answerLanguage: VocabularyLanguage;
+  promptLabel: string;
+  answerLabel: string;
+  placeholder: string;
+}> = [
+  { id: "french-to-vietnamese", label: "PHÁP → VIỆT", promptLanguage: "french", answerLanguage: "vietnamese", promptLabel: "TỪ TIẾNG PHÁP", answerLabel: "NHẬP NGHĨA TIẾNG VIỆT", placeholder: "Gõ nghĩa tiếng Việt" },
+  { id: "vietnamese-to-french", label: "VIỆT → PHÁP", promptLanguage: "vietnamese", answerLanguage: "french", promptLabel: "NGHĨA TIẾNG VIỆT", answerLabel: "NHẬP TỪ TIẾNG PHÁP", placeholder: "Gõ từ tiếng Pháp" },
+  { id: "french-to-english", label: "PHÁP → ANH", promptLanguage: "french", answerLanguage: "english", promptLabel: "TỪ TIẾNG PHÁP", answerLabel: "NHẬP NGHĨA TIẾNG ANH", placeholder: "Gõ nghĩa tiếng Anh" },
+  { id: "english-to-french", label: "ANH → PHÁP", promptLanguage: "english", answerLanguage: "french", promptLabel: "NGHĨA TIẾNG ANH", answerLabel: "NHẬP TỪ TIẾNG PHÁP", placeholder: "Gõ từ tiếng Pháp" },
+];
 
 const normalize = (value: string) =>
   value
@@ -122,7 +139,7 @@ export default function Home() {
   const [conversationIndex, setConversationIndex] = useState(0);
   const [conversationAnswer, setConversationAnswer] = useState("");
   const [vocabularyIndex, setVocabularyIndex] = useState(0);
-  const [vocabularyDirection, setVocabularyDirection] = useState<"french-to-vietnamese" | "vietnamese-to-french">("french-to-vietnamese");
+  const [vocabularyDirection, setVocabularyDirection] = useState<VocabularyDirection>("french-to-vietnamese");
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
   const [placeIndex, setPlaceIndex] = useState(0);
@@ -144,8 +161,9 @@ export default function Home() {
   const vocabularyTopicLabel = selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
   const vocabularyEntries = (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
   const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
-  const vocabularyPrompt = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.french : vocabularyEntry.vietnamese;
-  const vocabularyExpected = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
+  const activeVocabularyDirection = vocabularyDirectionOptions.find((option) => option.id === vocabularyDirection) ?? vocabularyDirectionOptions[0];
+  const vocabularyPrompt = vocabularyEntry[activeVocabularyDirection.promptLanguage];
+  const vocabularyExpected = vocabularyEntry[activeVocabularyDirection.answerLanguage];
   const placeExercise = placeExercises[placeIndex % placeExercises.length];
   const questionExercise = questionExercises[questionIndex % questionExercises.length];
   const completed = known + review + correct;
@@ -186,7 +204,7 @@ export default function Home() {
     setVocabularyAnswer("");
   };
 
-  const changeVocabularyDirection = (direction: "french-to-vietnamese" | "vietnamese-to-french") => {
+  const changeVocabularyDirection = (direction: VocabularyDirection) => {
     setVocabularyDirection(direction);
     setVocabularyAnswer("");
     setVocabularyFeedback(null);
@@ -200,7 +218,7 @@ export default function Home() {
 
   const checkVocabulary = (event: FormEvent) => {
     event.preventDefault();
-    const answerSource = vocabularyDirection === "french-to-vietnamese" ? vocabularyEntry.vietnamese : vocabularyEntry.french;
+    const answerSource = vocabularyEntry[activeVocabularyDirection.answerLanguage];
     const acceptedAnswers = [answerSource, ...answerSource.split(/\s*\/\s*/)]
       .flatMap((answer) => [answer, answer.replace("(e)", ""), answer.replace("(e)", "e")]);
     const isCorrect = acceptedAnswers.some((answer) => normalize(vocabularyAnswer) === normalize(answer));
@@ -474,22 +492,25 @@ export default function Home() {
                       <span>{String(vocabularyIndex + 1).padStart(2, "0")} / {String(vocabularyEntries.length).padStart(2, "0")}</span>
                     </div>
                     <div className="vocabulary-direction" aria-label="Chọn chiều học">
-                      <button type="button" className={vocabularyDirection === "french-to-vietnamese" ? "is-active" : ""} onClick={() => changeVocabularyDirection("french-to-vietnamese")}>PHÁP → VIỆT</button>
-                      <button type="button" className={vocabularyDirection === "vietnamese-to-french" ? "is-active" : ""} onClick={() => changeVocabularyDirection("vietnamese-to-french")}>VIỆT → PHÁP</button>
+                      {vocabularyDirectionOptions.map((option) => (
+                        <button type="button" className={vocabularyDirection === option.id ? "is-active" : ""} onClick={() => changeVocabularyDirection(option.id)} key={option.id}>
+                          {option.label}
+                        </button>
+                      ))}
                     </div>
                     <div className="vocabulary-prompt">
-                      <span>{vocabularyDirection === "french-to-vietnamese" ? "TỪ TIẾNG PHÁP" : "NGHĨA TIẾNG VIỆT"}</span>
+                      <span>{activeVocabularyDirection.promptLabel}</span>
                       <h2>{vocabularyPrompt}</h2>
                       {vocabularyEntry.note && <small>{vocabularyEntry.note}</small>}
                     </div>
                     <label className="vocabulary-answer">
-                      <span>{vocabularyDirection === "french-to-vietnamese" ? "NHẬP NGHĨA TIẾNG VIỆT" : "NHẬP TỪ TIẾNG PHÁP"}</span>
+                      <span>{activeVocabularyDirection.answerLabel}</span>
                       <input
                         autoFocus
-                        aria-label={vocabularyDirection === "french-to-vietnamese" ? `Nghĩa tiếng Việt của ${vocabularyEntry.french}` : `Từ tiếng Pháp của ${vocabularyEntry.vietnamese}`}
+                        aria-label={`${activeVocabularyDirection.answerLabel.toLocaleLowerCase("vi-VN")} cho ${vocabularyPrompt}`}
                         value={vocabularyAnswer}
                         onChange={(event) => setVocabularyAnswer(event.target.value)}
-                        placeholder={vocabularyDirection === "french-to-vietnamese" ? "Gõ nghĩa tiếng Việt" : "Gõ từ tiếng Pháp"}
+                        placeholder={activeVocabularyDirection.placeholder}
                       />
                     </label>
                     <div className="vocabulary-submit-row">
@@ -912,6 +933,7 @@ export default function Home() {
                             <article className="vocabulary-entry" key={entry.french}>
                               <strong>{entry.french}</strong>
                               <span>{entry.vietnamese}</span>
+                              <span className="vocabulary-entry-english">EN · {entry.english}</span>
                               {entry.note && <small>{entry.note}</small>}
                             </article>
                           ))}

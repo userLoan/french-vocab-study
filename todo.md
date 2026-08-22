@@ -141,3 +141,10 @@
 - [x] Chuẩn hóa nhãn và các lựa chọn giới tính trên biểu mẫu tiếng Pháp.
 - [x] Thêm mục giới tính vào chủ đề thông tin cá nhân.
 - [x] Kiểm tra bản dựng, lưu phiên bản và bàn giao cập nhật.
+
+# Luyện từ với tiếng Anh
+
+- [x] Rà soát dữ liệu từ vựng và luồng chọn chiều học hiện tại.
+- [x] Bổ sung nghĩa tiếng Anh cho các nhóm từ vựng.
+- [x] Thêm hai chiều Pháp–Anh và Anh–Pháp vào bài luyện.
+- [x] Kiểm tra đáp án, điều hướng, bản dựng và lưu phiên bản cập nhật.

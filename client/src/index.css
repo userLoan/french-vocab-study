@@ -250,8 +250,8 @@ a { color: inherit; }
 .vocabulary-selected-groups { display: grid; gap: 10px; margin: 0 0 28px; }
 .vocabulary-selected-groups .lexicon-group { box-shadow: 4px 5px 0 rgba(22,58,95,.07), inset 0 0 0 1px rgba(118,95,51,.13); }
 .vocabulary-selected-groups .lexicon-group summary { min-height: 67px; }
-.vocabulary-direction { display: inline-flex; gap: 5px; margin-top: 25px; padding: 4px; background: rgba(22,58,95,.07); }
-.vocabulary-direction button { padding: 8px 10px; color: var(--ink-soft); border: 0; background: transparent; font-size: 9px; font-weight: 800; letter-spacing: .06em; }
+.vocabulary-direction { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(100%, 334px); gap: 5px; margin-top: 25px; padding: 4px; background: rgba(22,58,95,.07); }
+.vocabulary-direction button { min-height: 34px; padding: 8px 10px; color: var(--ink-soft); border: 0; background: transparent; font-size: 9px; font-weight: 800; letter-spacing: .06em; white-space: nowrap; }
 .vocabulary-direction button.is-active { color: #eef4f1; background: var(--ink); box-shadow: 2px 2px 0 rgba(214,162,42,.82); }
 .vocabulary-prompt { margin-top: 43px; }
 .vocabulary-prompt > span, .vocabulary-answer > span { color: var(--ink-soft); font-size: 9px; font-weight: 800; letter-spacing: .13em; }
@@ -264,6 +264,7 @@ a { color: inherit; }
 .vocabulary-submit-row > span { color: var(--ink-soft); font-size: 10px; font-weight: 700; }
 .vocabulary-feedback--correct { color: var(--sage-ink) !important; }
 .vocabulary-feedback--review { color: #8b4235 !important; }
+.vocabulary-entry .vocabulary-entry-english { display: block; margin-top: 3px; color: var(--sage-ink); font-size: 10px; font-weight: 800; letter-spacing: .03em; }
 .vocabulary-topic-index .mode-header { margin-bottom: 30px; }
 .topic-route-list { display: grid; gap: 13px; }
 .topic-route-row { position: relative; display: grid; grid-template-columns: 68px minmax(0, 1fr) 26px; align-items: center; gap: 17px; min-height: 99px; padding: 17px 24px 17px 21px; overflow: hidden; color: var(--ink); border: 1px solid rgba(118,95,51,.18); background: #fcf8ee; box-shadow: 6px 7px 0 rgba(22,58,95,.08), inset 0 0 0 1px rgba(255,255,255,.55); text-decoration: none; transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), background-color 180ms var(--ease-out); }

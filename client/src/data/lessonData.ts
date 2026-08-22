@@ -1,3 +1,5 @@
+import { vocabularyEnglish } from "./vocabularyEnglish";
+
 /**
  * Carnet de Provence content reminder: group vocabulary as an inviting study notebook.
  * The entries below were transcribed and normalized from the learner-provided course materials.
@@ -59,14 +61,25 @@ export const conversationPatterns: ConversationPattern[] = [
   { id: "address", title: "Hỏi địa chỉ", question: "Quelle est votre adresse ?", answer: "J'habite au numéro [x], rue [nom], à [ville].", note: "Dùng votre và vous khi giao tiếp trang trọng.", practice: { accepts: ["j'habite"], hint: "Bắt đầu bằng J'habite…, sau đó đi từ số nhà đến thành phố.", example: "J'habite au numéro 12, rue des Fleurs, à Lyon." } },
 ];
 
+export type VocabularyEntry = {
+  french: string;
+  vietnamese: string;
+  english: string;
+  note?: string;
+};
+
 export type VocabularyGroup = {
   id: string;
   title: string;
   caption: string;
-  entries: Array<{ french: string; vietnamese: string; note?: string }>;
+  entries: VocabularyEntry[];
 };
 
-export const vocabularyGroups: VocabularyGroup[] = [
+type RawVocabularyGroup = Omit<VocabularyGroup, "entries"> & {
+  entries: Array<Omit<VocabularyEntry, "english">>;
+};
+
+const rawVocabularyGroups: RawVocabularyGroup[] = [
   {
     id: "likes",
     title: "Sở thích & ngôn ngữ",
@@ -309,6 +322,15 @@ export const vocabularyGroups: VocabularyGroup[] = [
     ],
   },
 ];
+
+export const vocabularyGroups: VocabularyGroup[] = rawVocabularyGroups.map((group) => ({
+  ...group,
+  entries: group.entries.map((entry) => {
+    const english = vocabularyEnglish[entry.french];
+    if (!english) throw new Error(`Thiếu nghĩa tiếng Anh cho mục từ vựng: ${entry.french}`);
+    return { ...entry, english };
+  }),
+}));
 
 export const placeRules = [
   { preposition: "à", label: "tên thành phố", example: "à Berlin · à New York · à Tokyo" },
