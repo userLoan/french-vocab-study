@@ -275,7 +275,7 @@ a { color: inherit; }
 .topic-route-number { color: var(--mustard); font-family: "Fraunces", serif; font-size: 39px; font-style: italic; font-weight: 600; line-height: 1; }
 .topic-route-copy { min-width: 0; }
 .topic-route-copy strong, .topic-route-copy small { display: block; }
-.topic-route-copy strong { font-family: "Fraunces", serif; font-size: clamp(20px, 2.1vw, 25px); font-weight: 600; letter-spacing: -.035em; line-height: 1.12; }
+.topic-route-copy strong { font-family: "Fraunces", serif; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; letter-spacing: -.025em; line-height: 1.16; }
 .topic-route-copy small { margin-top: 8px; color: var(--ink-soft); font-size: 11px; font-weight: 700; line-height: 1.45; }
 .topic-route-row > svg { justify-self: end; color: var(--ink); transition: transform 180ms var(--ease-out); }
 .topic-route-row:hover > svg { transform: translateX(4px); }
@@ -605,7 +605,7 @@ a { color: inherit; }
   .vocabulary-submit-row { align-items: flex-start; flex-direction: column; }
   .topic-route-row { grid-template-columns: 43px minmax(0, 1fr) 20px; gap: 11px; min-height: 83px; padding: 14px 15px 14px 14px; }
   .topic-route-number { font-size: 29px; }
-  .topic-route-copy strong { font-size: 21px; }
+  .topic-route-copy strong { font-size: 19px; }
   .topic-route-copy small { margin-top: 5px; font-size: 9px; }
   .lexicon-group summary { grid-template-columns: 35px 1fr 20px; padding: 12px 14px; }
   .lexicon-number { font-size: 23px; }

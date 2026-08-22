@@ -53,7 +53,7 @@ const navGroups = [
     icon: Layers,
     items: [
       { id: "flashcards" as const, label: "Flashcards", icon: Layers },
-      { id: "vocabulary" as const, label: "Luyện 82 từ", icon: Bookmark },
+      { id: "vocabulary" as const, label: "Luyện từ", icon: Bookmark },
     ],
   },
   {

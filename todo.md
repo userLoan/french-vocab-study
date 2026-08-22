@@ -112,3 +112,8 @@
 # Tinh chỉnh danh sách chủ đề
 
 - [x] Giảm cỡ chữ tiêu đề các hàng chủ đề và kiểm tra lại tỷ lệ giao diện.
+
+# Thu gọn nhãn luyện từ
+
+- [x] Đổi nhãn thanh bên thành “Luyện từ” và giảm thêm cỡ chữ chủ đề.
+- [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
