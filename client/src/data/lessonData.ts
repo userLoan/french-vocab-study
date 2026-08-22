@@ -262,7 +262,13 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
       { french: "mexicain / mexicaine", vietnamese: "người Mexico", note: "au Mexique · Acapulco" },
       { french: "norvégien / norvégienne", vietnamese: "người Na Uy", note: "en Norvège · Oslo" },
       { french: "portugais / portugaise", vietnamese: "người Bồ Đào Nha", note: "au Portugal · Lisbonne" },
+      { french: "russe", vietnamese: "người Nga", note: "en Russie · Moscou" },
       { french: "suisse", vietnamese: "người Thụy Sĩ", note: "en Suisse · Lausanne" },
+      { french: "turc / turque", vietnamese: "người Thổ Nhĩ Kỳ", note: "en Turquie · Ankara" },
+      { french: "coréen / coréenne", vietnamese: "người Hàn Quốc", note: "en Corée · Séoul" },
+      { french: "étranger / étrangère", vietnamese: "người nước ngoài", note: "Ví dụ: Pour les Français, elle est étrangère." },
+      { french: "d'origine", vietnamese: "có nguồn gốc", note: "Ví dụ: Il est d'origine grecque." },
+      { french: "venir de", vietnamese: "đến từ", note: "Ví dụ: Il vient de Grèce." },
     ],
   },
   {
@@ -365,7 +371,10 @@ export const nationalityPlaces: NationalityPlace[] = [
   { nationality: "mexicain / mexicaine", country: "Mexique", countryPreposition: "au", city: "Acapulco" },
   { nationality: "norvégien / norvégienne", country: "Norvège", countryPreposition: "en", city: "Oslo" },
   { nationality: "portugais / portugaise", country: "Portugal", countryPreposition: "au", city: "Lisbonne" },
+  { nationality: "russe", country: "Russie", countryPreposition: "en", city: "Moscou" },
   { nationality: "suisse", country: "Suisse", countryPreposition: "en", city: "Lausanne" },
+  { nationality: "turc / turque", country: "Turquie", countryPreposition: "en", city: "Ankara" },
+  { nationality: "coréen / coréenne", country: "Corée", countryPreposition: "en", city: "Séoul" },
 ];
 
 export type PlaceExercise = {

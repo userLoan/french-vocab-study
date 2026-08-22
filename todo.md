@@ -158,3 +158,9 @@
 
 - [x] Đưa bốn lựa chọn chiều học lên cùng một hàng trên màn hình rộng.
 - [x] Kiểm tra hiển thị trên màn hình rộng và hẹp, lưu phiên bản cập nhật.
+
+# Quốc gia và quốc tịch còn thiếu
+
+- [x] Đối chiếu các mục quốc gia, quốc tịch và mẫu diễn đạt được nhấn mạnh trong tài liệu.
+- [x] Bổ sung dữ liệu vào chủ đề Quốc tịch, đất nước & thành phố.
+- [x] Kiểm tra bài luyện, bản dựng và lưu phiên bản cập nhật.

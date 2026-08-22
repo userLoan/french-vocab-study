@@ -156,7 +156,13 @@ export const vocabularyEnglish: Record<string, string> = {
   "mexicain / mexicaine": "Mexican",
   "norvégien / norvégienne": "Norwegian",
   "portugais / portugaise": "Portuguese",
+  "russe": "Russian",
   "suisse": "Swiss",
+  "turc / turque": "Turkish",
+  "coréen / coréenne": "Korean",
+  "étranger / étrangère": "foreigner / foreign",
+  "d'origine": "of origin",
+  "venir de": "come from",
 
   "étudiant(e)": "student",
   "professeur(e)": "teacher",
