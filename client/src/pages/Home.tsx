@@ -445,7 +445,7 @@ export default function Home() {
 
             {mode === "vocabulary" && !selectedVocabularyGroup && (
               <section className="vocabulary-topic-index">
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn một chủ đề để mở trang học riêng, rồi tự gõ đáp án và nhấn Enter để chuyển từ." number="07" />
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn một tờ học, gọi nghĩa trước rồi tự gõ đáp án. Enter sẽ đưa bạn sang từ kế tiếp." number="07" />
                 <div className="topic-route-list" aria-label="Danh sách chủ đề từ vựng">
                   {vocabularyGroups.map((group, index) => (
                     <Link className="topic-route-row" href={`/vocabulary/${group.id}`} key={group.id} onClick={prepareVocabularyTopic}>
@@ -466,7 +466,7 @@ export default function Home() {
                 <Link className="topic-back-link" href="/vocabulary" onClick={prepareVocabularyTopic}>
                   <ArrowLeft size={16} /> Tất cả chủ đề
                 </Link>
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title={selectedVocabularyGroup.title} description={`${selectedVocabularyGroup.caption} Chọn chiều học, tự gõ đáp án rồi nhấn Enter để chấm và sang mục tiếp theo.`} number="07" />
+                <ModeHeader eyebrow="KHO TỪ VỰNG" title={selectedVocabularyGroup.title} description={`${selectedVocabularyGroup.caption} Chọn chiều học, gọi nghĩa trước rồi nhấn Enter để ghi thêm một dấu mực.`} number="07" />
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
                     <div className="vocabulary-recall-top">
@@ -509,7 +509,7 @@ export default function Home() {
                         </>
                       ) : (
                         <>
-                          <p>Chọn một chiều học rồi tự gõ đáp án. Chấp nhận cả các từ có dấu tiếng Pháp.</p>
+                          <p>Chọn một chiều học, thử gọi nghĩa trước rồi gõ đáp án. Dấu tiếng Pháp vẫn được chấp nhận.</p>
                           <span>{vocabularyEntries.length} mục trong chủ đề {vocabularyTopicLabel.toLowerCase()}.</span>
                         </>
                       )}
@@ -945,7 +945,7 @@ export default function Home() {
             <div className="next-card ledger-paper">
               <PaperLabel tone="mustard">ĐANG HỌC</PaperLabel>
               <h3>{mode === "overview" ? "Chọn một chế độ" : activityLabels[mode]}</h3>
-              <p>{mode === "overview" ? "5–8 phút. Đủ để một từ ở lại lâu hơn." : "Đi chậm một nhịp, nhớ sâu một chút."}</p>
+              <p>{mode === "overview" ? "Năm phút, một dấu mực mới — đủ để một từ ở lại lâu hơn." : "Đi chậm một nhịp, để từ ở lại lâu hơn."}</p>
               <button onClick={() => changeMode(mode === "overview" ? "flashcards" : "overview")}>
                 {mode === "overview" ? "Lật thẻ đầu tiên" : "Về bàn học"}
                 <ArrowRight size={16} />

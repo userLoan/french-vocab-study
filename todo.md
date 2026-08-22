@@ -123,3 +123,9 @@
 - [x] Trích xuất chỉ các từ và cụm từ in đậm trong tài liệu được gửi.
 - [x] Thêm chủ đề mới vào danh sách, trang học riêng và bài luyện.
 - [x] Kiểm tra nội dung, điều hướng, bản dựng và lưu phiên bản cập nhật.
+
+# Gia đình, xưng hô và quan hệ
+
+- [x] Trích xuất và chuẩn hóa từ vựng gia đình, cách xưng hô và các giai đoạn quan hệ.
+- [x] Thêm chủ đề mới vào danh sách, trang học riêng và bài luyện.
+- [x] Kiểm tra nội dung, điều hướng, bản dựng và lưu phiên bản cập nhật.
