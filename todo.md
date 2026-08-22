@@ -108,3 +108,7 @@
 
 - [x] Tạo danh sách năm chủ đề từ vựng với lối vào riêng.
 - [x] Mở bài luyện ở đường dẫn riêng cho từng chủ đề và kiểm tra điều hướng.
+
+# Tinh chỉnh danh sách chủ đề
+
+- [x] Giảm cỡ chữ tiêu đề các hàng chủ đề và kiểm tra lại tỷ lệ giao diện.
