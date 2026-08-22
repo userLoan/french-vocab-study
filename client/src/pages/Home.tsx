@@ -19,12 +19,16 @@ import {
   X,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups } from "@/data/lessonData";
+import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups, type VocabularyEntry } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
 type VocabularyLanguage = "french" | "vietnamese" | "english";
 type VocabularyDirection = "french-to-vietnamese" | "vietnamese-to-french" | "french-to-english" | "english-to-french";
+type VocabularyStudyEntry = VocabularyEntry & { group: string; key: string };
+type ReviewVocabularyRecord = { key: string; mistakes: number; lastMissedAt: number };
+
+const REVIEW_VOCABULARY_STORAGE_KEY = "carnet-review-vocabulary-v1";
 
 const vocabularyDirectionOptions: ReadonlyArray<{
   id: VocabularyDirection;
@@ -142,6 +146,22 @@ export default function Home() {
   const [vocabularyDirection, setVocabularyDirection] = useState<VocabularyDirection>("french-to-vietnamese");
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
+  const [reviewVocabularyRecords, setReviewVocabularyRecords] = useState<ReviewVocabularyRecord[]>(() => {
+    try {
+      const stored = window.localStorage.getItem(REVIEW_VOCABULARY_STORAGE_KEY);
+      const parsed: unknown = stored ? JSON.parse(stored) : [];
+      if (!Array.isArray(parsed)) return [];
+      return parsed.filter(
+        (item): item is ReviewVocabularyRecord =>
+          typeof item === "object" && item !== null &&
+          typeof item.key === "string" &&
+          typeof item.mistakes === "number" &&
+          typeof item.lastMissedAt === "number",
+      );
+    } catch {
+      return [];
+    }
+  });
   const [placeIndex, setPlaceIndex] = useState(0);
   const [placeAnswer, setPlaceAnswer] = useState("");
   const [placeFeedback, setPlaceFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
@@ -157,13 +177,30 @@ export default function Home() {
   const articleExercise = articleExercises[articleIndex % articleExercises.length];
   const conversationPattern = conversationPatterns[conversationIndex % conversationPatterns.length];
   const vocabularyTopic = location.match(/^\/vocabulary\/([^/]+)$/)?.[1] ?? null;
-  const selectedVocabularyGroup = vocabularyTopic ? vocabularyGroups.find((group) => group.id === vocabularyTopic) : undefined;
-  const vocabularyTopicLabel = selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
-  const vocabularyEntries = (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title })));
-  const vocabularyEntry = vocabularyEntries[vocabularyIndex % vocabularyEntries.length];
+  const isReviewVocabularyRoute = vocabularyTopic === "review";
+  const selectedVocabularyGroup = vocabularyTopic && !isReviewVocabularyRoute ? vocabularyGroups.find((group) => group.id === vocabularyTopic) : undefined;
+  const allVocabularyEntries = useMemo<VocabularyStudyEntry[]>(
+    () => vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title, key: `${group.id}::${entry.french}` }))),
+    [],
+  );
+  const reviewVocabularyEntries = useMemo(() => {
+    const records = new Map(reviewVocabularyRecords.map((record) => [record.key, record]));
+    return allVocabularyEntries
+      .filter((entry) => records.has(entry.key))
+      .sort((first, second) => {
+        const firstRecord = records.get(first.key)!;
+        const secondRecord = records.get(second.key)!;
+        return secondRecord.mistakes - firstRecord.mistakes || secondRecord.lastMissedAt - firstRecord.lastMissedAt;
+      });
+  }, [allVocabularyEntries, reviewVocabularyRecords]);
+  const vocabularyTopicLabel = isReviewVocabularyRoute ? "Từ cần ôn" : selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
+  const vocabularyEntries: VocabularyStudyEntry[] = isReviewVocabularyRoute
+    ? reviewVocabularyEntries
+    : (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title, key: `${group.id}::${entry.french}` })));
+  const vocabularyEntry = vocabularyEntries.length > 0 ? vocabularyEntries[vocabularyIndex % vocabularyEntries.length] : undefined;
   const activeVocabularyDirection = vocabularyDirectionOptions.find((option) => option.id === vocabularyDirection) ?? vocabularyDirectionOptions[0];
-  const vocabularyPrompt = vocabularyEntry[activeVocabularyDirection.promptLanguage];
-  const vocabularyExpected = vocabularyEntry[activeVocabularyDirection.answerLanguage];
+  const vocabularyPrompt = vocabularyEntry?.[activeVocabularyDirection.promptLanguage] ?? "";
+  const vocabularyExpected = vocabularyEntry?.[activeVocabularyDirection.answerLanguage] ?? "";
   const placeExercise = placeExercises[placeIndex % placeExercises.length];
   const questionExercise = questionExercises[questionIndex % questionExercises.length];
   const completed = known + review + correct;
@@ -181,6 +218,10 @@ export default function Home() {
       setMode("overview");
     }
   }, [location, mode]);
+
+  useEffect(() => {
+    window.localStorage.setItem(REVIEW_VOCABULARY_STORAGE_KEY, JSON.stringify(reviewVocabularyRecords));
+  }, [reviewVocabularyRecords]);
 
   const changeMode = (nextMode: Mode) => {
     navigate(nextMode === "vocabulary" ? "/vocabulary" : "/");
@@ -200,6 +241,7 @@ export default function Home() {
   };
 
   const nextVocabulary = () => {
+    if (vocabularyEntries.length === 0) return;
     setVocabularyIndex((value) => (value + 1) % vocabularyEntries.length);
     setVocabularyAnswer("");
   };
@@ -216,16 +258,38 @@ export default function Home() {
     setVocabularyFeedback(null);
   };
 
+  const addVocabularyToReview = (entry: VocabularyStudyEntry) => {
+    setReviewVocabularyRecords((records) => {
+      const existing = records.find((record) => record.key === entry.key);
+      if (!existing) return [...records, { key: entry.key, mistakes: 1, lastMissedAt: Date.now() }];
+      return records.map((record) => record.key === entry.key
+        ? { ...record, mistakes: record.mistakes + 1, lastMissedAt: Date.now() }
+        : record,
+      );
+    });
+  };
+
+  const removeVocabularyFromReview = (entry: VocabularyStudyEntry) => {
+    setReviewVocabularyRecords((records) => records.filter((record) => record.key !== entry.key));
+  };
+
   const checkVocabulary = (event: FormEvent) => {
     event.preventDefault();
+    if (!vocabularyEntry) return;
     const answerSource = vocabularyEntry[activeVocabularyDirection.answerLanguage];
     const acceptedAnswers = [answerSource, ...answerSource.split(/\s*\/\s*/)]
       .flatMap((answer) => [answer, answer.replace("(e)", ""), answer.replace("(e)", "e")]);
     const isCorrect = acceptedAnswers.some((answer) => normalize(vocabularyAnswer) === normalize(answer));
-    if (isCorrect) setCorrect((value) => value + 1);
-    else setReview((value) => value + 1);
+    if (isCorrect) {
+      setCorrect((value) => value + 1);
+      if (isReviewVocabularyRoute) removeVocabularyFromReview(vocabularyEntry);
+    } else {
+      setReview((value) => value + 1);
+      addVocabularyToReview(vocabularyEntry);
+    }
     setVocabularyFeedback({ isCorrect, expected: vocabularyExpected });
-    nextVocabulary();
+    setVocabularyAnswer("");
+    if (!isReviewVocabularyRoute || !isCorrect) nextVocabulary();
   };
 
   const checkConjugation = (event: FormEvent) => {
@@ -461,10 +525,18 @@ export default function Home() {
               </section>
             )}
 
-            {mode === "vocabulary" && !selectedVocabularyGroup && (
+            {mode === "vocabulary" && !selectedVocabularyGroup && !isReviewVocabularyRoute && (
               <section className="vocabulary-topic-index">
                 <ModeHeader eyebrow="KHO TỪ VỰNG" title="Học theo chủ đề" description="Chọn một tờ học, gọi nghĩa trước rồi tự gõ đáp án. Enter sẽ đưa bạn sang từ kế tiếp." number="07" />
                 <div className="topic-route-list" aria-label="Danh sách chủ đề từ vựng">
+                  <Link className="topic-route-row topic-route-row--review" href="/vocabulary/review" onClick={prepareVocabularyTopic}>
+                    <span className="topic-route-review-icon"><RotateCcw size={23} strokeWidth={1.8} /></span>
+                    <span className="topic-route-copy">
+                      <strong>Từ cần ôn</strong>
+                      <small>{reviewVocabularyEntries.length > 0 ? `${reviewVocabularyEntries.length} từ đã trả lời sai — luyện lại để gỡ dấu mực đỏ.` : "Chưa có từ cần ôn — các từ trả lời sai sẽ được lưu ở đây."}</small>
+                    </span>
+                    <ChevronRight size={22} aria-hidden="true" />
+                  </Link>
                   {vocabularyGroups.map((group, index) => (
                     <Link className="topic-route-row" href={`/vocabulary/${group.id}`} key={group.id} onClick={prepareVocabularyTopic}>
                       <span className="topic-route-number">{String(index + 1).padStart(2, "0")}</span>
@@ -479,12 +551,25 @@ export default function Home() {
               </section>
             )}
 
-            {mode === "vocabulary" && selectedVocabularyGroup && (
+            {mode === "vocabulary" && isReviewVocabularyRoute && !vocabularyEntry && (
+              <section className="vocabulary-topic-index vocabulary-review-empty">
+                <Link className="topic-back-link" href="/vocabulary" onClick={prepareVocabularyTopic}>
+                  <ArrowLeft size={16} /> Tất cả chủ đề
+                </Link>
+                <ModeHeader eyebrow="ÔN LẠI" title="Từ cần ôn" description="Chưa có từ nào trong danh sách. Khi trả lời sai ở bất kỳ chủ đề nào, từ đó sẽ được lưu trên thiết bị này để bạn quay lại luyện riêng." number="08" />
+                <div className="review-empty-note">
+                  <RotateCcw size={26} />
+                  <p>Trả lời sai một từ để tạo danh sách ôn tập đầu tiên.</p>
+                </div>
+              </section>
+            )}
+
+            {mode === "vocabulary" && vocabularyEntry && (selectedVocabularyGroup || isReviewVocabularyRoute) && (
               <section className="flashcard-view vocabulary-study-view">
                 <Link className="topic-back-link" href="/vocabulary" onClick={prepareVocabularyTopic}>
                   <ArrowLeft size={16} /> Tất cả chủ đề
                 </Link>
-                <ModeHeader eyebrow="KHO TỪ VỰNG" title={selectedVocabularyGroup.title} description={`${selectedVocabularyGroup.caption} Chọn chiều học, gọi nghĩa trước rồi nhấn Enter để ghi thêm một dấu mực.`} number="07" />
+                <ModeHeader eyebrow={isReviewVocabularyRoute ? "ÔN LẠI" : "KHO TỪ VỰNG"} title={vocabularyTopicLabel} description={isReviewVocabularyRoute ? "Những từ đã trả lời sai được lưu trên thiết bị này. Trả lời đúng để gỡ chúng khỏi danh sách." : `${selectedVocabularyGroup?.caption} Chọn chiều học, gọi nghĩa trước rồi nhấn Enter để ghi thêm một dấu mực.`} number={isReviewVocabularyRoute ? "08" : "07"} />
                 <div className="flashcard-layout">
                   <form className="vocabulary-recall-card" onSubmit={checkVocabulary}>
                     <div className="vocabulary-recall-top">
@@ -526,12 +611,12 @@ export default function Home() {
                           <p className={vocabularyFeedback.isCorrect ? "vocabulary-feedback vocabulary-feedback--correct" : "vocabulary-feedback vocabulary-feedback--review"}>
                             {vocabularyFeedback.isCorrect ? "Đúng rồi — tiếp tục giữ nhịp." : `Cần ôn lại. Đáp án: ${vocabularyFeedback.expected}`}
                           </p>
-                          <span>{vocabularyEntries.length} mục trong chủ đề {vocabularyTopicLabel.toLowerCase()}.</span>
+                          <span>{vocabularyEntries.length} {isReviewVocabularyRoute ? "từ cần ôn trong danh sách." : `mục trong chủ đề ${vocabularyTopicLabel.toLowerCase()}.`}</span>
                         </>
                       ) : (
                         <>
                           <p>Chọn một chiều học, thử gọi nghĩa trước rồi gõ đáp án. Dấu tiếng Pháp vẫn được chấp nhận.</p>
-                          <span>{vocabularyEntries.length} mục trong chủ đề {vocabularyTopicLabel.toLowerCase()}.</span>
+                          <span>{vocabularyEntries.length} {isReviewVocabularyRoute ? "từ cần ôn trong danh sách." : `mục trong chủ đề ${vocabularyTopicLabel.toLowerCase()}.`}</span>
                         </>
                       )}
                     </div>

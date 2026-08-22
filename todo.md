@@ -164,3 +164,9 @@
 - [x] Đối chiếu các mục quốc gia, quốc tịch và mẫu diễn đạt được nhấn mạnh trong tài liệu.
 - [x] Bổ sung dữ liệu vào chủ đề Quốc tịch, đất nước & thành phố.
 - [x] Kiểm tra bài luyện, bản dựng và lưu phiên bản cập nhật.
+
+# Ôn lại từ trả lời sai
+
+- [x] Rà soát luồng chấm đáp án và cách lưu dữ liệu trên thiết bị.
+- [x] Tạo danh sách Từ cần ôn và chế độ luyện lại từ sai.
+- [x] Kiểm tra lưu giữ dữ liệu, bài luyện, bản dựng và lưu phiên bản cập nhật.

@@ -606,6 +606,7 @@ a { color: inherit; }
   .vocabulary-submit-row { align-items: flex-start; flex-direction: column; }
   .topic-route-row { grid-template-columns: 43px minmax(0, 1fr) 20px; gap: 11px; min-height: 83px; padding: 14px 15px 14px 14px; }
   .topic-route-number { font-size: 29px; }
+  .topic-route-review-icon { width: 37px; height: 37px; }
   .topic-route-copy strong { font-size: 19px; }
   .topic-route-copy small { margin-top: 5px; font-size: 9px; }
   .lexicon-group summary { grid-template-columns: 35px 1fr 20px; padding: 12px 14px; }
@@ -669,6 +670,12 @@ a { color: inherit; }
 .topic-route-number { position: relative; padding-bottom: 4px; border-bottom: 1px dashed rgba(214,162,42,.7); }
 .topic-route-copy small { position: relative; padding-top: 1px; }
 .topic-route-copy small::before { content: "···"; margin-right: 6px; color: var(--mustard); letter-spacing: .08em; }
+.topic-route-row--review { min-height: 88px; background: #eef2e9; }
+.topic-route-row--review::before { background: #6f8c78; }
+.topic-route-review-icon { display: grid; place-items: center; width: 47px; height: 47px; color: var(--sage-ink); border: 1px dashed rgba(71,99,79,.42); border-radius: 50%; transform: rotate(-8deg); }
+.topic-route-row--review .topic-route-copy strong { color: var(--sage-ink); }
+.review-empty-note { display: flex; align-items: center; gap: 14px; max-width: 480px; padding: 23px 25px; color: var(--sage-ink); border: 1px dashed rgba(71,99,79,.42); background: #eef2e9; box-shadow: 6px 7px 0 rgba(22,58,95,.06); }
+.review-empty-note p { margin: 0; font-family: "Fraunces", serif; font-size: 18px; line-height: 1.32; }
 
 .nav-group { overflow: visible; border-color: rgba(238,244,241,.16); }
 .nav-group summary { position: relative; min-height: 39px; margin-left: 2px; padding-left: 20px; border-left: 2px solid rgba(238,244,241,.24); background: rgba(255,255,255,.025); clip-path: polygon(0 0, 98% 0, 100% 50%, 98% 100%, 0 100%); }
