@@ -41,7 +41,7 @@ const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   places: "Quốc tịch & nơi chốn",
   questions: "Đặt câu hỏi",
   notebook: "Sổ tay câu",
-  vocabulary: "Học 82 từ",
+  vocabulary: "Học từ vựng",
 };
 
 const conjugationCases = verbs.flatMap((verb) => pronouns.map((pronoun) => ({ verb, pronoun })));

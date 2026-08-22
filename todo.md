@@ -117,3 +117,9 @@
 
 - [x] Đổi nhãn thanh bên thành “Luyện từ” và giảm thêm cỡ chữ chủ đề.
 - [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
+
+# Sở thích, đi chơi và thời gian rảnh
+
+- [x] Trích xuất chỉ các từ và cụm từ in đậm trong tài liệu được gửi.
+- [x] Thêm chủ đề mới vào danh sách, trang học riêng và bài luyện.
+- [x] Kiểm tra nội dung, điều hướng, bản dựng và lưu phiên bản cập nhật.
