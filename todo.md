@@ -170,3 +170,9 @@
 - [x] Rà soát luồng chấm đáp án và cách lưu dữ liệu trên thiết bị.
 - [x] Tạo danh sách Từ cần ôn và chế độ luyện lại từ sai.
 - [x] Kiểm tra lưu giữ dữ liệu, bài luyện, bản dựng và lưu phiên bản cập nhật.
+
+# Nghĩa của nơi làm việc
+
+- [x] Rà soát các nơi làm việc hiện có trong chủ đề Nghề nghiệp & nơi làm việc.
+- [x] Bổ sung nghĩa tiếng Việt và tiếng Anh cho các nơi làm việc.
+- [x] Kiểm tra bài luyện, bản dựng và lưu phiên bản cập nhật.
