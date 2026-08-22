@@ -153,3 +153,8 @@
 
 - [x] Chỉnh diễn giải Nom(s) de famille thành họ theo bố hoặc mẹ.
 - [x] Kiểm tra, lưu phiên bản và bàn giao cập nhật.
+
+# Bố cục bốn chiều học
+
+- [x] Đưa bốn lựa chọn chiều học lên cùng một hàng trên màn hình rộng.
+- [x] Kiểm tra hiển thị trên màn hình rộng và hẹp, lưu phiên bản cập nhật.
