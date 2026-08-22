@@ -135,3 +135,9 @@
 - [x] Đối chiếu nhãn họ và tên từ ảnh biểu mẫu.
 - [x] Bổ sung các thuật ngữ vào chủ đề thông tin cá nhân và kiểm tra bài luyện.
 - [x] Kiểm tra bản dựng, lưu phiên bản và bàn giao cập nhật.
+
+# Giới tính trong thông tin cá nhân
+
+- [x] Chuẩn hóa nhãn và các lựa chọn giới tính trên biểu mẫu tiếng Pháp.
+- [x] Thêm mục giới tính vào chủ đề thông tin cá nhân.
+- [x] Kiểm tra bản dựng, lưu phiên bản và bàn giao cập nhật.
