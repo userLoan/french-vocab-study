@@ -478,25 +478,56 @@ export const questionExamples = [
   { topic: "s'appeler", casual: "Tu t'appelles comment ?", neutral: "Comment est-ce que tu t'appelles ?", formal: "Comment t'appelles-tu ?" },
 ];
 
+export type QuestionTransformationMethod = "intonation" | "estCeQue" | "inversion";
+
+export const questionTransformationMethods: ReadonlyArray<{
+  id: QuestionTransformationMethod;
+  label: string;
+  cue: string;
+}> = [
+  { id: "intonation", label: "Giọng lên", cue: "Giữ nguyên câu, thêm dấu hỏi." },
+  { id: "estCeQue", label: "Est-ce que", cue: "Thêm est-ce que ở đầu câu." },
+  { id: "inversion", label: "Đảo ngữ", cue: "Đảo động từ và tu, có gạch ngang." },
+];
+
 export type QuestionTransformationExercise = {
   id: string;
-  method: "Giọng lên" | "Est-ce que" | "Đảo ngữ";
   vietnamese: string;
   statement: string;
-  answer: string;
-  note: string;
+  answers: Record<QuestionTransformationMethod, string>;
 };
 
 export const questionTransformationExercises: QuestionTransformationExercise[] = [
-  { id: "coffee-intonation", method: "Giọng lên", vietnamese: "Hỏi: bạn có thích cà phê không?", statement: "Tu aimes le café.", answer: "Tu aimes le café ?", note: "Giữ nguyên câu và lên giọng ở cuối." },
-  { id: "coffee-estce", method: "Est-ce que", vietnamese: "Hỏi: bạn có thích cà phê không?", statement: "Tu aimes le café.", answer: "Est-ce que tu aimes le café ?", note: "Thêm Est-ce que ở đầu câu." },
-  { id: "coffee-inversion", method: "Đảo ngữ", vietnamese: "Hỏi: bạn có thích cà phê không?", statement: "Tu aimes le café.", answer: "Aimes-tu le café ?", note: "Đưa động từ lên trước tu và nối bằng gạch ngang." },
-  { id: "museum-intonation", method: "Giọng lên", vietnamese: "Hỏi: bạn có đi bảo tàng không?", statement: "Tu visites un musée.", answer: "Tu visites un musée ?", note: "Giữ nguyên câu và lên giọng ở cuối." },
-  { id: "museum-estce", method: "Est-ce que", vietnamese: "Hỏi: bạn có đi bảo tàng không?", statement: "Tu visites un musée.", answer: "Est-ce que tu visites un musée ?", note: "Thêm Est-ce que ở đầu câu." },
-  { id: "museum-inversion", method: "Đảo ngữ", vietnamese: "Hỏi: bạn có đi bảo tàng không?", statement: "Tu visites un musée.", answer: "Visites-tu un musée ?", note: "Đưa động từ lên trước tu và nối bằng gạch ngang." },
-  { id: "bank-intonation", method: "Giọng lên", vietnamese: "Hỏi: bạn có làm ở ngân hàng không?", statement: "Tu travailles dans une banque.", answer: "Tu travailles dans une banque ?", note: "Giữ nguyên câu và lên giọng ở cuối." },
-  { id: "bank-estce", method: "Est-ce que", vietnamese: "Hỏi: bạn có làm ở ngân hàng không?", statement: "Tu travailles dans une banque.", answer: "Est-ce que tu travailles dans une banque ?", note: "Thêm Est-ce que ở đầu câu." },
-  { id: "bank-inversion", method: "Đảo ngữ", vietnamese: "Hỏi: bạn có làm ở ngân hàng không?", statement: "Tu travailles dans une banque.", answer: "Travailles-tu dans une banque ?", note: "Đưa động từ lên trước tu và nối bằng gạch ngang." },
+  {
+    id: "coffee",
+    vietnamese: "Hỏi: bạn có thích cà phê không?",
+    statement: "Tu aimes le café.",
+    answers: {
+      intonation: "Tu aimes le café ?",
+      estCeQue: "Est-ce que tu aimes le café ?",
+      inversion: "Aimes-tu le café ?",
+    },
+  },
+  {
+    id: "museum",
+    vietnamese: "Hỏi: bạn có đi bảo tàng không?",
+    statement: "Tu visites un musée.",
+    answers: {
+      intonation: "Tu visites un musée ?",
+      estCeQue: "Est-ce que tu visites un musée ?",
+      inversion: "Visites-tu un musée ?",
+    },
+  },
+  {
+    id: "bank",
+    vietnamese: "Hỏi: bạn có làm ở ngân hàng không?",
+    statement: "Tu travailles dans une banque.",
+    answers: {
+      intonation: "Tu travailles dans une banque ?",
+      estCeQue: "Est-ce que tu travailles dans une banque ?",
+      inversion: "Travailles-tu dans une banque ?",
+    },
+  },
 ];
 
 export type QuestionExercise = {

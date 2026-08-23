@@ -198,3 +198,9 @@
 
 - [x] Chuyển lối vào Đặt câu hỏi từ nhóm Giao tiếp sang nhóm Ngữ pháp.
 - [x] Kiểm tra điều hướng, bản dựng và lưu phiên bản cập nhật — lối vào hiện nằm dưới Ngữ pháp.
+
+# Bố cục ba cách hỏi
+
+- [x] Rà soát bài luyện hiện tại và xác định bố cục ba ô nhập cho cùng một câu gốc.
+- [x] Chuyển bài tập sang ba cách hỏi song song và làm rõ phản hồi.
+- [x] Kiểm tra Enter, giao diện, bản dựng và lưu phiên bản cập nhật.

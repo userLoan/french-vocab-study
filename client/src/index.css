@@ -404,6 +404,37 @@ a { color: inherit; }
 .question-feedback-card > span { display: block; margin-top: 15px; color: rgba(104,74,117,.76); font-size: 10px; font-weight: 700; line-height: 1.55; }
 .question-feedback--correct { color: var(--sage-ink) !important; }
 .question-feedback--review { color: #8b4235 !important; }
+
+/* Three-question-method practice stays a ruled notebook sheet: one idea, three clearly marked lines. */
+.question-practice--transform { grid-template-columns: minmax(0, 1fr) 276px; align-items: start; margin-top: 40px; }
+.question-transform-card { min-height: 0; padding-bottom: 34px; }
+.question-transform-brief { margin-top: 33px; padding-bottom: 18px; border-bottom: 1px dashed rgba(22,58,95,.24); }
+.question-transform-brief .question-prompt-label { margin: 0; }
+.question-transform-statement { display: flex; flex-wrap: wrap; align-items: baseline; gap: 9px 12px; margin: 12px 0 0; }
+.question-transform-statement span { color: var(--ink-soft); font-size: 9px; font-weight: 800; letter-spacing: .13em; }
+.question-transform-statement strong { color: var(--ink); font-family: "Fraunces", serif; font-size: clamp(23px, 2.5vw, 31px); font-weight: 600; letter-spacing: -.045em; line-height: 1.15; }
+.question-transform-fields { min-width: 0; margin: 24px 0 0; padding: 0; border: 0; }
+.question-transform-fields legend { width: 100%; padding: 0 0 10px; color: var(--ink-soft); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.question-transform-row { display: grid; grid-template-columns: 30px minmax(116px, .72fr) minmax(0, 1.48fr); align-items: center; gap: 12px; padding: 13px 0 14px; border-top: 1px dashed rgba(22,58,95,.22); cursor: text; }
+.question-transform-number { display: grid; width: 28px; height: 28px; place-items: center; color: var(--ink); border: 1px solid rgba(22,58,95,.35); background: rgba(251,247,237,.72); font-size: 9px; font-weight: 800; letter-spacing: .04em; }
+.question-transform-copy { display: grid; gap: 3px; min-width: 0; }
+.question-transform-copy strong { color: var(--ink); font-family: "Fraunces", serif; font-size: 18px; font-weight: 600; letter-spacing: -.025em; line-height: 1.08; }
+.question-transform-copy small { color: var(--ink-soft); font-size: 9px; font-weight: 700; line-height: 1.35; }
+.question-transform-row input { width: 100%; min-width: 0; padding: 8px 3px 8px; color: var(--ink); border: 0; border-bottom: 2px dashed rgba(22,58,95,.46); outline: none; background: rgba(253,250,242,.54); font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; letter-spacing: -.025em; transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out); }
+.question-transform-row--estCeQue input { border-bottom-color: rgba(214,162,42,.78); }
+.question-transform-row--inversion input { border-bottom-color: rgba(61,97,78,.58); }
+.question-transform-row input::placeholder { color: rgba(78,105,131,.58); font-family: "Manrope", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0; }
+.question-transform-row input:focus-visible { border-bottom-color: var(--ink); box-shadow: 0 5px 0 -3px rgba(22,58,95,.17); }
+.question-transform-card .question-submit-row { margin-top: 25px; }
+.question-transform-feedback { min-height: 379px; background: #d8e6e4; box-shadow: 5px 7px 0 rgba(54,85,100,.11); transform: rotate(1deg); }
+.question-transform-feedback p { color: #365564; }
+.question-transform-feedback > span { color: rgba(54,85,100,.76); }
+.question-transform-solutions { margin-top: 17px; border-top: 1px dashed rgba(54,85,100,.33); }
+.question-transform-solution { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 10px 0 11px; border-bottom: 1px dashed rgba(54,85,100,.25); }
+.question-transform-solution small { color: #365564; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.question-transform-solution strong { grid-column: 1 / -1; color: var(--ink); font-family: "Fraunces", serif; font-size: 14px; font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
+.question-transform-solution em { grid-column: 2; grid-row: 1; align-self: center; color: #8b4235; font-size: 9px; font-style: normal; font-weight: 800; }
+.question-transform-solution--correct strong, .question-transform-solution--correct em { color: var(--sage-ink); }
 .question-word-section, .quel-agreement-section, .question-form-section, .question-examples-section { margin-top: 49px; }
 .question-word-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .question-word-card { min-height: 148px; padding: 17px 16px; background: #f7efd8; box-shadow: inset 0 0 0 1px rgba(118,95,51,.14); }
@@ -524,6 +555,8 @@ a { color: inherit; }
   .article-layout { grid-template-columns: minmax(0, 1fr) 250px; }
   .place-practice { grid-template-columns: minmax(0, 1fr) 220px; }
   .question-practice { grid-template-columns: minmax(0, 1fr) 220px; }
+  .question-practice--transform { grid-template-columns: minmax(0, 1fr); }
+  .question-practice--transform .question-transform-feedback { min-height: 0; }
 }
 
 @media (max-width: 860px) {
@@ -534,6 +567,7 @@ a { color: inherit; }
   .topbar { min-height: 88px; padding-left: 58px; }
   .mode-grid { grid-template-columns: 1fr; }
   .mode-card { min-height: 135px; }
+  .mode-card:nth-child(n) { grid-column: auto; top: 0; margin: 0; transform: none; }
   .mode-card strong { margin-top: 17px; }
   .progress-panel { grid-template-columns: 1fr 1fr; }
   .tip-card { grid-column: 1 / -1; }
@@ -599,6 +633,15 @@ a { color: inherit; }
   .question-word-grid, .quel-agreement-grid, .question-form-grid { grid-template-columns: 1fr; }
   .question-example-list { overflow-x: auto; }
   .question-example-row { min-width: 680px; }
+  .question-practice--transform { margin-top: 34px; }
+  .question-transform-card { padding: 28px 21px 29px; }
+  .question-transform-brief { margin-top: 29px; }
+  .question-transform-statement strong { font-size: 25px; }
+  .question-transform-row { grid-template-columns: 29px minmax(0, 1fr); align-items: start; gap: 5px 11px; padding: 14px 0; }
+  .question-transform-number { grid-row: 1 / 3; align-self: center; }
+  .question-transform-copy { grid-column: 2; }
+  .question-transform-row input { grid-column: 2; font-size: 18px; }
+  .question-practice--transform .question-transform-feedback { display: block; min-height: 0; padding: 22px 19px; transform: rotate(.45deg); }
   .vocabulary-grid { grid-template-columns: 1fr; }
   .vocabulary-recall-card { min-height: 0; padding: 28px 21px; }
   .vocabulary-prompt { margin-top: 36px; }
@@ -695,8 +738,43 @@ a { color: inherit; }
 .stat-row > div { position: relative; padding-top: 4px; }
 .stat-row > div::after { content: "•"; position: absolute; top: -7px; left: 50%; color: var(--mustard); font-size: 15px; transform: translateX(-50%); }
 
+/* Accepted visual-review refinements: the rail is a stitched index, modes are loose notes, and progress is a marked ledger. */
+.side-rail { box-shadow: inset -12px 0 0 rgba(4,27,50,.14); }
+.side-rail::after { content: ""; position: absolute; z-index: 0; top: 121px; right: 12px; bottom: 30px; width: 1px; background: repeating-linear-gradient(to bottom, rgba(238,244,241,.35) 0 2px, transparent 2px 10px); opacity: .7; pointer-events: none; }
+.brand-lockup, .rail-caption, .nav-list, .rail-bottom { position: relative; z-index: 1; }
+.nav-group { margin-right: 10px; border: 0; background: transparent; }
+.nav-group summary { min-height: 41px; box-shadow: inset 0 -1px 0 rgba(238,244,241,.14); }
+.nav-group summary::before { content: ""; position: absolute; top: -5px; left: 35%; width: 54px; height: 9px; opacity: 0; background: rgba(243,223,158,.78); transform: rotate(-3deg); transition: opacity 180ms var(--ease-out); }
+.nav-group[open] summary::before, .nav-group--active summary::before { opacity: .82; }
+.nav-group--active { margin-right: 3px; transform: translateX(4px) rotate(-.25deg); }
+.nav-group--active summary { box-shadow: 5px 5px 0 rgba(2,18,35,.16), inset 0 -1px 0 rgba(22,58,95,.14); }
+.nav-group-items { position: relative; margin-left: 5px; padding-top: 6px; padding-bottom: 9px; border-left: 1px dashed rgba(238,244,241,.25); }
+.nav-subitem { margin-left: 5px; }
+.nav-subitem:not(.nav-subitem--active)::after { content: "·"; margin-left: auto; color: rgba(238,244,241,.32); font-family: "Fraunces", serif; font-size: 17px; }
+
+.mode-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px 14px; padding: 9px 7px 20px 3px; }
+.mode-card { grid-column: span 2; min-height: 178px; overflow: visible; }
+.mode-card::before { right: 16%; top: -8px; width: 76px; height: 16px; transform: rotate(-4deg); }
+.mode-card:nth-child(1), .mode-card:nth-child(2) { grid-column: span 3; min-height: 195px; }
+.mode-card:nth-child(1) { margin-right: 7px; transform: rotate(-.55deg); }
+.mode-card:nth-child(2) { margin-left: 6px; transform: translateY(10px) rotate(.7deg); }
+.mode-card:nth-child(3) { margin-right: 2px; transform: translateY(-2px) rotate(.35deg); }
+.mode-card:nth-child(4) { margin: 10px 4px 0 -3px; transform: rotate(-.7deg); }
+.mode-card:nth-child(5) { margin: -4px 0 0 5px; transform: rotate(.4deg); }
+.mode-card:nth-child(n)::after { width: 24px; height: 24px; border-bottom-width: 24px; border-left-width: 24px; }
+.mode-card:hover { transform: translateY(-5px) rotate(-.3deg); }
+
+.progress-card { position: relative; transform: rotate(.35deg); box-shadow: 5px 7px 0 rgba(22,58,95,.07), inset 0 0 0 1px rgba(118,95,51,.12); }
+.progress-card::before { content: "phiên 01"; position: absolute; right: 20px; bottom: 13px; color: rgba(22,58,95,.34); font-family: "Fraunces", serif; font-size: 9px; font-style: italic; letter-spacing: .08em; transform: rotate(-5deg); }
+.next-card { margin-left: 5px; transform: rotate(-.45deg); box-shadow: 5px 7px 0 rgba(22,58,95,.07), inset 0 0 0 1px rgba(118,95,51,.12); }
+.next-card::before { content: "ghi chú nhỏ"; position: absolute; top: 11px; right: 16px; color: rgba(22,58,95,.37); font-family: "Fraunces", serif; font-size: 9px; font-style: italic; transform: rotate(4deg); }
+.tip-card { position: relative; margin-right: 5px; box-shadow: 4px 5px 0 rgba(61,97,78,.08); }
+.tip-card::before { content: "✓"; position: absolute; top: -12px; right: 15px; color: rgba(61,97,78,.27); font-family: "Fraunces", serif; font-size: 30px; font-style: italic; transform: rotate(-11deg); }
+
 @media (max-width: 760px) {
   .side-rail::before { display: none; }
   .hero-visual { height: auto; margin: 0; transform: none; }
   .hero-visual::before, .hero-photo-caption { display: none; }
+  .mode-card:nth-child(n) { grid-column: auto; margin: 0; transform: none; }
+  .progress-card, .next-card { margin-left: 0; transform: none; }
 }

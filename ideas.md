@@ -81,3 +81,6 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Chỉ mục chủ đề:** các chủ đề là những mẩu giấy rời xếp chồng, có mép cắt và băng keo washi lệch nhẹ; tránh một danh sách sản phẩm đồng nhất.
 - **Tab đang chọn:** trạng thái chọn trong gáy sổ phải giống tab giấy được ghim vào lề, không dùng kiểu tô nền của sidebar SaaS.
 - **Dấu ghi phiên:** số liệu phiên học dùng đường kẻ sổ, dấu chấm mực, viền con dấu và ghi chú viết tay để thể hiện tiến độ.
+- **Gáy sổ:** cột trái là mục lục vật lý có đường chỉ lề, dấu ghim và các tab giấy dán; nhóm đang mở phải nhô ra như một nhãn được kéo khỏi mép sổ.
+- **Giấy học:** các lựa chọn chế độ tạo thành những tờ ghi chú có kích thước và vị trí lệch nhịp có kiểm soát, thay vì một dãy thẻ bằng nhau.
+- **Ghi chép tiến độ:** khu vực phiên học thêm ghi chú mực nhỏ, dấu tick và số phiên viết tay để giữ cảm giác nhật ký học tập.
