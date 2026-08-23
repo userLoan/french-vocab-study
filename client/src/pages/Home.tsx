@@ -999,35 +999,6 @@ export default function Home() {
                   </div>
                 </section>
 
-                <section className="lexicon-section">
-                  <div className="section-heading">
-                    <div>
-                      <p className="section-kicker">KHO TỪ VỰNG</p>
-                    </div>
-                    <span>{vocabularyGroups.reduce((total, group) => total + group.entries.length, 0)} mục đã ghi chú</span>
-                  </div>
-                  <div className="lexicon-list">
-                    {vocabularyGroups.map((group, index) => (
-                      <details className="lexicon-group" key={group.id} open={index < 2}>
-                        <summary>
-                          <span className="lexicon-number">0{index + 1}</span>
-                          <span><strong>{group.title}</strong><small>{group.caption}</small></span>
-                          <ChevronRight size={18} />
-                        </summary>
-                        <div className="vocabulary-grid">
-                          {group.entries.map((entry) => (
-                            <article className="vocabulary-entry" key={entry.french}>
-                              <strong>{entry.french}</strong>
-                              <span>{entry.vietnamese}</span>
-                              <span className="vocabulary-entry-english">EN · {entry.english}</span>
-                              {entry.note && <small>{entry.note}</small>}
-                            </article>
-                          ))}
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </section>
               </section>
             )}
           </section>

@@ -182,3 +182,8 @@
 - [x] Rà soát luồng Flashcards và chuẩn bị dữ liệu của mọi chủ đề.
 - [x] Đưa toàn bộ từ vựng vào Flashcards, kèm nghĩa Việt và Anh.
 - [x] Kiểm tra thẻ, điều hướng, bản dựng và lưu phiên bản cập nhật — xác minh trực tiếp 223 thẻ.
+
+# Gỡ nhãn tại Sổ tay câu
+
+- [x] Xóa phần KHO TỪ VỰNG khỏi Sổ tay câu.
+- [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
