@@ -176,3 +176,9 @@
 - [x] Rà soát các nơi làm việc hiện có trong chủ đề Nghề nghiệp & nơi làm việc.
 - [x] Bổ sung nghĩa tiếng Việt và tiếng Anh cho các nơi làm việc.
 - [x] Kiểm tra bài luyện, bản dựng và lưu phiên bản cập nhật.
+
+# Flashcards toàn bộ từ vựng
+
+- [x] Rà soát luồng Flashcards và chuẩn bị dữ liệu của mọi chủ đề.
+- [x] Đưa toàn bộ từ vựng vào Flashcards, kèm nghĩa Việt và Anh.
+- [x] Kiểm tra thẻ, điều hướng, bản dựng và lưu phiên bản cập nhật — xác minh trực tiếp 223 thẻ.

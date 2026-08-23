@@ -169,7 +169,6 @@ export default function Home() {
   const [questionAnswer, setQuestionAnswer] = useState("");
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
 
-  const flashVerb = verbs[activeIndex % verbs.length];
   const conjugationCase = conjugationCases[conjugationIndex % conjugationCases.length];
   const conjugationVerb = conjugationCase.verb;
   const conjugationPronoun = conjugationCase.pronoun;
@@ -183,6 +182,8 @@ export default function Home() {
     () => vocabularyGroups.flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title, key: `${group.id}::${entry.french}` }))),
     [],
   );
+  const flashcardEntries = allVocabularyEntries;
+  const flashcardEntry = flashcardEntries[activeIndex % flashcardEntries.length];
   const reviewVocabularyEntries = useMemo(() => {
     const records = new Map(reviewVocabularyRecords.map((record) => [record.key, record]));
     return allVocabularyEntries
@@ -230,7 +231,7 @@ export default function Home() {
   };
 
   const nextFlash = () => {
-    setActiveIndex((value) => (value + 1) % verbs.length);
+    setActiveIndex((value) => (value + 1) % flashcardEntries.length);
     setFlashBack(false);
   };
 
@@ -436,13 +437,13 @@ export default function Home() {
                       <p className="section-kicker">MỞ MỘT TỜ GIẤY</p>
                       <h2>Chọn một nhịp học cho hôm nay</h2>
                     </div>
-                    <span>{verbs.length} động từ · {vocabularyGroups.length} chủ đề mới</span>
+                    <span>{verbs.length} động từ · {vocabularyGroups.length} chủ đề từ vựng</span>
                   </div>
                   <div className="mode-grid">
                     <button className="mode-card mode-card--blue" onClick={() => changeMode("flashcards")}>
                       <Layers size={24} />
                       <strong>Flashcards</strong>
-                      <span>Nhận mặt từ và nghĩa</span>
+                      <span>Tất cả từ và nghĩa</span>
                       <ArrowRight size={18} />
                     </button>
                     <button className="mode-card mode-card--cream" onClick={() => changeMode("conjugation")}>
@@ -476,7 +477,7 @@ export default function Home() {
 
             {mode === "flashcards" && (
               <section className="flashcard-view">
-                <ModeHeader eyebrow="NHẬN MẶT TỪ" title="Flashcards" description="Lật thẻ, đọc to và tự đánh giá độ nhớ của bạn." number="01" />
+                <ModeHeader eyebrow="NHẬN MẶT TỪ" title="Flashcards" description={`Toàn bộ ${flashcardEntries.length} từ vựng — lật thẻ, đọc to và tự đánh giá độ nhớ của bạn.`} number="01" />
                 <div className="flashcard-layout flashcard-layout--solo">
                   <div className={`flashcard ${flashBack ? "flashcard--back" : ""}`}>
                     <button
@@ -492,21 +493,21 @@ export default function Home() {
                     >
                       <div className="flashcard-corner" />
                       <div className="flashcard-face flashcard-face--front">
-                        <PaperLabel tone="navy">{flashVerb.group}</PaperLabel>
-                        <p className="flashcard-index">{String(activeIndex + 1).padStart(2, "0")} / {String(verbs.length).padStart(2, "0")}</p>
+                        <PaperLabel tone="navy">{flashcardEntry.group}</PaperLabel>
+                        <p className="flashcard-index">{String(activeIndex + 1).padStart(2, "0")} / {String(flashcardEntries.length).padStart(2, "0")}</p>
                         <div>
-                          <h2>{flashVerb.infinitive}</h2>
-                          <VerbMeta verb={flashVerb} />
+                          <h2>{flashcardEntry.french}</h2>
+                          <p className="flashcard-topic">Từ vựng theo chủ đề</p>
                         </div>
                         <span className="flip-prompt"><RotateCcw size={15} /> Chạm để lật · Enter để sang thẻ</span>
                       </div>
                       <div className="flashcard-face flashcard-face--back">
                         <PaperLabel tone="sage">NGHĨA</PaperLabel>
                         <div>
-                          <p className="meaning-vietnamese">{flashVerb.meaning}</p>
-                          <p className="meaning-english">{flashVerb.english}</p>
+                          <p className="meaning-vietnamese">{flashcardEntry.vietnamese}</p>
+                          <p className="meaning-english">{flashcardEntry.english}</p>
                         </div>
-                        {flashVerb.note && <p className="grammar-note">{flashVerb.note}</p>}
+                        {flashcardEntry.note && <p className="grammar-note">{flashcardEntry.note}</p>}
                         <span className="flip-prompt"><RotateCcw size={15} /> Chạm để xem lại · Enter để sang thẻ</span>
                       </div>
                     </button>
