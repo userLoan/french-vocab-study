@@ -187,3 +187,9 @@
 
 - [x] Xóa phần KHO TỪ VỰNG khỏi Sổ tay câu.
 - [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật.
+
+# Luyện ba cách đặt câu hỏi
+
+- [x] Rà soát mẫu hỏi hiện có và chọn từ vựng quen thuộc cho bài luyện.
+- [x] Thêm bài tập biến câu thành ba cách hỏi, với gợi ý tiếng Việt ngắn và dễ.
+- [x] Kiểm tra Enter, đáp án, giao diện, bản dựng và lưu phiên bản cập nhật — xác minh trực tiếp đáp án đúng và chuyển sang câu mới.

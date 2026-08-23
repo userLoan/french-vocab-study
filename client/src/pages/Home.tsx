@@ -19,7 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionWords, vocabularyGroups, type VocabularyEntry } from "@/data/lessonData";
+import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionTransformationExercises, questionWords, vocabularyGroups, type VocabularyEntry } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
@@ -168,6 +168,9 @@ export default function Home() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [questionAnswer, setQuestionAnswer] = useState("");
   const [questionFeedback, setQuestionFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
+  const [questionTransformationIndex, setQuestionTransformationIndex] = useState(0);
+  const [questionTransformationAnswer, setQuestionTransformationAnswer] = useState("");
+  const [questionTransformationFeedback, setQuestionTransformationFeedback] = useState<{ isCorrect: boolean; expected: string; note: string } | null>(null);
 
   const conjugationCase = conjugationCases[conjugationIndex % conjugationCases.length];
   const conjugationVerb = conjugationCase.verb;
@@ -204,6 +207,7 @@ export default function Home() {
   const vocabularyExpected = vocabularyEntry?.[activeVocabularyDirection.answerLanguage] ?? "";
   const placeExercise = placeExercises[placeIndex % placeExercises.length];
   const questionExercise = questionExercises[questionIndex % questionExercises.length];
+  const questionTransformationExercise = questionTransformationExercises[questionTransformationIndex % questionTransformationExercises.length];
   const completed = known + review + correct;
   const sessionTarget = 12;
   const progress = Math.min(100, Math.round((completed / sessionTarget) * 100));
@@ -331,6 +335,16 @@ export default function Home() {
     setQuestionFeedback({ isCorrect, expected: questionExercise.answer, note: questionExercise.note });
     setQuestionIndex((value) => (value + 1) % questionExercises.length);
     setQuestionAnswer("");
+  };
+
+  const checkQuestionTransformation = (event: FormEvent) => {
+    event.preventDefault();
+    const isCorrect = normalize(questionTransformationAnswer) === normalize(questionTransformationExercise.answer);
+    if (isCorrect) setCorrect((value) => value + 1);
+    else setReview((value) => value + 1);
+    setQuestionTransformationFeedback({ isCorrect, expected: questionTransformationExercise.answer, note: questionTransformationExercise.note });
+    setQuestionTransformationIndex((value) => (value + 1) % questionTransformationExercises.length);
+    setQuestionTransformationAnswer("");
   };
 
   const checkConversation = (event: FormEvent) => {
@@ -907,6 +921,34 @@ export default function Home() {
                       </article>
                     ))}
                   </div>
+                </section>
+
+                <section className="question-practice question-practice--transform">
+                  <form className="question-recall-card" onSubmit={checkQuestionTransformation}>
+                    <div className="question-recall-top">
+                      <PaperLabel tone="sage">LUYỆN BA CÁCH HỎI</PaperLabel>
+                      <span>{String(questionTransformationIndex + 1).padStart(2, "0")} / {String(questionTransformationExercises.length).padStart(2, "0")}</span>
+                    </div>
+                    <p className="question-prompt-label">{questionTransformationExercise.vietnamese}</p>
+                    <p className="question-transform-statement">Câu gốc: <strong>{questionTransformationExercise.statement}</strong></p>
+                    <p className="question-transform-method">Dùng cách: <strong>{questionTransformationExercise.method}</strong></p>
+                    <label className="question-transform-answer">
+                      <span>VIẾT CÂU HỎI TIẾNG PHÁP</span>
+                      <input autoFocus aria-label="Viết lại thành câu hỏi tiếng Pháp" value={questionTransformationAnswer} onChange={(event) => setQuestionTransformationAnswer(event.target.value)} placeholder="Gõ câu hỏi ngắn ở đây" />
+                    </label>
+                    <div className="question-submit-row">
+                      <button className="primary-button" type="submit">Kiểm tra & tiếp <ArrowRight size={18} /></button>
+                      <span>Nhấn Enter để chấm và sang câu mới</span>
+                    </div>
+                  </form>
+                  <aside className="question-feedback-card">
+                    <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                    {questionTransformationFeedback ? (
+                      <><p className={questionTransformationFeedback.isCorrect ? "question-feedback question-feedback--correct" : "question-feedback question-feedback--review"}>{questionTransformationFeedback.isCorrect ? "Đúng rồi — bạn đã dùng đúng cách hỏi." : `Đáp án: ${questionTransformationFeedback.expected}`}</p><span>{questionTransformationFeedback.note}</span></>
+                    ) : (
+                      <><p>Chỉ viết lại câu ngắn phía bên trái.</p><span>Nhìn vào cách hỏi được yêu cầu, rồi nhấn Enter.</span></>
+                    )}
+                  </aside>
                 </section>
 
                 <section className="question-examples-section">
