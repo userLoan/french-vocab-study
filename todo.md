@@ -216,3 +216,14 @@
 - [x] Rà soát từ vựng hiện có và phân bổ 100 câu ngắn, quen thuộc theo chủ đề.
 - [x] Bổ sung đúng 100 câu cùng ba đáp án Giọng lên, Est-ce que và Đảo ngữ.
 - [x] Kiểm tra tổng số câu, luồng Enter, bản dựng và lưu phiên bản cập nhật — xác minh 01 / 100, 02 / 100 và phản hồi đúng cho ba dòng.
+
+# Đồng bộ bản 100 câu
+
+- [x] Kiểm tra phiên bản đang hiển thị 01 / 15 — đây là ảnh của bộ 15 câu từ phiên bản trước.
+- [x] Đồng bộ bản 100 câu tới phiên bản người dùng truy cập bằng phiên bản đã xuất bản `59896f95`.
+- [x] Xác nhận chỉ báo của phiên bản mới hiển thị 01 / 100 trong bản xem trước trực tiếp.
+
+# Gỡ bảng Thử biến đổi
+
+- [x] Xác định và gỡ bảng Hỏi cùng một điều theo ba cách khỏi mục Đặt câu hỏi.
+- [x] Kiểm tra bài luyện ba ô nhập, bản dựng và lưu phiên bản cập nhật — bản xem trước còn 01 / 100 và không còn bảng minh họa.

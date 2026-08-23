@@ -19,7 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExamples, questionExercises, questionForms, questionTransformationExercises, questionTransformationMethods, questionWords, vocabularyGroups, type QuestionTransformationMethod, type VocabularyEntry } from "@/data/lessonData";
+import { articleExercises, articleNotes, conversationPatterns, nationalityPlaces, placeExercises, placeRules, quelForms, questionExercises, questionForms, questionTransformationExercises, questionTransformationMethods, questionWords, vocabularyGroups, type QuestionTransformationMethod, type VocabularyEntry } from "@/data/lessonData";
 import { pronouns, verbs, type Pronoun, type Verb } from "@/data/verbs";
 
 type Mode = "overview" | "flashcards" | "conjugation" | "articles" | "places" | "questions" | "notebook" | "vocabulary";
@@ -993,24 +993,6 @@ export default function Home() {
                   </aside>
                 </section>
 
-                <section className="question-examples-section">
-                  <div className="section-heading">
-                    <div>
-                      <p className="section-kicker">THỬ BIẾN ĐỔI</p>
-                      <h2>Hỏi cùng một điều theo ba cách</h2>
-                    </div>
-                  </div>
-                  <div className="question-example-list">
-                    {questionExamples.map((example) => (
-                      <article className="question-example-row" key={example.topic}>
-                        <strong>{example.topic}</strong>
-                        <span>{example.casual}</span>
-                        <span>{example.neutral}</span>
-                        <span>{example.formal}</span>
-                      </article>
-                    ))}
-                  </div>
-                </section>
               </section>
             )}
 
