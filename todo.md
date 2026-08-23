@@ -210,3 +210,9 @@
 - [x] Chọn thêm các câu ngắn từ nhóm sở thích, đi chơi, nơi làm việc, gia đình và thông tin cá nhân.
 - [x] Bổ sung đáp án cho ba cách hỏi của từng câu, giữ gợi ý tiếng Việt đơn giản.
 - [x] Kiểm tra số câu, luồng Enter, bản dựng và lưu phiên bản cập nhật — xác minh trực tiếp chỉ báo 01 / 15 và Enter chuyển sang 02 / 15.
+
+# Bộ 100 câu ba cách hỏi
+
+- [x] Rà soát từ vựng hiện có và phân bổ 100 câu ngắn, quen thuộc theo chủ đề.
+- [x] Bổ sung đúng 100 câu cùng ba đáp án Giọng lên, Est-ce que và Đảo ngữ.
+- [x] Kiểm tra tổng số câu, luồng Enter, bản dựng và lưu phiên bản cập nhật — xác minh 01 / 100, 02 / 100 và phản hồi đúng cho ba dòng.
