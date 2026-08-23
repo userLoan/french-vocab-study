@@ -193,3 +193,8 @@
 - [x] Rà soát mẫu hỏi hiện có và chọn từ vựng quen thuộc cho bài luyện.
 - [x] Thêm bài tập biến câu thành ba cách hỏi, với gợi ý tiếng Việt ngắn và dễ.
 - [x] Kiểm tra Enter, đáp án, giao diện, bản dựng và lưu phiên bản cập nhật — xác minh trực tiếp đáp án đúng và chuyển sang câu mới.
+
+# Đặt câu hỏi trong Ngữ pháp
+
+- [x] Chuyển lối vào Đặt câu hỏi từ nhóm Giao tiếp sang nhóm Ngữ pháp.
+- [x] Kiểm tra điều hướng, bản dựng và lưu phiên bản cập nhật — lối vào hiện nằm dưới Ngữ pháp.

@@ -85,6 +85,7 @@ const navGroups = [
       { id: "conjugation" as const, label: "Chia động từ", icon: Languages },
       { id: "articles" as const, label: "Mạo từ", icon: Stamp },
       { id: "places" as const, label: "Quốc tịch & nơi chốn", icon: Languages },
+      { id: "questions" as const, label: "Đặt câu hỏi", icon: MessageCircle },
     ],
   },
   {
@@ -92,7 +93,6 @@ const navGroups = [
     label: "Giao tiếp",
     icon: MessageCircle,
     items: [
-      { id: "questions" as const, label: "Đặt câu hỏi", icon: MessageCircle },
       { id: "notebook" as const, label: "Sổ tay câu", icon: Bookmark },
     ],
   },
