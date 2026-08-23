@@ -528,6 +528,126 @@ export const questionTransformationExercises: QuestionTransformationExercise[] =
       inversion: "Travailles-tu dans une banque ?",
     },
   },
+  {
+    id: "music",
+    vietnamese: "Hỏi: bạn có thích âm nhạc không?",
+    statement: "Tu aimes la musique.",
+    answers: {
+      intonation: "Tu aimes la musique ?",
+      estCeQue: "Est-ce que tu aimes la musique ?",
+      inversion: "Aimes-tu la musique ?",
+    },
+  },
+  {
+    id: "chocolate",
+    vietnamese: "Hỏi: bạn có thích sô-cô-la không?",
+    statement: "Tu aimes le chocolat.",
+    answers: {
+      intonation: "Tu aimes le chocolat ?",
+      estCeQue: "Est-ce que tu aimes le chocolat ?",
+      inversion: "Aimes-tu le chocolat ?",
+    },
+  },
+  {
+    id: "cinema",
+    vietnamese: "Hỏi: bạn có đi xem phim không?",
+    statement: "Tu vas au cinéma.",
+    answers: {
+      intonation: "Tu vas au cinéma ?",
+      estCeQue: "Est-ce que tu vas au cinéma ?",
+      inversion: "Vas-tu au cinéma ?",
+    },
+  },
+  {
+    id: "restaurant",
+    vietnamese: "Hỏi: bạn có ăn tối ở nhà hàng không?",
+    statement: "Tu dînes au restaurant.",
+    answers: {
+      intonation: "Tu dînes au restaurant ?",
+      estCeQue: "Est-ce que tu dînes au restaurant ?",
+      inversion: "Dînes-tu au restaurant ?",
+    },
+  },
+  {
+    id: "hospital",
+    vietnamese: "Hỏi: bạn có làm ở bệnh viện không?",
+    statement: "Tu travailles dans un hôpital.",
+    answers: {
+      intonation: "Tu travailles dans un hôpital ?",
+      estCeQue: "Est-ce que tu travailles dans un hôpital ?",
+      inversion: "Travailles-tu dans un hôpital ?",
+    },
+  },
+  {
+    id: "paris",
+    vietnamese: "Hỏi: bạn có sống ở Paris không?",
+    statement: "Tu habites à Paris.",
+    answers: {
+      intonation: "Tu habites à Paris ?",
+      estCeQue: "Est-ce que tu habites à Paris ?",
+      inversion: "Habites-tu à Paris ?",
+    },
+  },
+  {
+    id: "france",
+    vietnamese: "Hỏi: bạn có sống ở Pháp không?",
+    statement: "Tu habites en France.",
+    answers: {
+      intonation: "Tu habites en France ?",
+      estCeQue: "Est-ce que tu habites en France ?",
+      inversion: "Habites-tu en France ?",
+    },
+  },
+  {
+    id: "brother",
+    vietnamese: "Hỏi: bạn có anh hoặc em trai không?",
+    statement: "Tu as un frère.",
+    answers: {
+      intonation: "Tu as un frère ?",
+      estCeQue: "Est-ce que tu as un frère ?",
+      inversion: "As-tu un frère ?",
+    },
+  },
+  {
+    id: "french",
+    vietnamese: "Hỏi: bạn có phải người Pháp không?",
+    statement: "Tu es français.",
+    answers: {
+      intonation: "Tu es français ?",
+      estCeQue: "Est-ce que tu es français ?",
+      inversion: "Es-tu français ?",
+    },
+  },
+  {
+    id: "language",
+    vietnamese: "Hỏi: bạn có nói tiếng Pháp không?",
+    statement: "Tu parles français.",
+    answers: {
+      intonation: "Tu parles français ?",
+      estCeQue: "Est-ce que tu parles français ?",
+      inversion: "Parles-tu français ?",
+    },
+  },
+  {
+    id: "listen-music",
+    vietnamese: "Hỏi: bạn có nghe nhạc không?",
+    statement: "Tu écoutes de la musique.",
+    answers: {
+      intonation: "Tu écoutes de la musique ?",
+      estCeQue: "Est-ce que tu écoutes de la musique ?",
+      inversion: "Écoutes-tu de la musique ?",
+    },
+  },
+  {
+    id: "from-france",
+    vietnamese: "Hỏi: bạn có đến từ Pháp không?",
+    statement: "Tu viens de France.",
+    answers: {
+      intonation: "Tu viens de France ?",
+      estCeQue: "Est-ce que tu viens de France ?",
+      inversion: "Viens-tu de France ?",
+    },
+  },
 ];
 
 export type QuestionExercise = {
