@@ -519,6 +519,21 @@ a { color: inherit; }
 .vocabulary-entry strong { color: var(--ink); font-family: "Fraunces", serif; font-size: 16px; line-height: 1.15; letter-spacing: -.025em; }
 .vocabulary-entry span { margin-top: 7px; color: var(--ink-soft); font-size: 10px; font-weight: 700; }
 .vocabulary-entry small { margin-top: 7px; color: var(--sage-ink); font-size: 9px; font-weight: 700; line-height: 1.35; }
+.vocabulary-topic-list { position: relative; margin-top: 47px; padding: 29px 31px 34px 37px; overflow: hidden; background-color: #f5eedb; background-image: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(22,58,95,.045) 32px 33px); border-top: 2px dashed rgba(22,58,95,.18); border-left: 1px solid rgba(185,94,72,.22); box-shadow: 12px 13px 0 rgba(22,58,95,.07), inset 0 0 0 1px rgba(118,95,51,.15); transform: rotate(-.18deg); }
+.vocabulary-topic-list::before { position: absolute; z-index: 2; top: -10px; right: 8%; width: 112px; height: 20px; opacity: .76; background: rgba(111,140,120,.32); content: ""; transform: rotate(2deg); }
+.vocabulary-topic-list::after { position: absolute; right: 0; bottom: 0; width: 0; height: 0; content: ""; border-top: 25px solid transparent; border-right: 25px solid #e6dcc7; filter: drop-shadow(-1px -1px 0 rgba(22,58,95,.12)); }
+.vocabulary-topic-list-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.vocabulary-topic-list-heading h2 { margin: 11px 0 0; color: var(--ink); font-family: "Fraunces", serif; font-size: clamp(28px, 3.2vw, 42px); font-weight: 600; letter-spacing: -.055em; line-height: 1; }
+.vocabulary-topic-list-heading p { margin: 9px 0 0; color: var(--ink-soft); font-size: 10px; font-weight: 800; letter-spacing: .05em; }
+.vocabulary-topic-list-heading > span { flex: 0 0 auto; padding: 10px 9px; color: var(--ink-soft); border: 1px dashed rgba(22,58,95,.36); background: rgba(255,252,244,.55); box-shadow: 3px 3px 0 rgba(214,162,42,.22); font-size: 10px; font-weight: 800; letter-spacing: .08em; transform: rotate(2deg); }
+.vocabulary-grid--topic { gap: 11px; padding: 4px 3px 5px; background: transparent; border: 0; box-shadow: none; }
+.vocabulary-grid--topic .vocabulary-entry { position: relative; min-height: 112px; padding: 18px 15px 14px 33px; overflow: hidden; background-color: #fdfaf2; background-image: linear-gradient(90deg, rgba(185,94,72,.16) 0 1px, transparent 1px), repeating-linear-gradient(to bottom, transparent 0 27px, rgba(22,58,95,.052) 28px 29px); border: 1px solid rgba(118,95,51,.18); box-shadow: 3px 4px 0 rgba(22,58,95,.055); }
+.vocabulary-grid--topic .vocabulary-entry::before { position: absolute; top: 8px; left: 9px; color: rgba(22,58,95,.42); content: attr(data-index); font-size: 8px; font-weight: 800; letter-spacing: .08em; writing-mode: vertical-rl; }
+.vocabulary-grid--topic .vocabulary-entry::after { position: absolute; top: 0; right: 0; width: 0; height: 0; content: ""; border-top: 12px solid #eee2bf; border-left: 12px solid transparent; }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(3n + 2) { transform: rotate(.35deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(3n) { transform: rotate(-.3deg); }
+.vocabulary-grid--topic .vocabulary-entry strong { padding-right: 8px; }
+.vocabulary-grid--topic .vocabulary-entry small { padding-top: 1px; border-top: 1px dashed rgba(61,97,78,.19); }
 
 .progress-panel { display: flex; flex-direction: column; gap: 17px; }
 .progress-card, .next-card, .tip-card { background: rgba(255,255,255,.56); box-shadow: inset 0 0 0 1px rgba(118,95,51,.12); }
@@ -526,21 +541,21 @@ a { color: inherit; }
 .ledger-paper::before { content: ""; position: absolute; z-index: 0; top: 0; left: 20px; bottom: 0; width: 1px; background: rgba(185,94,72,.22); }
 .ledger-paper::after { content: ""; position: absolute; z-index: 0; top: 12px; right: 16px; width: 40px; height: 13px; opacity: .7; background: rgba(214,162,42,.38); transform: rotate(-3deg); }
 .progress-card > *, .next-card > * { position: relative; z-index: 1; }
-.progress-card { padding: 23px 19px 19px 31px; }
+.progress-card { padding: 23px 19px 19px 31px; transform: rotate(-.35deg); }
 .progress-card-top { display: flex; justify-content: space-between; gap: 13px; }
 .progress-card h2 { margin: 0; font-family: "Fraunces", serif; font-size: 23px; letter-spacing: -.04em; }
-.progress-seal { width: 50px; height: 50px; display: grid; place-items: center; align-content: center; color: var(--ink); border: 1px dashed rgba(22,58,95,.5); border-radius: 50%; background: rgba(251,247,237,.75); transform: rotate(7deg); }
+.progress-seal { position: relative; width: 50px; height: 50px; display: grid; place-items: center; align-content: center; color: var(--ink); border: 1px dashed rgba(22,58,95,.5); border-radius: 50%; background: rgba(251,247,237,.75); box-shadow: inset 0 0 0 3px rgba(214,162,42,.12); transform: rotate(7deg); }
 .progress-percent { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; line-height: 1; }
 .progress-seal small { margin-top: 3px; font-size: 6px; font-weight: 800; letter-spacing: .08em; }
-.progress-line { height: 7px; margin-top: 18px; overflow: hidden; background: #e6dcc7; }
+.progress-line { height: 7px; margin-top: 18px; overflow: hidden; background: #e6dcc7; border: 1px dashed rgba(22,58,95,.12); }
 .progress-line span { display: block; height: 100%; background: var(--mustard); transition: width 300ms var(--ease-out); }
 .progress-copy { margin: 12px 0 0; color: var(--ink-soft); font-size: 10px; line-height: 1.55; }
 .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(22,58,95,.2); }
 .stat-row > div { display: grid; gap: 4px; text-align: center; }
 .stat-row > div + div { border-left: 1px solid rgba(22,58,95,.13); }
 .stat-row span { color: var(--ink-soft); font-size: 8px; font-weight: 800; letter-spacing: .04em; }
-.stat-row strong { font-family: "Fraunces", serif; font-size: 22px; }
-.next-card { position: relative; padding: 23px 19px 19px 31px; overflow: hidden; background-color: #f7efd8; }
+.stat-row strong { display: block; font-family: "Fraunces", serif; font-size: 22px; transform: rotate(-2deg); }
+.next-card { position: relative; padding: 23px 19px 19px 31px; overflow: hidden; background-color: #f7efd8; transform: rotate(.45deg); }
 .next-card::after { content: ""; position: absolute; width: 70px; height: 70px; right: -21px; bottom: -26px; border: 9px solid var(--mustard); border-radius: 50%; opacity: .55; }
 .next-card h3 { margin: 15px 0 5px; font-family: "Fraunces", serif; font-size: 24px; letter-spacing: -.04em; }
 .next-card p { position: relative; z-index: 1; margin: 0; max-width: 170px; color: var(--ink-soft); font-size: 11px; line-height: 1.55; }
@@ -551,6 +566,11 @@ a { color: inherit; }
 .margin-note::after { content: "✓"; position: absolute; right: 11px; bottom: 5px; color: rgba(61,97,78,.25); font-family: "Fraunces", serif; font-size: 29px; font-style: italic; }
 .tip-card svg { flex: 0 0 auto; margin-top: 1px; }
 .tip-card p { margin: 0; }
+
+@media (max-width: 860px) {
+  .vocabulary-topic-list, .progress-card, .next-card { transform: none; }
+  .vocabulary-grid--topic .vocabulary-entry:nth-child(n) { transform: none; }
+}
 
 .mobile-menu-toggle { display: none; }
 

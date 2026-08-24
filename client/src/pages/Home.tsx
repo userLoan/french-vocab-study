@@ -647,6 +647,27 @@ export default function Home() {
                     </div>
                   </aside>
                 </div>
+                {selectedVocabularyGroup && !isReviewVocabularyRoute && (
+                  <section className="vocabulary-topic-list lexicon-section" aria-labelledby="topic-word-list-title">
+                    <div className="vocabulary-topic-list-heading">
+                      <div>
+                        <PaperLabel tone="mustard">DANH SÁCH TỪ</PaperLabel>
+                        <h2 id="topic-word-list-title">Từ của chủ đề này</h2>
+                        <p>{selectedVocabularyGroup.entries.length} từ · Pháp, Việt và Anh · mở sổ để gọi lại từng từ</p>
+                      </div>
+                      <span aria-hidden="true">01—{String(selectedVocabularyGroup.entries.length).padStart(2, "0")}</span>
+                    </div>
+                    <div className="vocabulary-grid vocabulary-grid--topic" aria-label={`Danh sách từ của chủ đề ${selectedVocabularyGroup.title}`}>
+                      {selectedVocabularyGroup.entries.map((entry, index) => (
+                        <article className="vocabulary-entry" data-index={String(index + 1).padStart(2, "0")} key={`${entry.french}-${index}`}>
+                          <strong>{entry.french}</strong>
+                          <span>{entry.vietnamese}</span>
+                          <small>{entry.english}</small>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                )}
               </section>
             )}
 

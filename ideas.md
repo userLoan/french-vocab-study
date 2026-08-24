@@ -84,3 +84,6 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Gáy sổ:** cột trái là mục lục vật lý có đường chỉ lề, dấu ghim và các tab giấy dán; nhóm đang mở phải nhô ra như một nhãn được kéo khỏi mép sổ.
 - **Giấy học:** các lựa chọn chế độ tạo thành những tờ ghi chú có kích thước và vị trí lệch nhịp có kiểm soát, thay vì một dãy thẻ bằng nhau.
 - **Ghi chép tiến độ:** khu vực phiên học thêm ghi chú mực nhỏ, dấu tick và số phiên viết tay để giữ cảm giác nhật ký học tập.
+- **Chỉ mục từ vựng:** danh sách từ theo chủ đề là trang chỉ mục carnet, dùng đường kẻ sổ, số thứ tự ở lề, mép giấy gấp và các mẩu từ lệch nhịp; không trình bày như bảng dữ liệu phẳng.
+- **Số liệu phiên:** phần trăm và các số liệu học tập phải là con dấu hoặc ghi chép sổ tay có đường kẻ, tránh cảm giác bảng điều khiển năng suất.
+- **Giọng ghi chú:** phần mô tả ngắn trong danh sách từ cần như lời nhắc ở lề sổ, cụ thể và ấm áp; tránh văn phong hướng dẫn trung tính khi không cần thiết.

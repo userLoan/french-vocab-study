@@ -233,3 +233,9 @@
 - [x] Xác định nhóm từ để hỏi cần hiển thị dưới ô đáp án.
 - [x] Thêm danh sách từ gợi ý dễ đọc, không thay đổi cách tự nhập đáp án.
 - [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật — đã chọn nhanh `où`, chấm đúng và chuyển từ 01 / 10 sang 02 / 10.
+
+# Danh sách từ theo chủ đề
+
+- [x] Rà soát trang Luyện từ theo chủ đề và nguồn nghĩa Việt, Anh.
+- [x] Hiển thị toàn bộ từ Pháp, Việt và Anh của chủ đề đang mở dưới bài luyện.
+- [x] Kiểm tra nhiều chủ đề, bản dựng và lưu phiên bản cập nhật — xác nhận 17 từ ở Địa chỉ & giấy tờ và 20 từ ở Thông tin cá nhân & gia đình.
