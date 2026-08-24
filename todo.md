@@ -274,3 +274,9 @@
 
 - [x] Bổ sung le jardinage, le bricolage / bricoler và prendre l’air với nghĩa Việt–Anh.
 - [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Sửa thanh bên trái
+
+- [x] Xác định quy tắc bố cục làm các mục thanh bên bị chồng chéo.
+- [x] Điều chỉnh khoảng cách, vùng hiển thị và kiểu tab để các mục không đè lên nhau.
+- [x] Kiểm tra thanh bên ở màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
