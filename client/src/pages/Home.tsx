@@ -852,6 +852,21 @@ export default function Home() {
                       />
                       <span>{questionExercise.after}</span>
                     </div>
+                    <div className="question-word-bank" aria-label="Danh sách từ để hỏi">
+                      <span>TỪ ĐỂ CHỌN</span>
+                      <div className="question-word-bank-list">
+                        {["où", "quand", "pourquoi", "comment", "combien", "quoi", "quel", "quelle", "quels", "quelles"].map((word) => (
+                          <button
+                            key={word}
+                            type="button"
+                            onClick={() => setQuestionAnswer(word)}
+                            aria-label={`Chọn từ ${word}`}
+                          >
+                            {word}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                     <div className="question-submit-row">
                       <button className="primary-button" type="submit">Kiểm tra & tiếp <ArrowRight size={18} /></button>
                       <span>Nhấn Enter để chấm và sang câu mới</span>

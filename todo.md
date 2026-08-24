@@ -227,3 +227,9 @@
 
 - [x] Xác định và gỡ bảng Hỏi cùng một điều theo ba cách khỏi mục Đặt câu hỏi.
 - [x] Kiểm tra bài luyện ba ô nhập, bản dựng và lưu phiên bản cập nhật — bản xem trước còn 01 / 100 và không còn bảng minh họa.
+
+# Danh sách từ cho bài điền từ hỏi
+
+- [x] Xác định nhóm từ để hỏi cần hiển thị dưới ô đáp án.
+- [x] Thêm danh sách từ gợi ý dễ đọc, không thay đổi cách tự nhập đáp án.
+- [x] Kiểm tra giao diện, bản dựng và lưu phiên bản cập nhật — đã chọn nhanh `où`, chấm đúng và chuyển từ 01 / 10 sang 02 / 10.
