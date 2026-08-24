@@ -918,3 +918,47 @@ a { color: inherit; }
   .vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 1) { grid-column: span 2; margin-right: 0; }
   .vocabulary-grid--topic .vocabulary-entry:nth-child(n), .vocabulary-recall-card, .exercise-card, .article-card, .place-recall-card, .question-recall-card, .vocabulary-study-note, .place-feedback-card, .question-feedback-card { transform: none; }
 }
+
+/* Long French expressions are treated as wider study slips, never squeezed into a one-word card. */
+.vocabulary-grid--topic .vocabulary-entry--phrase {
+  grid-column: span 6;
+  min-height: 142px;
+  padding: 19px 20px 16px 37px;
+  background-color: #f9f5e9;
+  box-shadow: 5px 6px 0 rgba(22,58,95,.075), inset 0 0 0 1px rgba(118,95,51,.16);
+}
+.vocabulary-grid--topic .vocabulary-entry--phrase strong {
+  max-width: 26ch;
+  padding-right: 5px;
+  font-size: clamp(17px, 1.55vw, 22px);
+  line-height: 1.13;
+  text-wrap: balance;
+}
+.vocabulary-grid--topic .vocabulary-entry--phrase span {
+  margin-top: 9px;
+  line-height: 1.35;
+}
+.vocabulary-grid--topic .vocabulary-entry--phrase small {
+  margin-top: 8px;
+  padding-top: 6px;
+  line-height: 1.4;
+}
+.vocabulary-grid--topic .vocabulary-entry--phrase::after {
+  top: -6px;
+  right: 17%;
+  width: 55px;
+  height: 11px;
+  border: 0;
+  background: rgba(220,230,212,.88);
+  transform: rotate(-3deg);
+}
+
+@media (max-width: 760px) {
+  .vocabulary-grid--topic .vocabulary-entry--phrase,
+  .vocabulary-grid--topic .vocabulary-entry--phrase:nth-child(n) {
+    grid-column: span 2;
+    min-height: 136px;
+    padding: 18px 17px 15px 33px;
+  }
+  .vocabulary-grid--topic .vocabulary-entry--phrase strong { max-width: 25ch; font-size: 18px; }
+}

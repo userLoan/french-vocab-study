@@ -658,13 +658,17 @@ export default function Home() {
                       <span aria-hidden="true">01—{String(selectedVocabularyGroup.entries.length).padStart(2, "0")}</span>
                     </div>
                     <div className="vocabulary-grid vocabulary-grid--topic" aria-label={`Danh sách từ của chủ đề ${selectedVocabularyGroup.title}`}>
-                      {selectedVocabularyGroup.entries.map((entry, index) => (
-                        <article className="vocabulary-entry" data-index={String(index + 1).padStart(2, "0")} key={`${entry.french}-${index}`}>
+                      {selectedVocabularyGroup.entries.map((entry, index) => {
+                        const isLongExpression = entry.french.length > 20 || entry.french.trim().split(/\s+/).length >= 4 || entry.french.includes("/") || entry.french.includes(",");
+
+                        return (
+                        <article className={`vocabulary-entry${isLongExpression ? " vocabulary-entry--phrase" : ""}`} data-index={String(index + 1).padStart(2, "0")} key={`${entry.french}-${index}`}>
                           <strong>{entry.french}</strong>
                           <span>{entry.vietnamese}</span>
                           <small>{entry.english}</small>
                         </article>
-                      ))}
+                        );
+                      })}
                     </div>
                   </section>
                 )}

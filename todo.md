@@ -280,3 +280,9 @@
 - [x] Xác định quy tắc bố cục làm các mục thanh bên bị chồng chéo.
 - [x] Điều chỉnh khoảng cách, vùng hiển thị và kiểu tab để các mục không đè lên nhau.
 - [x] Kiểm tra thanh bên ở màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
+
+# Thiết kế lại mục nhiều từ
+
+- [x] Xác định các thẻ và mục điều hướng bị thay đổi chiều dài sau khi nội dung có nhiều từ.
+- [x] Thiết kế lại cách ngắt dòng, chiều cao và phân cấp chữ cho các cụm từ dài.
+- [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
