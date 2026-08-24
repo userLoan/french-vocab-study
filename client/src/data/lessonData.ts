@@ -145,6 +145,7 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
       { french: "la peinture", vietnamese: "hội họa" },
       { french: "un peintre / une peintre", vietnamese: "họa sĩ" },
       { french: "la musique", vietnamese: "âm nhạc" },
+      { french: "un instrument de musique", vietnamese: "nhạc cụ" },
       { french: "un musicien / une musicienne", vietnamese: "nhạc sĩ / nhạc công" },
       { french: "un(e) pianiste", vietnamese: "nghệ sĩ piano" },
       { french: "un(e) guitariste", vietnamese: "nghệ sĩ guitar" },

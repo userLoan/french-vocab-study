@@ -15,13 +15,14 @@ Các từ/cụm từ được dùng, theo thứ tự trong dữ liệu, là:
 9. la peinture — hội họa
 10. un peintre / une peintre — họa sĩ
 11. la musique — âm nhạc
-12. un musicien / une musicienne — nhạc sĩ / nhạc công
-13. un(e) pianiste — nghệ sĩ piano
-14. un(e) guitariste — nghệ sĩ guitar
-15. un(e) violoniste — nghệ sĩ violin
-16. un(e) bassiste — nghệ sĩ bass
-17. un(e) trompettiste — nghệ sĩ kèn trumpet
-18. un(e) clarinettiste — nghệ sĩ kèn clarinet
-19. un musée — bảo tàng
-20. une exposition — triển lãm
-21. un monument — di tích / công trình kỷ niệm
+12. un instrument de musique — nhạc cụ
+13. un musicien / une musicienne — nhạc sĩ / nhạc công
+14. un(e) pianiste — nghệ sĩ piano
+15. un(e) guitariste — nghệ sĩ guitar
+16. un(e) violoniste — nghệ sĩ violin
+17. un(e) bassiste — nghệ sĩ bass
+18. un(e) trompettiste — nghệ sĩ kèn trumpet
+19. un(e) clarinettiste — nghệ sĩ kèn clarinet
+20. un musée — bảo tàng
+21. une exposition — triển lãm
+22. un monument — di tích / công trình kỷ niệm

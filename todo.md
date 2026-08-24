@@ -251,3 +251,9 @@
 - [x] Ghi nhận 21 từ/cụm từ in đậm dành cho các mục 34–54.
 - [x] Thay dữ liệu Pháp, Việt và Anh của đúng các mục 34–54.
 - [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Bổ sung nhạc cụ
+
+- [x] Xác định vị trí phù hợp cho cụm “un instrument de musique” trong chủ đề Sở thích.
+- [x] Bổ sung nghĩa Việt, Anh và đồng bộ cụm từ với bài luyện, Flashcards.
+- [x] Kiểm tra bản dựng, danh sách chủ đề và lưu phiên bản cập nhật.

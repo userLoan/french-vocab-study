@@ -55,6 +55,7 @@ export const vocabularyEnglish: Record<string, string> = {
   "un danseur / une danseuse": "dancer",
   "la peinture": "painting",
   "un peintre / une peintre": "painter",
+  "un instrument de musique": "musical instrument",
   "un musicien / une musicienne": "musician",
   "un(e) pianiste": "pianist",
   "un(e) guitariste": "guitarist",
