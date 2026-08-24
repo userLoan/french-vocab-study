@@ -269,3 +269,8 @@
 - [x] Ghi nhận các từ/cụm từ in đậm còn thiếu trong ảnh đi chơi, xem phim và biểu diễn.
 - [x] Bổ sung nghĩa Việt, Anh và đồng bộ dữ liệu với bài luyện, Flashcards.
 - [x] Kiểm tra bản dựng, danh sách chủ đề và lưu phiên bản cập nhật.
+
+# Bổ sung hoạt động thư giãn
+
+- [x] Bổ sung le jardinage, le bricolage / bricoler và prendre l’air với nghĩa Việt–Anh.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
