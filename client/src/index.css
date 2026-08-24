@@ -833,6 +833,45 @@ a { color: inherit; }
 .stat-row > div::after { content: "✦"; top: -9px; color: rgba(185,94,72,.64); font-size: 11px; }
 .stat-row > div:nth-child(1)::after { content: "✓"; color: rgba(61,97,78,.72); }
 .stat-row > div:nth-child(2)::after { content: "~"; color: rgba(185,94,72,.72); font-size: 17px; }
+
+/* Review build-on-top: the long index becomes collected slips, the rail becomes a bound notebook, and statistics read as ledger marks. */
+.vocabulary-grid--topic { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: row dense; gap: 16px 11px; padding: 14px 11px 18px 17px; }
+.vocabulary-grid--topic .vocabulary-entry { grid-column: span 4; min-height: 108px; isolation: isolate; }
+.vocabulary-grid--topic .vocabulary-entry::before { top: 7px; left: 7px; padding: 4px 2px; color: rgba(22,58,95,.5); border-top: 1px solid rgba(185,94,72,.34); border-bottom: 1px solid rgba(185,94,72,.22); background: rgba(251,247,237,.74); font-family: "Fraunces", serif; font-size: 8px; font-style: italic; letter-spacing: .05em; }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 1) { grid-column: span 7; min-height: 137px; margin: 7px 9px 0 0; background-color: #fbf1d9; transform: rotate(-.72deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 1)::before { content: "fiche\A" attr(data-index); left: 10px; padding: 5px 3px; color: rgba(185,94,72,.72); white-space: pre; }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 1)::after { top: -7px; right: 22%; width: 68px; height: 13px; border: 0; background: rgba(243,223,158,.84); box-shadow: 0 1px 1px rgba(74,55,9,.1); transform: rotate(3deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 2) { grid-column: span 5; margin-top: 14px; background-color: #f7f8ed; transform: rotate(.55deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 5) { grid-column: span 5; min-height: 119px; margin: 8px 0 -2px 7px; background-color: #f7efe0; transform: rotate(-.6deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 6) { grid-column: span 7; min-height: 119px; margin: 1px 8px 7px 0; transform: rotate(.42deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 6)::after { top: -6px; right: 17%; width: 54px; height: 11px; border: 0; background: rgba(220,230,212,.88); transform: rotate(-4deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 9) { grid-column: span 3; min-height: 102px; margin-top: 10px; background-color: #fbf8ed; transform: rotate(.7deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 10) { grid-column: span 5; margin-top: -3px; transform: rotate(-.35deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 11) { grid-column: span 4; margin-top: 8px; transform: rotate(.48deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 12) { grid-column: span 7; min-height: 117px; margin: 3px 0 5px 8px; background-color: #f6f1e3; transform: rotate(-.4deg); }
+
+.nav-group--active summary { margin-right: -12px; padding-right: 25px; border-right: 1px solid rgba(255,255,255,.52); box-shadow: 8px 5px 0 rgba(2,18,35,.2), inset 0 -1px 0 rgba(22,58,95,.14); }
+.nav-group--active summary::before { left: auto; right: 23px; width: 47px; opacity: .9; }
+.nav-group--active summary::after { content: "onglet"; right: 17px; font-size: 9px; letter-spacing: .08em; }
+.nav-subitem--active { margin-right: -17px; padding-right: 18px; background: #fcf3d9; box-shadow: 6px 4px 0 rgba(2,18,35,.18), inset -2px 0 0 rgba(214,162,42,.47); }
+.nav-subitem--active::after { content: "×"; margin-left: auto; color: rgba(22,58,95,.48); font-family: "Fraunces", serif; font-size: 13px; transform: rotate(8deg); }
+.side-rail::after { right: 9px; width: 5px; background: repeating-linear-gradient(to bottom, rgba(243,223,158,.7) 0 2px, transparent 2px 9px); opacity: .75; }
+
+.progress-card { background-image: linear-gradient(90deg, transparent 0 17px, rgba(185,94,72,.19) 17px 18px, transparent 18px), repeating-linear-gradient(to bottom, transparent 0 28px, rgba(22,58,95,.06) 29px 30px); }
+.progress-card::before { content: "dossier · 01"; right: 16px; bottom: 12px; padding: 2px 5px; border: 1px dashed rgba(22,58,95,.25); background: rgba(251,247,237,.64); }
+.stat-row { position: relative; margin-top: 11px; padding-top: 6px; border-top: 1px dashed rgba(22,58,95,.24); }
+.stat-row > div { padding-bottom: 5px; border-right: 1px dashed rgba(22,58,95,.16); }
+.stat-row > div:last-child { border-right: 0; }
+.next-card { background-image: linear-gradient(90deg, transparent 0 14px, rgba(185,94,72,.15) 14px 15px, transparent 15px), repeating-linear-gradient(to bottom, transparent 0 26px, rgba(22,58,95,.05) 27px 28px); }
+
+@media (max-width: 760px) {
+  .vocabulary-grid--topic { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; padding: 10px 7px 13px 10px; }
+  .vocabulary-grid--topic .vocabulary-entry:nth-child(n) { grid-column: auto; min-height: 108px; margin: 0; transform: none; }
+  .vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 1), .vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 6), .vocabulary-grid--topic .vocabulary-entry:nth-child(12n + 12) { grid-column: span 2; }
+  .nav-group--active { margin-right: 0; transform: none; }
+  .nav-group--active summary, .nav-subitem--active { margin-right: 0; }
+}
+
 @media (max-width: 760px) {
   .side-rail::before { display: none; }
   .hero-visual { height: auto; margin: 0; transform: none; }

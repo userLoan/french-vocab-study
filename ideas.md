@@ -87,3 +87,6 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Chỉ mục từ vựng:** danh sách từ theo chủ đề là trang chỉ mục carnet, dùng đường kẻ sổ, số thứ tự ở lề, mép giấy gấp và các mẩu từ lệch nhịp; không trình bày như bảng dữ liệu phẳng.
 - **Số liệu phiên:** phần trăm và các số liệu học tập phải là con dấu hoặc ghi chép sổ tay có đường kẻ, tránh cảm giác bảng điều khiển năng suất.
 - **Giọng ghi chú:** phần mô tả ngắn trong danh sách từ cần như lời nhắc ở lề sổ, cụ thể và ấm áp; tránh văn phong hướng dẫn trung tính khi không cần thiết.
+- **Mẩu từ thu thập:** chỉ mục từ vựng dùng nhịp 12 mục với các phiếu rộng–hẹp khác nhau, số thứ tự viết ở lề và băng keo giấy trên các mẩu nổi bật; không để toàn trang trở thành lưới sản phẩm lặp lại.
+- **Tab giấy kéo mép:** nhóm điều hướng đang mở và mục đang chọn phải nhô khỏi gáy sổ, có mép giấy sáng, vết ghim/chỉ lề và nhãn “onglet” thay cho trạng thái nút ứng dụng.
+- **Dữ liệu như ghi sổ:** thẻ tiến độ dùng đường kẻ, cột chấm mực, con dấu và mã phiên ghi tay; thống kê không được trình bày như thẻ KPI.
