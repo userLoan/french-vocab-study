@@ -800,10 +800,48 @@ a { color: inherit; }
 .tip-card { position: relative; margin-right: 5px; box-shadow: 4px 5px 0 rgba(61,97,78,.08); }
 .tip-card::before { content: "✓"; position: absolute; top: -12px; right: 15px; color: rgba(61,97,78,.27); font-family: "Fraunces", serif; font-size: 30px; font-style: italic; transform: rotate(-11deg); }
 
+/* Visual-review pass — a carnet index is collected paper, the rail is a bound spine, and progress is an ink record. */
+.side-rail::before { left: 17px; width: 15px; border-left: 0; background: radial-gradient(circle, rgba(243,223,158,.72) 0 2px, transparent 2.7px) center top / 15px 17px repeat-y; filter: drop-shadow(1px 1px 0 rgba(2,18,35,.3)); }
+.brand-lockup { padding-bottom: 10px; border-bottom: 1px dashed rgba(238,244,241,.23); }
+.brand-lockup::after { content: "notes · 01"; position: absolute; right: 11px; bottom: -7px; padding: 1px 5px; color: rgba(243,223,158,.73); background: var(--ink); font-family: "Fraunces", serif; font-size: 8px; font-style: italic; letter-spacing: .08em; transform: rotate(-3deg); }
+.nav-group summary { margin-right: 4px; clip-path: polygon(0 0, 95.5% 0, 100% 50%, 95.5% 100%, 0 100%); }
+.nav-group--active { margin-right: -6px; transform: translateX(8px) rotate(-.35deg); }
+.nav-group--active summary { padding-right: 18px; box-shadow: 7px 5px 0 rgba(2,18,35,.18), inset 0 -1px 0 rgba(22,58,95,.14); }
+.nav-group--active summary::after { right: 14px; color: rgba(22,58,95,.56); }
+.nav-group-items::before { content: ""; position: absolute; top: 6px; bottom: 9px; left: -6px; width: 3px; border-top: 1px solid rgba(243,223,158,.54); border-bottom: 1px solid rgba(243,223,158,.54); background: repeating-linear-gradient(to bottom, rgba(243,223,158,.52) 0 4px, transparent 4px 10px); }
+.nav-subitem--active { margin-right: -12px; box-shadow: 5px 4px 0 rgba(2,18,35,.15); }
+
+.vocabulary-topic-list { padding-left: 50px; background-image: linear-gradient(90deg, transparent 0 28px, rgba(185,94,72,.29) 28px 29px, transparent 29px), repeating-linear-gradient(to bottom, transparent 0 31px, rgba(22,58,95,.058) 32px 33px); }
+.vocabulary-topic-list-heading { position: relative; padding-left: 8px; }
+.vocabulary-topic-list-heading::before { content: "INDEX\A VOCABULAIRE"; position: absolute; top: 1px; left: -42px; color: rgba(185,94,72,.63); font-family: "Fraunces", serif; font-size: 8px; font-style: italic; font-weight: 700; letter-spacing: .13em; line-height: 1.18; white-space: pre; writing-mode: vertical-rl; transform: rotate(180deg); }
+.vocabulary-grid--topic { grid-template-columns: 1.1fr 1fr 1.1fr; gap: 14px 12px; padding: 9px 8px 12px 15px; border-left: 1px dashed rgba(22,58,95,.24); }
+.vocabulary-grid--topic .vocabulary-entry { box-shadow: 4px 5px 0 rgba(22,58,95,.065), inset 0 0 0 1px rgba(255,255,255,.72); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 1) { grid-column: span 2; min-height: 124px; margin: 5px 12px 1px 0; background-color: #f9f1dc; box-shadow: 6px 7px 0 rgba(22,58,95,.09), inset 0 0 0 1px rgba(118,95,51,.15); transform: rotate(-.52deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 1) strong { font-size: 19px; }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 5) { margin-top: 8px; transform: rotate(.75deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 7) { margin-top: -4px; transform: rotate(-.65deg); }
+.vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 1)::after { width: 44px; height: 10px; border: 0; background: rgba(243,223,158,.72); transform: rotate(4deg); }
+
+.vocabulary-recall-card, .exercise-card, .article-card, .place-recall-card, .question-recall-card { box-shadow: 7px 9px 0 rgba(22,58,95,.065), inset 0 0 0 1px rgba(118,95,51,.12); transform: rotate(-.22deg); }
+.vocabulary-study-note, .place-feedback-card, .question-feedback-card { margin-top: 8px; box-shadow: 6px 8px 0 rgba(22,58,95,.06), inset 0 0 0 1px rgba(118,95,51,.11); transform: rotate(.55deg); }
+.vocabulary-study-note::before, .place-feedback-card::before, .question-feedback-card::before { content: ""; position: absolute; top: -8px; right: 16%; width: 52px; height: 12px; opacity: .54; background: rgba(243,223,158,.76); transform: rotate(-4deg); }
+
+.progress-card { padding-bottom: 29px; }
+.progress-card::after { content: "✓ ghi sổ"; position: absolute; left: 19px; bottom: 10px; color: rgba(61,97,78,.56); font-family: "Fraunces", serif; font-size: 10px; font-style: italic; letter-spacing: .08em; transform: rotate(-5deg); }
+.progress-seal { position: relative; transform: rotate(-5deg); }
+.progress-seal::after { content: ""; position: absolute; inset: 4px; border: 1px dashed rgba(22,58,95,.38); border-radius: inherit; pointer-events: none; }
+.stat-row > div::after { content: "✦"; top: -9px; color: rgba(185,94,72,.64); font-size: 11px; }
+.stat-row > div:nth-child(1)::after { content: "✓"; color: rgba(61,97,78,.72); }
+.stat-row > div:nth-child(2)::after { content: "~"; color: rgba(185,94,72,.72); font-size: 17px; }
 @media (max-width: 760px) {
   .side-rail::before { display: none; }
   .hero-visual { height: auto; margin: 0; transform: none; }
   .hero-visual::before, .hero-photo-caption { display: none; }
   .mode-card:nth-child(n) { grid-column: auto; margin: 0; transform: none; }
   .progress-card, .next-card { margin-left: 0; transform: none; }
+  .vocabulary-topic-list { padding-left: 33px; }
+  .vocabulary-topic-list-heading::before { left: -26px; font-size: 7px; }
+  .vocabulary-grid--topic { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 10px; }
+  .vocabulary-grid--topic .vocabulary-entry:nth-child(8n + 1) { grid-column: span 2; margin-right: 0; }
+  .vocabulary-grid--topic .vocabulary-entry:nth-child(n), .vocabulary-recall-card, .exercise-card, .article-card, .place-recall-card, .question-recall-card, .vocabulary-study-note, .place-feedback-card, .question-feedback-card { transform: none; }
 }

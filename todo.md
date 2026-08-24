@@ -239,3 +239,15 @@
 - [x] Rà soát trang Luyện từ theo chủ đề và nguồn nghĩa Việt, Anh.
 - [x] Hiển thị toàn bộ từ Pháp, Việt và Anh của chủ đề đang mở dưới bài luyện.
 - [x] Kiểm tra nhiều chủ đề, bản dựng và lưu phiên bản cập nhật — xác nhận 17 từ ở Địa chỉ & giấy tờ và 20 từ ở Thông tin cá nhân & gia đình.
+
+# Sửa chủ đề Sở thích, đi chơi & thời gian rảnh
+
+- [x] Đối chiếu danh sách hiện tại với các từ người dùng cung cấp trong ảnh.
+- [x] Thay các từ, nghĩa Việt và Anh trong chủ đề bằng danh sách đúng.
+- [x] Kiểm tra bài luyện, danh sách chủ đề, bản dựng và lưu phiên bản cập nhật.
+
+# Thay các mục 34–54 theo từ in đậm
+
+- [x] Ghi nhận 21 từ/cụm từ in đậm dành cho các mục 34–54.
+- [x] Thay dữ liệu Pháp, Việt và Anh của đúng các mục 34–54.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
