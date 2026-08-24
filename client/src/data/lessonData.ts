@@ -156,7 +156,9 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
       { french: "un musée", vietnamese: "bảo tàng" },
       { french: "une exposition", vietnamese: "triển lãm" },
       { french: "un monument", vietnamese: "di tích / công trình kỷ niệm" },
-      { french: "recevoir des amis", vietnamese: "tiếp bạn bè tại nhà" },
+      { french: "faire la grasse matinée", vietnamese: "ngủ nướng" },
+      { french: "rendre visite à des amis, à la famille", vietnamese: "thăm bạn bè, gia đình" },
+      { french: "inviter / recevoir des amis (chez soi)", vietnamese: "mời / tiếp bạn bè (tại nhà)" },
       { french: "faire la cuisine", vietnamese: "nấu ăn" },
       { french: "rester à la maison", vietnamese: "ở nhà" },
       { french: "se reposer", vietnamese: "nghỉ ngơi" },
@@ -166,6 +168,7 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
       { french: "s'occuper des enfants", vietnamese: "chăm sóc trẻ em" },
       { french: "prendre son temps", vietnamese: "thong thả / không vội" },
       { french: "s'amuser", vietnamese: "vui chơi" },
+      { french: "s'ennuyer", vietnamese: "chán" },
     ],
   },
   {

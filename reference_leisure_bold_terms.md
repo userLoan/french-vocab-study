@@ -26,3 +26,14 @@ Các từ/cụm từ được dùng, theo thứ tự trong dữ liệu, là:
 20. un musée — bảo tàng
 21. une exposition — triển lãm
 22. un monument — di tích / công trình kỷ niệm
+
+## Cụm in đậm bổ sung — Hoạt động ở nhà
+
+1. faire la grasse matinée — ngủ nướng
+2. rendre visite à des amis, à la famille — thăm bạn bè, gia đình
+3. inviter / recevoir des amis (chez soi) — mời / tiếp bạn bè (tại nhà)
+4. faire la sieste — ngủ trưa (đã có)
+5. s'occuper des enfants — chăm sóc trẻ em (đã có)
+6. prendre son temps — thong thả / không vội (đã có)
+7. s'amuser — vui chơi (đã có)
+8. s'ennuyer — chán

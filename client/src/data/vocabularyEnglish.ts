@@ -65,7 +65,9 @@ export const vocabularyEnglish: Record<string, string> = {
   "un(e) clarinettiste": "clarinetist",
   "une exposition": "exhibition",
   "un monument": "monument",
-  "recevoir des amis": "host friends",
+  "faire la grasse matinée": "sleep in / have a lie-in",
+  "rendre visite à des amis, à la famille": "visit friends / family",
+  "inviter / recevoir des amis (chez soi)": "invite / host friends (at home)",
   "faire la cuisine": "cook",
   "rester à la maison": "stay at home",
   "se reposer": "rest",
@@ -75,6 +77,7 @@ export const vocabularyEnglish: Record<string, string> = {
   "s'occuper des enfants": "take care of children",
   "prendre son temps": "take one's time",
   "s'amuser": "have fun",
+  "s'ennuyer": "be bored",
 
   "le nom": "surname / last name",
   "le prénom": "first name / given name",

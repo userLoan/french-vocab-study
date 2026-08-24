@@ -257,3 +257,9 @@
 - [x] Xác định vị trí phù hợp cho cụm “un instrument de musique” trong chủ đề Sở thích.
 - [x] Bổ sung nghĩa Việt, Anh và đồng bộ cụm từ với bài luyện, Flashcards.
 - [x] Kiểm tra bản dựng, danh sách chủ đề và lưu phiên bản cập nhật.
+
+# Bổ sung hoạt động ở nhà
+
+- [x] Ghi nhận các cụm in đậm còn thiếu trong ảnh Hoạt động ở nhà.
+- [x] Bổ sung nghĩa Việt, Anh và đồng bộ dữ liệu với bài luyện, Flashcards.
+- [x] Kiểm tra bản dựng, danh sách chủ đề và lưu phiên bản cập nhật.
