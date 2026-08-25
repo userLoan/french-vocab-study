@@ -15,6 +15,7 @@ import {
   MessageCircle,
   Menu,
   RotateCcw,
+  Shuffle,
   Stamp,
   X,
 } from "lucide-react";
@@ -149,6 +150,8 @@ export default function Home() {
   const [conversationAnswer, setConversationAnswer] = useState("");
   const [vocabularyIndex, setVocabularyIndex] = useState(0);
   const [vocabularyDirection, setVocabularyDirection] = useState<VocabularyDirection>("french-to-vietnamese");
+  const [vocabularyShuffled, setVocabularyShuffled] = useState(false);
+  const [vocabularyShuffleSeed, setVocabularyShuffleSeed] = useState(0);
   const [vocabularyAnswer, setVocabularyAnswer] = useState("");
   const [vocabularyFeedback, setVocabularyFeedback] = useState<{ isCorrect: boolean; expected: string } | null>(null);
   const [reviewVocabularyRecords, setReviewVocabularyRecords] = useState<ReviewVocabularyRecord[]>(() => {
@@ -203,9 +206,25 @@ export default function Home() {
       });
   }, [allVocabularyEntries, reviewVocabularyRecords]);
   const vocabularyTopicLabel = isReviewVocabularyRoute ? "Từ cần ôn" : selectedVocabularyGroup?.title ?? "Tất cả chủ đề";
-  const vocabularyEntries: VocabularyStudyEntry[] = isReviewVocabularyRoute
+  const vocabularyEntriesInOrder: VocabularyStudyEntry[] = isReviewVocabularyRoute
     ? reviewVocabularyEntries
     : (selectedVocabularyGroup ? [selectedVocabularyGroup] : vocabularyGroups).flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.title, key: `${group.id}::${entry.french}` })));
+  const vocabularyEntries = useMemo(() => {
+    if (!vocabularyShuffled || isReviewVocabularyRoute) return vocabularyEntriesInOrder;
+
+    const randomized = [...vocabularyEntriesInOrder];
+    let seed = vocabularyShuffleSeed || 1;
+    const nextRandom = () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    };
+
+    for (let index = randomized.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(nextRandom() * (index + 1));
+      [randomized[index], randomized[swapIndex]] = [randomized[swapIndex], randomized[index]];
+    }
+    return randomized;
+  }, [isReviewVocabularyRoute, vocabularyEntriesInOrder, vocabularyShuffleSeed, vocabularyShuffled]);
   const vocabularyEntry = vocabularyEntries.length > 0 ? vocabularyEntries[vocabularyIndex % vocabularyEntries.length] : undefined;
   const activeVocabularyDirection = vocabularyDirectionOptions.find((option) => option.id === vocabularyDirection) ?? vocabularyDirectionOptions[0];
   const vocabularyPrompt = vocabularyEntry?.[activeVocabularyDirection.promptLanguage] ?? "";
@@ -262,8 +281,17 @@ export default function Home() {
     setVocabularyFeedback(null);
   };
 
+  const toggleVocabularyShuffle = () => {
+    setVocabularyShuffled((shuffled) => !shuffled);
+    setVocabularyShuffleSeed((seed) => seed + 1);
+    setVocabularyIndex(0);
+    setVocabularyAnswer("");
+    setVocabularyFeedback(null);
+  };
+
   const prepareVocabularyTopic = () => {
     setVocabularyIndex(0);
+    setVocabularyShuffled(false);
     setVocabularyAnswer("");
     setVocabularyFeedback(null);
   };
@@ -601,13 +629,27 @@ export default function Home() {
                       <PaperLabel tone="navy">{vocabularyEntry.group}</PaperLabel>
                       <span>{String(vocabularyIndex + 1).padStart(2, "0")} / {String(vocabularyEntries.length).padStart(2, "0")}</span>
                     </div>
-                    <div className="vocabulary-direction" aria-label="Chọn chiều học">
-                      {vocabularyDirectionOptions.map((option) => (
-                        <button type="button" className={vocabularyDirection === option.id ? "is-active" : ""} onClick={() => changeVocabularyDirection(option.id)} key={option.id}>
-                          {option.label}
+                    <div className="vocabulary-study-controls">
+                      <div className="vocabulary-direction" aria-label="Chọn chiều học">
+                        {vocabularyDirectionOptions.map((option) => (
+                          <button type="button" className={vocabularyDirection === option.id ? "is-active" : ""} onClick={() => changeVocabularyDirection(option.id)} key={option.id}>
+                            {option.label}
+                          </button>
+                        ))}
+                      </div>
+                      {!isReviewVocabularyRoute && (
+                        <button
+                          className={`vocabulary-order-toggle ${vocabularyShuffled ? "is-active" : ""}`}
+                          type="button"
+                          onClick={toggleVocabularyShuffle}
+                          aria-pressed={vocabularyShuffled}
+                        >
+                          {vocabularyShuffled ? <RotateCcw size={15} /> : <Shuffle size={15} />}
+                          {vocabularyShuffled ? "Học theo thứ tự" : "Xáo trộn từ"}
                         </button>
-                      ))}
+                      )}
                     </div>
+                    {!isReviewVocabularyRoute && <p className="vocabulary-order-note">{vocabularyShuffled ? "Đang xáo trộn thứ tự để luyện phản xạ." : "Đang học theo thứ tự gốc của chủ đề."}</p>}
                     <div className="vocabulary-prompt">
                       <span>{activeVocabularyDirection.promptLabel}</span>
                       <h2>{vocabularyPrompt}</h2>

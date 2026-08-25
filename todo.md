@@ -286,3 +286,14 @@
 - [x] Xác định các thẻ và mục điều hướng bị thay đổi chiều dài sau khi nội dung có nhiều từ.
 - [x] Thiết kế lại cách ngắt dòng, chiều cao và phân cấp chữ cho các cụm từ dài.
 - [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
+
+# Bổ sung khái niệm thời gian rảnh
+
+- [x] Bổ sung le temps libre, le week-end / les week-ends, s’amuser, des activités và les loisirs với nghĩa Việt–Anh.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Xáo trộn từ trong bài luyện
+
+- [x] Thêm nút chuyển giữa thứ tự gốc và thứ tự xáo trộn cho từng chủ đề Luyện từ.
+- [x] Bảo đảm Enter, chấm điểm và ôn từ sai hoạt động theo thứ tự đang chọn.
+- [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.

@@ -13,6 +13,10 @@ export const vocabularyEnglish: Record<string, string> = {
   "le chocolat": "chocolate",
   "l'Espagne": "Spain",
 
+  "le temps libre": "free time",
+  "le week-end / les week-ends": "weekend / weekends",
+  "des activités": "activities",
+  "les loisirs": "leisure activities / hobbies",
   "jouer": "play",
   "chanter": "sing",
   "dessiner": "draw",

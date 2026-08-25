@@ -253,6 +253,14 @@ a { color: inherit; }
 .vocabulary-direction { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(100%, 680px); gap: 5px; margin-top: 25px; padding: 4px; background: rgba(22,58,95,.07); }
 .vocabulary-direction button { min-height: 34px; padding: 8px 10px; color: var(--ink-soft); border: 0; background: transparent; font-size: 9px; font-weight: 800; letter-spacing: .06em; white-space: nowrap; }
 .vocabulary-direction button.is-active { color: #eef4f1; background: var(--ink); box-shadow: 2px 2px 0 rgba(214,162,42,.82); }
+.vocabulary-study-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 25px; }
+.vocabulary-study-controls .vocabulary-direction { margin-top: 0; }
+.vocabulary-order-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; min-height: 39px; padding: 9px 12px; color: var(--ink); border: 1px dashed rgba(22,58,95,.46); background: rgba(255,252,244,.78); box-shadow: 3px 3px 0 rgba(214,162,42,.28); font-family: "Manrope", sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .025em; transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+.vocabulary-order-toggle:hover { background: var(--mustard-pale); box-shadow: 4px 4px 0 rgba(22,58,95,.15); transform: translate(-1px, -1px); }
+.vocabulary-order-toggle:active { transform: scale(.97); }
+.vocabulary-order-toggle.is-active { color: #f6f2e8; border-color: var(--ink); background: var(--ink); box-shadow: 3px 3px 0 rgba(214,162,42,.72); }
+.vocabulary-order-toggle:focus-visible { outline: 2px solid var(--mustard); outline-offset: 3px; }
+.vocabulary-order-note { margin: 9px 0 0; color: var(--sage-ink); font-size: 10px; font-weight: 800; letter-spacing: .02em; }
 .vocabulary-prompt { margin-top: 43px; }
 .vocabulary-prompt > span, .vocabulary-answer > span { color: var(--ink-soft); font-size: 9px; font-weight: 800; letter-spacing: .13em; }
 .vocabulary-prompt h2 { max-width: 700px; margin: 10px 0 0; color: var(--ink); font-family: "Fraunces", serif; font-size: clamp(35px, 5vw, 63px); font-weight: 600; letter-spacing: -.05em; line-height: 1.04; }
@@ -675,6 +683,8 @@ a { color: inherit; }
   .vocabulary-recall-card { min-height: 0; padding: 28px 21px; }
   .vocabulary-prompt { margin-top: 36px; }
   .vocabulary-prompt h2 { font-size: 39px; }
+  .vocabulary-study-controls { align-items: flex-start; flex-direction: column; }
+  .vocabulary-order-toggle { min-height: 36px; }
   .vocabulary-submit-row { align-items: flex-start; flex-direction: column; }
   .topic-route-row { grid-template-columns: 43px minmax(0, 1fr) 20px; gap: 11px; min-height: 83px; padding: 14px 15px 14px 14px; }
   .topic-route-number { font-size: 29px; }

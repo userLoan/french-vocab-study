@@ -101,6 +101,10 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
     title: "Sở thích, đi chơi & thời gian rảnh",
     caption: "Hoạt động, trò chơi, buổi đi chơi và chương trình văn hóa.",
     entries: [
+      { french: "le temps libre", vietnamese: "thời gian rảnh" },
+      { french: "le week-end / les week-ends", vietnamese: "cuối tuần" },
+      { french: "des activités", vietnamese: "các hoạt động" },
+      { french: "les loisirs", vietnamese: "hoạt động giải trí / sở thích" },
       { french: "jouer", vietnamese: "chơi" },
       { french: "chanter", vietnamese: "hát" },
       { french: "dessiner", vietnamese: "vẽ" },
