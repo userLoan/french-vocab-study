@@ -270,6 +270,13 @@
 - [x] Bổ sung nghĩa Việt, Anh và đồng bộ dữ liệu với bài luyện, Flashcards.
 - [x] Kiểm tra bản dựng, danh sách chủ đề và lưu phiên bản cập nhật.
 
+# Đối chiếu danh sách in đậm bổ sung
+
+- [x] Đối chiếu từng mục trong danh sách mới với dữ liệu chủ đề Sở thích, đi chơi & thời gian rảnh.
+- [x] Bổ sung các mục còn thiếu cùng nghĩa Việt–Anh và loại trừ mục trùng lặp.
+- [x] Kiểm tra bản dựng, Flashcards và hiển thị trực tiếp của các mục vừa cập nhật.
+- [x] Lưu phiên bản đã xác minh.
+
 # Bổ sung hoạt động thư giãn
 
 - [x] Bổ sung le jardinage, le bricolage / bricoler và prendre l’air với nghĩa Việt–Anh.
