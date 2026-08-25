@@ -972,3 +972,124 @@ a { color: inherit; }
   }
   .vocabulary-grid--topic .vocabulary-entry--phrase strong { max-width: 25ch; font-size: 18px; }
 }
+
+/* Review build-on-top: strengthen the memorable paper mark, desk spread, stitched spine, and hand-kept record. */
+.brand-mark-wrap::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -6px;
+  border: 1px dashed rgba(243,223,158,.68);
+  border-radius: 45% 52% 46% 50%;
+  box-shadow: 3px 3px 0 rgba(2,18,35,.16);
+  transform: rotate(-7deg);
+}
+.brand-mark { position: relative; z-index: 1; }
+.brand-bird { z-index: 2; }
+.brand-name { letter-spacing: -.095em; text-shadow: 1px 1px 0 rgba(2,18,35,.3); }
+.brand-lockup::before {
+  content: "é";
+  position: absolute;
+  z-index: 2;
+  left: 41px;
+  top: 12px;
+  color: rgba(243,223,158,.86);
+  font-family: "Fraunces", serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1;
+  transform: rotate(-12deg);
+}
+
+.nav-group::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -7px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(243,223,158,.56);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: inset 0 0 0 3px rgba(2,18,35,.25);
+  transform: translateY(-50%);
+}
+.nav-group summary { position: relative; z-index: 1; }
+.nav-group--active summary { background-image: linear-gradient(90deg, #fcf3d9 0 86%, #f3df9e 86% 100%); }
+.nav-group--active summary::after {
+  content: "onglet";
+  display: block;
+  right: 14px;
+  color: rgba(22,58,95,.52);
+  font-family: "Fraunces", serif;
+  font-size: 9px;
+  font-style: italic;
+  letter-spacing: .08em;
+}
+
+.hero-panel { isolation: isolate; }
+.hero-copy::before {
+  content: "fiche du jour";
+  position: absolute;
+  top: 17px;
+  right: 34px;
+  padding: 4px 8px 3px;
+  color: rgba(22,58,95,.62);
+  border: 1px dashed rgba(22,58,95,.28);
+  background: rgba(251,247,237,.78);
+  font-family: "Fraunces", serif;
+  font-size: 10px;
+  font-style: italic;
+  letter-spacing: .08em;
+  transform: rotate(3deg);
+}
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 85px;
+  bottom: 35px;
+  width: 130px;
+  height: 23px;
+  opacity: .72;
+  background: rgba(243,223,158,.68);
+  box-shadow: 0 1px 1px rgba(74,55,9,.12);
+  transform: rotate(-4deg);
+}
+.hero-stamp { border-style: double; box-shadow: 4px 5px 0 rgba(22,58,95,.11), inset 0 0 0 4px rgba(243,223,158,.32); }
+
+.next-card { position: relative; padding-top: 30px; }
+.next-card::after {
+  content: "marge du carnet";
+  position: absolute;
+  top: 10px;
+  left: 28px;
+  color: rgba(185,94,72,.56);
+  font-family: "Fraunces", serif;
+  font-size: 9px;
+  font-style: italic;
+  letter-spacing: .06em;
+  transform: rotate(-3deg);
+}
+.tip-card { position: relative; }
+.tip-card::after {
+  content: "à relire";
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
+  padding: 2px 5px;
+  color: rgba(61,97,78,.62);
+  border: 1px dashed rgba(61,97,78,.42);
+  font-family: "Fraunces", serif;
+  font-size: 9px;
+  font-style: italic;
+  transform: rotate(4deg);
+}
+
+@media (max-width: 760px) {
+  .brand-lockup::before { left: 40px; }
+  .hero-copy::before { right: 20px; }
+  .hero-copy::after { right: 34px; bottom: 28px; width: 96px; }
+  .next-card { padding-top: 28px; }
+}

@@ -307,3 +307,16 @@
 
 - [x] Bổ sung j’adore, j’aime bien, je n’aime pas beaucoup và je déteste với nghĩa Việt–Anh.
 - [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Bổ sung tham quan và biểu diễn
+
+- [x] Ghi nhận các từ/cụm từ in đậm còn thiếu từ ảnh về bảo tàng, điện ảnh và biểu diễn.
+- [x] Bổ sung nghĩa Việt–Anh, tránh lặp những mục đã có trong chủ đề.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Đối chiếu danh sách hiển thị
+
+- [x] So sánh danh sách đang hiển thị với các từ/cụm từ người dùng đã nêu.
+- [x] Bổ sung đúng “le metteur en scène” và “prendre / acheter / réserver des places à l’avance”, là hai cụm chưa hiện khi đối chiếu trực tiếp.
+- [x] Sửa các mục còn thiếu hoặc chưa hiện trong chủ đề và đồng bộ nghĩa Việt–Anh.
+- [x] Xác minh từng mục xuất hiện trên giao diện, rồi lưu phiên bản cập nhật.

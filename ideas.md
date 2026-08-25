@@ -90,3 +90,6 @@ Biểu tượng **mẩu giấy gấp thành dấu sắc `é`**, kết hợp mộ
 - **Mẩu từ thu thập:** chỉ mục từ vựng dùng nhịp 12 mục với các phiếu rộng–hẹp khác nhau, số thứ tự viết ở lề và băng keo giấy trên các mẩu nổi bật; không để toàn trang trở thành lưới sản phẩm lặp lại.
 - **Tab giấy kéo mép:** nhóm điều hướng đang mở và mục đang chọn phải nhô khỏi gáy sổ, có mép giấy sáng, vết ghim/chỉ lề và nhãn “onglet” thay cho trạng thái nút ứng dụng.
 - **Dữ liệu như ghi sổ:** thẻ tiến độ dùng đường kẻ, cột chấm mực, con dấu và mã phiên ghi tay; thống kê không được trình bày như thẻ KPI.
+- **Dấu nhận diện lặp lại:** biểu tượng giấy gấp–dấu sắc `é` được lặp lại như con dấu mực quanh wordmark và nhãn phiên học để thương hiệu dễ nhận ra ngay từ gáy sổ.
+- **Bàn học mở đầu:** vùng học đầu trang được xếp như các giấy tờ đặt tay trên bàn, có nhãn “fiche du jour”, băng keo nhẹ và dấu tròn mực; tránh một khối hero phẳng tách rời các bề mặt học khác.
+- **Mục lục đóng gáy:** mỗi nhóm điều hướng mang vết ghim/index tròn và tab đang chọn có dải giấy mù tạt ở mép, để khối điều hướng đọc như sổ đóng gáy thay vì menu phần mềm.
