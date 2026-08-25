@@ -297,3 +297,13 @@
 - [x] Thêm nút chuyển giữa thứ tự gốc và thứ tự xáo trộn cho từng chủ đề Luyện từ.
 - [x] Bảo đảm Enter, chấm điểm và ôn từ sai hoạt động theo thứ tự đang chọn.
 - [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
+
+# Bổ sung cấu trúc chơi
+
+- [x] Bổ sung jouer à + un jeu và jouer de + un instrument de musique với nghĩa Việt–Anh.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
+
+# Bổ sung mức độ yêu thích
+
+- [x] Bổ sung j’adore, j’aime bien, je n’aime pas beaucoup và je déteste với nghĩa Việt–Anh.
+- [x] Kiểm tra phần Luyện từ, Flashcards, bản dựng và lưu phiên bản cập nhật.
