@@ -1033,11 +1033,18 @@ export default function Home() {
                         <label className={`question-transform-row question-transform-row--${method.id}`} key={method.id}>
                           <span className="question-transform-number">{String(index + 1).padStart(2, "0")}</span>
                           <span className="question-transform-copy"><strong>{method.label}</strong><small>{method.cue}</small></span>
-                          <input
+                          <textarea
                             autoFocus={index === 0}
                             aria-label={`Viết câu hỏi bằng cách ${method.label}`}
+                            rows={3}
                             value={questionTransformationAnswers[method.id]}
                             onChange={(event) => setQuestionTransformationAnswers((answers) => ({ ...answers, [method.id]: event.target.value }))}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter" && !event.shiftKey) {
+                                event.preventDefault();
+                                event.currentTarget.form?.requestSubmit();
+                              }
+                            }}
                             placeholder="Viết câu hỏi tiếng Pháp"
                           />
                         </label>

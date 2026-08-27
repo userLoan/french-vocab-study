@@ -333,3 +333,9 @@
 - [x] Rà soát quy tắc chuẩn hóa đáp án của ba ô hỏi.
 - [x] Chấp nhận chữ thường và dấu hỏi cuối câu tùy chọn, không ảnh hưởng dấu tiếng Pháp.
 - [x] Kiểm tra trực tiếp chấm đúng bằng Enter và lưu phiên bản cập nhật.
+
+# Mở rộng vùng nhập bài Đặt câu hỏi
+
+- [x] Rà soát chiều rộng hiện tại của ba ô viết câu hỏi.
+- [x] Tăng vùng viết và cho phép câu dài hiển thị rõ, không che phần đã nhập.
+- [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
