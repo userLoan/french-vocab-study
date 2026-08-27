@@ -327,3 +327,9 @@
 - [x] Bổ sung đúng “le metteur en scène” và “prendre / acheter / réserver des places à l’avance”, là hai cụm chưa hiện khi đối chiếu trực tiếp.
 - [x] Sửa các mục còn thiếu hoặc chưa hiện trong chủ đề và đồng bộ nghĩa Việt–Anh.
 - [x] Xác minh từng mục xuất hiện trên giao diện, rồi lưu phiên bản cập nhật.
+
+# Chấm linh hoạt bài Đặt câu hỏi
+
+- [x] Rà soát quy tắc chuẩn hóa đáp án của ba ô hỏi.
+- [x] Chấp nhận chữ thường và dấu hỏi cuối câu tùy chọn, không ảnh hưởng dấu tiếng Pháp.
+- [x] Kiểm tra trực tiếp chấm đúng bằng Enter và lưu phiên bản cập nhật.

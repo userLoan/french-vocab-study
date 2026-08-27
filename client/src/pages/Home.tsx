@@ -61,6 +61,8 @@ const normalize = (value: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const normalizeQuestionAnswer = (value: string) => normalize(value).replace(/[?？]+$/, "").trim();
+
 const activityLabels: Record<Exclude<Mode, "overview">, string> = {
   flashcards: "Flashcards",
   conjugation: "Conjugation",
@@ -373,7 +375,7 @@ export default function Home() {
   const checkQuestionTransformation = (event: FormEvent) => {
     event.preventDefault();
     const correctMethods = questionTransformationMethods
-      .filter((method) => normalize(questionTransformationAnswers[method.id]) === normalize(questionTransformationExercise.answers[method.id]))
+      .filter((method) => normalizeQuestionAnswer(questionTransformationAnswers[method.id]) === normalizeQuestionAnswer(questionTransformationExercise.answers[method.id]))
       .map((method) => method.id);
     const remainingMethods = questionTransformationMethods.length - correctMethods.length;
 
