@@ -460,7 +460,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="workspace-content">
+        <div className={`workspace-content${mode === "questions" ? " workspace-content--questions" : ""}`}>
           <section className="learning-sheet">
             {mode === "overview" && (
               <section className="overview-view">
@@ -1055,33 +1055,6 @@ export default function Home() {
                       <span>Nhấn Enter ở bất kỳ ô nào để chấm và sang câu mới</span>
                     </div>
                   </form>
-                  <aside className="question-feedback-card question-transform-feedback" aria-live="polite">
-                    <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
-                    {questionTransformationFeedback ? (
-                      <>
-                        <p className={questionTransformationFeedback.correctMethods.length === questionTransformationMethods.length ? "question-feedback question-feedback--correct" : "question-feedback question-feedback--review"}>
-                          {questionTransformationFeedback.correctMethods.length === questionTransformationMethods.length
-                            ? "Đúng cả 3 cách — rất tốt."
-                            : `Câu trước: đúng ${questionTransformationFeedback.correctMethods.length}/3 cách.`}
-                        </p>
-                        <span>So sánh từng dòng, rồi thử lại ở câu mới.</span>
-                        <div className="question-transform-solutions">
-                          {questionTransformationMethods.map((method) => {
-                            const isCorrect = questionTransformationFeedback.correctMethods.includes(method.id);
-                            return (
-                              <div className={isCorrect ? "question-transform-solution question-transform-solution--correct" : "question-transform-solution"} key={method.id}>
-                                <small>{method.label}</small>
-                                <strong>{questionTransformationFeedback.answers[method.id]}</strong>
-                                <em>{isCorrect ? "Đúng" : "Xem lại"}</em>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </>
-                    ) : (
-                      <><p>Một ý, ba cách hỏi.</p><span>Điền cả ba dòng, rồi nhấn Enter để chấm.</span></>
-                    )}
-                  </aside>
                 </section>
 
               </section>
@@ -1160,6 +1133,37 @@ export default function Home() {
             )}
           </section>
 
+          {mode === "questions" ? (
+            <aside className="question-response-rail" aria-live="polite">
+              <div className="question-feedback-card question-transform-feedback">
+                <PaperLabel tone="mustard">PHẢN HỒI</PaperLabel>
+                {questionTransformationFeedback ? (
+                  <>
+                    <p className={questionTransformationFeedback.correctMethods.length === questionTransformationMethods.length ? "question-feedback question-feedback--correct" : "question-feedback question-feedback--review"}>
+                      {questionTransformationFeedback.correctMethods.length === questionTransformationMethods.length
+                        ? "Đúng cả 3 cách — rất tốt."
+                        : `Câu trước: đúng ${questionTransformationFeedback.correctMethods.length}/3 cách.`}
+                    </p>
+                    <span>So sánh từng dòng, rồi thử lại ở câu mới.</span>
+                    <div className="question-transform-solutions">
+                      {questionTransformationMethods.map((method) => {
+                        const isCorrect = questionTransformationFeedback.correctMethods.includes(method.id);
+                        return (
+                          <div className={isCorrect ? "question-transform-solution question-transform-solution--correct" : "question-transform-solution"} key={method.id}>
+                            <small>{method.label}</small>
+                            <strong>{questionTransformationFeedback.answers[method.id]}</strong>
+                            <em>{isCorrect ? "Đúng" : "Xem lại"}</em>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <><p>Một ý, ba cách hỏi.</p><span>Điền cả ba dòng, rồi nhấn Enter để chấm.</span></>
+                )}
+              </div>
+            </aside>
+          ) : (
           <aside className="progress-panel">
               <div className="progress-card ledger-paper">
               <div className="progress-card-top">
@@ -1189,6 +1193,7 @@ export default function Home() {
             </div>
 
           </aside>
+          )}
         </div>
       </section>
     </main>

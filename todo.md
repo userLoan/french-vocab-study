@@ -345,3 +345,9 @@
 - [x] Rà soát tỷ lệ chiều rộng phù hợp giữa vùng viết và phiếu phản hồi.
 - [x] Đặt phiếu phản hồi bên phải trên màn hình lớn, vẫn giữ vùng viết rộng.
 - [x] Kiểm tra bố cục đáp ứng và lưu phiên bản cập nhật.
+
+# Đưa phiếu phản hồi sang nửa phải màn hình
+
+- [x] Rà soát vùng trống ở nửa phải và quy tắc bố cục màn hình lớn.
+- [x] Neo phiếu Phản hồi vào vùng bên phải tách biệt với tờ bài điền câu.
+- [x] Kiểm tra trực quan hai nửa màn hình và lưu phiên bản cập nhật.
