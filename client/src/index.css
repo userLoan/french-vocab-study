@@ -421,7 +421,7 @@ a { color: inherit; }
 .question-feedback--review { color: #8b4235 !important; }
 
 /* Three-question-method practice stays a ruled notebook sheet: one idea, three clearly marked lines. */
-.question-practice--transform { grid-template-columns: minmax(0, 1fr); align-items: start; margin-top: 40px; }
+.question-practice--transform { grid-template-columns: minmax(0, 1fr) 184px; align-items: start; gap: 22px; margin-top: 40px; }
 .question-transform-card { min-height: 0; padding-bottom: 34px; }
 .question-transform-brief { margin-top: 33px; padding-bottom: 18px; border-bottom: 1px dashed rgba(22,58,95,.24); }
 .question-transform-brief .question-prompt-label { margin: 0; }
@@ -441,7 +441,7 @@ a { color: inherit; }
 .question-transform-row textarea::placeholder { color: rgba(78,105,131,.58); font-family: "Manrope", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0; }
 .question-transform-row textarea:focus-visible { border-color: var(--ink); border-bottom-color: var(--ink); box-shadow: 0 5px 0 -3px rgba(22,58,95,.17); }
 .question-transform-card .question-submit-row { margin-top: 25px; }
-.question-transform-feedback { min-height: 170px; background: #d8e6e4; box-shadow: 5px 7px 0 rgba(54,85,100,.11); transform: rotate(1deg); }
+.question-transform-feedback { min-height: 414px; background: #d8e6e4; box-shadow: 5px 7px 0 rgba(54,85,100,.11); transform: rotate(1deg); }
 .question-transform-feedback p { color: #365564; }
 .question-transform-feedback > span { color: rgba(54,85,100,.76); }
 .question-transform-solutions { margin-top: 17px; border-top: 1px dashed rgba(54,85,100,.33); }

@@ -339,3 +339,9 @@
 - [x] Rà soát chiều rộng hiện tại của ba ô viết câu hỏi.
 - [x] Tăng vùng viết và cho phép câu dài hiển thị rõ, không che phần đã nhập.
 - [x] Kiểm tra trên màn hình lớn và nhỏ, rồi lưu phiên bản cập nhật.
+
+# Đưa phiếu phản hồi về bên phải
+
+- [x] Rà soát tỷ lệ chiều rộng phù hợp giữa vùng viết và phiếu phản hồi.
+- [x] Đặt phiếu phản hồi bên phải trên màn hình lớn, vẫn giữ vùng viết rộng.
+- [x] Kiểm tra bố cục đáp ứng và lưu phiên bản cập nhật.
