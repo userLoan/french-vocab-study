@@ -43,6 +43,69 @@ function G3(){const h=t=>`<h4 class="sub-h">${t}</h4>`;
   UNITS.splice(UNITS.indexOf(src),1);UNITS.unshift(verbs);
 })();
 
+/* ================= bài riêng: động từ bất quy tắc ================= */
+(function(){
+  if(UNITS.some(u=>u.id==="irregular"))return;
+  const h=t=>`<h4 class="sub-h">${t}</h4>`;
+  const notes=[
+    {k:1,h:"Bốn động từ phải thuộc: être · avoir · aller · faire",html:
+      vtab(["être","avoir","aller","faire"],[["suis","es","est","sommes","êtes","sont"],["ai","as","a","avons","avez","ont"],["vais","vas","va","allons","allez","vont"],["fais","fais","fait","faisons","faites","font"]])+
+      `<p class="tip">Chỉ có ba động từ có <b>vous</b> không đuôi -ez: ${F("vous êtes")}, ${F("vous faites")}, ${F("vous dites")}. Ba động từ có <b>ils</b> đuôi -ont: ${F("ils ont")}, ${F("ils vont")}, ${F("ils font")}.</p>
+      <p>${F("Je suis étudiant.")} ${F("Elle a vingt ans.")} ${F("Nous allons au marché.")} ${F("Ils font la cuisine.")}</p>`},
+    {k:1,h:"dire · lire · écrire · rire",html:
+      `<p>Số ít bỏ -re, thêm <b>-s, -s, -t</b>. Số nhiều có thêm âm: -s- hoặc -v-.</p>`+
+      vtab(["dire","lire","écrire","rire"],[["dis","dis","dit","disons","dites","disent"],["lis","lis","lit","lisons","lisez","lisent"],["écris","écris","écrit","écrivons","écrivez","écrivent"],["ris","ris","rit","rions","riez","rient"]])+
+      `<p class="tip">${F("vous dites")} là ngoại lệ (không phải <s>vous disez</s>). ${F("Tu lis un livre.")} ${F("J'écris un e-mail.")}</p>`},
+    {k:1,h:"voir · croire · boire",html:
+      `<p>Số nhiều (nous, vous) đổi <b>-i-</b> thành <b>-y-</b> hoặc <b>-v-</b>; ngôi ils đổi trở lại.</p>`+
+      vtab(["voir","croire","boire"],[["vois","vois","voit","voyons","voyez","voient"],["crois","crois","croit","croyons","croyez","croient"],["bois","bois","boit","buvons","buvez","boivent"]])+
+      `<p class="tip">${F("Je vois un chat.")} ${F("Nous buvons du thé.")} Cùng kiểu voir: revoir, prévoir.</p>`},
+    {k:1,h:"savoir · devoir · pouvoir · vouloir",html:
+      `<p>Bốn động từ hay đi trước một động từ nguyên thể.</p>`+
+      vtab(["savoir","devoir","pouvoir","vouloir"],[["sais","sais","sait","savons","savez","savent"],["dois","dois","doit","devons","devez","doivent"],["peux","peux","peut","pouvons","pouvez","peuvent"],["veux","veux","veut","voulons","voulez","veulent"]])+
+      `<p class="tip">pouvoir, vouloir: je / tu đuôi <b>-x</b>. ${F("Je sais nager.")} ${F("Tu dois partir.")} ${F("Je veux réserver une table.")}</p>`},
+    {k:1,h:"venir · tenir · prendre · mettre",html:
+      `<p>venir, tenir: e → <b>ie</b> ở số ít và ngôi ils (gấp đôi n). prendre, mettre: số ít bỏ -dre / -ttre đuôi một t / d.</p>`+
+      vtab(["venir","tenir","prendre","mettre"],[["viens","viens","vient","venons","venez","viennent"],["tiens","tiens","tient","tenons","tenez","tiennent"],["prends","prends","prend","prenons","prenez","prennent"],["mets","mets","met","mettons","mettez","mettent"]])+
+      `<p class="tip">Cùng kiểu prendre: apprendre, comprendre. Cùng kiểu mettre: permettre, promettre. ${F("Il met du sucre dans son café.")}</p>`},
+    {h:"connaître · ouvrir",html:
+      vtab(["connaître","ouvrir"],[["connais","connais","connaît","connaissons","connaissez","connaissent"],["ouvre","ouvres","ouvre","ouvrons","ouvrez","ouvrent"]])+
+      `<p class="tip">ouvrir chia như động từ -er: ${F("j'ouvre")}, ${F("tu ouvres")}. connaître có <b>î</b> ở ngôi il: ${F("il connaît")}.</p>`},
+    {h:"Mẹo nhớ nhanh",html:`<ul><li>Hầu hết bất quy tắc: <b>je / tu giống nhau</b> (dis, dis; vois, vois; mets, mets).</li>
+      <li>Ngôi <b>nous</b> luôn kết thúc bằng <b>-ons</b> (trừ <i>nous sommes</i>) và <b>vous</b> bằng <b>-ez</b> (trừ <i>êtes, faites, dites</i>).</li>
+      <li>Ngôi <b>ils</b> thường kết thúc bằng <b>-ent</b>. Ngoại lệ phải thuộc: <i>ils sont, ont, vont, font</i>.</li></ul>`}
+  ];
+  const fixes=[
+    ["vous disez","vous dites","dire: vous dites"],
+    ["vous êtez","vous êtes","être: vous êtes"],
+    ["ils avent · ils sontent","ils ont · ils sont","ils ont, ils sont, ils vont, ils font"],
+    ["nous boivons · ils buvent","nous buvons · ils boivent","boire: nous buvons, ils boivent (đảo v / b)"],
+    ["je voie · tu voies","je vois · tu vois","voir: je / tu đuôi -s"],
+    ["je peux · il peux","je peux · il peut","pouvoir: il peut (đuôi -t)"],
+    ["il connait","il connaît","connaître: î ở ngôi il"]
+  ];
+  const q=(s,a)=>({t:"f",q:s,a:Array.isArray(a)?a:[a]});
+  const ex=[
+    q("Vous (être) ___ français ?","êtes"),q("Elles (avoir) ___ deux chats.","ont"),q("Je (aller) ___ au travail en bus.","vais"),
+    q("Ils (aller) ___ au marché le samedi.","vont"),q("Vous (faire) ___ du sport ?","faites"),q("Ils (faire) ___ une promenade.","font"),
+    q("Tu (dire) ___ la vérité.","dis"),q("Vous (dire) ___ bonjour à tout le monde.","dites"),q("Ils (dire) ___ merci.","disent"),
+    q("Tu (lire) ___ un livre ou un journal ?","lis"),q("Nous (écrire) ___ une carte postale.","écrivons"),q("J'(écrire) ___ à ma famille.","écris"),
+    q("Je (voir) ___ mes amis ce soir.","vois"),q("Nous (voir) ___ la mer depuis la fenêtre.","voyons"),q("Ils (voir) ___ un film.","voient"),
+    q("Je (croire) ___ que c'est possible.","crois"),q("Vous (croire) ___ cette histoire ?","croyez"),
+    q("Nous (boire) ___ du thé le matin.","buvons"),q("Ils (boire) ___ de l'eau.","boivent"),q("Tu (boire) ___ un café ?","bois"),
+    q("Je (savoir) ___ nager.","sais"),q("Elle (savoir) ___ parler trois langues.","sait"),q("Vous (savoir) ___ où est la gare ?","savez"),
+    q("Tu (devoir) ___ partir à huit heures.","dois"),q("Nous (devoir) ___ prendre le métro.","devons"),q("Ils (devoir) ___ travailler.","doivent"),
+    q("Elle (pouvoir) ___ venir demain.","peut"),q("Nous (vouloir) ___ un thé, s'il vous plaît.","voulons"),
+    q("Il (venir) ___ de Hanoï.","vient"),q("Vous (venir) ___ à la fête ?","venez"),q("Elles (tenir) ___ leur sac à la main.","tiennent"),
+    q("Je (prendre) ___ le bus.","prends"),q("Ils (prendre) ___ un taxi.","prennent"),q("Nous (comprendre) ___ la leçon.","comprenons"),
+    q("Je (mettre) ___ la table.","mets"),q("Nous (mettre) ___ un manteau quand il fait froid.","mettons"),
+    q("Tu (connaître) ___ ce restaurant ?","connais"),q("Il (connaître) ___ bien la ville.","connaît"),
+    q("J'(ouvrir) ___ la fenêtre.","ouvre"),q("Vous (ouvrir) ___ la porte.","ouvrez")
+  ];
+  const irr={id:"irregular",pin:true,date:"Ngữ pháp",name:"Động từ bất quy tắc · hiện tại",src:"Ôn tập riêng",links:[],notes,fixes,ex};
+  UNITS.splice(1,0,irr);
+})();
+
 /* ================= dữ liệu ================= */
 const TOPICS=LEX.groups.map(g=>({id:g.id,title:g.title,caption:g.caption,
   entries:g.entries.map(e=>({fr:e[0],vi:e[1],en:e[2],nt:e[3]||"",sub:e[4]||"",key:(e[5]||g.id)+"|"+e[0],topic:g.id}))}));
