@@ -453,6 +453,28 @@ const rawVocabularyGroups: RawVocabularyGroup[] = [
       { french: "la signature", vietnamese: "chữ ký" },
     ],
   },
+  {
+    id: "housing",
+    title: "Nhà cửa",
+    caption: "Đồ dùng và thiết bị trong nhà: nhà bếp (la cuisine) và phòng tắm (la salle de bains).",
+    entries: [
+      { french: "un congélateur", vietnamese: "tủ đông", note: "dans la cuisine" },
+      { french: "un réfrigérateur", vietnamese: "tủ lạnh", note: "dans la cuisine" },
+      { french: "un four à micro-ondes", vietnamese: "lò vi sóng", note: "dans la cuisine" },
+      { french: "un évier", vietnamese: "bồn rửa (bếp)", note: "dans la cuisine" },
+      { french: "une cuisinière", vietnamese: "bếp nấu (kèm lò nướng)", note: "dans la cuisine" },
+      { french: "un lave-vaisselle", vietnamese: "máy rửa bát", note: "= une machine à laver la vaisselle" },
+      { french: "une machine à laver", vietnamese: "máy giặt", note: "= un lave-linge" },
+      { french: "un lave-linge", vietnamese: "máy giặt", note: "= une machine à laver" },
+      { french: "un placard", vietnamese: "tủ âm tường / tủ đựng đồ", note: "dans la cuisine" },
+      { french: "une baignoire", vietnamese: "bồn tắm", note: "dans la salle de bains" },
+      { french: "un lavabo", vietnamese: "bồn rửa mặt", note: "dans la salle de bains" },
+      { french: "un miroir", vietnamese: "gương", note: "dans la salle de bains" },
+      { french: "une armoire de toilette", vietnamese: "tủ đựng đồ vệ sinh cá nhân", note: "dans la salle de bains" },
+      { french: "les toilettes (les W.-C.)", vietnamese: "nhà vệ sinh / toilet", note: "dans la salle de bains" },
+      { french: "une douche", vietnamese: "vòi hoa sen / buồng tắm", note: "dans la salle de bains" },
+    ],
+  },
 ];
 
 export const vocabularyGroups: VocabularyGroup[] = rawVocabularyGroups.map((group) => ({
