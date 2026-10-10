@@ -541,6 +541,19 @@ body{background:radial-gradient(circle at 18% 0%,var(--glow),transparent 32rem),
 .acc:hover{box-shadow:inset 0 0 0 1px var(--mustard),0 2px 0 var(--mustard)}
 .acc:active{transform:translateY(2px);box-shadow:inset 0 0 0 1px var(--mustard)}
 .acc.caps[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.wr-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.wr-chip{font-size:13px;font-weight:700;padding:5px 12px;border:1.5px dashed var(--line);color:var(--ink-soft);background:transparent;transition:background .2s,color .2s,border-color .2s}
+.wr-chip.on{background:var(--sage);color:var(--sage-ink);border:1.5px solid var(--sage-ink)}
+.wr-frame{background:var(--sheet);border:1px solid var(--line);padding:10px 16px;max-width:70ch}.wr-frame summary{cursor:pointer;font-weight:800;font-size:14px}.wr-frame ul{margin:10px 0;padding-left:20px}
+.wr-ta{width:100%;max-width:820px;font:inherit;font-size:17px;line-height:1.7;color:var(--ink);background:var(--sheet);border:1.5px solid var(--line);padding:14px 16px;resize:vertical;background-image:repeating-linear-gradient(transparent,transparent 28px,var(--ruled) 28px,var(--ruled) 29px)}
+.wr-ta:focus{outline:2px solid var(--mustard);outline-offset:2px}
+.wr-meter{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:8px;font-weight:800;font-size:14px;color:var(--ink-soft);font-variant-numeric:tabular-nums}.wr-meter .ok{color:var(--sage-ink)}
+.wr-cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px;margin:6px 0 18px}
+.wr-box{background:var(--sheet);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 20px;min-width:0}.wr-box h3{margin:0 0 8px;font-size:16px}.wr-box h3 small{display:block;font-weight:600;color:var(--ink-soft);font-size:12px;margin-top:2px}
+.wr-model{background:var(--s1)}
+.wr-text{font-size:16px;line-height:1.75;margin:0;overflow-wrap:anywhere}
+.wr-hit{background:var(--sage);color:var(--sage-ink);padding:0 2px}
+.wr-miss{max-width:70ch;margin:0 0 14px;padding:10px 14px;background:var(--mustard-soft);color:var(--mustard-ink);border-left:3px solid var(--mustard)}
 </style>
 
 <div class="app">
@@ -550,6 +563,7 @@ body{background:radial-gradient(circle at 18% 0%,var(--glow),transparent 32rem),
     <button class="nav" data-v="lessons"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7M8 11h5"/></svg><span>Bài học<span class="fr-l">Leçons</span></span></button>
     <button class="nav" data-v="lex"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="15" rx="1"/><path d="M8 3h12v14"/><path d="M7 11h5M7 15h3"/></svg><span>Từ vựng<span class="fr-l">Lexique</span></span></button>
     <button class="nav" data-v="dlg"><svg viewBox="0 0 24 24"><path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/></svg><span>Hội thoại<span class="fr-l">Dialogues</span></span></button>
+    <button class="nav" data-v="wr"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg><span>Viết<span class="fr-l">Écrire</span></span></button>
     <button class="nav theme" id="theme-btn" aria-label="Đổi giao diện sáng / tối"></button>
     <div class="rail-foot" id="rail-foot"></div>
   </nav>
@@ -1378,7 +1392,7 @@ const sayBtn=t=>`<button class="say" data-say="${esc(t)}" aria-label="Nghe đọ
 
 /* ================= lưu trữ ================= */
 const KEY="fr-carnet-v2";
-let S={srs:{},done:{},seen:{},log:{},prefs:{min:15,dir:"fr-vi"},view:"today",lesson:null,stage:"learn",ci:0,qi:0,topic:null,open:{},sit:null,di:0,showAll:false};
+let S={srs:{},done:{},seen:{},log:{},prefs:{min:15,dir:"fr-vi"},view:"today",lesson:null,stage:"learn",ci:0,qi:0,topic:null,open:{},sit:null,di:0,showAll:false,wm:null};
 try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)S=Object.assign(S,s);
   else{const o=JSON.parse(localStorage.getItem("fr-revision-v1")||"null");if(o){const t=dn();
     S.done=o.done||{};Object.keys(o.known||{}).forEach(k=>S.srs[k]={b:3,due:t+3});Object.keys(o.review||{}).forEach(k=>S.srs[k]={b:1,due:t});}}}catch(e){}
@@ -1453,7 +1467,7 @@ function chrome(){
   const bd=$("#due-badge");bd.hidden=!d;bd.textContent=d;
   const st=streak();$("#rail-foot").innerHTML=`<b>${st}</b>ngày liên tiếp<br><span>${WORDS.filter(e=>lvl(e.key)>=2).length} từ đã nhớ</span>`;
 }
-function render(){chrome();({today:viewToday,lessons:viewLessons,lex:viewLex,dlg:viewDlg,session:viewSession}[S.view]||viewToday)();}
+function render(){chrome();({today:viewToday,lessons:viewLessons,lex:viewLex,dlg:viewDlg,wr:viewWrite,session:viewSession}[S.view]||viewToday)();}
 
 /* ================= phiên ôn ================= */
 const CAPS={5:{due:10,nw:4,ex:2},15:{due:25,nw:8,ex:5},30:{due:50,nw:15,ex:10}};
@@ -1750,7 +1764,7 @@ function lessonStats(u){const d=u.ex.filter((_,j)=>S.done[u.id+":"+j]).length;co
 const LFILTERS=[["all","Tất cả"],["todo","Chưa làm xong"],["done","Đã xong"],["wrong","Có câu sai cần ôn"]];
 function viewLessons(){
   if(S.lesson){viewLesson(UNITS.find(u=>u.id===S.lesson)||UNITS[0]);return;}
-  main.innerHTML=`<header class="head"><div><p class="eyebrow">Leçons · ${UNITS.length} buổi với cô Pepe</p><h1>Bài học</h1><p class="lede">Mỗi buổi đi theo 3 bước: hiểu từng điểm ngữ pháp, luyện ngay, rồi xem lại lỗi em hay mắc.</p></div>
+  main.innerHTML=`<header class="head"><div><p class="eyebrow">Leçons · ${UNITS.length} buổi</p><h1>Bài học</h1><p class="lede">Mỗi buổi đi theo 3 bước: hiểu từng điểm ngữ pháp, luyện ngay, rồi xem lại lỗi em hay mắc.</p></div>
   <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="ls-q" placeholder="Tìm bài: giờ, futur proche, buổi 5…" value="${esc(lessonQ2)}"></label></header>
   <div class="filters" role="group" aria-label="Lọc bài học">${LFILTERS.map(f=>`<button class="chipf" data-f="${f[0]}" aria-pressed="${lessonF===f[0]}">${f[1]} <small id="fc-${f[0]}"></small></button>`).join("")}</div>
   <div id="ls-body"></div>`;
@@ -1900,6 +1914,108 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="ArrowRight"&&$("#d-next")&&!$("#d-next").disabled)$("#d-next").click();
   else if(e.key==="ArrowLeft"&&$("#d-prev")&&!$("#d-prev").disabled)$("#d-prev").click();
 });
+
+/* ================= xưởng viết: dùng từ thật ================= */
+const WKEY="fr-writing-v1";
+let WR={};try{WR=JSON.parse(localStorage.getItem(WKEY)||"{}")||{};}catch(e){}
+function saveWR(){try{localStorage.setItem(WKEY,JSON.stringify(WR));}catch(e){}}
+const wfold=s=>s.normalize("NFC").replace(/[À-ſ]/g,c=>strip(c)).toLowerCase().replace(/[’`´]/g,"'").replace(/-/g," ");
+const T=(fr,r,key)=>({fr,r,key});
+const WMISSIONS=[
+ {id:"cuisine",n:"1",title:"Căn bếp của tôi",min:35,need:6,
+  scene:"Bạn gọi video cho một người bạn Pháp và dẫn họ đi xem căn bếp (thật hoặc tưởng tượng).",
+  task:"Viết ít nhất 35 từ. Mỗi thiết bị một câu: nó ở đâu, và bạn dùng nó để làm gì.",
+  frame:["Dans ma cuisine, il y a …","À côté de …, il y a …","Je mets … dans …","Je prends … dans …"],
+  targets:[T("un réfrigérateur","refrigerateur|frigo","maison|un réfrigérateur"),T("un congélateur","congelateur","maison|un congélateur"),T("un four à micro-ondes","micro ondes","maison|un four à micro-ondes"),T("un évier","evier","maison|un évier"),T("une cuisinière","cuisiniere","maison|une cuisinière"),T("un lave-vaisselle","lave vaisselle","maison|le lave-vaisselle"),T("une machine à laver","machine a laver|lave linge","maison|la machine à laver"),T("un placard","placard","maison|un placard")],
+  model:"Dans ma cuisine, il y a un réfrigérateur et un congélateur près de la porte. Je mets le lait dans le réfrigérateur. À côté de l'évier, il y a un lave-vaisselle. Je prends les assiettes dans le placard. Pour faire la cuisine, j'utilise la cuisinière et le four à micro-ondes."},
+ {id:"mail",n:"2",title:"Email cho chủ nhà",min:50,need:5,
+  scene:"Bạn vừa thuê căn hộ và có vài sự cố. Bạn viết email cho chủ nhà.",
+  task:"Viết ít nhất 50 từ: chào hỏi, nêu 2 đến 3 sự cố, nhờ sửa, hỏi khi nào họ đến.",
+  frame:["Bonjour Madame / Monsieur,","J'ai un problème : … ne marche pas.","… est cassé(e).","Pouvez-vous venir … ?","Merci beaucoup, …"],
+  hints:["ne marche pas = không chạy","est cassé(e) = bị hỏng","est bouché(e) = bị tắc","cette semaine = tuần này"],
+  targets:[T("un lave-vaisselle","lave vaisselle","maison|le lave-vaisselle"),T("un évier","evier","maison|un évier"),T("une machine à laver","machine a laver|lave linge","maison|la machine à laver"),T("une douche","douche","maison|une douche"),T("un lavabo","lavabo","maison|le lavabo"),T("une baignoire","baignoire","maison|la baignoire"),T("les toilettes","toilettes|w c","maison|les toilettes"),T("pouvoir (pouvez / peux)","pouvez|peux|peut|pouvons"),T("venir (venir / venez)","venir|venez|viens|vient")],
+  model:"Bonjour Monsieur, J'habite dans l'appartement du deuxième étage. J'ai un problème : le lave-vaisselle ne marche pas et l'évier est bouché. Dans la salle de bains, la douche fait du bruit et le lavabo est cassé. Pouvez-vous venir cette semaine ? Je suis à la maison le soir. Merci beaucoup, Loan"},
+ {id:"matin",n:"3",title:"Buổi sáng của tôi",min:70,need:7,
+  scene:"Bạn kể cho giáo viên nghe một buổi sáng bình thường, từ phòng tắm đến bếp rồi ra cửa.",
+  task:"Viết ít nhất 70 từ. Dùng ngôi je và ít nhất 3 động từ bất quy tắc (prendre, mettre, ouvrir, faire, aller, boire…).",
+  frame:["Le matin, je me réveille à …","Je vais dans … et je prends …","Ensuite, je mets … / j'ouvre …","Après, je fais … et je bois …"],
+  targets:[T("une douche","douche","maison|une douche"),T("un miroir","miroir|glace"),T("un placard","placard","maison|un placard"),T("un lave-vaisselle","lave vaisselle","maison|le lave-vaisselle"),T("une machine à laver","machine a laver|lave linge","maison|la machine à laver"),T("prendre","prends|prend|prenons|prennent"),T("mettre","mets|met|mettons|mettent"),T("ouvrir","ouvre|ouvres|ouvrons"),T("faire","fais|fait|faisons|font"),T("aller","vais|vas|va |allons|vont"),T("boire","bois|boit|buvons|boivent")],
+  model:"Le matin, je me réveille à six heures. Je vais dans la salle de bains et je prends une douche. Je me regarde dans le miroir et je me brosse les dents. Ensuite, je mets mes vêtements et j'ouvre le placard pour prendre mon sac. Dans la cuisine, je fais du thé et je bois un café. Je mets la tasse dans le lave-vaisselle. À sept heures et demie, je vais au travail. Le soir, je mets le linge dans la machine à laver."},
+ {id:"visite",n:"4",title:"Giới thiệu nhà cho bạn",min:90,need:8,
+  scene:"Một người bạn Pháp sắp đến chơi. Bạn viết tin nhắn dài dẫn họ đi một vòng quanh nhà.",
+  task:"Viết ít nhất 90 từ, đi qua ít nhất 3 phòng. Không nhìn bài mẫu của các bài trước.",
+  frame:["Quand tu entres, il y a …","À gauche, tu vois …","Dans la salle de bains, il y a …","Tu peux … / Tu veux … ?"],
+  targets:[T("le salon / le séjour","salon|sejour"),T("la cuisine","cuisine"),T("la salle de bains","salle de bain"),T("la chambre","chambre"),T("le couloir","couloir"),T("un placard","placard","maison|un placard"),T("un miroir","miroir|glace"),T("une baignoire","baignoire","maison|la baignoire"),T("un lavabo","lavabo","maison|le lavabo"),T("un réfrigérateur","refrigerateur|frigo","maison|un réfrigérateur"),T("pouvoir (peux / pouvez)","peux|pouvez|peut"),T("vouloir (veux / voulez)","veux|voulez|veut")],
+  model:"Quand tu entres, il y a un petit couloir avec un placard pour les manteaux. À gauche, tu vois le salon, avec un grand canapé. À droite, c'est la cuisine : il y a un réfrigérateur, un lave-vaisselle et une cuisinière. Dans la salle de bains, il y a une baignoire, un lavabo et un grand miroir. Ma chambre est au fond du couloir. Tu peux poser ton sac dans le salon. Tu veux un café ou un thé ? Je fais le café tout de suite !"}
+];
+function wcount(t){return (t.trim().match(/[\p{L}'’-]+/gu)||[]).length;}
+function wscan(m,text){
+  const f=wfold(text),ranges=[],used=m.targets.map(tg=>{
+    const re=new RegExp("(?<![a-z])(?:"+tg.r+")(?![a-z])","g");let ok=false,x;
+    while((x=re.exec(f))){ok=true;ranges.push([x.index,x.index+x[0].length]);if(x[0].length===0)re.lastIndex++;}
+    return ok;});
+  return {used,ranges};
+}
+function whtml(m,text){
+  const {ranges}=wscan(m,text);ranges.sort((a,b)=>a[0]-b[0]);
+  let out="",pos=0;for(const [s,e] of ranges){if(s<pos)continue;out+=esc(text.slice(pos,s))+`<mark class="wr-hit">${esc(text.slice(s,e))}</mark>`;pos=e;}
+  return (out+esc(text.slice(pos))).replace(/\n/g,"<br>");
+}
+function wState(id){return WR[id]||(WR[id]={text:"",att:[],done:false});}
+function viewWrite(){
+  if(S.wm){const m=WMISSIONS.find(x=>x.id===S.wm);if(m){wrMission(m);return;}}
+  main.innerHTML=`<header class="head"><div><p class="eyebrow">Écrire · dùng từ thật</p><h1>Xưởng viết</h1><p class="lede">Đọc chỉ giúp bạn nhận ra từ. Viết buộc bạn tự lôi từ ra khỏi trí nhớ, và đó là lúc từ bắt đầu ở lại. Mỗi bài là một tình huống thật, dài dần: bài sau yêu cầu nhiều chữ hơn bài trước.</p></div></header>
+  <div class="lessons">${WMISSIONS.map(m=>{const st=WR[m.id]||{att:[]};const best=st.att.reduce((a,b)=>Math.max(a,b.words),0);
+    return `<button class="lcard" data-wm="${m.id}"><div class="top"><span>Bài ${m.n} · từ ${m.min} chữ</span>${st.done?'<span class="pill done">đã nộp</span>':st.text?'<span class="pill new">đang viết</span>':""}</div>
+    <h3>${esc(m.title)}</h3><p class="small muted" style="margin:0">${esc(m.scene)}</p>
+    <div class="meta"><span>${m.need}/${m.targets.length} từ khóa tối thiểu</span><span>${st.att.length?`viết ${st.att.length} lần · tối đa ${best} chữ`:"chưa viết"}</span></div></button>`;}).join("")}</div>
+  <p class="tip small" style="margin-top:22px;max-width:70ch">Cách tốt nhất: viết bài 1, nộp, rồi quay lại sau 1 đến 2 ngày và viết lại <b>không nhìn bài mẫu</b>. Từ nào bạn quên sẽ tự được đưa vào phiên ôn hằng ngày.</p>`;
+  main.querySelectorAll("[data-wm]").forEach(b=>b.onclick=()=>{S.wm=b.dataset.wm;save();render();window.scrollTo({top:0});});
+}
+function wrMission(m){
+  const st=wState(m.id);
+  const draw=()=>{
+  if(st.done){
+    const last=st.att[st.att.length-1],{used}=wscan(m,st.text),miss=m.targets.filter((_,i)=>!used[i]);
+    main.innerHTML=`<button class="topic-back btn ghost" id="wr-back">← Xưởng viết</button><header class="head" style="margin-top:14px"><div><p class="eyebrow">Bài ${m.n} · lần viết thứ ${st.att.length}</p><h1>${esc(m.title)}</h1></div></header>
+    <div class="wr-cmp"><section class="wr-box"><h3>Bài của bạn <small>${last.words} chữ · ${last.used}/${m.targets.length} từ khóa</small></h3><p class="wr-text">${whtml(m,st.text)}</p></section>
+    <section class="wr-box wr-model"><h3>Bài mẫu <small>chỉ để so, không phải đáp án duy nhất</small></h3><p class="wr-text">${esc(m.model)}</p></section></div>
+    ${miss.length?`<div class="tip wr-miss"><b>Từ còn quên (${miss.length}):</b> ${miss.map(t=>esc(t.fr)).join(" · ")}<br><small>Những từ này đã được đưa vào phiên ôn hôm nay.</small></div>`:`<div class="tip wr-miss"><b>Bạn đã dùng hết các từ khóa.</b> Lần sau thử viết lại mà không nhìn bài mẫu.</div>`}
+    <p class="small muted" style="max-width:70ch">Tự đọc lại: (1) mỗi động từ đã chia đúng với je / il / ils chưa? (2) un / une / le / la đã đúng giống chưa? (3) dấu é è à ô có đủ chưa?</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px"><button class="btn" id="wr-redo">Viết lại không nhìn mẫu</button><button class="btn ghost" id="wr-copy">Sao chép để nhờ Claude sửa</button><span class="small muted" id="wr-copied"></span></div>`;
+    $("#wr-redo").onclick=()=>{st.text="";st.done=false;saveWR();draw();window.scrollTo({top:0});};
+    $("#wr-copy").onclick=()=>{const txt=`Hãy sửa bài viết tiếng Pháp của tôi (trình độ A1). Chỉ ra lỗi, giải thích ngắn bằng tiếng Việt, rồi viết lại câu đúng.\nĐề: ${m.title}. ${m.scene}\n\n${st.text}`;
+      const ok=()=>{$("#wr-copied").textContent="Đã sao chép. Dán vào chat với Claude.";};
+      try{navigator.clipboard.writeText(txt).then(ok,()=>{$("#wr-copied").textContent="Không sao chép được, hãy bôi đen và copy bài viết ở trên.";});}catch(e){$("#wr-copied").textContent="Không sao chép được, hãy bôi đen và copy bài viết ở trên.";}};
+    $("#wr-back").onclick=()=>{S.wm=null;save();render();};
+    return;
+  }
+  main.innerHTML=`<button class="topic-back btn ghost" id="wr-back">← Xưởng viết</button><header class="head" style="margin-top:14px"><div><p class="eyebrow">Bài ${m.n} · viết ít nhất ${m.min} chữ</p><h1>${esc(m.title)}</h1><p class="lede">${esc(m.scene)}</p></div></header>
+  <p style="max-width:70ch"><b>Việc cần làm:</b> ${esc(m.task)}</p>
+  <div class="wr-chips" id="wr-chips" aria-label="Từ khóa nên dùng">${m.targets.map((t,i)=>`<span class="wr-chip" data-i="${i}">${esc(t.fr)}</span>`).join("")}</div>
+  <p class="small muted" style="margin:6px 0 14px">Cần dùng ít nhất <b>${m.need}</b> từ khóa. Từ nào bạn dùng sẽ sáng lên.</p>
+  <details class="wr-frame"><summary>Khung câu gợi ý${m.hints?" và từ cần thiết":""}</summary><ul>${m.frame.map(f=>`<li class="fr-line">${esc(f)}</li>`).join("")}</ul>${m.hints?`<p class="small muted">${m.hints.map(esc).join(" · ")}</p>`:""}</details>
+  <label for="wr-ta" class="eyebrow" style="display:block;margin:16px 0 6px">Bài viết của bạn (tiếng Pháp)</label>
+  <textarea id="wr-ta" class="wr-ta" rows="9" lang="fr" spellcheck="false" placeholder="Bắt đầu viết ở đây. Sai cũng được, cứ viết."></textarea>
+  <div class="wr-meter"><span id="wr-w"></span><span id="wr-k"></span></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px"><button class="btn big" id="wr-sub" disabled>Nộp và xem bài mẫu</button></div>
+  <p class="small muted" id="wr-why" style="margin-top:8px"></p>`;
+  const ta=$("#wr-ta");ta.value=st.text;
+  const upd=()=>{const w=wcount(ta.value),{used}=wscan(m,ta.value),k=used.filter(Boolean).length;
+    main.querySelectorAll(".wr-chip").forEach(c=>c.classList.toggle("on",!!used[+c.dataset.i]));
+    $("#wr-w").textContent=`${w}/${m.min} chữ`;$("#wr-k").textContent=`${k}/${m.need} từ khóa`;
+    $("#wr-w").classList.toggle("ok",w>=m.min);$("#wr-k").classList.toggle("ok",k>=m.need);
+    const ready=w>=m.min&&k>=m.need;$("#wr-sub").disabled=!ready;
+    $("#wr-why").textContent=ready?"":(w<m.min?`Còn thiếu ${m.min-w} chữ.`:`Dùng thêm ${m.need-k} từ khóa nữa.`);};
+  ta.oninput=()=>{st.text=ta.value;saveWR();upd();};upd();
+  $("#wr-sub").onclick=()=>{const {used}=wscan(m,ta.value),w=wcount(ta.value),t=dn();
+    st.text=ta.value;st.done=true;st.att.push({ts:t,words:w,used:used.filter(Boolean).length});
+    m.targets.forEach((tg,i)=>{if(used[i]||!tg.key)return;const c=S.srs[tg.key];if(!c)S.srs[tg.key]={b:1,due:t};else{c.b=Math.min(c.b,1);c.due=Math.min(c.due,t);}});
+    saveWR();save();draw();window.scrollTo({top:0});};
+  $("#wr-back").onclick=()=>{S.wm=null;save();render();};
+  };
+  draw();
+}
 
 if(S.view==="session")S.view="today";
 render();
