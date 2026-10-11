@@ -29,6 +29,27 @@ const UNITS = [
   <tr><td>je / j'</td><td>${F("j'ai fini")}</td></tr><tr><td>tu</td><td>${F("tu as fini")}</td></tr><tr><td>il / elle</td><td>${F("il a fini")}</td></tr>
   <tr><td>nous</td><td>${F("nous avons fini")}</td></tr><tr><td>vous</td><td>${F("vous avez fini")}</td></tr><tr><td>ils / elles</td><td>${F("ils ont fini")}</td></tr></table></div>
   <p>${F("J'ai fini mes devoirs.")} ${F("Hier soir, j'ai étudié pendant trois heures.")} ${F("Elle a déménagé.")} ${F("Nous avons cherché un appartement.")} ${F("Vous avez travaillé.")}</p>`},
+  {k:1,h:"Động từ đi với être: La Maison d'Être",html:`<p>Ngoài động từ phản thân, có nhóm <b>động từ chỉ chuyển động hoặc thay đổi trạng thái</b> dùng <b>être</b> ở passé composé (bảng "La Maison d'Être" và ngọn đồi vẽ tay của thầy).</p>
+  <div class="tbl"><table><tr><th>Nguyên thể</th><th>Participe</th><th>Nghĩa</th><th>Ví dụ trên bảng</th></tr>
+  <tr><td>${F("aller")}</td><td>${F("allé")}</td><td>đi</td><td>${F("Elles sont allées en France.")}</td></tr>
+  <tr><td>${F("venir")}</td><td>${F("venu")}</td><td>đến</td><td>${F("Il est venu de Lille.")}</td></tr>
+  <tr><td>${F("devenir")}</td><td>${F("devenu")}</td><td>trở thành</td><td>${F("Elle est devenue esprit.")}</td></tr>
+  <tr><td>${F("revenir")}</td><td>${F("revenu")}</td><td>trở lại</td><td></td></tr>
+  <tr><td>${F("arriver")}</td><td>${F("arrivé")}</td><td>đến nơi</td><td>${F("Elle est arrivée.")}</td></tr>
+  <tr><td>${F("partir")}</td><td>${F("parti")}</td><td>rời đi</td><td>${F("Elle est partie.")}</td></tr>
+  <tr><td>${F("entrer / rentrer")}</td><td>${F("entré / rentré")}</td><td>đi vào / về nhà</td><td>${F("Elle est entrée.")}</td></tr>
+  <tr><td>${F("sortir")}</td><td>${F("sorti")}</td><td>đi ra</td><td>${F("Il est sorti.")}</td></tr>
+  <tr><td>${F("monter")}</td><td>${F("monté")}</td><td>đi lên</td><td>${F("Il est monté.")}</td></tr>
+  <tr><td>${F("descendre")}</td><td>${F("descendu")}</td><td>đi xuống</td><td>${F("Elle est descendue.")}</td></tr>
+  <tr><td>${F("passer")}</td><td>${F("passé")}</td><td>đi ngang qua</td><td>${F("Il est passé.")}</td></tr>
+  <tr><td>${F("rester")}</td><td>${F("resté")}</td><td>ở lại</td><td>${F("Ils sont restés.")}</td></tr>
+  <tr><td>${F("retourner")}</td><td>${F("retourné")}</td><td>quay lại</td><td>${F("Il est retourné.")}</td></tr>
+  <tr><td>${F("tomber")}</td><td>${F("tombé")}</td><td>ngã</td><td>${F("Elle est tombée.")}</td></tr>
+  <tr><td>${F("naître")}</td><td>${F("né")}</td><td>sinh ra</td><td>${F("Elle est née en 1905.")}</td></tr>
+  <tr><td>${F("mourir")}</td><td>${F("mort")}</td><td>chết</td><td>${F("Ils sont morts en 1944.")}</td></tr></table></div>
+  <p><b>Phân từ hợp giống và số với chủ ngữ</b>: ${F("elle est entrée")}, ${F("ils sont restés")}, ${F("elles sont allées")}, ${F("ils sont morts")}.</p>
+  <p class="tip">Nét chữ xanh <b>re-</b> trên bảng: động từ có tiền tố <b>re-</b> cũng dùng être (${F("revenir")}, ${F("rentrer")}, ${F("remonter")}…). Mẹo nhớ 16 động từ: <b>DR &amp; MRS VANDERTRAMP</b> (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Retourner, Tomber, Rentrer, Arriver, Mourir, Partir). <i>Passer</i> có trên hình nhưng không nằm trong câu này.</p>
+  <p>Phủ định: ${F("Elle n'est pas partie.")} (ne … pas bao quanh <b>est</b>).</p>`},
   {k:1,h:"être + participe passé: động từ phản thân và naître",html:`<p>Động từ phản thân dùng <b>être</b>. Phân từ phải <b>hợp giống và số với chủ ngữ</b> (thêm <b>e</b> cho nữ, <b>s</b> cho số nhiều).</p>
   <div class="tbl"><table><tr><th></th><th>se lever</th></tr>
   <tr><td>je</td><td>${F("je me suis levé")} (nam) · ${F("je me suis levée")} (nữ)</td></tr>
@@ -60,7 +81,10 @@ const UNITS = [
   ["je n'ai pas mangé du pain","je n'ai pas mangé de pain","Sau phủ định: du / de la / des → de"],
   ["je ne pas ai mangé","je n'ai pas mangé","ne … pas bao quanh trợ động từ"],
   ["la semaine dernier","la semaine dernière","semaine giống cái nên dernière"],
-  ["hiver, j'ai rencontré un Français","hier, j'ai rencontré un Français","hier = hôm qua, hiver = mùa đông"]
+  ["hiver, j'ai rencontré un Français","hier, j'ai rencontré un Français","hier = hôm qua, hiver = mùa đông"],
+  ["j'ai allé au cinéma","je suis allé(e) au cinéma","aller dùng être (La Maison d'Être)"],
+  ["elle est parti","elle est partie","être: phân từ hợp giống với chủ ngữ"],
+  ["ils sont arrivé","ils sont arrivés","chủ ngữ số nhiều: thêm -s"]
  ],
  ex:[
   {t:"f",q:"Hier soir, j'(étudier) ___ pendant trois heures.",a:["ai étudié"]},
@@ -102,11 +126,35 @@ const UNITS = [
   {t:"f",q:"Je (ne pas dormir) ___ ce soir.",a:["ne dors pas"]},
   {t:"f",q:"Ils (sortir) ___ le samedi soir.",a:["sortent"]},
   {t:"f",q:"Défense ___ arriver en retard.",a:["d'"]},
+  {t:"f",q:"Hier, je (aller) ___ au marché. <span class='muted small'>(nữ)</span>",a:["suis allée"]},
+  {t:"f",q:"Hier, je (aller) ___ au marché. <span class='muted small'>(nam)</span>",a:["suis allé"]},
+  {t:"f",q:"Elles (aller) ___ en France.",a:["sont allées"]},
+  {t:"f",q:"Il (venir) ___ de Lille.",a:["est venu"]},
+  {t:"f",q:"Elle (arriver) ___ à 8 h.",a:["est arrivée"]},
+  {t:"f",q:"Ils (arriver) ___ en retard.",a:["sont arrivés"]},
+  {t:"f",q:"Elle (partir) ___.",a:["est partie"]},
+  {t:"f",q:"Il (sortir) ___ à midi.",a:["est sorti"]},
+  {t:"f",q:"Elle (entrer) ___ dans la maison.",a:["est entrée"]},
+  {t:"f",q:"Il (monter) ___ au premier étage.",a:["est monté"]},
+  {t:"f",q:"Elle (descendre) ___ du bus.",a:["est descendue"]},
+  {t:"f",q:"Ils (rester) ___ à la maison.",a:["sont restés"]},
+  {t:"f",q:"Il (retourner) ___ à Lille.",a:["est retourné"]},
+  {t:"f",q:"Elle (tomber) ___.",a:["est tombée"]},
+  {t:"f",q:"Elle (naître) ___ en 1905.",a:["est née"]},
+  {t:"f",q:"Ils (mourir) ___ en 1944.",a:["sont morts"]},
+  {t:"f",q:"Il (passer) ___ chez moi.",a:["est passé"]},
+  {t:"f",q:"Elle (devenir) ___ médecin.",a:["est devenue"]},
+  {t:"f",q:"Elle (ne pas partir) ___.",a:["n'est pas partie"]},
+  {t:"f",q:"Nous (arriver) ___ hier. <span class='muted small'>(cả nhóm là nữ)</span>",a:["sommes arrivées"]},
   {t:"m",q:"Đâu là cách nói đúng của <b>tuần trước</b>?",o:["la dernière semaine","la semaine dernière","le semaine dernier"],a:1,w:"semaine dernière = tuần trước; la dernière semaine = tuần cuối cùng."},
   {t:"m",q:"Đâu là cách nói đúng của <b>hôm qua</b>?",o:["hiver","hier","hiers"],a:1,w:"hier = hôm qua; l'hiver = mùa đông."},
   {t:"m",q:"Đâu là câu đúng?",o:["J'ai parler anglais.","J'ai parlé anglais.","Je suis parlé anglais."],a:1,w:"avoir + phân từ -é."},
   {t:"m",q:"Đâu là câu đúng? <span class='muted small'>(nói về mình, là nữ)</span>",o:["Je me suis levé à 6 h.","Je me suis levée à 6 h.","Je suis levée à 6 h."],a:1,w:"Phản thân dùng être, phân từ hợp giống: levée."},
   {t:"m",q:"Đâu là câu đúng?",o:["Je n'ai pas mangé du pain.","Je n'ai pas mangé de pain.","Je ne pas ai mangé de pain."],a:1,w:"Sau phủ định: du → de."},
+  {t:"m",q:"Đâu là câu đúng?",o:["J'ai allé au cinéma.","Je suis allé au cinéma.","Je suis aller au cinéma."],a:1,w:"aller dùng être, phân từ là allé."},
+  {t:"m",q:"Đâu là câu đúng?",o:["Elle est parti.","Elle est partie.","Elle a partie."],a:1,w:"être + phân từ hợp giống: partie."},
+  {t:"m",q:"Động từ nào dùng <b>être</b> ở passé composé?",o:["manger","arriver","chercher"],a:1,w:"arriver nằm trong La Maison d'Être. manger và chercher dùng avoir."},
+  {t:"m",q:"Ils ___ restés à la maison.",o:["ont","sont","est"],a:1,w:"rester dùng être, chủ ngữ ils nên sont."},
   {t:"m",q:"Merci de ___ les devoirs à l'heure.",o:["faire","fais","fait"],a:0,w:"Sau de là nguyên thể."}
  ]
 },
