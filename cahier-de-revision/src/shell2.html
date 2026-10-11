@@ -553,6 +553,20 @@ body{background:radial-gradient(circle at 18% 0%,var(--glow),transparent 32rem),
 .wr-text{font-size:16px;line-height:1.75;margin:0;overflow-wrap:anywhere}
 .wr-hit{background:var(--sage);color:var(--sage-ink);padding:0 2px}
 .wr-miss{max-width:70ch;margin:0 0 14px;padding:10px 14px;background:var(--mustard-soft);color:var(--mustard-ink);border-left:3px solid var(--mustard)}
+.tl{display:grid;gap:12px;margin:12px 0 8px;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.tl-scale{position:relative;height:16px;margin-left:calc(38% + 14px);font-size:11px;font-weight:700;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.tl-scale span{position:absolute;top:0;transform:translateX(-50%)}
+.tl-row{display:grid;grid-template-columns:38% 1fr;gap:14px;align-items:center}
+.tl-lab{font-size:14px;min-width:0}.tl-lab b{font-family:var(--display);color:var(--ink)}.tl-lab small{display:block;color:var(--ink-soft);font-size:12px}
+.tl-track{position:relative;height:28px;background:linear-gradient(var(--line),var(--line)) center/100% 2px no-repeat,repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100%/15)) center/100% 10px no-repeat}
+.tl-dot{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--ink)}
+.tl-zone{position:absolute;top:50%;height:24px;margin-top:-12px;border-radius:12px;background:radial-gradient(closest-side,var(--mustard),transparent)}
+.tl-bar{position:absolute;top:50%;height:12px;margin-top:-6px;border-radius:6px;background:var(--mustard)}
+.tl-go{border-radius:0 6px 6px 0;border-left:4px solid var(--ink)}
+.tl-go::after{content:"";position:absolute;right:-6px;top:50%;margin-top:-9px;border:9px solid transparent;border-left:9px solid var(--mustard);border-right:0}
+.tl-until{background:linear-gradient(90deg,transparent,var(--sage-ink));border-radius:0 6px 6px 0}
+.tl-flag{position:absolute;top:50%;width:4px;height:24px;margin:-12px 0 0 -2px;background:var(--coral)}
+@media (max-width:560px){.tl-row{grid-template-columns:1fr;gap:4px}.tl-scale{margin-left:0}}
 </style>
 
 <div class="app">
