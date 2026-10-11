@@ -577,31 +577,16 @@ const UNITS = [
  id:"b9", date:"08/10", name:"Passé composé & kể chuyện đã xảy ra", src:"Buổi 9",
  links:[["Buổi 9","https://www.canva.com/d/DjnuW-PHvypkXK6"]],
  notes:[
-  {h:"Khởi động: liệt kê đồ đạc và đồ điện trong nhà bạn",html:`<p>Đề của buổi: ${F("Faites la liste des meubles et des appareils électroménagers de votre logement.")} (Liệt kê đồ đạc và đồ điện trong nhà bạn.)</p>
-  <p>Danh sách trên bảng: ${F("un lit")}, ${F("une table")}, ${F("une chaise")}, ${F("une douche")}, ${F("un frigo")}, ${F("un lave-linge")}, ${F("un climatiseur")} (máy điều hòa), ${F("une cuisinière")}.</p>
-  <p>${F("Dans ma chambre, il y a un lit, une table, une chaise et un climatiseur.")}</p><p class="tip">Chú ý giống: <b>un</b> lave-linge, <b>un</b> climatiseur (đuôi -eur là giống đực). <b>une</b> cuisinière, <b>une</b> douche.</p>`},
-  {k:1,h:"Anti-Alzheimer: ôn lại hiện tại (sortir, dormir, partir)",html:`<div class="tbl"><table><tr><th></th><th>sortir</th><th>dormir</th><th>partir</th></tr>
-  <tr><td>je / tu</td><td>${F("sors")}</td><td>${F("dors")}</td><td>${F("pars")}</td></tr>
-  <tr><td>il / elle</td><td>${F("sort")}</td><td>${F("dort")}</td><td>${F("part")}</td></tr>
-  <tr><td>nous</td><td>${F("sortons")}</td><td>${F("dormons")}</td><td>${F("partons")}</td></tr>
-  <tr><td>vous</td><td>${F("sortez")}</td><td>${F("dormez")}</td><td>${F("partez")}</td></tr>
-  <tr><td>ils / elles</td><td>${F("sortent")}</td><td>${F("dorment")}</td><td>${F("partent")}</td></tr></table></div>
-  <p class="tip">Phủ định bao quanh động từ: ${F("je ne dors pas")}.</p>`},
-  {k:1,h:"Từ chỉ tần suất: souvent · parfois · rarement",html:`<ul><li>${F("souvent")}: thường, hay</li><li>${F("parfois")}: thỉnh thoảng</li><li>${F("rarement")}: hiếm khi</li><li>${F("tous les samedis")}: mọi thứ Bảy · ${F("le mercredi")}: vào các thứ Tư (hằng tuần)</li></ul>
-  <p>${F("Albert se lève souvent à 6 heures.")} ${F("Je bricole parfois.")} ${F("Sabrina se maquille rarement.")} ${F("Nous faisons les courses tous les samedis.")} ${F("Le mercredi, je vais au cinéma.")}</p>
-  <p class="tip">Trạng từ tần suất đứng <b>sau động từ đã chia</b>: ${F("se lève souvent")}, ${F("bricole parfois")}.</p>`},
-  {k:1,h:"venir de + V = vừa mới",html:`<p>${F("je viens de + V")}: tôi <b>vừa mới</b> làm gì. Chia <b>venir</b>: ${F("viens, viens, vient, venons, venez, viennent")}; động từ sau <b>de</b> để nguyên thể.</p>
-  <p>${F("Je viens de déménager.")} ${F("Elle vient de finir ses devoirs.")} ${F("Nous venons de manger.")}</p>`},
-  {k:1,h:"Passé composé = trợ động từ + phân từ quá khứ",html:`<p>Công thức: <b>avoir / être</b> (chia ở hiện tại) + <b>participe passé</b> (động từ chính ở dạng quá khứ).</p>
+  {k:1,h:"Tổng hợp Buổi 9: Passé composé & kể chuyện đã xảy ra",html:`<h4 class="sub-h">Công thức: trợ động từ + phân từ quá khứ</h4><p>Công thức: <b>avoir / être</b> (chia ở hiện tại) + <b>participe passé</b> (động từ chính ở dạng quá khứ).</p>
   <div class="tbl"><table><tr><th>Đuôi</th><th>Nguyên thể</th><th>Participe passé</th></tr>
   <tr><td>-er → <b>-é</b></td><td>parler · manger · travailler · chercher · étudier</td><td>${F("parlé")} · ${F("mangé")} · ${F("travaillé")} · ${F("cherché")} · ${F("étudié")}</td></tr>
   <tr><td>-ir → <b>-i</b></td><td>finir · choisir</td><td>${F("fini")} · ${F("choisi")}</td></tr></table></div>
-  <p class="tip">Không để nguyên thể: ${F("j'ai parlé")}, không phải <s>j'ai parler</s>.</p>`},
-  {k:1,h:"avoir + participe passé",html:`<div class="tbl"><table><tr><th></th><th>finir</th></tr>
+  <p class="tip">Không để nguyên thể: ${F("j'ai parlé")}, không phải <s>j'ai parler</s>.</p><h4 class="sub-h">avoir + participe passé</h4><div class="tbl"><table><tr><th></th><th>finir</th></tr>
   <tr><td>je / j'</td><td>${F("j'ai fini")}</td></tr><tr><td>tu</td><td>${F("tu as fini")}</td></tr><tr><td>il / elle</td><td>${F("il a fini")}</td></tr>
   <tr><td>nous</td><td>${F("nous avons fini")}</td></tr><tr><td>vous</td><td>${F("vous avez fini")}</td></tr><tr><td>ils / elles</td><td>${F("ils ont fini")}</td></tr></table></div>
-  <p>${F("J'ai fini mes devoirs.")} ${F("Hier soir, j'ai étudié pendant trois heures.")} ${F("Elle a déménagé.")} ${F("Nous avons cherché un appartement.")} ${F("Vous avez travaillé.")}</p>`},
-  {k:1,h:"Động từ đi với être: La Maison d'Être",html:`<p>Ngoài động từ phản thân, có nhóm <b>động từ chỉ chuyển động hoặc thay đổi trạng thái</b> dùng <b>être</b> ở passé composé (bảng "La Maison d'Être" và ngọn đồi vẽ tay của thầy).</p>
+  <p>${F("J'ai fini mes devoirs.")} ${F("Hier soir, j'ai étudié pendant trois heures.")} ${F("Elle a déménagé.")} ${F("Nous avons cherché un appartement.")} ${F("Vous avez travaillé.")}</p><h4 class="sub-h">Phủ định và câu hỏi</h4><p>${F("Ce matin, j'ai mangé du pain.")} → ${F("Ce matin, je n'ai pas mangé de pain.")}</p>
+  <p><b>ne … pas</b> bao quanh <b>trợ động từ</b> (<b>n'ai pas</b> mangé). Sau phủ định, <b>du / de la / des → de</b>.</p>
+  <p>Câu hỏi: ${F("Tu as fini tes devoirs ?")} · ${F("As-tu fini tes devoirs ?")} · nói thân mật: ${F("Ce matin, t'as mangé quoi ?")}</p><h4 class="sub-h">Động từ đi với être: La Maison d'Être</h4><p>Ngoài động từ phản thân, có nhóm <b>động từ chỉ chuyển động hoặc thay đổi trạng thái</b> dùng <b>être</b> ở passé composé (bảng "La Maison d'Être" và ngọn đồi vẽ tay của thầy).</p>
   <div class="tbl"><table><tr><th>Nguyên thể</th><th>Participe</th><th>Nghĩa</th><th>Ví dụ trên bảng</th></tr>
   <tr><td>${F("aller")}</td><td>${F("allé")}</td><td>đi</td><td>${F("Elles sont allées en France.")}</td></tr>
   <tr><td>${F("venir")}</td><td>${F("venu")}</td><td>đến</td><td>${F("Il est venu de Lille.")}</td></tr>
@@ -621,8 +606,7 @@ const UNITS = [
   <tr><td>${F("mourir")}</td><td>${F("mort")}</td><td>chết</td><td>${F("Ils sont morts en 1944.")}</td></tr></table></div>
   <p><b>Phân từ hợp giống và số với chủ ngữ</b>: ${F("elle est entrée")}, ${F("ils sont restés")}, ${F("elles sont allées")}, ${F("ils sont morts")}.</p>
   <p class="tip">Nét chữ xanh <b>re-</b> trên bảng: động từ có tiền tố <b>re-</b> cũng dùng être (${F("revenir")}, ${F("rentrer")}, ${F("remonter")}…). Mẹo nhớ 16 động từ: <b>DR &amp; MRS VANDERTRAMP</b> (Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Retourner, Tomber, Rentrer, Arriver, Mourir, Partir). <i>Passer</i> có trên hình nhưng không nằm trong câu này.</p>
-  <p>Phủ định: ${F("Elle n'est pas partie.")} (ne … pas bao quanh <b>est</b>).</p>`},
-  {k:1,h:"être + participe passé: động từ phản thân và naître",html:`<p>Động từ phản thân dùng <b>être</b>. Phân từ phải <b>hợp giống và số với chủ ngữ</b> (thêm <b>e</b> cho nữ, <b>s</b> cho số nhiều).</p>
+  <p>Phủ định: ${F("Elle n'est pas partie.")} (ne … pas bao quanh <b>est</b>).</p><h4 class="sub-h">Động từ phản thân và naître</h4><p>Động từ phản thân dùng <b>être</b>. Phân từ phải <b>hợp giống và số với chủ ngữ</b> (thêm <b>e</b> cho nữ, <b>s</b> cho số nhiều).</p>
   <div class="tbl"><table><tr><th></th><th>se lever</th></tr>
   <tr><td>je</td><td>${F("je me suis levé")} (nam) · ${F("je me suis levée")} (nữ)</td></tr>
   <tr><td>tu</td><td>${F("tu t'es levé(e)")}</td></tr>
@@ -630,20 +614,25 @@ const UNITS = [
   <tr><td>nous</td><td>${F("nous nous sommes levé(e)s")}</td></tr>
   <tr><td>vous</td><td>${F("vous vous êtes levé(e)(s)")}</td></tr>
   <tr><td>ils / elles</td><td>${F("ils se sont levés")} · ${F("elles se sont levées")}</td></tr></table></div>
-  <p>${F("Je me suis levée à 6 h ce matin.")} ${F("Je suis né(e) en 1990.")}</p>`},
-  {k:1,h:"Phủ định và câu hỏi ở passé composé",html:`<p>${F("Ce matin, j'ai mangé du pain.")} → ${F("Ce matin, je n'ai pas mangé de pain.")}</p>
-  <p><b>ne … pas</b> bao quanh <b>trợ động từ</b> (<b>n'ai pas</b> mangé). Sau phủ định, <b>du / de la / des → de</b>.</p>
-  <p>Câu hỏi: ${F("Tu as fini tes devoirs ?")} · ${F("As-tu fini tes devoirs ?")} · nói thân mật: ${F("Ce matin, t'as mangé quoi ?")}</p>`},
-  {k:1,h:"Từ chỉ thời gian đã qua",html:`<ul><li>${F("hier")}: hôm qua · ${F("hier soir")}: tối qua · ${F("ce matin")}: sáng nay</li>
+  <p>${F("Je me suis levée à 6 h ce matin.")} ${F("Je suis né(e) en 1990.")}</p><h4 class="sub-h">Từ chỉ thời gian đã qua</h4><ul><li>${F("hier")}: hôm qua · ${F("hier soir")}: tối qua · ${F("ce matin")}: sáng nay</li>
   <li>${F("la semaine dernière")}: tuần trước · ${F("le mois dernier")}: tháng trước</li>
   <li>${F("la dernière semaine")}: tuần <b>cuối cùng</b> · ${F("le dernier jour")}: ngày cuối cùng</li>
   <li>${F("l'hiver")}: mùa đông (đừng nhầm với <b>hier</b>)</li></ul>
   <p class="tip">${F("dernier")} <b>sau</b> danh từ = "trước" (tuần trước); <b>trước</b> danh từ = "cuối cùng".</p>
   <p>${F("Hier, j'ai rencontré un Français, mais je n'ai pas parlé en français avec lui.")} (un Français = nam, une Française = nữ.)</p>
-  <p>${F("chercher")}: tìm kiếm · ${F("trouver")}: tìm thấy · ${F("oublier")}: quên · ${F("rencontrer")}: gặp (lần đầu)</p>`},
-  {h:"Il est important de… · Merci de… · Défense de…",html:`<p>${F("Il est important de faire les devoirs.")} ${F("Merci de faire les devoirs à l'heure.")} ${F("Défense d'arriver en retard.")}</p>
-  <p class="tip">Sau <b>de / d'</b> là động từ <b>nguyên thể</b>. <b>à l'heure</b> (đúng giờ) ≠ <b>en retard</b> (muộn).</p>`},
-  {h:"Tình huống: đi chơi",html:`<p>Các nơi đi chơi: ${F("un concert")}, ${F("une pièce de théâtre")}, ${F("une exposition")}, ${F("le cinéma")}.</p>
+  <p>${F("chercher")}: tìm kiếm · ${F("trouver")}: tìm thấy · ${F("oublier")}: quên · ${F("rencontrer")}: gặp (lần đầu)</p><h4 class="sub-h">venir de + V = vừa mới</h4><p>${F("je viens de + V")}: tôi <b>vừa mới</b> làm gì. Chia <b>venir</b>: ${F("viens, viens, vient, venons, venez, viennent")}; động từ sau <b>de</b> để nguyên thể.</p>
+  <p>${F("Je viens de déménager.")} ${F("Elle vient de finir ses devoirs.")} ${F("Nous venons de manger.")}</p><h4 class="sub-h">Khởi động: đồ đạc và đồ điện trong nhà bạn</h4><p>Đề của buổi: ${F("Faites la liste des meubles et des appareils électroménagers de votre logement.")} (Liệt kê đồ đạc và đồ điện trong nhà bạn.)</p>
+  <p>Danh sách trên bảng: ${F("un lit")}, ${F("une table")}, ${F("une chaise")}, ${F("une douche")}, ${F("un frigo")}, ${F("un lave-linge")}, ${F("un climatiseur")} (máy điều hòa), ${F("une cuisinière")}.</p>
+  <p>${F("Dans ma chambre, il y a un lit, une table, une chaise et un climatiseur.")}</p><p class="tip">Chú ý giống: <b>un</b> lave-linge, <b>un</b> climatiseur (đuôi -eur là giống đực). <b>une</b> cuisinière, <b>une</b> douche.</p><h4 class="sub-h">Anti-Alzheimer: ôn lại hiện tại (sortir, dormir, partir)</h4><div class="tbl"><table><tr><th></th><th>sortir</th><th>dormir</th><th>partir</th></tr>
+  <tr><td>je / tu</td><td>${F("sors")}</td><td>${F("dors")}</td><td>${F("pars")}</td></tr>
+  <tr><td>il / elle</td><td>${F("sort")}</td><td>${F("dort")}</td><td>${F("part")}</td></tr>
+  <tr><td>nous</td><td>${F("sortons")}</td><td>${F("dormons")}</td><td>${F("partons")}</td></tr>
+  <tr><td>vous</td><td>${F("sortez")}</td><td>${F("dormez")}</td><td>${F("partez")}</td></tr>
+  <tr><td>ils / elles</td><td>${F("sortent")}</td><td>${F("dorment")}</td><td>${F("partent")}</td></tr></table></div>
+  <p class="tip">Phủ định bao quanh động từ: ${F("je ne dors pas")}.</p><h4 class="sub-h">Từ chỉ tần suất</h4><ul><li>${F("souvent")}: thường, hay</li><li>${F("parfois")}: thỉnh thoảng</li><li>${F("rarement")}: hiếm khi</li><li>${F("tous les samedis")}: mọi thứ Bảy · ${F("le mercredi")}: vào các thứ Tư (hằng tuần)</li></ul>
+  <p>${F("Albert se lève souvent à 6 heures.")} ${F("Je bricole parfois.")} ${F("Sabrina se maquille rarement.")} ${F("Nous faisons les courses tous les samedis.")} ${F("Le mercredi, je vais au cinéma.")}</p>
+  <p class="tip">Trạng từ tần suất đứng <b>sau động từ đã chia</b>: ${F("se lève souvent")}, ${F("bricole parfois")}.</p><h4 class="sub-h">Il est important de… · Merci de… · Défense de…</h4><p>${F("Il est important de faire les devoirs.")} ${F("Merci de faire les devoirs à l'heure.")} ${F("Défense d'arriver en retard.")}</p>
+  <p class="tip">Sau <b>de / d'</b> là động từ <b>nguyên thể</b>. <b>à l'heure</b> (đúng giờ) ≠ <b>en retard</b> (muộn).</p><h4 class="sub-h">Tình huống: đi chơi</h4><p>Các nơi đi chơi: ${F("un concert")}, ${F("une pièce de théâtre")}, ${F("une exposition")}, ${F("le cinéma")}.</p>
   <p>${F("Le mercredi, je vais au cinéma.")} Dùng <b>hier</b> + passé composé để kể lại một buổi tối của bạn.</p>`}
  ],
  fixes:[
