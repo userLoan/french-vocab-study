@@ -50,7 +50,8 @@ const UNITS = [
   <tr><td>nous</td><td>${F("nous nous sommes levé(e)s")}</td></tr>
   <tr><td>vous</td><td>${F("vous vous êtes levé(e)(s)")}</td></tr>
   <tr><td>ils / elles</td><td>${F("ils se sont levés")} · ${F("elles se sont levées")}</td></tr></table></div>
-  <p>${F("Je me suis levée à 6 h ce matin.")} ${F("Je suis né(e) en 1990.")}</p>`}
+  <p>${F("Je me suis levée à 6 h ce matin.")} ${F("Je suis né(e) en 1990.")}</p>`},
+  {k:1,h:"Phân từ quá khứ bất quy tắc",html:`<p>Phân từ quá khứ bất quy tắc, chia theo đuôi. Nhóm -u có nhiều từ nhất.</p><h4 class="sub-h">Đuôi -u</h4><div class="tbl"><table><tr><td>pouvoir</td><td>pu</td></tr><tr><td>vouloir</td><td>voulu</td></tr><tr><td>voir</td><td>vu (đã thấy)</td></tr><tr><td>devoir</td><td>dû</td></tr><tr><td>savoir</td><td>su (đã biết)</td></tr><tr><td>recevoir</td><td>reçu</td></tr><tr><td>tenir</td><td>tenu</td></tr><tr><td>croire</td><td>cru</td></tr><tr><td>perdre</td><td>perdu</td></tr><tr><td>lire</td><td>lu (đã đọc)</td></tr><tr><td>boire</td><td>bu (đã uống)</td></tr><tr><td>venir</td><td>venu</td></tr><tr><td>vivre</td><td>vécu</td></tr></table></div><h4 class="sub-h">Đuôi -is</h4><div class="tbl"><table><tr><td>mettre</td><td>mis</td></tr><tr><td>prendre</td><td>pris</td></tr><tr><td>comprendre</td><td>compris</td></tr><tr><td>apprendre</td><td>appris</td></tr><tr><td>asseoir</td><td>assis</td></tr></table></div><p class="tip">Các từ ghép với <b>prendre</b> (comprendre, apprendre) đổi giống hệt.</p><h4 class="sub-h">Đuôi -ert (-ouvert)</h4><div class="tbl"><table><tr><td>ouvrir</td><td>ouvert</td></tr><tr><td>offrir</td><td>offert</td></tr><tr><td>souffrir</td><td>souffert</td></tr><tr><td>découvrir</td><td>découvert</td></tr></table></div><p class="tip">Động từ <b>-vrir / -frir</b> đều thành <b>-vert / -fert</b>.</p><h4 class="sub-h">Đuôi -t</h4><div class="tbl"><table><tr><td>conduire</td><td>conduit</td></tr><tr><td>construire</td><td>construit</td></tr><tr><td>produire</td><td>produit</td></tr><tr><td>traduire</td><td>traduit</td></tr><tr><td>dire</td><td>dit</td></tr></table></div><p class="tip">Động từ <b>-duire</b> đều thành <b>-duit</b>. <b>dire → dit</b> là ngoại lệ hay gặp.</p><h4 class="sub-h">Đặc biệt</h4><div class="tbl"><table><tr><td>être</td><td>été</td></tr><tr><td>avoir</td><td>eu</td></tr><tr><td>faire</td><td>fait</td></tr><tr><td>naître</td><td>né (Je suis né en 1990.)</td></tr><tr><td>mourir</td><td>mort (Ils sont morts en 1944.)</td></tr></table></div>`},
  ],
  fixes:[
   ["j'ai parler","j'ai parlé","Sau avoir là phân từ -é, không phải nguyên thể"],
@@ -65,6 +66,16 @@ const UNITS = [
   ["ils sont arrivé","ils sont arrivés","chủ ngữ số nhiều: thêm -s"]
  ],
  ex:[
+  {t:"f",q:"Phân từ của <b>voir</b>:",a:["vu"]},
+  {t:"f",q:"Phân từ của <b>boire</b>:",a:["bu"]},
+  {t:"f",q:"Phân từ của <b>prendre</b>:",a:["pris"]},
+  {t:"f",q:"Phân từ của <b>mettre</b>:",a:["mis"]},
+  {t:"f",q:"Phân từ của <b>ouvrir</b>:",a:["ouvert"]},
+  {t:"f",q:"Phân từ của <b>dire</b>:",a:["dit"]},
+  {t:"f",q:"Phân từ của <b>faire</b>:",a:["fait"]},
+  {t:"f",q:"Phân từ của <b>être</b>:",a:["été"]},
+  {t:"f",q:"Phân từ của <b>vouloir</b>:",a:["voulu"]},
+  {t:"f",q:"Phân từ của <b>mourir</b>:",a:["mort"]},
   {t:"f",q:"Hier soir, j'(étudier) ___ pendant trois heures.",a:["ai étudié"]},
   {t:"f",q:"Ce matin, nous (manger) ___ du pain.",a:["avons mangé"]},
   {t:"f",q:"Elle (déménager) ___ la semaine dernière.",a:["a déménagé"]},
