@@ -2,6 +2,115 @@ const F = s => `<span class="fr" tabindex="0">${s}</span>`;
 
 const UNITS = [
 {
+ id:"b9", date:"08/10", name:"Passé composé & kể chuyện đã xảy ra", src:"Buổi 9",
+ links:[["Buổi 9","https://www.canva.com/d/DjnuW-PHvypkXK6"]],
+ notes:[
+  {h:"Khởi động: liệt kê đồ đạc và đồ điện trong nhà bạn",html:`<p>Đề của buổi: ${F("Faites la liste des meubles et des appareils électroménagers de votre logement.")} (Liệt kê đồ đạc và đồ điện trong nhà bạn.)</p>
+  <p>Danh sách trên bảng: ${F("un lit")}, ${F("une table")}, ${F("une chaise")}, ${F("une douche")}, ${F("un frigo")}, ${F("un lave-linge")}, ${F("un climatiseur")} (máy điều hòa), ${F("une cuisinière")}.</p>
+  <p>${F("Dans ma chambre, il y a un lit, une table, une chaise et un climatiseur.")}</p><p class="tip">Chú ý giống: <b>un</b> lave-linge, <b>un</b> climatiseur (đuôi -eur là giống đực). <b>une</b> cuisinière, <b>une</b> douche.</p>`},
+  {k:1,h:"Anti-Alzheimer: ôn lại hiện tại (sortir, dormir, partir)",html:`<div class="tbl"><table><tr><th></th><th>sortir</th><th>dormir</th><th>partir</th></tr>
+  <tr><td>je / tu</td><td>${F("sors")}</td><td>${F("dors")}</td><td>${F("pars")}</td></tr>
+  <tr><td>il / elle</td><td>${F("sort")}</td><td>${F("dort")}</td><td>${F("part")}</td></tr>
+  <tr><td>nous</td><td>${F("sortons")}</td><td>${F("dormons")}</td><td>${F("partons")}</td></tr>
+  <tr><td>vous</td><td>${F("sortez")}</td><td>${F("dormez")}</td><td>${F("partez")}</td></tr>
+  <tr><td>ils / elles</td><td>${F("sortent")}</td><td>${F("dorment")}</td><td>${F("partent")}</td></tr></table></div>
+  <p class="tip">Phủ định bao quanh động từ: ${F("je ne dors pas")}.</p>`},
+  {k:1,h:"Từ chỉ tần suất: souvent · parfois · rarement",html:`<ul><li>${F("souvent")}: thường, hay</li><li>${F("parfois")}: thỉnh thoảng</li><li>${F("rarement")}: hiếm khi</li><li>${F("tous les samedis")}: mọi thứ Bảy · ${F("le mercredi")}: vào các thứ Tư (hằng tuần)</li></ul>
+  <p>${F("Albert se lève souvent à 6 heures.")} ${F("Je bricole parfois.")} ${F("Sabrina se maquille rarement.")} ${F("Nous faisons les courses tous les samedis.")} ${F("Le mercredi, je vais au cinéma.")}</p>
+  <p class="tip">Trạng từ tần suất đứng <b>sau động từ đã chia</b>: ${F("se lève souvent")}, ${F("bricole parfois")}.</p>`},
+  {k:1,h:"venir de + V = vừa mới",html:`<p>${F("je viens de + V")}: tôi <b>vừa mới</b> làm gì. Chia <b>venir</b>: ${F("viens, viens, vient, venons, venez, viennent")}; động từ sau <b>de</b> để nguyên thể.</p>
+  <p>${F("Je viens de déménager.")} ${F("Elle vient de finir ses devoirs.")} ${F("Nous venons de manger.")}</p>`},
+  {k:1,h:"Passé composé = trợ động từ + phân từ quá khứ",html:`<p>Công thức: <b>avoir / être</b> (chia ở hiện tại) + <b>participe passé</b> (động từ chính ở dạng quá khứ).</p>
+  <div class="tbl"><table><tr><th>Đuôi</th><th>Nguyên thể</th><th>Participe passé</th></tr>
+  <tr><td>-er → <b>-é</b></td><td>parler · manger · travailler · chercher · étudier</td><td>${F("parlé")} · ${F("mangé")} · ${F("travaillé")} · ${F("cherché")} · ${F("étudié")}</td></tr>
+  <tr><td>-ir → <b>-i</b></td><td>finir · choisir</td><td>${F("fini")} · ${F("choisi")}</td></tr></table></div>
+  <p class="tip">Không để nguyên thể: ${F("j'ai parlé")}, không phải <s>j'ai parler</s>.</p>`},
+  {k:1,h:"avoir + participe passé",html:`<div class="tbl"><table><tr><th></th><th>finir</th></tr>
+  <tr><td>je / j'</td><td>${F("j'ai fini")}</td></tr><tr><td>tu</td><td>${F("tu as fini")}</td></tr><tr><td>il / elle</td><td>${F("il a fini")}</td></tr>
+  <tr><td>nous</td><td>${F("nous avons fini")}</td></tr><tr><td>vous</td><td>${F("vous avez fini")}</td></tr><tr><td>ils / elles</td><td>${F("ils ont fini")}</td></tr></table></div>
+  <p>${F("J'ai fini mes devoirs.")} ${F("Hier soir, j'ai étudié pendant trois heures.")} ${F("Elle a déménagé.")} ${F("Nous avons cherché un appartement.")} ${F("Vous avez travaillé.")}</p>`},
+  {k:1,h:"être + participe passé: động từ phản thân và naître",html:`<p>Động từ phản thân dùng <b>être</b>. Phân từ phải <b>hợp giống và số với chủ ngữ</b> (thêm <b>e</b> cho nữ, <b>s</b> cho số nhiều).</p>
+  <div class="tbl"><table><tr><th></th><th>se lever</th></tr>
+  <tr><td>je</td><td>${F("je me suis levé")} (nam) · ${F("je me suis levée")} (nữ)</td></tr>
+  <tr><td>tu</td><td>${F("tu t'es levé(e)")}</td></tr>
+  <tr><td>il / elle</td><td>${F("il s'est levé")} · ${F("elle s'est levée")}</td></tr>
+  <tr><td>nous</td><td>${F("nous nous sommes levé(e)s")}</td></tr>
+  <tr><td>vous</td><td>${F("vous vous êtes levé(e)(s)")}</td></tr>
+  <tr><td>ils / elles</td><td>${F("ils se sont levés")} · ${F("elles se sont levées")}</td></tr></table></div>
+  <p>${F("Je me suis levée à 6 h ce matin.")} ${F("Je suis né(e) en 1990.")}</p>`},
+  {k:1,h:"Phủ định và câu hỏi ở passé composé",html:`<p>${F("Ce matin, j'ai mangé du pain.")} → ${F("Ce matin, je n'ai pas mangé de pain.")}</p>
+  <p><b>ne … pas</b> bao quanh <b>trợ động từ</b> (<b>n'ai pas</b> mangé). Sau phủ định, <b>du / de la / des → de</b>.</p>
+  <p>Câu hỏi: ${F("Tu as fini tes devoirs ?")} · ${F("As-tu fini tes devoirs ?")} · nói thân mật: ${F("Ce matin, t'as mangé quoi ?")}</p>`},
+  {k:1,h:"Từ chỉ thời gian đã qua",html:`<ul><li>${F("hier")}: hôm qua · ${F("hier soir")}: tối qua · ${F("ce matin")}: sáng nay</li>
+  <li>${F("la semaine dernière")}: tuần trước · ${F("le mois dernier")}: tháng trước</li>
+  <li>${F("la dernière semaine")}: tuần <b>cuối cùng</b> · ${F("le dernier jour")}: ngày cuối cùng</li>
+  <li>${F("l'hiver")}: mùa đông (đừng nhầm với <b>hier</b>)</li></ul>
+  <p class="tip">${F("dernier")} <b>sau</b> danh từ = "trước" (tuần trước); <b>trước</b> danh từ = "cuối cùng".</p>
+  <p>${F("Hier, j'ai rencontré un Français, mais je n'ai pas parlé en français avec lui.")} (un Français = nam, une Française = nữ.)</p>
+  <p>${F("chercher")}: tìm kiếm · ${F("trouver")}: tìm thấy · ${F("oublier")}: quên · ${F("rencontrer")}: gặp (lần đầu)</p>`},
+  {h:"Il est important de… · Merci de… · Défense de…",html:`<p>${F("Il est important de faire les devoirs.")} ${F("Merci de faire les devoirs à l'heure.")} ${F("Défense d'arriver en retard.")}</p>
+  <p class="tip">Sau <b>de / d'</b> là động từ <b>nguyên thể</b>. <b>à l'heure</b> (đúng giờ) ≠ <b>en retard</b> (muộn).</p>`},
+  {h:"Tình huống: đi chơi",html:`<p>Các nơi đi chơi: ${F("un concert")}, ${F("une pièce de théâtre")}, ${F("une exposition")}, ${F("le cinéma")}.</p>
+  <p>${F("Le mercredi, je vais au cinéma.")} Dùng <b>hier</b> + passé composé để kể lại một buổi tối của bạn.</p>`}
+ ],
+ fixes:[
+  ["j'ai parler","j'ai parlé","Sau avoir là phân từ -é, không phải nguyên thể"],
+  ["j'ai finir","j'ai fini","-ir → -i"],
+  ["je me suis levé à 6 h (nữ)","je me suis levée à 6 h","Với être, phân từ hợp giống với chủ ngữ"],
+  ["je n'ai pas mangé du pain","je n'ai pas mangé de pain","Sau phủ định: du / de la / des → de"],
+  ["je ne pas ai mangé","je n'ai pas mangé","ne … pas bao quanh trợ động từ"],
+  ["la semaine dernier","la semaine dernière","semaine giống cái nên dernière"],
+  ["hiver, j'ai rencontré un Français","hier, j'ai rencontré un Français","hier = hôm qua, hiver = mùa đông"]
+ ],
+ ex:[
+  {t:"f",q:"Hier soir, j'(étudier) ___ pendant trois heures.",a:["ai étudié"]},
+  {t:"f",q:"Ce matin, nous (manger) ___ du pain.",a:["avons mangé"]},
+  {t:"f",q:"Elle (déménager) ___ la semaine dernière.",a:["a déménagé"]},
+  {t:"f",q:"Tu (oublier) ___ tes devoirs ?",a:["as oublié"]},
+  {t:"f",q:"Nous (chercher) ___ un appartement.",a:["avons cherché"]},
+  {t:"f",q:"Vous (travailler) ___ hier ?",a:["avez travaillé"]},
+  {t:"f",q:"Ils (parler) ___ en français.",a:["ont parlé"]},
+  {t:"f",q:"Hier, j'(rencontrer) ___ un Français.",a:["ai rencontré"]},
+  {t:"f",q:"J'(finir) ___ mes devoirs.",a:["ai fini"]},
+  {t:"f",q:"Tu (finir) ___ tes devoirs ?",a:["as fini"]},
+  {t:"f",q:"Nous (choisir) ___ un cadeau.",a:["avons choisi"]},
+  {t:"f",q:"Ils (finir) ___ à midi.",a:["ont fini"]},
+  {t:"f",q:"Vous (finir) ___ le travail ?",a:["avez fini"]},
+  {t:"f",q:"Ce matin, je (ne pas manger) ___ de pain.",a:["n'ai pas mangé"]},
+  {t:"f",q:"Hier, nous (ne pas travailler) ___.",a:["n'avons pas travaillé"]},
+  {t:"f",q:"Elle (ne pas finir) ___ ses devoirs.",a:["n'a pas fini"]},
+  {t:"f",q:"Hier, j'ai rencontré un Français, mais je (ne pas parler) ___ en français avec lui.",a:["n'ai pas parlé"]},
+  {t:"f",q:"Ce matin, je (se lever) ___ à 6 h. <span class='muted small'>(nam)</span>",a:["me suis levé"]},
+  {t:"f",q:"Ce matin, je (se lever) ___ à 6 h. <span class='muted small'>(nữ)</span>",a:["me suis levée"]},
+  {t:"f",q:"Tu (se lever) ___ à quelle heure ce matin ? <span class='muted small'>(nữ)</span>",a:["t'es levée"]},
+  {t:"f",q:"Il (se lever) ___ à 7 h.",a:["s'est levé"]},
+  {t:"f",q:"Elle (se lever) ___ à 7 h.",a:["s'est levée"]},
+  {t:"f",q:"Nous (se lever) ___ à 6 h. <span class='muted small'>(cả nhóm là nữ)</span>",a:["nous sommes levées"]},
+  {t:"f",q:"Ils (se lever) ___ à 6 h.",a:["se sont levés"]},
+  {t:"f",q:"Je (naître) ___ en 1990. <span class='muted small'>(nam)</span>",a:["suis né"]},
+  {t:"f",q:"Je (naître) ___ en 1990. <span class='muted small'>(nữ)</span>",a:["suis née"]},
+  {t:"f",q:"Elle (venir de) ___ finir ses devoirs.",a:["vient de"]},
+  {t:"f",q:"Nous (venir de) ___ déménager.",a:["venons de"]},
+  {t:"f",q:"Albert se lève ___ à 6 heures. <span class='muted small'>(thường)</span>",a:["souvent"]},
+  {t:"f",q:"Je bricole ___. <span class='muted small'>(thỉnh thoảng)</span>",a:["parfois"]},
+  {t:"f",q:"Sabrina se maquille ___. <span class='muted small'>(hiếm khi)</span>",a:["rarement"]},
+  {t:"f",q:"Nous faisons les courses ___. <span class='muted small'>(mọi thứ Bảy)</span>",a:["tous les samedis"]},
+  {t:"f",q:"Le mercredi, je (aller) ___ au cinéma.",a:["vais"]},
+  {t:"f",q:"Elle (sortir) ___ avec ses amis.",a:["sort"]},
+  {t:"f",q:"Vous (dormir) ___ bien ?",a:["dormez"]},
+  {t:"f",q:"Nous (partir) ___ demain.",a:["partons"]},
+  {t:"f",q:"Je (ne pas dormir) ___ ce soir.",a:["ne dors pas"]},
+  {t:"f",q:"Ils (sortir) ___ le samedi soir.",a:["sortent"]},
+  {t:"f",q:"Défense ___ arriver en retard.",a:["d'"]},
+  {t:"m",q:"Đâu là cách nói đúng của <b>tuần trước</b>?",o:["la dernière semaine","la semaine dernière","le semaine dernier"],a:1,w:"semaine dernière = tuần trước; la dernière semaine = tuần cuối cùng."},
+  {t:"m",q:"Đâu là cách nói đúng của <b>hôm qua</b>?",o:["hiver","hier","hiers"],a:1,w:"hier = hôm qua; l'hiver = mùa đông."},
+  {t:"m",q:"Đâu là câu đúng?",o:["J'ai parler anglais.","J'ai parlé anglais.","Je suis parlé anglais."],a:1,w:"avoir + phân từ -é."},
+  {t:"m",q:"Đâu là câu đúng? <span class='muted small'>(nói về mình, là nữ)</span>",o:["Je me suis levé à 6 h.","Je me suis levée à 6 h.","Je suis levée à 6 h."],a:1,w:"Phản thân dùng être, phân từ hợp giống: levée."},
+  {t:"m",q:"Đâu là câu đúng?",o:["Je n'ai pas mangé du pain.","Je n'ai pas mangé de pain.","Je ne pas ai mangé de pain."],a:1,w:"Sau phủ định: du → de."},
+  {t:"m",q:"Merci de ___ les devoirs à l'heure.",o:["faire","fais","fait"],a:0,w:"Sau de là nguyên thể."}
+ ]
+},
+{
  id:"b8h", date:"04/10", name:"Chia động từ ở thì hiện tại", src:"BTVN sau buổi 8",
  links:[["BTVN sau buổi 8","https://www.canva.com/design/DAHXBA5h6B0/IkL5MDYKGwbQcxw_rP2jGA/edit"]],
  notes:[

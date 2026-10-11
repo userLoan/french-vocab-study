@@ -717,6 +717,14 @@ const WMISSIONS=[
   frame:["Quand tu entres, il y a …","À gauche, tu vois …","Dans la salle de bains, il y a …","Tu peux … / Tu veux … ?"],
   targets:[T("le salon / le séjour","salon|sejour"),T("la cuisine","cuisine"),T("la salle de bains","salle de bain"),T("la chambre","chambre"),T("le couloir","couloir"),T("un placard","placard","maison|un placard"),T("un miroir","miroir|glace"),T("une baignoire","baignoire","maison|la baignoire"),T("un lavabo","lavabo","maison|le lavabo"),T("un réfrigérateur","refrigerateur|frigo","maison|un réfrigérateur"),T("pouvoir (peux / pouvez)","peux|pouvez|peut"),T("vouloir (veux / voulez)","veux|voulez|veut")],
   model:"Quand tu entres, il y a un petit couloir avec un placard pour les manteaux. À gauche, tu vois le salon, avec un grand canapé. À droite, c'est la cuisine : il y a un réfrigérateur, un lave-vaisselle et une cuisinière. Dans la salle de bains, il y a une baignoire, un lavabo et un grand miroir. Ma chambre est au fond du couloir. Tu peux poser ton sac dans le salon. Tu veux un café ou un thé ? Je fais le café tout de suite !"}
+,
+ {id:"hier",n:"5",title:"Chuyện hôm qua",min:60,need:6,
+  scene:"Bạn kể cho một người bạn Pháp nghe chuyện sáng nay và tối qua của bạn.",
+  task:"Viết ít nhất 60 chữ bằng passé composé: ít nhất 3 động từ dạng trợ động từ + phân từ (j'ai mangé, je me suis levé(e)…).",
+  frame:["Ce matin, je me suis levé(e) à …","J'ai mangé … / J'ai travaillé … / J'ai cherché …","Hier soir, j'ai … pendant …","Je n'ai pas …"],
+  hints:["hier = hôm qua","ce matin = sáng nay","pendant = trong khoảng","phân từ: -er → -é, -ir → -i"],
+  targets:[T("j'ai + phân từ","j'ai (mange|etudie|travaille|cherche|parle|rencontre|regarde|prepare|ecoute|fini|choisi|oublie|demenage|trouve)"),T("nous avons + phân từ","nous avons (mange|etudie|travaille|cherche|parle|rencontre|regarde|prepare|ecoute|fini|choisi|trouve)"),T("il / elle a + phân từ","a (mange|etudie|travaille|cherche|parle|rencontre|regarde|prepare|ecoute|fini|choisi|oublie|demenage|trouve)"),T("je me suis levé(e)","me suis leve(e|s|es)?"),T("je n'ai pas + phân từ","n'ai pas (mange|etudie|travaille|cherche|parle|rencontre|regarde|fini|oublie|choisi|trouve)"),T("hier","hier"),T("ce matin","ce matin"),T("pendant","pendant"),T("parce que","parce (que|qu')")],
+  model:"Ce matin, je me suis levée à six heures. J'ai mangé du pain et j'ai travaillé pendant quatre heures. J'ai cherché mon livre, mais je n'ai pas trouvé mon livre. Hier soir, ma mère a préparé le repas et nous avons mangé ensemble. Ensuite, j'ai étudié le français parce que je veux parler avec un Français. Je me suis couchée à onze heures."}
 ];
 function wcount(t){return (t.trim().match(/[\p{L}'’-]+/gu)||[]).length;}
 function wscan(m,text){
