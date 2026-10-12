@@ -1,7 +1,6 @@
 {
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/public",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "framework": null,
+  "installCommand": "true",
+  "buildCommand": "true",
+  "outputDirectory": "cahier-de-revision"
 }
