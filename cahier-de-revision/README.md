@@ -1,6 +1,6 @@
 # Cahier de révision
 
-Sổ ôn tiếng Pháp theo phong cách carnet của app này: phiên ôn hằng ngày có lặp lại ngắt quãng, bài học (Hiểu → Luyện → Lỗi hay gặp), kho 1198 từ theo 8 chủ điểm, hội thoại nhập vai.
+Sổ ôn tiếng Pháp theo phong cách carnet của app này: phiên ôn hằng ngày có lặp lại ngắt quãng, bài học (Hiểu → Luyện → Lỗi hay gặp), kho 1491 từ theo 11 chủ điểm, hội thoại nhập vai.
 
 - `index.html`: trang hoàn chỉnh, mở trực tiếp bằng trình duyệt.
 - `src/`: mã nguồn để dựng lại trang

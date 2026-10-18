@@ -2,6 +2,167 @@ const F = s => `<span class="fr" tabindex="0">${s}</span>`;
 
 const UNITS = [
 {
+ id:"t10", date:"14/10", name:"Đại từ y · il faut · devoir · cấm đoán", src:"BT tự học tuần 10",
+ links:[["BT tự học tuần 10","https://www.canva.com/d/JK8hWLudRA-K_e4"]],
+ notes:[
+  {k:1,h:"1 · Đại từ y = \"ở đó, chỗ đó\"",html:`<p><b>y</b> thay cho một <b>nơi chốn</b> đã nhắc tới (à / au / chez / dans / en / sur + nơi), để khỏi lặp lại.</p>
+  <ul><li>${F("Tu vas au cinéma ce soir ?")} → ${F("Oui, j'y vais.")}</li>
+  <li>${F("Elle travaille à l'hôpital ?")} → ${F("Oui, elle y travaille.")}</li>
+  <li>${F("Ton médecin habite à Lyon ?")} → ${F("Oui, il y habite.")}</li></ul>
+  <p class="tip">y đứng <b>TRƯỚC động từ</b>: <s>Je travaille y</s> → ${F("J'y travaille.")} Trước nguyên âm, je → j'.</p>`},
+  {k:1,h:"2 · y trong câu phủ định và các thì",html:`<div class="tbl"><table>
+  <tr><td>Phủ định</td><td>ne + y + V + pas</td><td>${F("Non, je n'y vais pas.")}</td></tr>
+  <tr><td>Passé composé</td><td>y + trợ động từ</td><td>${F("J'y suis allée hier.")}</td></tr>
+  <tr><td>aller / vouloir / pouvoir + V</td><td>y đứng trước V nguyên thể</td><td>${F("Je vais y aller demain.")}</td></tr></table></div>
+  <p class="tip">Câu trả lời của em đều đúng: ${F("Oui, ils y vont. / Non, ils n'y vont pas.")} · ${F("Non, je n'y travaille pas.")}</p>`},
+  {k:1,h:"3 · Il faut + V nguyên thể",html:`<p><b>Il faut</b> = cần, phải, nên (nói chung, cho mọi người). <b>Il ne faut pas</b> = không được.</p>
+  <ul><li>${F("Il faut porter une serviette.")}</li><li>${F("Il faut prendre rendez-vous chez le médecin.")}</li><li>${F("Il ne faut pas manger dans la salle.")}</li></ul>
+  <p class="tip">Đây là cấu trúc vô nhân xưng: chủ ngữ luôn là <b>il</b>, không đổi thành je, nous, vous. <s>Je faut</s>. Muốn nói \"tôi phải\" thì dùng devoir.</p>`},
+  {k:1,h:"4 · devoir (phải) + V nguyên thể",html:`<p>${F("je dois, tu dois, il doit, nous devons, vous devez, ils doivent")}</p>
+  <p>${F("Je dois prendre rendez-vous.")} ${F("Vous devez arriver à l'heure.")}</p>
+  <div class="tbl"><table><tr><th></th><th>il faut</th><th>devoir</th></tr>
+  <tr><td>Chủ ngữ</td><td>luôn là il (chung chung)</td><td>người cụ thể: je, tu, nous…</td></tr>
+  <tr><td>Ví dụ</td><td>${F("Il faut dormir huit heures.")}</td><td>${F("Je dois dormir plus.")}</td></tr></table></div>
+  <p class="tip">Phân từ quá khứ của devoir là ${F("dû")} (có dấu mũ): ${F("J'ai dû partir.")}</p>`},
+  {k:1,h:"5 · Cấm đoán & yêu cầu (nội quy, biển báo)",html:`<h4 class="sub-h">Cấm</h4><div class="tbl"><table>
+  <tr><td>${F("Il est interdit de")} + V</td><td>cấm</td><td>${F("Il est interdit de faire des barbecues.")}</td></tr>
+  <tr><td>${F("Interdiction de")} + V</td><td>cấm (thông báo)</td><td>${F("Interdiction de fumer ou de vapoter dans l'ascenseur.")}</td></tr>
+  <tr><td>${F("Défense de")} + V</td><td>cấm (biển báo)</td><td>${F("Défense de marcher sur la pelouse.")}</td></tr>
+  <tr><td>${F("Ne pas")} + V</td><td>không được</td><td>${F("Ne pas laisser votre vélo dans les couloirs.")}</td></tr>
+  <tr><td>${F("Il ne faut pas")} + V</td><td>không được</td><td>${F("Il ne faut pas courir.")}</td></tr></table></div>
+  <h4 class="sub-h">Yêu cầu, nhắc nhở</h4><div class="tbl"><table>
+  <tr><td>${F("Merci de")} + V</td><td>vui lòng</td><td>${F("Merci de fermer la porte d'entrée.")}</td></tr>
+  <tr><td>${F("Prière de")} + V</td><td>đề nghị, xin vui lòng (trang trọng)</td><td>${F("Prière de trier vos déchets.")}</td></tr>
+  <tr><td>${F("Attention à")} + N</td><td>chú ý, cẩn thận với</td><td>${F("Attention au bruit !")}</td></tr>
+  <tr><td>V nguyên thể</td><td>hướng dẫn ngắn</td><td>${F("Tenir les chiens en laisse.")}</td></tr>
+  <tr><td>Mệnh lệnh (vous)</td><td>yêu cầu trực tiếp</td><td>${F("Respectez vos voisins !")}</td></tr>
+  <tr><td>${F("Il est important de")} + V</td><td>điều quan trọng là</td><td>${F("Il est important de boire de l'eau.")}</td></tr></table></div>
+  <p class="tip">Sau interdit de, interdiction de, défense de, merci de, prière de luôn là động từ nguyên thể; trước nguyên âm de → d'. Attention à + le = <b>au</b> (${F("attention au bruit")}). Phủ định của nguyên thể: <b>ne pas</b> đứng liền nhau, trước động từ.</p>
+  <h4 class="sub-h">Từ trong nội quy tòa nhà</h4><div class="tbl"><table>
+  <tr><td>${F("le règlement intérieur")}</td><td>nội quy</td></tr>
+  <tr><td>${F("l'immeuble")}</td><td>tòa nhà chung cư</td></tr>
+  <tr><td>${F("fermer la porte d'entrée")}</td><td>đóng cửa ra vào</td></tr>
+  <tr><td>${F("faire des barbecues")}</td><td>nướng thịt ngoài trời</td></tr>
+  <tr><td>${F("le bruit")}</td><td>tiếng ồn</td></tr>
+  <tr><td>${F("le hall")} · ${F("les escaliers")}</td><td>sảnh · cầu thang</td></tr>
+  <tr><td>${F("respecter ses voisins")}</td><td>tôn trọng hàng xóm</td></tr>
+  <tr><td>${F("fumer")} · ${F("vapoter")}</td><td>hút thuốc · hút thuốc lá điện tử</td></tr>
+  <tr><td>${F("l'ascenseur")}</td><td>thang máy</td></tr>
+  <tr><td>${F("les parties communes")}</td><td>khu vực chung</td></tr>
+  <tr><td>${F("tenir un chien en laisse")}</td><td>dắt chó bằng dây</td></tr>
+  <tr><td>${F("la pelouse")}</td><td>bãi cỏ</td></tr>
+  <tr><td>${F("la résidence")}</td><td>khu nhà ở</td></tr>
+  <tr><td>${F("laisser")}</td><td>để lại</td></tr>
+  <tr><td>${F("le vélo")} · ${F("les couloirs")}</td><td>xe đạp · hành lang</td></tr>
+  <tr><td>${F("trier ses déchets")}</td><td>phân loại rác</td></tr></table></div>`},
+  {h:"6 · Nói về sức khỏe (bài diễn đàn)",html:`<ul>
+  <li>${F("J'ai mal au dos.")} · ${F("J'ai mal à la tête.")} · ${F("J'ai mal aux yeux.")} (à + le = au, à + les = aux)</li>
+  <li>${F("Je prends rendez-vous chez le spécialiste du dos.")} (chez + người, không thêm à)</li>
+  <li>${F("Je suis fatiguée et stressée.")} · ${F("J'ai des problèmes de sommeil.")}</li>
+  <li>${F("Je ne veux pas prendre de médicaments.")}</li>
+  <li>${F("Je fais des exercices de respiration.")} · ${F("respirer par le nez et par la bouche")}</li>
+  <li>${F("Je me sens bien !")} · ${F("Enfin une solution !")}</li></ul>`},
+  {h:"7 · C'était = It was",html:`<p>Trong video em gặp nhiều chữ <b>était</b>: đó là être ở thì Imparfait (chưa học). Tạm hiểu như was / were.</p>
+  <p>${F("C'était cool.")} · ${F("C'était trop bien.")} · ${F("On était ensemble.")}</p>`},
+  {h:"8 · Nhiệm vụ trong BT tự học",html:`<ul><li>Đọc và nghe các bài, đánh dấu chỗ chia ở <b>passé composé</b>, dịch bài, học expressions trong khung.</li>
+  <li>Trả lời câu hỏi bằng đại từ <b>y</b>; điền <b>devoir</b> hoặc <b>il faut</b>.</li>
+  <li>Dịch nội quy phòng gym (il faut, il ne faut pas, il est interdit de).</li>
+  <li>Từ vựng: 2 chương trong sách Essentiel. Các từ in đậm đã có trong mục Từ vựng → <b>Du lịch & thiên nhiên</b>; câu trong khung \"Pour communiquer\" ở mục Hội thoại → <b>Du lịch</b>.</li>
+  <li>Xem video Easy French: lập list 10 câu passé composé và 10 expressions hay.</li></ul>
+  <p class="tip">Link audio nằm trên bảng Canva BT tự học tuần 10.</p>`}
+ ],
+ fixes:[
+  ["Je travaille y.","J'y travaille.","y đứng trước động từ"],
+  ["Jonathan prendre rendez-vous chez à spécialiste","Jonathan prend rendez-vous chez le spécialiste.","chia động từ (prend); chez + le + người, không dùng à"],
+  ["parce que il a mal au dos","parce qu'il a mal au dos","que + nguyên âm → qu'"],
+  ["Je faut prendre rendez-vous.","Il faut prendre rendez-vous. / Je dois prendre rendez-vous.","il faut không đổi chủ ngữ; muốn có \"je\" thì dùng devoir"],
+  ["J'ai mal à le dos.","J'ai mal au dos.","à + le = au"],
+  ["Il est interdit fumer.","Il est interdit de fumer.","sau interdit cần de"]
+ ],
+ ex:[
+  {t:"f",q:"Trả lời bằng <b>y</b>: Tu vas au cinéma ce soir ? – Oui, ___",a:["j'y vais"]},
+  {t:"f",q:"Trả lời bằng <b>y</b>: Il travaille à l'hôpital ? – Non, ___",a:["il n'y travaille pas"]},
+  {t:"f",q:"Trả lời bằng <b>y</b>: Elle est chez le médecin ? – Oui, ___",a:["elle y est"]},
+  {t:"f",q:"Trả lời bằng <b>y</b>: Ils vont à la piscine ? – Non, ___",a:["ils n'y vont pas"]},
+  {t:"f",q:"Trả lời bằng <b>y</b>: Vous habitez à Hanoï ? – Oui, nous ___ habitons.",a:["y"]},
+  {t:"f",q:"Dịch: \"Tôi làm việc ở đó.\"",a:["j'y travaille"]},
+  {t:"f",q:"Dịch: \"Ngày mai tôi sẽ đến đó.\" (aller, tương lai gần)",a:["demain je vais y aller","je vais y aller demain"]},
+  {t:"m",q:"Câu nào đặt <b>y</b> đúng chỗ?",o:["Je vais y aller.","J'y vais aller.","Je vais aller y."],a:0,w:"Với aller + V, y đứng trước động từ nguyên thể."},
+  {t:"f",q:"devoir: Je ___ partir à 7 heures.",a:["dois"]},
+  {t:"f",q:"devoir: Nous ___ prendre rendez-vous.",a:["devons"]},
+  {t:"f",q:"devoir: Vous ___ arriver à l'heure.",a:["devez"]},
+  {t:"f",q:"devoir: Les enfants ___ dormir tôt.",a:["doivent"]},
+  {t:"f",q:"Điền <b>Il faut</b> hoặc dạng của <b>devoir</b>: ___ porter une serviette à la salle de sport.",a:["il faut"]},
+  {t:"f",q:"Điền <b>Il faut</b> hoặc dạng của <b>devoir</b>: Jonathan a mal au dos. Il ___ voir un spécialiste.",a:["doit"]},
+  {t:"f",q:"Điền <b>Il faut</b> hoặc dạng của <b>devoir</b>: Tu ___ te reposer, tu es fatiguée.",a:["dois"]},
+  {t:"f",q:"Dịch (nội quy): \"Cấm hút thuốc.\" (dùng il est interdit)",a:["il est interdit de fumer"]},
+  {t:"f",q:"Dịch (nội quy): \"Không được chạy.\" (dùng il faut)",a:["il ne faut pas courir"]},
+  {t:"f",q:"Dịch: \"Vui lòng làm bài tập đúng giờ.\" (dùng merci de)",a:["merci de faire les devoirs à l'heure","merci de faire vos devoirs à l'heure"]},
+  {t:"m",q:"Câu nào <b>sai</b>?",o:["Il faut dormir huit heures.","Je faut dormir huit heures.","Je dois dormir huit heures."],a:1,w:"il faut luôn giữ chủ ngữ il."},
+  {t:"f",q:"J'ai mal ___ dos.",a:["au"]},
+  {t:"f",q:"Sophie a mal ___ tête.",a:["à la"]},
+  {t:"f",q:"J'ai mal ___ yeux.",a:["aux"]},
+  {t:"f",q:"Nội quy: ___ fermer la porte d'entrée. (vui lòng)",a:["merci de"]},
+  {t:"f",q:"Nội quy: ___ trier vos déchets. (đề nghị, trang trọng)",a:["prière de"]},
+  {t:"f",q:"Nội quy: ___ bruit ! (chú ý tiếng ồn)",a:["attention au"]},
+  {t:"f",q:"Nội quy: ___ marcher sur la pelouse. (biển báo cấm, bắt đầu bằng D)",a:["défense de"]},
+  {t:"f",q:"Nội quy: ___ fumer dans l'ascenseur. (danh từ \"sự cấm\")",a:["interdiction de"]},
+  {t:"f",q:"Viết dạng phủ định nguyên thể: ___ laisser votre vélo dans les couloirs.",a:["ne pas"]},
+  {t:"f",q:"Dịch: \"Tôn trọng hàng xóm của các bạn!\" (mệnh lệnh vous)",a:["respectez vos voisins"]},
+  {t:"f",q:"Dịch: \"phân loại rác\"",a:["trier ses déchets","trier vos déchets","trier les déchets"]},
+  {t:"f",q:"Dịch: \"khu vực chung\" (trong tòa nhà)",a:["les parties communes"]},
+  {t:"f",q:"Dịch: \"dắt chó bằng dây\" (tenir…)",a:["tenir les chiens en laisse","tenir un chien en laisse","tenir le chien en laisse"]},
+  {t:"m",q:"Câu nào <b>sai</b>?",o:["Défense de fumer.","Interdiction de fumer.","Défense fumer."],a:2,w:"Sau défense / interdiction cần de + V nguyên thể."},
+  {t:"m",q:"\"C'était trop bien\" nghĩa là:",o:["Hôm nay rất tốt.","Lúc đó thật tuyệt.","Sẽ rất tuyệt."],a:1,w:"était = être ở quá khứ (was)."}
+ ]
+},
+{
+ id:"b9h", date:"11/10", name:"Vị trí đồ vật & luyện passé composé", src:"BTVN sau buổi 9",
+ links:[["BTVN sau buổi 9","https://www.canva.com/d/EF5PsQBg4D6KpIf"]],
+ notes:[
+  {k:1,h:"1 · Phủ định & câu hỏi",html:`<p>ne … pas <b>bọc quanh trợ động từ</b>, Vpp đứng sau:</p>
+  <ul><li>${F("Elle n'a pas déménagé à Lyon.")}</li><li>${F("Je ne suis pas sortie hier soir.")}</li>
+  <li>${F("Ce matin, je n'ai pas mangé de pain.")} (phủ định: du → de)</li></ul>
+  <p>Hỏi: ${F("Tu as fini tes devoirs ?")} = ${F("As-tu fini tes devoirs ?")} · ${F("Tu as mangé quoi ce matin ?")} = ${F("Qu'est-ce que tu as mangé ?")}</p>`},
+  {k:1,h:"2 · Mốc thời gian quá khứ",html:`<p>${F("hier")} · ${F("hier soir")} · ${F("ce matin")} · ${F("la semaine dernière")} · ${F("le mois dernier")} · ${F("l'année dernière")} · ${F("il y a deux jours")} · ${F("pendant trois heures")}</p>
+  <p class="tip">${F("hier")} = hôm qua ≠ ${F("l'hiver")} = mùa đông. ${F("la semaine dernière")} = tuần trước ≠ ${F("la dernière semaine")} = tuần cuối cùng.</p>`},
+  {h:"3 · Vị trí đồ vật trong phòng",html:`<p>${F("sur")} trên · ${F("sous")} dưới · ${F("dans")} trong · ${F("devant")} trước · ${F("derrière")} sau · ${F("entre")} giữa · ${F("à côté de")} bên cạnh · ${F("en face de")} đối diện · ${F("à gauche de")} / ${F("à droite de")} bên trái / phải</p>
+  <p>Bài thử thách của em: ${F("Dans ma chambre, il y a un écran externe et un ordinateur sur la table. En face de la table, il y a un lit avec beaucoup de peluches.")}</p>
+  <p class="tip">de + le = du: ${F("à côté du lit")}, ${F("à gauche de l'entrée")}.</p>`},
+  {h:"4 · Anti-Alzheimer: ôn tần suất & đi chơi",html:`<ul><li>${F("Sabrina se maquille rarement.")}</li><li>${F("Le mercredi, je vais au cinéma.")}</li>
+  <li>${F("Nous faisons les courses tous les samedis.")}</li><li>${F("Je bricole parfois.")}</li><li>${F("Albert se lève souvent à six heures.")}</li></ul>
+  <p>Đi chơi: ${F("un concert")}, ${F("une pièce de théâtre")}, ${F("une exposition")}, ${F("le cinéma")}</p>`},
+  {h:"5 · Nhiệm vụ trong BTVN",html:`<ul><li>Nghe, đọc transcription, đánh dấu giới từ chỉ vị trí; sắp xếp đồ vật trong phòng khách.</li>
+  <li>Nghe và phân biệt câu ở quá khứ / hiện tại.</li><li>Mỗi ngày chia khoảng 20 câu passé composé (Linguino): Vpp là gì, avoir hay être, có hợp giống số không.</li>
+  <li>Luyện cấu trúc cấm đoán – yêu cầu.</li><li>Từ vựng: 2 chương trong sách Essentiel, đã có trong mục Từ vựng → <b>Sức khỏe & bệnh tật</b>.</li>
+  <li>Xem tập 6 Extra French và video house tour: 10 từ mới, 3 câu hay, thu âm gửi cô.</li></ul>`}
+ ],
+ fixes:[
+  ["vous avons trouvé un appartement","vous avez trouvé un appartement","vous đi với avez"],
+  ["devoir → deçu","devoir → dû","Vpp của devoir là dû (có dấu mũ)"],
+  ["t'as cherché","tu as cherché","t'as chỉ dùng khi nói; khi viết bài dùng tu as"],
+  ["un lit avec beaucoup peluches","un lit avec beaucoup de peluches","beaucoup + de + N"],
+  ["dans ma chambre, c'est une armoire","dans ma chambre, il y a une armoire","\"có\" (there is) dùng il y a"],
+  ["le mercredi je vais au cinéme","Le mercredi, je vais au cinéma.","cinéma (é, a)"],
+  ["la tapis","le tapis","tapis là danh từ giống đực"],
+ ],
+ ex:[
+{t:"f",q:"Passé composé: Tu ___ un logement. <i>· chercher</i>",a:["as cherché"]},
+  {t:"f",q:"Passé composé: Nous ___ un appartement. <i>· trouver</i>",a:["avons trouvé"]},
+  {t:"f",q:"Passé composé: Ils ___ un lave-linge. <i>· acheter</i>",a:["ont acheté"]},
+  {t:"f",q:"Passé composé: J'___ une maison. <i>· visiter</i>",a:["ai visité"]},
+  {t:"f",q:"Passé composé: Vous ___ hier soir ? <i>· travailler</i>",a:["avez travaillé"]},
+  {t:"f",q:"Passé composé: Tu ___ tes clés ! <i>· oublier</i>",a:["as oublié"]},
+  {t:"f",q:"Participe passé của <b>devoir</b>",a:["dû"]},
+  {t:"f",q:"Phủ định: Elle a déménagé à Lyon. → ___",a:["elle n'a pas déménagé à lyon"]},
+  {t:"m",q:"\"Hôm qua tôi đã gặp một người Pháp.\"",o:["Hiver, j'ai rencontré un Français.","Hier, j'ai rencontré un Français.","Hier, je rencontre un Français."],a:1},
+  {t:"f",q:"Le chat est ___ la table. (dưới)",a:["sous"]},
+  {t:"f",q:"L'ordinateur est ___ la table. (trên)",a:["sur"]},
+  {t:"f",q:"Le lit est ___ la table. (đối diện)",a:["en face de"]},
+  {t:"f",q:"La lampe est ___ lit. (bên cạnh)",a:["à côté du"]}
+ ]
+},
+{
  id:"b9", date:"08/10", name:"Passé composé & kể chuyện đã xảy ra", src:"Buổi 9",
  links:[["Buổi 9","https://www.canva.com/d/DjnuW-PHvypkXK6"]],
  notes:[
