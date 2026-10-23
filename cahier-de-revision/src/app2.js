@@ -429,20 +429,10 @@ document.addEventListener("keydown",e=>{
 
 
 /* ================= sticker & meme ================= */
-const EYE=(x,y)=>`<circle cx="${x}" cy="${y}" r="4.2" fill="#1b2430"/><circle cx="${x+1.4}" cy="${y-1.4}" r="1.3" fill="#fff"/>`;
 const STICKERS={
- ok:[
-  {cap:"Nice !",svg:`<svg viewBox="0 0 120 120"><path d="M14 74c6-26 24-44 46-44s40 18 46 44c-10 12-30 18-46 18S24 86 14 74z" fill="#e7a53b" stroke="#8a5a14" stroke-width="3"/><path d="M34 52c4 10 6 22 4 34M60 34v52M86 52c-4 10-6 22-4 34" stroke="#b9781f" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="30" y="56" width="26" height="12" rx="5" fill="#1b2430"/><rect x="64" y="56" width="26" height="12" rx="5" fill="#1b2430"/><path d="M56 61h8" stroke="#1b2430" stroke-width="3"/><path d="M48 78q12 9 24 0" stroke="#1b2430" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M100 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#f6d36b"/></svg>`},
-  {cap:"Très bien !",svg:`<svg viewBox="0 0 120 120"><rect x="44" y="8" width="32" height="104" rx="16" fill="#d99a45" stroke="#8a5a14" stroke-width="3" transform="rotate(18 60 60)"/><path d="M52 26l14 6M47 44l14 6M42 62l14 6M37 80l14 6" stroke="#f3d39a" stroke-width="4" stroke-linecap="round" transform="rotate(18 60 60)"/>${EYE(54,50)}${EYE(70,55)}<path d="M52 64q9 8 18 4" stroke="#1b2430" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="96" cy="74" r="13" fill="#f6d36b" stroke="#8a5a14" stroke-width="3"/><path d="M92 74l3 4 7-8" stroke="#8a5a14" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`},
-  {cap:"Magnifique !",svg:`<svg viewBox="0 0 120 120"><ellipse cx="60" cy="44" rx="40" ry="20" fill="#f2a7b8" stroke="#9c4b5e" stroke-width="3"/><rect x="22" y="56" width="76" height="12" rx="6" fill="#fff4e4" stroke="#9c4b5e" stroke-width="3"/><ellipse cx="60" cy="82" rx="40" ry="20" fill="#f2a7b8" stroke="#9c4b5e" stroke-width="3"/><path d="M42 40c0-5 7-5 7 0 0-5 7-5 7 0 0 5-7 9-7 9s-7-4-7-9zM64 40c0-5 7-5 7 0 0-5 7-5 7 0 0 5-7 9-7 9s-7-4-7-9z" fill="#c2324e"/><path d="M50 82q10 8 20 0" stroke="#1b2430" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`},
-  {cap:"Bravo !",svg:`<svg viewBox="0 0 120 120"><path d="M16 88L96 30l8 58z" fill="#f6cf5a" stroke="#9a7516" stroke-width="3" stroke-linejoin="round"/><circle cx="74" cy="70" r="6" fill="#e6b53d"/><circle cx="90" cy="56" r="4" fill="#e6b53d"/><circle cx="52" cy="80" r="4" fill="#e6b53d"/>${EYE(62,62)}${EYE(80,52)}<path d="M64 76q10 2 16-6" stroke="#1b2430" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M18 40l4-10M30 32l8-6M12 56l-8-2" stroke="#d6a22a" stroke-width="4" stroke-linecap="round"/></svg>`}
- ],
- no:[
-  {cap:"Oups…",svg:`<svg viewBox="0 0 120 120"><path d="M14 78c6-26 24-44 46-44s40 18 46 44c-10 12-30 18-46 18S24 90 14 78z" fill="#e7a53b" stroke="#8a5a14" stroke-width="3"/><path d="M34 56c4 10 6 22 4 34M60 38v52M86 56c-4 10-6 22-4 34" stroke="#b9781f" stroke-width="3" fill="none" stroke-linecap="round"/>${EYE(46,64)}${EYE(72,64)}<path d="M50 84q10-7 20 0" stroke="#1b2430" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M40 72q-3 8 0 12q3-4 0-12" fill="#6ab0e8"/></svg>`},
-  {cap:"Doucement…",svg:`<svg viewBox="0 0 120 120"><path d="M10 92h86q12 0 12-10" stroke="#6b8f6f" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="54" cy="64" r="28" fill="#c98b5a" stroke="#7a4a26" stroke-width="3"/><path d="M54 64m-6 0a6 6 0 1 1 12 0a14 14 0 1 1-28 0a22 22 0 1 1 44 0" stroke="#7a4a26" stroke-width="3" fill="none"/><path d="M96 82V54M104 82V58" stroke="#6b8f6f" stroke-width="4" stroke-linecap="round"/><circle cx="96" cy="52" r="4" fill="#1b2430"/><circle cx="104" cy="56" r="4" fill="#1b2430"/></svg>`},
-  {cap:"Pas grave !",svg:`<svg viewBox="0 0 120 120"><ellipse cx="60" cy="52" rx="42" ry="16" fill="#26324a" stroke="#0f1726" stroke-width="3"/><path d="M58 36q2-8 6-8" stroke="#0f1726" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="78" r="26" fill="#f4d9bd" stroke="#8a5a3a" stroke-width="3"/>${EYE(50,76)}${EYE(70,76)}<path d="M52 92q8 4 16 0" stroke="#1b2430" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M40 70l8-3M80 70l-8-3" stroke="#1b2430" stroke-width="2.5" stroke-linecap="round"/></svg>`},
-  {cap:"On réessaie !",svg:`<svg viewBox="0 0 120 120"><path d="M24 92l12-60h48l12 60z" fill="#fff4dc" stroke="#9a7516" stroke-width="3" stroke-linejoin="round"/><path d="M30 64h60" stroke="#e7c27a" stroke-width="3"/><circle cx="48" cy="46" r="5" fill="#e7c27a"/><circle cx="72" cy="80" r="6" fill="#e7c27a"/>${EYE(50,62)}${EYE(70,62)}<path d="M52 78q8-5 16 0" stroke="#1b2430" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M96 30a14 14 0 1 1-6-10" stroke="#3d614e" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M86 14l6 6-8 3" stroke="#3d614e" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`}
- ]
+ ok:[{img:"img/meme-ok-nice.jpg"},{img:"img/meme-ok-thumb.jpg"}],
+ accent:[{img:"img/meme-accent-glasses.jpg",cap:"Coi chừng dấu !"}],
+ no:[{img:"img/meme-no-redcard.jpg"},{img:"img/meme-no-eyes.jpg"}]
 };
 const CAPS_M={ok:["Nice !","Très bien !","Magnifique !","Bravo !","Parfait !","Génial !","Super !","Chapeau !","Excellent !","C'est ça !"],no:["Oups…","Pas grave !","On réessaie !","Presque !","Courage !","Doucement…","Allez, encore !","Ça arrive !"]};
 const MKEY="fr-carnet-memes";
@@ -450,13 +440,13 @@ let MEMES={ok:[],no:[]};
 try{const m=JSON.parse(localStorage.getItem(MKEY)||"null");if(m)MEMES=Object.assign(MEMES,m);}catch(e){}
 function saveMemes(){try{localStorage.setItem(MKEY,JSON.stringify(MEMES));return true;}catch(e){return false;}}
 function pickMeme(kind){
-  const own=MEMES[kind]||[],st=STICKERS[kind];
+  const own=MEMES[kind==="no"?"no":"ok"]||[],st=STICKERS[kind];
   if(own.length&&(S.prefs.memeMode==="own"||Math.random()<.7)){const src=own[Math.floor(Math.random()*own.length)];return {img:src,cap:""};}
-  const s=st[Math.floor(Math.random()*st.length)];const caps=CAPS_M[kind];return {svg:s.svg,cap:Math.random()<.5?s.cap:caps[Math.floor(Math.random()*caps.length)]};
+  const s=st[Math.floor(Math.random()*st.length)];const caps=CAPS_M[kind]||CAPS_M.ok;return {img:s.img,cap:s.cap||caps[Math.floor(Math.random()*caps.length)]};
 }
 function memeHTML(st){
   if(S.prefs.memeOff||!st.res)return "";
-  if(!st.meme)st.meme=pickMeme(st.res==="no"?"no":"ok");
+  if(!st.meme)st.meme=pickMeme(st.res==="no"?"no":st.res==="accent"?"accent":"ok");
   const m=st.meme;
   return `<figure class="meme ${st.res==="no"?"no":"ok"}">${m.img?`<img src="${m.img}" alt="Meme của em">`:m.svg}${m.cap?`<figcaption>${m.cap}</figcaption>`:""}</figure>`;
 }
@@ -464,7 +454,7 @@ function shrinkImage(file){return new Promise((res,rej)=>{const fr=new FileReade
 function memePanel(){
   const th=k=>(MEMES[k]||[]).map((src,i)=>`<span class="mthumb"><img src="${src}" alt=""><button data-del="${k}:${i}" aria-label="Xóa meme">×</button></span>`).join("");
   return `<section class="paper memes-panel"><p class="eyebrow">Meme khi chấm điểm</p>
-   <p class="small muted" style="margin:6px 0 10px">Carnet có sẵn sticker vui. Em có thể thêm ảnh meme của riêng mình (lưu trên trình duyệt này).</p>
+   <p class="small muted" style="margin:6px 0 10px">Carnet có sẵn ảnh mèo vui. Em có thể thêm ảnh meme của riêng mình (lưu trên trình duyệt này).</p>
    <div class="mrow"><b>Khi đúng</b><div class="mthumbs">${th("ok")}<label class="madd">+ Thêm<input type="file" accept="image/*" multiple data-add="ok" hidden></label></div></div>
    <div class="mrow"><b>Khi sai</b><div class="mthumbs">${th("no")}<label class="madd">+ Thêm<input type="file" accept="image/*" multiple data-add="no" hidden></label></div></div>
    <label class="mtoggle"><input type="checkbox" id="meme-off" ${S.prefs.memeOff?"checked":""}> Tắt meme</label>
