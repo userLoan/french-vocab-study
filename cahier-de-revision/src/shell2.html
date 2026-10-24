@@ -1,6 +1,7 @@
 <title>Cahier de révision</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: bàn học. Rail gáy sổ xanh mực bên trái (4 khu), mỗi màn hình chỉ một việc chính trên tờ giấy ngà ở giữa. */
@@ -538,13 +539,16 @@ body{background:radial-gradient(circle at 18% 0%,var(--glow),transparent 32rem),
 .concept .lead{font-size:15px;font-weight:600;border-left:3px solid var(--sage-ink);padding:6px 12px;margin:0 0 14px;background:var(--rule)}
 .concept .end{color:var(--coral);font-weight:800}
 .concept tr.grp th{padding-top:14px;color:var(--ink);font-size:13px;letter-spacing:.04em}
-.concept td.ic{width:34px;font-size:20px;text-align:center}
+.concept td.ic{width:34px;font-size:17px;text-align:center}
+.concept .fa-solid{color:var(--mustard)}
+.concept .fa-solid.pos{color:var(--sage-ink)} .concept .fa-solid.neg{color:var(--coral)}
+.concept th .fa-solid,.concept small .fa-solid,.concept .tag .fa-solid{margin-right:4px}
 .concept td.vi{color:var(--ink-soft)}
 .concept .conj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;max-width:440px;margin:6px 0 14px}
 .concept .conj>span{padding:6px 0;border-bottom:1px dashed var(--line)}
 .concept .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:8px 0 14px}
 .concept .card{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--rule);line-height:1.4}
-.concept .card .ic{display:block;font-size:24px;margin-bottom:4px}
+.concept .card .ic{display:block;font-size:20px;margin-bottom:6px}
 .concept .card small{display:block;color:var(--ink-soft);font-size:13.5px}
 .concept .vs td:first-child{color:var(--coral)}
 .concept .vs td:first-child s{text-decoration-thickness:1.5px}
