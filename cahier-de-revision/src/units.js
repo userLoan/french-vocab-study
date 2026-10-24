@@ -5,134 +5,234 @@ const UNITS = [
  id:"tong1", date:"24/10", name:"Tổng hợp: cách miêu tả & expressions hay dùng", src:"Ôn tổng hợp Buổi 2 → Tuần 10",
  links:[["Buổi 2","https://www.canva.com/d/kvH6x57dx1-_ghM"],["Buổi 3","https://www.canva.com/d/DUi4Ao1gLgmhdbc"],["Buổi 8","https://www.canva.com/d/QZqIASx6izmOT0r"],["Buổi 9","https://www.canva.com/d/DjnuW-PHvypkXK6"],["BT tự học tuần 10","https://www.canva.com/d/JK8hWLudRA-K_e4"]],
  notes:[
-  {k:1,h:"1 · Bảng tổng: mình đang nói về cái gì?",html:`<p>Mỗi chủ đề đi với <b>vài khung cố định</b>. Trước khi nói, hỏi mình: đang nói về cái gì? Mỗi dòng dưới đây là một điểm trong bài.</p>
-  <div class="tbl"><table><tr><th>Chủ đề</th><th>Khung chính</th><th>Ví dụ</th><th>Đã học ở</th></tr>
-  <tr><td>2 · Thời tiết</td><td>il fait · il pleut · il y a · c'est</td><td>${F("Il fait froid.")} · ${F("Il y a du vent.")}</td><td>Từ vựng: Thời tiết & mùa</td></tr>
-  <tr><td>3 · Thời gian</td><td><b>il est</b> + giờ · <b>on est / c'est</b> + ngày · le / en / au / à</td><td>${F("Il est huit heures.")} · ${F("en octobre")}</td><td>Buổi 1, Buổi 8</td></tr>
-  <tr><td>4 · Người</td><td>s'appeler · <b>avoir</b> + ans · habiter à · <b>être</b> + tính từ · peser / mesurer</td><td>${F("J'ai 25 ans.")} · ${F("Il est grand.")}</td><td>Buổi 2, Buổi 7</td></tr>
-  <tr><td>5 · Nghề nghiệp</td><td><b>être</b> + nghề (không mạo từ) · c'est un / une</td><td>${F("Je suis informaticienne.")}</td><td>Buổi 2, chủ điểm Công việc</td></tr>
-  <tr><td>6 · Cơ thể, cảm xúc & sức khỏe</td><td>cảm xúc: <b>être</b> / se sentir · cảm giác, bệnh: <b>avoir</b></td><td>${F("Je suis stressée.")} · ${F("J'ai froid.")}</td><td>Tuần 10, chủ điểm Sức khỏe</td></tr>
-  <tr><td>7 · Nơi chốn</td><td><b>il y a</b> · habiter à · travailler dans</td><td>${F("Il y a un lit dans la chambre.")}</td><td>Buổi 3, Tuần 4, BTVN buổi 9</td></tr>
-  <tr><td>8 · Ý kiến</td><td><b>avoir</b> raison / tort · <b>être</b> d'accord</td><td>${F("Tu as raison.")}</td><td>bài này</td></tr></table></div>
-  <p class="tip">Ba chữ <b>il</b> "giả" không chỉ ai cả: ${F("il fait")} (thời tiết), ${F("il est")} + giờ, ${F("il y a")}. Giống ${F("il faut")} ở Tuần 10. Mẹo chung: <b>être</b> = "là / đang ở trạng thái" (nghề, tính cách, cảm xúc); <b>avoir</b> = "có" (tuổi, đói, lạnh, đau, có lý).</p>`},
+  {k:1,h:"1 · Bảng tổng: mình đang nói về cái gì?",html:`<p class="lead">Trước khi nói, hỏi mình: đang nói về <b>cái gì</b>? Mỗi chủ đề có một khung cố định.</p>
+  <div class="tbl"><table><tr><th></th><th>Chủ đề</th><th>Khung chính</th><th>Ví dụ</th></tr>
+  <tr><td class="ic">🌦️</td><td>Thời tiết<br><small>điểm 2</small></td><td><b>il fait</b> · il y a</td><td>${F("Il fait froid.")}</td></tr>
+  <tr><td class="ic">🕗</td><td>Thời gian<br><small>điểm 3</small></td><td><b>il est</b> + giờ</td><td>${F("Il est huit heures.")}</td></tr>
+  <tr><td class="ic">🙋</td><td>Người<br><small>điểm 4</small></td><td><b>avoir</b> + tuổi</td><td>${F("J'ai 25 ans.")}</td></tr>
+  <tr><td class="ic">💼</td><td>Nghề nghiệp<br><small>điểm 5</small></td><td><b>être</b> + nghề</td><td>${F("Je suis informaticienne.")}</td></tr>
+  <tr><td class="ic">🫀</td><td>Cơ thể, cảm xúc<br><small>điểm 6</small></td><td><b>avoir</b> faim · <b>être</b> triste</td><td>${F("J'ai froid.")}</td></tr>
+  <tr><td class="ic">📍</td><td>Nơi chốn<br><small>điểm 7</small></td><td><b>il y a</b></td><td>${F("Il y a un lit.")}</td></tr>
+  <tr><td class="ic">💬</td><td>Ý kiến<br><small>điểm 8</small></td><td><b>avoir</b> raison</td><td>${F("Tu as raison.")}</td></tr></table></div>
+  <h4 class="sub-h">Mẹo nhớ: être hay avoir?</h4>
+  <div class="tbl"><table><tr><th>être = "là", đang ở trạng thái</th><th>avoir = "có"</th></tr>
+  <tr><td>nghề: ${F("Je suis médecin.")}</td><td>tuổi: ${F("J'ai 25 ans.")}</td></tr>
+  <tr><td>tính cách: ${F("Il est sérieux.")}</td><td>đói, lạnh: ${F("J'ai faim.")}</td></tr>
+  <tr><td>cảm xúc: ${F("Je suis triste.")}</td><td>đau: ${F("J'ai mal au dos.")}</td></tr>
+  <tr><td>quốc tịch: ${F("Je suis vietnamienne.")}</td><td>có lý: ${F("Tu as raison.")}</td></tr></table></div>
+  <p class="tip">Ba chữ <b>il</b> "giả" (không chỉ ai): ${F("il fait")} thời tiết · ${F("il est")} giờ · ${F("il y a")} có. Giống ${F("il faut")} ở Tuần 10.</p>`},
 
-  {k:1,h:"2 · Thời tiết",html:`<p>Hỏi: ${F("Quel temps fait-il ?")} · ${F("Il fait quel temps ?")}</p>
-  <div class="tbl"><table><tr><th>Khung</th><th>Dùng với</th><th>Ví dụ</th></tr>
-  <tr><td><b>il fait</b> + tính từ</td><td>trời thế nào, nhiệt độ</td><td>${F("Il fait beau.")} · ${F("Il fait mauvais.")} · ${F("Il fait chaud / froid / doux.")} · ${F("Il fait 30 degrés.")}</td></tr>
-  <tr><td><b>il</b> + động từ</td><td>mưa, tuyết</td><td>${F("Il pleut.")} (pleuvoir) · ${F("Il neige.")} (neiger)</td></tr>
-  <tr><td><b>il y a</b> + du / de la / des</td><td>danh từ: gió, nắng, mây…</td><td>${F("Il y a du vent.")} · ${F("Il y a du soleil.")} · ${F("Il y a des nuages.")} · ${F("Il y a du brouillard.")}</td></tr>
-  <tr><td><b>c'est</b> + mùa / nhận xét</td><td>mùa, cảm nhận chung</td><td>${F("C'est l'hiver.")} · ${F("C'est agréable.")}</td></tr></table></div>
-  <p class="tip">Bẫy: <s>Il fait du vent</s> hay dùng trong văn nói, nhưng em nhớ khung an toàn: <b>danh từ → il y a</b>, <b>tính từ → il fait</b>. Gió, nắng, mây là danh từ nên dùng mạo từ bộ phận du / de la / des (Tuần 5).</p>
-  <h4 class="sub-h">Đổi thì (ghép với bài đã học)</h4><div class="tbl"><table>
-  <tr><td>Hiện tại</td><td>${F("Il pleut.")}</td><td>${F("Il fait beau.")}</td></tr>
-  <tr><td>Tương lai gần (Buổi 7)</td><td>${F("Il va pleuvoir.")}</td><td>${F("Il va faire beau.")}</td></tr>
-  <tr><td>Passé composé (Buổi 9)</td><td>${F("Il a plu.")}</td><td>${F("Il a fait beau.")}</td></tr></table></div>
-  <p class="tip">Thời tiết lạnh: ${F("Il fait froid.")} Còn <b>tôi</b> thấy lạnh: ${F("J'ai froid.")} (xem điểm 6).</p>`},
+  {k:1,h:"2 · Thời tiết",html:`<p class="lead">Tính từ → <b>il fait</b> · Danh từ → <b>il y a</b> · Mưa, tuyết → <b>il + động từ</b></p>
+  <p>Hỏi: ${F("Quel temps fait-il ?")}</p>
+  <div class="tbl"><table>
+  <tr class="grp"><th colspan="3">IL FAIT + tính từ</th></tr>
+  <tr><td class="ic">☀️</td><td>${F("Il fait beau.")}</td><td class="vi">trời đẹp</td></tr>
+  <tr><td class="ic">🌥️</td><td>${F("Il fait mauvais.")}</td><td class="vi">trời xấu</td></tr>
+  <tr><td class="ic">🥵</td><td>${F("Il fait chaud.")}</td><td class="vi">trời nóng</td></tr>
+  <tr><td class="ic">🥶</td><td>${F("Il fait froid.")}</td><td class="vi">trời lạnh</td></tr>
+  <tr><td class="ic">🌡️</td><td>${F("Il fait 30 degrés.")}</td><td class="vi">trời 30 độ</td></tr>
+  <tr class="grp"><th colspan="3">IL + động từ</th></tr>
+  <tr><td class="ic">🌧️</td><td>${F("Il pleut.")}</td><td class="vi">trời mưa (pleuvoir)</td></tr>
+  <tr><td class="ic">❄️</td><td>${F("Il neige.")}</td><td class="vi">tuyết rơi (neiger)</td></tr>
+  <tr class="grp"><th colspan="3">IL Y A + du / de la / des + danh từ</th></tr>
+  <tr><td class="ic">💨</td><td>${F("Il y a du vent.")}</td><td class="vi">có gió</td></tr>
+  <tr><td class="ic">🌞</td><td>${F("Il y a du soleil.")}</td><td class="vi">có nắng</td></tr>
+  <tr><td class="ic">☁️</td><td>${F("Il y a des nuages.")}</td><td class="vi">có mây</td></tr>
+  <tr><td class="ic">🌫️</td><td>${F("Il y a du brouillard.")}</td><td class="vi">có sương mù</td></tr>
+  <tr class="grp"><th colspan="3">C'EST + mùa / nhận xét</th></tr>
+  <tr><td class="ic">🍂</td><td>${F("C'est l'automne.")}</td><td class="vi">đang là mùa thu</td></tr>
+  <tr><td class="ic">😌</td><td>${F("C'est agréable.")}</td><td class="vi">dễ chịu quá</td></tr></table></div>
+  <div class="tbl"><table class="vs"><tr><th>✗ Đừng nói</th><th>✓ Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>Il fait du vent.</s></td><td>${F("Il y a du vent.")}</td><td>gió là danh từ (câu bên trái chỉ gặp trong văn nói)</td></tr>
+  <tr><td><s>C'est froid aujourd'hui.</s></td><td>${F("Il fait froid aujourd'hui.")}</td><td>thời tiết dùng il fait</td></tr></table></div>
+  <h4 class="sub-h">Đổi thì</h4><div class="tbl"><table><tr><th></th><th>Mưa</th><th>Trời đẹp</th></tr>
+  <tr><td>Bây giờ</td><td>${F("Il pleut.")}</td><td>${F("Il fait beau.")}</td></tr>
+  <tr><td>Sắp tới (Buổi 7)</td><td>${F("Il va pleuvoir.")}</td><td>${F("Il va faire beau.")}</td></tr>
+  <tr><td>Hôm qua (Buổi 9)</td><td>${F("Il a plu.")}</td><td>${F("Il a fait beau.")}</td></tr></table></div>
+  <p class="tip">Trời lạnh: ${F("Il fait froid.")} Còn <b>em</b> thấy lạnh: ${F("J'ai froid.")} (điểm 6).</p>`},
 
-  {k:1,h:"3 · Thời gian: giờ, ngày, tháng, năm, mùa",html:`<h4 class="sub-h">Nói giờ, ngày: il est hay c'est?</h4><div class="tbl"><table>
-  <tr><td>Giờ</td><td><b>il est</b></td><td>${F("Quelle heure est-il ? – Il est huit heures.")}</td></tr>
-  <tr><td>Ngày</td><td><b>on est / nous sommes / c'est</b> + le + số</td><td>${F("On est le 25 octobre.")} · ${F("C'est le 25 octobre.")}</td></tr>
-  <tr><td>Thứ</td><td><b>on est / c'est</b> + thứ</td><td>${F("On est samedi.")} · ${F("C'est samedi.")}</td></tr>
-  <tr><td>Mùa</td><td><b>on est</b> en / au · <b>c'est</b> + le / l'</td><td>${F("On est en automne.")} · ${F("C'est l'automne.")}</td></tr></table></div>
-  <p class="tip">Không nói <s>C'est huit heures</s> khi trả lời mấy giờ: giờ luôn là <b>il est</b>.</p>
-  <h4 class="sub-h">"Khi nào?": le, en, au hay à?</h4><div class="tbl"><table><tr><th>Loại</th><th>Dùng</th><th>Ví dụ</th></tr>
-  <tr><td>Ngày cụ thể</td><td><b>le</b> + số + tháng</td><td>${F("le 24 octobre")}</td></tr>
-  <tr><td>Mùng 1</td><td><b>le premier</b></td><td>${F("le premier octobre")}</td></tr>
-  <tr><td>Thứ (lần này)</td><td>không mạo từ</td><td>${F("Samedi, je suis libre.")}</td></tr>
-  <tr><td>Thứ (mỗi tuần)</td><td><b>le</b> + thứ</td><td>${F("Le samedi, je dors tard.")}</td></tr>
-  <tr><td>Tháng</td><td><b>en</b> + tháng</td><td>${F("en octobre")}</td></tr>
-  <tr><td>Năm</td><td><b>en</b> + năm</td><td>${F("en 2026")}</td></tr>
-  <tr><td>Mùa</td><td><b>en</b> été / automne / hiver · <b>au</b> printemps</td><td>${F("En hiver, il fait froid.")}</td></tr>
-  <tr><td>Giờ</td><td><b>à</b> + giờ</td><td>${F("à huit heures")}</td></tr>
-  <tr><td>Buổi (mỗi ngày)</td><td><b>le</b> + buổi</td><td>${F("le soir")} · ${F("le mardi soir")} (mỗi tối thứ Ba)</td></tr></table></div>
-  <p class="tip">Cách nhớ: có <b>số ngày → le</b>; <b>tháng, năm, mùa → en</b>; <b>giờ → à</b>. Ngoại lệ: <b>au printemps</b>.</p>`},
+  {k:1,h:"3 · Thời gian: giờ, ngày, tháng, năm, mùa",html:`<p class="lead">Giờ → <b>il est</b> · Ngày, thứ → <b>on est / c'est</b></p>
+  <div class="tbl"><table><tr><th></th><th>Hỏi</th><th>Trả lời</th></tr>
+  <tr><td class="ic">🕗</td><td>${F("Quelle heure est-il ?")}</td><td>${F("Il est huit heures.")}</td></tr>
+  <tr><td class="ic">📅</td><td>${F("On est le combien ?")}</td><td>${F("On est le 25 octobre.")}</td></tr>
+  <tr><td class="ic">🗓️</td><td>${F("On est quel jour ?")}</td><td>${F("On est samedi.")}</td></tr>
+  <tr><td class="ic">🍂</td><td>${F("On est en quelle saison ?")}</td><td>${F("On est en automne.")}</td></tr></table></div>
+  <p class="tip">${F("on est")} = ${F("nous sommes")} = ${F("c'est")} khi nói ngày. Riêng giờ chỉ dùng <b>il est</b>: <s>C'est huit heures</s>.</p>
+  <h4 class="sub-h">"Khi nào?": mỗi loại một giới từ</h4>
+  <div class="tbl"><table>
+  <tr class="grp"><th colspan="3">LE: có số ngày, hoặc lặp lại mỗi tuần</th></tr>
+  <tr><td>ngày cụ thể</td><td>${F("le 24 octobre")}</td><td class="vi">ngày 24/10</td></tr>
+  <tr><td>mùng 1</td><td>${F("le premier octobre")}</td><td class="vi">không nói le un</td></tr>
+  <tr><td>mỗi thứ</td><td>${F("le samedi")}</td><td class="vi">mỗi thứ Bảy</td></tr>
+  <tr><td>mỗi buổi</td><td>${F("le mardi soir")}</td><td class="vi">mỗi tối thứ Ba</td></tr>
+  <tr class="grp"><th colspan="3">KHÔNG MẠO TỪ: thứ của tuần này</th></tr>
+  <tr><td>lần này</td><td>${F("samedi")}</td><td class="vi">thứ Bảy này</td></tr>
+  <tr class="grp"><th colspan="3">EN: tháng, năm, mùa</th></tr>
+  <tr><td>tháng</td><td>${F("en octobre")}</td><td class="vi">vào tháng 10</td></tr>
+  <tr><td>năm</td><td>${F("en 2026")}</td><td class="vi">vào năm 2026</td></tr>
+  <tr><td>mùa</td><td>${F("en été · en automne · en hiver")}</td><td class="vi">mùa hè, thu, đông</td></tr>
+  <tr class="grp"><th colspan="3">AU: ngoại lệ duy nhất</th></tr>
+  <tr><td>mùa xuân</td><td>${F("au printemps")}</td><td class="vi">vào mùa xuân</td></tr>
+  <tr class="grp"><th colspan="3">À: giờ</th></tr>
+  <tr><td>giờ</td><td>${F("à huit heures")}</td><td class="vi">lúc 8 giờ</td></tr></table></div>
+  <p class="tip">Mẹo nhớ: <b>số ngày → le</b> · <b>tháng, năm, mùa → en</b> · <b>giờ → à</b> · xuân → <b>au</b>.</p>`},
 
-  {k:1,h:"4 · Người: thông tin, ngoại hình, cân nặng",html:`<h4 class="sub-h">Tên, tuổi, nơi ở, quốc tịch</h4><div class="tbl"><table><tr><th>Muốn nói</th><th>Khung</th><th>Ví dụ</th></tr>
-  <tr><td>Tên</td><td><b>s'appeler</b></td><td>${F("Je m'appelle Loan.")} · ${F("Il s'appelle Pierre.")}</td></tr>
-  <tr><td>Tuổi</td><td><b>avoir</b> + số + <b>ans</b></td><td>${F("J'ai 25 ans.")} · ${F("Elle a 28 ans.")}</td></tr>
-  <tr><td>Nơi ở</td><td><b>habiter à</b> + thành phố</td><td>${F("J'habite à Hanoï.")}</td></tr>
-  <tr><td>Quốc tịch</td><td><b>être</b> + tính từ</td><td>${F("Je suis vietnamienne.")}</td></tr></table></div>
-  <p class="tip">Tuổi dùng <b>avoir</b>, không dùng être: <s>Je suis 25 ans</s>. Luôn có chữ <b>ans</b>: <s>J'ai 25</s>. Quốc tịch là tính từ thì <b>không viết hoa</b> và hợp giống: ${F("il est vietnamien, elle est vietnamienne")}. Chỉ viết hoa khi là danh từ chỉ người: ${F("un Vietnamien")}.</p>
+  {k:1,h:"4 · Người: thông tin, ngoại hình, cân nặng",html:`<p class="lead">Tuổi → <b>avoir</b> · Quốc tịch, tính cách → <b>être</b></p>
+  <h4 class="sub-h">Thông tin cá nhân</h4><div class="tbl"><table><tr><th></th><th>Khung</th><th>Ví dụ</th></tr>
+  <tr><td class="ic">🏷️</td><td><b>s'appeler</b></td><td>${F("Je m'appelle Loan.")}</td></tr>
+  <tr><td class="ic">🎂</td><td><b>avoir</b> + số + <b>ans</b></td><td>${F("J'ai 25 ans.")}</td></tr>
+  <tr><td class="ic">🏠</td><td><b>habiter à</b> + thành phố</td><td>${F("J'habite à Hanoï.")}</td></tr>
+  <tr><td class="ic">🇻🇳</td><td><b>être</b> + quốc tịch</td><td>${F("Je suis vietnamienne.")}</td></tr></table></div>
+  <div class="tbl"><table class="vs"><tr><th>✗ Đừng nói</th><th>✓ Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>Je suis 25 ans.</s></td><td>${F("J'ai 25 ans.")}</td><td>tuổi dùng avoir</td></tr>
+  <tr><td><s>J'ai 25.</s></td><td>${F("J'ai 25 ans.")}</td><td>luôn có chữ ans</td></tr>
+  <tr><td><s>Je suis Vietnamienne.</s></td><td>${F("Je suis vietnamienne.")}</td><td>tính từ quốc tịch viết thường</td></tr></table></div>
   <h4 class="sub-h">Ngoại hình & tính cách</h4><div class="tbl"><table><tr><th>Khung</th><th>Dùng cho</th><th>Ví dụ</th></tr>
-  <tr><td><b>être</b> + tính từ</td><td>dáng người, tính cách</td><td>${F("Il est grand.")} · ${F("Elle est petite et sympa.")} · ${F("Il est sérieux.")}</td></tr>
-  <tr><td><b>avoir</b> + les + bộ phận + tính từ</td><td>tóc, mắt</td><td>${F("Elle a les cheveux longs.")} · ${F("Il a les yeux noirs.")}</td></tr>
+  <tr><td><b>être</b> + tính từ</td><td>dáng người</td><td>${F("Il est grand.")}</td></tr>
+  <tr><td><b>être</b> + tính từ</td><td>tính cách</td><td>${F("Elle est sympa.")}</td></tr>
+  <tr><td><b>avoir</b> les cheveux…</td><td>tóc</td><td>${F("Elle a les cheveux longs.")}</td></tr>
+  <tr><td><b>avoir</b> les yeux…</td><td>mắt</td><td>${F("Il a les yeux noirs.")}</td></tr>
   <tr><td><b>porter</b></td><td>quần áo, kính</td><td>${F("Il porte des lunettes.")}</td></tr></table></div>
-  <p class="tip">Tính từ hợp giống với người (Buổi 7): ${F("grand → grande")}, ${F("sérieux → sérieuse")}, ${F("beau → belle")}. Với tóc, mắt thì tính từ hợp với <b>cheveux / yeux</b> (số nhiều), đứng sau.</p>
+  <p>Tính từ đổi theo người (Buổi 7):</p>
+  <div class="tbl"><table><tr><th>Nam</th><th>Nữ</th><th>Quy tắc</th></tr>
+  <tr><td>${F("grand")}</td><td>${F("grand<b class='end'>e</b>")}</td><td>thêm e</td></tr>
+  <tr><td>${F("sérieu<b class='end'>x</b>")}</td><td>${F("sérieu<b class='end'>se</b>")}</td><td>-x → -se</td></tr>
+  <tr><td>${F("beau")}</td><td>${F("<b class='end'>belle</b>")}</td><td>học thuộc</td></tr>
+  <tr><td>${F("sympa")}</td><td>${F("sympa")}</td><td>đuôi -a, -e: không đổi</td></tr></table></div>
   <h4 class="sub-h">Cân nặng & chiều cao</h4><div class="tbl"><table><tr><th></th><th>Hỏi</th><th>Trả lời</th></tr>
-  <tr><td>Cân nặng</td><td>${F("Quel est votre poids ?")} · ${F("Vous pesez combien ?")}</td><td>${F("Je pèse 60 kg.")} (soixante kilos)</td></tr>
-  <tr><td>Chiều cao</td><td>${F("Quelle est votre taille ?")} · ${F("Vous mesurez combien ?")}</td><td>${F("Je mesure 1,68 m.")} (un mètre soixante-huit)</td></tr></table></div>
-  <ul><li><b>peser</b> (cân nặng): ${F("je pèse, tu pèses, il pèse, nous pesons, vous pesez, ils pèsent")} (thêm dấu huyền khi đuôi câm, giống acheter)</li>
-  <li><b>mesurer</b> (cao): động từ -er thường: ${F("je mesure, vous mesurez")}</li></ul>
-  <p class="tip">${F("le poids")} giống đực → <b>quel</b>; ${F("la taille")} giống cái → <b>quelle</b> (Buổi 3). Người Pháp đọc 1,68 m là ${F("un mètre soixante-huit")} (dấu phẩy, không phải dấu chấm). ${F("la taille")} còn nghĩa là cỡ quần áo: ${F("Vous faites quelle taille ?")}</p>`},
+  <tr><td class="ic">⚖️</td><td>${F("Vous pesez combien ?")}</td><td>${F("Je pèse 60 kilos.")}</td></tr>
+  <tr><td class="ic">📏</td><td>${F("Vous mesurez combien ?")}</td><td>${F("Je mesure 1,68 m.")}</td></tr></table></div>
+  <p>Cách hỏi trang trọng hơn: ${F("Quel est votre poids ?")} / ${F("Quelle est votre taille ?")}</p>
+  <p><b>peser</b> (nặng): thêm dấu <b class="end">è</b> khi đuôi câm, giống acheter</p>
+  <div class="conj"><span>${F("je p<b class='end'>è</b>se")}</span><span>${F("nous pesons")}</span><span>${F("tu p<b class='end'>è</b>ses")}</span><span>${F("vous pesez")}</span><span>${F("il p<b class='end'>è</b>se")}</span><span>${F("ils p<b class='end'>è</b>sent")}</span></div>
+  <ul><li><b>mesurer</b> (cao): chia như động từ -er thường.</li>
+  <li>${F("le poids")} giống đực → <b>quel</b>; ${F("la taille")} giống cái → <b>quelle</b>.</li>
+  <li>1,68 m đọc là ${F("un mètre soixante-huit")} (người Pháp dùng dấu phẩy).</li>
+  <li>${F("la taille")} còn nghĩa là cỡ quần áo: ${F("Vous faites quelle taille ?")}</li></ul>`},
 
-  {k:1,h:"5 · Nghề nghiệp (và Il est hay C'est?)",html:`<div class="tbl"><table><tr><th>Muốn nói</th><th>Khung</th><th>Ví dụ</th></tr>
-  <tr><td>Tôi làm nghề gì</td><td><b>Je suis</b> + nghề (<b>không</b> mạo từ)</td><td>${F("Je suis informaticienne.")}</td></tr>
-  <tr><td>Người kia làm nghề gì</td><td><b>Il / Elle est</b> + nghề (không mạo từ)</td><td>${F("Elle est ingénieure.")}</td></tr>
-  <tr><td>Giới thiệu "đây là một…"</td><td><b>C'est un / une</b> + nghề (<b>có</b> mạo từ)</td><td>${F("C'est un informaticien.")}</td></tr>
-  <tr><td>Làm ở đâu</td><td><b>Je travaille</b> + dans / à / chez</td><td>${F("Je travaille dans un bureau, à Hanoï.")}</td></tr>
-  <tr><td>Làm với vai trò</td><td><b>Je travaille comme</b> + nghề</td><td>${F("Je travaille comme développeur.")}</td></tr></table></div>
-  <p class="tip">Bẫy lớn nhất: tiếng Anh nói <i>I am <b>an</b> engineer</i>, tiếng Pháp bỏ mạo từ: ${F("Je suis ingénieur.")} <s>Je suis un ingénieur</s>.</p>
-  <h4 class="sub-h">Đổi sang giống cái (từ chủ điểm Công việc)</h4><div class="tbl"><table>
-  <tr><td>-ien → -ienne</td><td>${F("informaticien → informaticienne")} · ${F("mécanicien → mécanicienne")}</td></tr>
-  <tr><td>-eur → -euse</td><td>${F("vendeur → vendeuse")} · ${F("danseur → danseuse")}</td></tr>
-  <tr><td>-teur → -trice</td><td>${F("directeur → directrice")} · ${F("agriculteur → agricultrice")}</td></tr>
-  <tr><td>-er → -ère</td><td>${F("boulanger → boulangère")} · ${F("boucher → bouchère")}</td></tr>
-  <tr><td>-e → không đổi</td><td>${F("le / la secrétaire")} · ${F("le / la journaliste")}</td></tr></table></div>
-  <p class="tip">Nơi làm việc: ${F("Elle est vendeuse, elle travaille dans un magasin.")} · ${F("Il est avocat, il travaille dans un cabinet.")} · ${F("Il est mécanicien, il travaille dans un garage.")}</p>
-  <h4 class="sub-h">Il est hay C'est?</h4><div class="tbl"><table><tr><th>Sau đó là</th><th>Dùng</th><th>Ví dụ</th></tr>
-  <tr><td>tính từ / nghề (không mạo từ), nói về <b>người cụ thể</b></td><td><b>il / elle est</b></td><td>${F("Il est grand.")} · ${F("Elle est médecin.")}</td></tr>
-  <tr><td><b>un / une / le / mon…</b> + danh từ</td><td><b>c'est</b></td><td>${F("C'est un médecin.")} · ${F("C'est mon collègue.")}</td></tr>
+  {k:1,h:"5 · Nghề nghiệp (và Il est hay C'est?)",html:`<p class="lead">être + nghề: <b>KHÔNG</b> mạo từ · c'est + un / une + nghề: <b>CÓ</b> mạo từ</p>
+  <div class="tbl"><table><tr><th>Muốn nói</th><th>Khung</th><th>Ví dụ</th></tr>
+  <tr><td>Tôi làm nghề gì</td><td><b>Je suis</b> + nghề</td><td>${F("Je suis informaticienne.")}</td></tr>
+  <tr><td>Người kia làm nghề gì</td><td><b>Il / Elle est</b> + nghề</td><td>${F("Elle est ingénieure.")}</td></tr>
+  <tr><td>"Đây là một…"</td><td><b>C'est un / une</b> + nghề</td><td>${F("C'est un informaticien.")}</td></tr>
+  <tr><td>Làm với vai trò</td><td><b>travailler comme</b></td><td>${F("Je travaille comme développeur.")}</td></tr></table></div>
+  <div class="tbl"><table class="vs"><tr><th>✗ Đừng nói</th><th>✓ Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>Je suis un ingénieur.</s></td><td>${F("Je suis ingénieur.")}</td><td>tiếng Anh có "an", tiếng Pháp bỏ</td></tr>
+  <tr><td><s>Elle est une informaticienne.</s></td><td>${F("C'est une informaticienne.")}</td><td>có une thì phải dùng c'est</td></tr></table></div>
+  <h4 class="sub-h">Đổi sang giống cái</h4>
+  <div class="tbl"><table><tr><th>Đuôi</th><th>Nam</th><th>Nữ</th></tr>
+  <tr><td>-ien → -ienne</td><td>${F("informatic<b class='end'>ien</b>")}</td><td>${F("informatic<b class='end'>ienne</b>")}</td></tr>
+  <tr><td></td><td>${F("mécanic<b class='end'>ien</b>")}</td><td>${F("mécanic<b class='end'>ienne</b>")}</td></tr>
+  <tr><td>-eur → -euse</td><td>${F("vend<b class='end'>eur</b>")}</td><td>${F("vend<b class='end'>euse</b>")}</td></tr>
+  <tr><td></td><td>${F("dans<b class='end'>eur</b>")}</td><td>${F("dans<b class='end'>euse</b>")}</td></tr>
+  <tr><td>-teur → -trice</td><td>${F("direc<b class='end'>teur</b>")}</td><td>${F("direc<b class='end'>trice</b>")}</td></tr>
+  <tr><td></td><td>${F("agricul<b class='end'>teur</b>")}</td><td>${F("agricul<b class='end'>trice</b>")}</td></tr>
+  <tr><td>-er → -ère</td><td>${F("boulang<b class='end'>er</b>")}</td><td>${F("boulang<b class='end'>ère</b>")}</td></tr>
+  <tr><td></td><td>${F("bouch<b class='end'>er</b>")}</td><td>${F("bouch<b class='end'>ère</b>")}</td></tr>
+  <tr><td>-e: không đổi</td><td>${F("le secrétaire")}</td><td>${F("la secrétaire")}</td></tr></table></div>
+  <h4 class="sub-h">Nghề nào, làm ở đâu?</h4>
+  <div class="tbl"><table><tr><th></th><th>Nghề</th><th>Nơi làm việc</th></tr>
+  <tr><td class="ic">🛍️</td><td>${F("Elle est vendeuse.")}</td><td>${F("Elle travaille dans un magasin.")}</td></tr>
+  <tr><td class="ic">⚖️</td><td>${F("Il est avocat.")}</td><td>${F("Il travaille dans un cabinet.")}</td></tr>
+  <tr><td class="ic">🔧</td><td>${F("Il est mécanicien.")}</td><td>${F("Il travaille dans un garage.")}</td></tr></table></div>
+  <h4 class="sub-h">Il est hay C'est?</h4><div class="tbl"><table><tr><th>Phía sau là</th><th>Dùng</th><th>Ví dụ</th></tr>
+  <tr><td>tính từ (về một người)</td><td><b>il / elle est</b></td><td>${F("Il est grand.")}</td></tr>
+  <tr><td>nghề, không mạo từ</td><td><b>il / elle est</b></td><td>${F("Elle est médecin.")}</td></tr>
+  <tr><td>un / une / mon… + danh từ</td><td><b>c'est</b></td><td>${F("C'est mon collègue.")}</td></tr>
   <tr><td>tên riêng</td><td><b>c'est</b></td><td>${F("C'est Pierre.")}</td></tr>
-  <tr><td>tính từ nhận xét <b>chung</b> (cái đó, việc đó)</td><td><b>c'est</b> + tính từ giống đực</td><td>${F("C'est beau !")} · ${F("C'est difficile.")}</td></tr></table></div>
-  <p class="tip">${F("Il est sympa.")} = anh ấy dễ thương. ${F("C'est sympa.")} = việc đó / chỗ đó dễ thương. Không nói <s>Elle est une informaticienne</s>: hoặc ${F("Elle est informaticienne.")}, hoặc ${F("C'est une informaticienne.")}</p>`},
+  <tr><td>nhận xét chung (việc đó, cái đó)</td><td><b>c'est</b></td><td>${F("C'est difficile.")}</td></tr></table></div>
+  <div class="tbl"><table><tr><th>${F("Il est sympa.")}</th><th>${F("C'est sympa.")}</th></tr>
+  <tr><td>👤 anh ấy dễ thương</td><td>🏠 việc đó / chỗ đó dễ thương</td></tr></table></div>`},
 
-  {k:1,h:"6 · Cơ thể, cảm xúc & sức khỏe",html:`<h4 class="sub-h">Cảm xúc</h4><p>Hỏi: ${F("Ça va ?")} · ${F("Comment tu te sens ?")} · ${F("Vous vous sentez comment ?")}</p>
-  <div class="tbl"><table><tr><th>Cảm xúc tích cực 🙂</th><th>Cảm xúc tiêu cực 🙁</th></tr>
-  <tr><td>${F("Je me sens bien.")} tôi thấy khỏe, dễ chịu</td><td>${F("Je suis inquiet / inquiète.")} tôi lo lắng</td></tr>
-  <tr><td>${F("C'est agréable.")} · ${F("Ça fait du bien.")} dễ chịu quá · thấy khá hơn hẳn</td><td>${F("Je suis fatigué(e).")} tôi mệt</td></tr>
-  <tr><td>${F("Je suis en (pleine) forme.")} tôi (rất) khỏe khoắn</td><td>${F("Je suis stressé(e).")} tôi căng thẳng</td></tr>
-  <tr><td>${F("Je suis content(e) (pour toi).")} tôi vui (cho bạn)</td><td>${F("Je suis malheureux / malheureuse.")} tôi bất hạnh, khổ sở</td></tr>
-  <tr><td>${F("Je suis heureux / heureuse (pour toi).")} tôi hạnh phúc (cho bạn)</td><td>${F("Je suis triste.")} tôi buồn</td></tr></table></div>
-  <h4 class="sub-h">Hai khung</h4><ul>
-  <li><b>être</b> + tính từ (hợp giống, như điểm 4): ${F("heureux → heureuse")} · ${F("malheureux → malheureuse")} · ${F("inquiet → inquiète")} · ${F("content → contente")} · ${F("triste")} không đổi</li>
-  <li><b>se sentir</b> (động từ phản thân, Buổi 2) + bien / mal / tính từ: ${F("je me sens, tu te sens, il se sent, nous nous sentons, vous vous sentez, ils se sentent")} · ${F("Je me sens fatiguée.")}</li></ul>
-  <p class="tip">${F("Je suis content pour toi !")} = mừng cho bạn (khi bạn báo tin vui). ${F("Ça fait du bien !")} dùng sau khi làm gì đó dễ chịu: uống nước mát, tắm, đi dạo. Mệt, buồn, lo dùng <b>être</b>; đói, lạnh, đau dùng <b>avoir</b> (phần dưới).</p>
-  <h4 class="sub-h">Lạnh, nóng: il fait, j'ai hay c'est?</h4><p>Cùng chữ "lạnh" nhưng ba khung khác nhau tùy <b>cái gì</b> lạnh:</p>
+  {k:1,h:"6 · Cơ thể, cảm xúc & sức khỏe",html:`<p class="lead">Cảm xúc → <b>être</b> / se sentir · Đói, lạnh, đau, bệnh → <b>avoir</b></p>
+  <h4 class="sub-h">Cảm xúc</h4><p>Hỏi: ${F("Ça va ?")} · ${F("Comment tu te sens ?")}</p>
   <div class="tbl"><table>
-  <tr><td>Thời tiết lạnh</td><td><b>il fait</b></td><td>${F("Il fait froid aujourd'hui.")}</td></tr>
-  <tr><td>Tôi thấy lạnh (cơ thể)</td><td><b>avoir</b></td><td>${F("J'ai froid.")}</td></tr>
-  <tr><td>Đồ vật lạnh</td><td><b>être</b> / c'est</td><td>${F("Le café est froid.")} · ${F("C'est froid.")}</td></tr></table></div>
-  <h4 class="sub-h">Đói, khát, buồn ngủ… đi với avoir</h4>
-  <p>${F("avoir faim")} đói · ${F("avoir soif")} khát · ${F("avoir froid / chaud")} lạnh / nóng · ${F("avoir sommeil")} buồn ngủ · ${F("avoir peur")} sợ · ${F("avoir mal à")} + bộ phận đau (${F("J'ai mal à la tête.")}, Tuần 10)</p>
-  <p class="tip">Không nói <s>Je suis froid</s> (nghĩa là "tôi lạnh lùng"!). Nhưng mệt, ốm thì vẫn dùng être: ${F("Je suis fatiguée.")} · ${F("Je suis malade.")}</p>
-  <h4 class="sub-h">Ở chỗ bác sĩ</h4><div class="tbl"><table><tr><th>Bác sĩ hỏi</th><th>Bệnh nhân trả lời</th></tr>
-  <tr><td>${F("Qu'est-ce qui vous arrive ?")} có chuyện gì vậy?</td><td>${F("Je suis malade.")} tôi bị ốm</td></tr>
-  <tr><td>${F("Vous vous sentez comment ?")} anh/chị thấy thế nào?</td><td>${F("J'ai un rhume.")} tôi bị cảm</td></tr>
-  <tr><td>${F("Vous avez (encore) de la fièvre ?")} anh/chị (vẫn còn) sốt không?</td><td>${F("J'ai mal à la tête / à l'oreille / au dos / aux yeux.")}</td></tr>
-  <tr><td></td><td>${F("J'ai 39 °C.")} (= ${F("J'ai 39 de fièvre.")}) tôi sốt 39 độ</td></tr></table></div>
-  <p class="tip">Bệnh dùng <b>avoir</b> (${F("j'ai un rhume")}, ${F("j'ai de la fièvre")}, ${F("j'ai mal")}), trừ ${F("je suis malade")}. ${F("avoir mal")} + <b>à la / à l' / au / aux</b> như Tuần 10. Nhiệt độ người cũng dùng avoir (${F("j'ai 39")}), còn nhiệt độ trời dùng ${F("il fait 30 degrés")} (điểm 2). Hội thoại đầy đủ ở mục Hội thoại → <b>Chez le médecin</b>.</p>`},
-
-  {k:1,h:"7 · Nơi chốn: ở đâu, có gì",html:`<p><b>il y a</b> + un / une / des + danh từ + nơi chốn (không đổi theo số ít, số nhiều).</p>
-  <ul><li>${F("Il y a un lit dans la chambre.")}</li><li>${F("Il y a des étudiants dans l'amphi.")}</li><li>${F("Dans mon bureau, il y a une machine à café.")}</li></ul>
-  <p class="tip">Phủ định: un / une / des → <b>de</b> (Tuần 4): ${F("Il n'y a pas de cantine.")} · ${F("Il n'y a pas d'ascenseur.")} Đừng nhầm với ${F("il y a deux jours")} = cách đây hai ngày (BTVN buổi 9).</p>
+  <tr class="grp"><th colspan="3">🙂 TÍCH CỰC</th></tr>
+  <tr><td class="ic">😊</td><td>${F("Je me sens bien.")}</td><td class="vi">tôi thấy khỏe, dễ chịu</td></tr>
+  <tr><td class="ic">💪</td><td>${F("Je suis en pleine forme.")}</td><td class="vi">tôi rất sung sức</td></tr>
+  <tr><td class="ic">😄</td><td>${F("Je suis content(e).")}</td><td class="vi">tôi vui</td></tr>
+  <tr><td class="ic">🥰</td><td>${F("Je suis heureux / heureuse.")}</td><td class="vi">tôi hạnh phúc</td></tr>
+  <tr><td class="ic">😌</td><td>${F("C'est agréable.")}</td><td class="vi">dễ chịu quá</td></tr>
+  <tr><td class="ic">🧊</td><td>${F("Ça fait du bien !")}</td><td class="vi">thấy khá hơn hẳn (sau khi uống nước mát, tắm…)</td></tr>
+  <tr class="grp"><th colspan="3">🙁 TIÊU CỰC</th></tr>
+  <tr><td class="ic">😟</td><td>${F("Je suis inquiet / inquiète.")}</td><td class="vi">tôi lo lắng</td></tr>
+  <tr><td class="ic">😩</td><td>${F("Je suis fatigué(e).")}</td><td class="vi">tôi mệt</td></tr>
+  <tr><td class="ic">😣</td><td>${F("Je suis stressé(e).")}</td><td class="vi">tôi căng thẳng</td></tr>
+  <tr><td class="ic">😢</td><td>${F("Je suis triste.")}</td><td class="vi">tôi buồn</td></tr>
+  <tr><td class="ic">😞</td><td>${F("Je suis malheureux / malheureuse.")}</td><td class="vi">tôi khổ sở</td></tr></table></div>
+  <p class="tip">${F("Je suis content(e) pour toi !")} = mừng cho bạn, khi bạn báo tin vui.</p>
+  <p><b>Khung 1 · être + tính từ:</b> đổi đuôi khi người nói là nữ</p>
+  <div class="tbl"><table><tr><th>Nam</th><th>Nữ</th></tr>
+  <tr><td>${F("heureu<b class='end'>x</b>")}</td><td>${F("heureu<b class='end'>se</b>")}</td></tr>
+  <tr><td>${F("malheureu<b class='end'>x</b>")}</td><td>${F("malheureu<b class='end'>se</b>")}</td></tr>
+  <tr><td>${F("inqui<b class='end'>et</b>")}</td><td>${F("inqui<b class='end'>ète</b>")}</td></tr>
+  <tr><td>${F("content")}</td><td>${F("content<b class='end'>e</b>")}</td></tr>
+  <tr><td>${F("triste")}</td><td>${F("triste")} (không đổi)</td></tr></table></div>
+  <p><b>Khung 2 · se sentir</b> (phản thân, Buổi 2) + bien / mal / tính từ</p>
+  <div class="conj"><span>${F("je me sens")}</span><span>${F("nous nous sentons")}</span><span>${F("tu te sens")}</span><span>${F("vous vous sentez")}</span><span>${F("il se sent")}</span><span>${F("ils se sentent")}</span></div>
+  <h4 class="sub-h">Lạnh: il fait, j'ai hay c'est?</h4><p>Cùng chữ "lạnh", khung đổi theo <b>cái gì</b> lạnh:</p>
   <div class="tbl"><table>
-  <tr><td>Sống ở đâu</td><td><b>habiter à</b> + thành phố · <b>dans</b> + khu vực</td><td>${F("J'habite à Hanoï, dans un quartier calme.")}</td></tr>
-  <tr><td>Làm ở đâu</td><td><b>travailler dans</b> + nơi · <b>à</b> + thành phố · <b>chez</b> + người</td><td>${F("Je travaille dans un bureau, à Hanoï.")}</td></tr>
-  <tr><td>Đi đâu</td><td><b>aller à / au / chez</b></td><td>${F("Je vais au bureau.")} · ${F("Je vais chez le médecin.")}</td></tr></table></div>`},
+  <tr><td class="ic">🌨️</td><td>Trời lạnh</td><td><b>il fait</b></td><td>${F("Il fait froid.")}</td></tr>
+  <tr><td class="ic">🥶</td><td>Tôi thấy lạnh</td><td><b>avoir</b></td><td>${F("J'ai froid.")}</td></tr>
+  <tr><td class="ic">☕</td><td>Đồ vật lạnh</td><td><b>être</b></td><td>${F("Le café est froid.")}</td></tr></table></div>
+  <h4 class="sub-h">Cảm giác cơ thể đi với avoir</h4>
+  <div class="cards">
+  <div class="card"><span class="ic">🍽️</span>${F("avoir faim")}<small>đói</small></div>
+  <div class="card"><span class="ic">🥤</span>${F("avoir soif")}<small>khát</small></div>
+  <div class="card"><span class="ic">🥶</span>${F("avoir froid")}<small>thấy lạnh</small></div>
+  <div class="card"><span class="ic">🥵</span>${F("avoir chaud")}<small>thấy nóng</small></div>
+  <div class="card"><span class="ic">😴</span>${F("avoir sommeil")}<small>buồn ngủ</small></div>
+  <div class="card"><span class="ic">😱</span>${F("avoir peur")}<small>sợ</small></div>
+  <div class="card"><span class="ic">🤕</span>${F("avoir mal à")}<small>đau (+ bộ phận), Tuần 10</small></div></div>
+  <div class="tbl"><table class="vs"><tr><th>✗ Đừng nói</th><th>✓ Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>Je suis froid.</s></td><td>${F("J'ai froid.")}</td><td>je suis froid = tôi lạnh lùng!</td></tr>
+  <tr><td><s>J'ai fatigué.</s></td><td>${F("Je suis fatiguée.")}</td><td>mệt, ốm vẫn dùng être</td></tr></table></div>
+  <h4 class="sub-h">Ở chỗ bác sĩ</h4><div class="tbl"><table><tr><th>👩‍⚕️ Bác sĩ hỏi</th><th>🤒 Bệnh nhân trả lời</th></tr>
+  <tr><td>${F("Qu'est-ce qui vous arrive ?")}<br><small>có chuyện gì vậy?</small></td><td>${F("Je suis malade.")}<br><small>tôi bị ốm</small></td></tr>
+  <tr><td>${F("Vous vous sentez comment ?")}<br><small>anh/chị thấy thế nào?</small></td><td>${F("J'ai un rhume.")}<br><small>tôi bị cảm</small></td></tr>
+  <tr><td>${F("Vous avez encore de la fièvre ?")}<br><small>vẫn còn sốt không?</small></td><td>${F("J'ai 39 °C.")}<br><small>tôi sốt 39 độ</small></td></tr>
+  <tr><td>${F("Où avez-vous mal ?")}<br><small>đau ở đâu?</small></td><td>${F("J'ai mal à la tête.")}<br><small>tôi đau đầu</small></td></tr></table></div>
+  <p><b>avoir mal</b> + à la / à l' / au / aux:</p>
+  <div class="conj"><span>${F("à la tête")} đầu</span><span>${F("au dos")} lưng</span><span>${F("à l'oreille")} tai</span><span>${F("aux yeux")} mắt</span></div>
+  <p class="tip">Bệnh gần như luôn dùng <b>avoir</b>; chỉ ${F("Je suis malade.")} dùng être. Hội thoại đầy đủ: mục Hội thoại → <b>Đi khám bác sĩ</b>.</p>`},
 
-  {k:1,h:"8 · Ý kiến: đồng ý và không đồng ý",html:`<div class="tbl"><table><tr><th>Đồng ý ✓</th><th>Không đồng ý ✗</th></tr>
-  <tr><td>${F("Tu as raison.")} bạn nói đúng</td><td>${F("Tu as tort.")} bạn sai rồi</td></tr>
-  <tr><td>${F("C'est vrai.")} đúng vậy</td><td>${F("C'est faux.")} sai rồi</td></tr>
-  <tr><td>${F("Je suis d'accord (avec toi).")} tôi đồng ý (với bạn)</td><td>${F("Je ne suis pas d'accord (avec toi).")} tôi không đồng ý</td></tr></table></div>
-  <ul><li><b>avoir</b> raison / tort (giống avoir faim, avoir froid ở điểm 6): ${F("Vous avez raison.")} · ${F("Il a tort.")}</li>
-  <li><b>être</b> d'accord: ${F("Nous sommes d'accord.")} · phủ định kẹp động từ: ${F("je ne suis pas d'accord")}</li>
-  <li>${F("avec toi")} (bạn bè) · ${F("avec vous")} (lịch sự) · ${F("avec lui / avec elle")} (đại từ nhấn mạnh, Tuần 4)</li></ul>
-  <p class="tip">Không nói <s>Tu es raison</s> (tiếng Anh: you <i>are</i> right, nhưng tiếng Pháp dùng <b>avoir</b>). ${F("D'accord !")} đứng một mình = OK, được.</p>`},
+  {k:1,h:"7 · Nơi chốn: ở đâu, có gì",html:`<p class="lead">Có cái gì ở đâu → <b>il y a</b> (không đổi dù số ít hay số nhiều)</p>
+  <div class="tbl"><table>
+  <tr><td class="ic">🛏️</td><td>${F("Il y a un lit dans la chambre.")}</td><td class="vi">trong phòng có một cái giường</td></tr>
+  <tr><td class="ic">🎓</td><td>${F("Il y a des étudiants dans l'amphi.")}</td><td class="vi">có sinh viên trong giảng đường</td></tr>
+  <tr><td class="ic">☕</td><td>${F("Dans mon bureau, il y a une machine à café.")}</td><td class="vi">văn phòng tôi có máy pha cà phê</td></tr></table></div>
+  <div class="tbl"><table><tr><th>Khẳng định</th><th>Phủ định: un / une / des → de</th></tr>
+  <tr><td>${F("Il y a une cantine.")}</td><td>${F("Il n'y a pas de cantine.")}</td></tr>
+  <tr><td>${F("Il y a un ascenseur.")}</td><td>${F("Il n'y a pas d'ascenseur.")}</td></tr></table></div>
+  <p class="tip">Đừng nhầm: ${F("il y a deux jours")} = cách đây hai ngày (BTVN buổi 9).</p>
+  <h4 class="sub-h">Sống, làm, đi: giới từ nào?</h4>
+  <div class="tbl"><table><tr><th>Trước</th><th>Dùng</th><th>Ví dụ</th></tr>
+  <tr><td>thành phố</td><td><b>à</b></td><td>${F("J'habite à Hanoï.")}</td></tr>
+  <tr><td>khu vực, nơi cụ thể</td><td><b>dans</b></td><td>${F("Je travaille dans un bureau.")}</td></tr>
+  <tr><td>nơi chốn (le)</td><td><b>au</b></td><td>${F("Je vais au bureau.")}</td></tr>
+  <tr><td>người</td><td><b>chez</b></td><td>${F("Je vais chez le médecin.")}</td></tr></table></div>`},
 
-  {h:"9 · Ghép tất cả: một đoạn miêu tả",html:`<p>${F("Je m'appelle Loan. J'ai 25 ans. Je suis vietnamienne et j'habite à Hanoï. Je suis informaticienne : je travaille dans un bureau, au centre-ville. Mon collègue s'appelle Minh. C'est un développeur très sérieux. Il est grand et il a les cheveux courts.")}</p>
-  <p>${F("Aujourd'hui, on est le 24 octobre. Il est huit heures du matin. C'est l'automne : il fait frais et il y a du vent. Hier, il a plu. Le mardi soir, j'apprends le français. En hiver, à Hanoï, il fait froid et j'ai souvent froid au bureau !")}</p>
-  <p>${F("Je mesure 1,60 m et je pèse 50 kilos. Cette semaine, je suis un peu stressée, mais aujourd'hui je me sens bien : je suis en forme ! Mon collègue dit : « Le français, c'est difficile. » Je ne suis pas d'accord avec lui. C'est faux : c'est agréable !")}</p>
-  <p class="tip">Thử tự viết đoạn của em, đổi tên, tuổi, nghề và thời tiết hôm nay. Có thể dán vào mục Viết để luyện.</p>`}
+  {k:1,h:"8 · Ý kiến: đồng ý và không đồng ý",html:`<p class="lead">raison / tort → <b>avoir</b> · d'accord → <b>être</b></p>
+  <div class="tbl"><table><tr><th>✓ Đồng ý</th><th>✗ Không đồng ý</th></tr>
+  <tr><td>${F("Tu as raison.")}<br><small>bạn nói đúng</small></td><td>${F("Tu as tort.")}<br><small>bạn sai rồi</small></td></tr>
+  <tr><td>${F("C'est vrai.")}<br><small>đúng vậy</small></td><td>${F("C'est faux.")}<br><small>sai rồi</small></td></tr>
+  <tr><td>${F("Je suis d'accord.")}<br><small>tôi đồng ý</small></td><td>${F("Je ne suis pas d'accord.")}<br><small>tôi không đồng ý</small></td></tr></table></div>
+  <p>Thêm "với ai" (đại từ nhấn mạnh, Tuần 4):</p>
+  <div class="conj"><span>${F("avec toi")} bạn bè</span><span>${F("avec vous")} lịch sự</span><span>${F("avec lui")} với anh ấy</span><span>${F("avec elle")} với cô ấy</span></div>
+  <div class="tbl"><table class="vs"><tr><th>✗ Đừng nói</th><th>✓ Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>Tu es raison.</s></td><td>${F("Tu as raison.")}</td><td>tiếng Anh "you are", tiếng Pháp dùng avoir</td></tr>
+  <tr><td><s>Je ne suis d'accord pas.</s></td><td>${F("Je ne suis pas d'accord.")}</td><td>ne … pas kẹp động từ</td></tr></table></div>
+  <p class="tip">${F("D'accord !")} đứng một mình = OK, được.</p>`},
+
+  {h:"9 · Ghép tất cả: một đoạn miêu tả",html:`<p class="lead">Đọc to từng đoạn, rồi tự viết lại đoạn của em.</p>
+  <div class="story">
+  <b class="tag">🙋 GIỚI THIỆU · điểm 4, 5</b>
+  <p>${F("Je m'appelle Loan. J'ai 25 ans. Je suis vietnamienne et j'habite à Hanoï. Je suis informaticienne : je travaille dans un bureau. Mon collègue s'appelle Minh. C'est un développeur très sérieux. Il est grand et il a les cheveux courts.")}</p>
+  <b class="tag">🌦️ HÔM NAY · điểm 2, 3</b>
+  <p>${F("Aujourd'hui, on est le 24 octobre. Il est huit heures du matin. C'est l'automne : il fait frais et il y a du vent. Hier, il a plu. Le mardi soir, j'apprends le français.")}</p>
+  <b class="tag">🫀 CẢM XÚC & Ý KIẾN · điểm 4, 6, 8</b>
+  <p>${F("Je mesure 1,60 m et je pèse 50 kilos. Cette semaine, je suis un peu stressée, mais aujourd'hui je me sens bien : je suis en forme ! Mon collègue dit : « Le français, c'est difficile. » Je ne suis pas d'accord avec lui. C'est faux : c'est agréable !")}</p></div>
+  <p class="tip">Đổi tên, tuổi, nghề và thời tiết hôm nay thành của em, rồi dán vào mục Viết để luyện.</p>`}
  ],
  fixes:[
   ["Il fait du vent.","Il y a du vent.","khung chuẩn: danh từ → il y a, tính từ → il fait (il fait du vent chỉ gặp trong văn nói)"],
