@@ -618,8 +618,9 @@ const UNITS = [
   <tr><td class="ic"><i class="fa-solid fa-user" aria-hidden="true"></i></td><td>Người<br><small>điểm 4</small></td><td><b>avoir</b> + tuổi</td><td>${F("J'ai 25 ans.")}</td></tr>
   <tr><td class="ic"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></td><td>Nghề nghiệp<br><small>điểm 5</small></td><td><b>être</b> + nghề</td><td>${F("Je suis informaticienne.")}</td></tr>
   <tr><td class="ic"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></td><td>Cơ thể, cảm xúc<br><small>điểm 6</small></td><td><b>avoir</b> faim · <b>être</b> triste</td><td>${F("J'ai froid.")}</td></tr>
-  <tr><td class="ic"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></td><td>Nơi chốn<br><small>điểm 7</small></td><td><b>il y a</b></td><td>${F("Il y a un lit.")}</td></tr>
-  <tr><td class="ic"><i class="fa-solid fa-comments" aria-hidden="true"></i></td><td>Ý kiến<br><small>điểm 8</small></td><td><b>avoir</b> raison</td><td>${F("Tu as raison.")}</td></tr></table></div>
+  <tr><td class="ic"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></td><td>Nơi chốn & du lịch<br><small>điểm 7</small></td><td><b>il y a</b> · je voudrais</td><td>${F("Il y a un lac.")}</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-comments" aria-hidden="true"></i></td><td>Ý kiến<br><small>điểm 8</small></td><td><b>avoir</b> raison</td><td>${F("Tu as raison.")}</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-scale-unbalanced" aria-hidden="true"></i></td><td>So sánh<br><small>điểm 9</small></td><td><b>plus / aussi / moins</b> … que</td><td>${F("Il est plus grand que moi.")}</td></tr></table></div>
   <h4 class="sub-h">Mẹo nhớ: être hay avoir?</h4>
   <div class="tbl"><table><tr><th>être = "là", đang ở trạng thái</th><th>avoir = "có"</th></tr>
   <tr><td>nghề: ${F("Je suis médecin.")}</td><td>tuổi: ${F("J'ai 25 ans.")}</td></tr>
@@ -802,7 +803,7 @@ const UNITS = [
   <div class="conj"><span>${F("à la tête")} đầu</span><span>${F("au dos")} lưng</span><span>${F("à l'oreille")} tai</span><span>${F("aux yeux")} mắt</span></div>
   <p class="tip">Bệnh gần như luôn dùng <b>avoir</b>; chỉ ${F("Je suis malade.")} dùng être. Hội thoại đầy đủ: mục Hội thoại → <b>Đi khám bác sĩ</b>.</p>`},
 
-  {k:1,h:"7 · Nơi chốn: ở đâu, có gì",html:`<p class="lead">Có cái gì ở đâu → <b>il y a</b> (không đổi dù số ít hay số nhiều)</p>
+  {k:1,h:"7 · Nơi chốn & du lịch: có gì, phong cảnh, khách sạn",html:`<p class="lead">Có cái gì ở đâu → <b>il y a</b> (không đổi dù số ít hay số nhiều)</p>
   <div class="tbl"><table>
   <tr><td class="ic"><i class="fa-solid fa-bed" aria-hidden="true"></i></td><td>${F("Il y a un lit dans la chambre.")}</td><td class="vi">trong phòng có một cái giường</td></tr>
   <tr><td class="ic"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></td><td>${F("Il y a des étudiants dans l'amphi.")}</td><td class="vi">có sinh viên trong giảng đường</td></tr>
@@ -816,7 +817,23 @@ const UNITS = [
   <tr><td>thành phố</td><td><b>à</b></td><td>${F("J'habite à Hanoï.")}</td></tr>
   <tr><td>khu vực, nơi cụ thể</td><td><b>dans</b></td><td>${F("Je travaille dans un bureau.")}</td></tr>
   <tr><td>nơi chốn (le)</td><td><b>au</b></td><td>${F("Je vais au bureau.")}</td></tr>
-  <tr><td>người</td><td><b>chez</b></td><td>${F("Je vais chez le médecin.")}</td></tr></table></div>`},
+  <tr><td>người</td><td><b>chez</b></td><td>${F("Je vais chez le médecin.")}</td></tr></table></div>
+  <h4 class="sub-h">Miêu tả phong cảnh</h4>
+  <div class="tbl"><table><tr><th></th><th>Khung</th><th>Ví dụ</th></tr>
+  <tr><td class="ic"><i class="fa-solid fa-tree" aria-hidden="true"></i></td><td><b>il y a</b> + un / des / de l'</td><td>${F("Il y a une rivière, des maisons et de l'herbe verte.")}</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-eye" aria-hidden="true"></i></td><td><b>on voit</b> + un / des / la</td><td>${F("On voit des arbres, des champs et la montagne.")}</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-water" aria-hidden="true"></i></td><td><b>c'est un / une</b> + danh từ</td><td>${F("C'est un lac.")}</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-star" aria-hidden="true"></i></td><td><b>c'est</b> + tính từ</td><td>${F("C'est très joli !")}</td></tr></table></div>
+  <p class="tip">${F("on voit")} = người ta thấy, mình thấy (voir, chủ ngữ on). ${F("C'est un lac")} giới thiệu một thứ; ${F("C'est joli")} nhận xét chung, giống điểm 5.</p>
+  <h4 class="sub-h">Đặt phòng khách sạn</h4>
+  <div class="tbl"><table><tr><th></th><th>Câu</th><th>Nghĩa</th></tr>
+  <tr><td class="ic"><i class="fa-solid fa-hotel" aria-hidden="true"></i></td><td>${F("Je voudrais réserver une chambre.")}</td><td class="vi">tôi muốn đặt một phòng</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i></td><td>${F("Le petit déjeuner est compris ?")}</td><td class="vi">có bao gồm bữa sáng không?</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-paw" aria-hidden="true"></i></td><td>${F("Les animaux sont acceptés ?")}</td><td class="vi">có nhận thú cưng không?</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-square-parking" aria-hidden="true"></i></td><td>${F("Il y a un parking ?")}</td><td class="vi">có chỗ đỗ xe không?</td></tr></table></div>
+  <p>Các loại phòng:</p>
+  <div class="conj"><span>${F("une chambre simple")} phòng đơn</span><span>${F("une chambre double")} phòng đôi</span><span>${F("une chambre familiale")} phòng gia đình</span></div>
+  <p class="tip">${F("Je voudrais")} lịch sự hơn ${F("je veux")}. Hỏi có / không chỉ cần lên giọng ở cuối câu (Buổi 3). ${F("compris")} và ${F("acceptés")} hợp giống, số với chủ ngữ: ${F("Les animaux sont accepté<b class='end'>s</b>.")}</p>`},
 
   {k:1,h:"8 · Ý kiến: đồng ý và không đồng ý",html:`<p class="lead">raison / tort → <b>avoir</b> · d'accord → <b>être</b></p>
   <div class="tbl"><table><tr><th><i class="fa-solid fa-check pos" aria-hidden="true"></i> Đồng ý</th><th><i class="fa-solid fa-xmark neg" aria-hidden="true"></i> Không đồng ý</th></tr>
@@ -830,14 +847,45 @@ const UNITS = [
   <tr><td><s>Je ne suis d'accord pas.</s></td><td>${F("Je ne suis pas d'accord.")}</td><td>ne … pas kẹp động từ</td></tr></table></div>
   <p class="tip">${F("D'accord !")} đứng một mình = OK, được.</p>`},
 
-  {h:"9 · Ghép tất cả: một đoạn miêu tả",html:`<p class="lead">Đọc to từng đoạn, rồi tự viết lại đoạn của em.</p>
+  {k:1,h:"9 · So sánh: plus, aussi, moins … que",html:`<p class="lead"><b>plus / aussi / moins</b> + tính từ + <b>que</b> + cái được so sánh</p>
+  <div class="tbl"><table><tr><th></th><th>Khung</th><th>Ví dụ</th><th>Nghĩa</th></tr>
+  <tr><td class="ic"><i class="fa-solid fa-arrow-up pos" aria-hidden="true"></i></td><td><b>plus</b> … que</td><td>${F("L'avion est plus rapide que le train.")}</td><td class="vi">hơn</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-equals" aria-hidden="true"></i></td><td><b>aussi</b> … que</td><td>${F("L'avion est aussi rapide que le train.")}</td><td class="vi">bằng</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-arrow-down neg" aria-hidden="true"></i></td><td><b>moins</b> … que</td><td>${F("Le camping est moins cher que l'hôtel.")}</td><td class="vi">kém hơn</td></tr></table></div>
+  <p class="tip">${F("moins cher")} = ít đắt hơn = <b>rẻ hơn</b>. Tính từ vẫn hợp giống, số với chủ ngữ: ${F("La chambre est plus grand<b class='end'>e</b>.")}</p>
+  <h4 class="sub-h">Thứ tự từ: ngược với tiếng Việt</h4>
+  <div class="tbl"><table><tr><th>Tiếng Việt</th><th>Tiếng Pháp</th></tr>
+  <tr><td>nhanh <b>hơn</b></td><td>${F("<b class='end'>plus</b> rapide")}</td></tr>
+  <tr><td>rẻ <b>hơn</b></td><td>${F("<b class='end'>moins</b> cher")}</td></tr></table></div>
+  <h4 class="sub-h">Biến đổi đặc biệt (giống good → better)</h4>
+  <div class="tbl"><table><tr><th></th><th>Không nói</th><th>Nói</th><th>Nghĩa</th></tr>
+  <tr><td class="ic"><i class="fa-solid fa-thumbs-up pos" aria-hidden="true"></i></td><td><s>plus bon</s></td><td>${F("meilleur")}</td><td class="vi">tốt hơn, ngon hơn</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-thumbs-down neg" aria-hidden="true"></i></td><td>plus mauvais (ít dùng)</td><td>${F("pire")}</td><td class="vi">tệ hơn</td></tr>
+  <tr><td class="ic"><i class="fa-solid fa-star" aria-hidden="true"></i></td><td><s>plus bien</s></td><td>${F("mieux")}</td><td class="vi">giỏi hơn, tốt hơn (trạng từ, đi sau động từ)</td></tr></table></div>
+  <p><b>meilleur</b> hợp giống, số như tính từ thường:</p>
+  <div class="conj"><span>${F("meilleur")}</span><span>${F("meilleur<b class='end'>e</b>")}</span><span>${F("meilleur<b class='end'>s</b>")}</span><span>${F("meilleur<b class='end'>es</b>")}</span></div>
+  <p>${F("Les croissants de l'hôtel sont meilleurs.")} · ${F("Elle parle mieux que moi.")}</p>
+  <h4 class="sub-h">Sau que: lược âm và đại từ</h4>
+  <div class="tbl"><table><tr><th>Quy tắc</th><th>Ví dụ</th></tr>
+  <tr><td>que → <b>qu'</b> trước nguyên âm</td><td>${F("Une chambre simple est moins grande qu'une chambre double.")}</td></tr>
+  <tr><td>so với người: <b>moi, toi, lui, elle, nous, vous, eux, elles</b></td><td>${F("Léo est plus grand que moi.")}</td></tr></table></div>
+  <div class="tbl"><table class="vs"><tr><th><i class="fa-solid fa-xmark neg" aria-hidden="true"></i> Đừng nói</th><th><i class="fa-solid fa-check pos" aria-hidden="true"></i> Nói</th><th>Vì sao</th></tr>
+  <tr><td><s>rapide plus</s></td><td>${F("plus rapide")}</td><td>plus / moins / aussi đứng trước tính từ</td></tr>
+  <tr><td><s>plus grand que je</s></td><td>${F("plus grand que moi")}</td><td>sau que dùng đại từ nhấn mạnh</td></tr>
+  <tr><td><s>plus bons</s></td><td>${F("meilleurs")}</td><td>bon → meilleur</td></tr>
+  <tr><td><s>que une</s></td><td>${F("qu'une")}</td><td>lược âm trước nguyên âm</td></tr></table></div>
+  <p class="tip">Đảo câu mà giữ nguyên nghĩa: ${F("Le camping est moins cher que l'hôtel.")} = ${F("L'hôtel est plus cher que le camping.")} Đổi chỗ hai vế thì đổi <b>moins ↔ plus</b>.</p>`},
+
+  {h:"10 · Ghép tất cả: một đoạn miêu tả",html:`<p class="lead">Đọc to từng đoạn, rồi tự viết lại đoạn của em.</p>
   <div class="story">
   <b class="tag"><i class="fa-solid fa-user" aria-hidden="true"></i> GIỚI THIỆU · điểm 4, 5</b>
   <p>${F("Je m'appelle Loan. J'ai 25 ans. Je suis vietnamienne et j'habite à Hanoï. Je suis informaticienne : je travaille dans un bureau. Mon collègue s'appelle Minh. C'est un développeur très sérieux. Il est grand et il a les cheveux courts.")}</p>
   <b class="tag"><i class="fa-solid fa-cloud-sun-rain" aria-hidden="true"></i> HÔM NAY · điểm 2, 3</b>
   <p>${F("Aujourd'hui, on est le 24 octobre. Il est huit heures du matin. C'est l'automne : il fait frais et il y a du vent. Hier, il a plu. Le mardi soir, j'apprends le français.")}</p>
   <b class="tag"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i> CẢM XÚC & Ý KIẾN · điểm 4, 6, 8</b>
-  <p>${F("Je mesure 1,60 m et je pèse 50 kilos. Cette semaine, je suis un peu stressée, mais aujourd'hui je me sens bien : je suis en forme ! Mon collègue dit : « Le français, c'est difficile. » Je ne suis pas d'accord avec lui. C'est faux : c'est agréable !")}</p></div>
+  <p>${F("Je mesure 1,60 m et je pèse 50 kilos. Cette semaine, je suis un peu stressée, mais aujourd'hui je me sens bien : je suis en forme ! Mon collègue dit : « Le français, c'est difficile. » Je ne suis pas d'accord avec lui. C'est faux : c'est agréable !")}</p>
+  <b class="tag"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i> DU LỊCH & SO SÁNH · điểm 7, 9</b>
+  <p>${F("Je voudrais réserver une chambre double. Le petit déjeuner est compris ? Devant l'hôtel, il y a un lac et on voit la montagne. C'est très joli ! L'hôtel est plus cher que le camping, mais il est plus confortable. Et les croissants de l'hôtel sont meilleurs que les croissants du supermarché !")}</p></div>
   <p class="tip">Đổi tên, tuổi, nghề và thời tiết hôm nay thành của em, rồi dán vào mục Viết để luyện.</p>`}
  ],
  fixes:[
@@ -853,6 +901,12 @@ const UNITS = [
   ["Je suis Vietnamienne.","Je suis vietnamienne.","quốc tịch là tính từ thì viết thường"],
   ["Je suis 60 kilos. / Je suis 1,68 m.","Je pèse 60 kilos. / Je mesure 1,68 m.","cân nặng dùng peser, chiều cao dùng mesurer"],
   ["Quel est votre taille ?","Quelle est votre taille ?","la taille giống cái → quelle"],
+  ["L'avion est rapide plus que le train.","L'avion est plus rapide que le train.","plus / moins / aussi đứng trước tính từ"],
+  ["Les croissants sont plus bons.","Les croissants sont meilleurs.","bon → meilleur (hợp số: meilleurs)"],
+  ["Elle parle plus bien que moi.","Elle parle mieux que moi.","bien → mieux"],
+  ["Léo est plus grand que je.","Léo est plus grand que moi.","sau que dùng moi, toi, lui…"],
+  ["moins grande que une chambre double","moins grande qu'une chambre double","que → qu' trước nguyên âm"],
+  ["Je veux réserver une chambre.","Je voudrais réserver une chambre.","je voudrais lịch sự hơn khi đặt phòng"],
   ["Je suis un ingénieur.","Je suis ingénieur. / C'est un ingénieur.","sau je suis / il est, nghề không có mạo từ"],
   ["Elle est une informaticienne.","Elle est informaticienne. / C'est une informaticienne.","có un / une thì dùng c'est"],
   ["Je suis froid.","J'ai froid.","cảm giác cơ thể dùng avoir; je suis froid = tôi lạnh lùng"],
@@ -926,7 +980,33 @@ const UNITS = [
   {t:"f",q:"Dịch: \"Anh ấy sai rồi.\" (avoir)",a:["il a tort"]},
   {t:"f",q:"Dịch: \"Tôi không đồng ý với bạn.\" (tu)",a:["je ne suis pas d'accord avec toi"]},
   {t:"m",q:"Câu nào <b>đúng</b>?",o:["Tu es raison.","Tu as raison.","Tu fais raison."],a:1,w:"avoir raison / avoir tort."},
-  {t:"m",q:"\"C'est faux\" nghĩa là:",o:["Sai rồi.","Đúng vậy.","Tôi đồng ý."],a:0,w:"vrai ≠ faux."}
+  {t:"m",q:"\"C'est faux\" nghĩa là:",o:["Sai rồi.","Đúng vậy.","Tôi đồng ý."],a:0,w:"vrai ≠ faux."},
+  {t:"f",q:"Dịch: \"Tôi muốn đặt một phòng đôi.\" (lịch sự)",a:["je voudrais réserver une chambre double"]},
+  {t:"f",q:"Hỏi khách sạn: \"Có bao gồm bữa sáng không?\"",a:["le petit déjeuner est compris","est-ce que le petit déjeuner est compris","le petit-déjeuner est compris"]},
+  {t:"f",q:"Hỏi khách sạn: \"Có nhận thú cưng không?\"",a:["les animaux sont acceptés","est-ce que les animaux sont acceptés"]},
+  {t:"f",q:"Hỏi khách sạn: \"Có chỗ đỗ xe không?\"",a:["il y a un parking","est-ce qu'il y a un parking","y a-t-il un parking"]},
+  {t:"f",q:"Phong cảnh: \"Người ta nhìn thấy núi.\" (on)",a:["on voit la montagne","on voit les montagnes","on voit une montagne"]},
+  {t:"f",q:"Phong cảnh: \"Đẹp quá!\" (joli)",a:["c'est très joli","c'est joli"]},
+  {t:"f",q:"Phong cảnh: \"Có một con sông và những ngôi nhà.\"",a:["il y a une rivière et des maisons"]},
+  {t:"f",q:"So sánh (gõ cả câu, chọn plus hoặc moins cho hợp lý): La chambre familiale est … grande … la chambre simple.",a:["la chambre familiale est plus grande que la chambre simple"]},
+  {t:"f",q:"So sánh (gõ cả câu): Les vacances à la campagne sont … calmes … à la mer.",a:["les vacances à la campagne sont plus calmes qu'à la mer"]},
+  {t:"f",q:"So sánh (gõ cả câu): Le camping est … confortable … l'hôtel.",a:["le camping est moins confortable que l'hôtel"]},
+  {t:"f",q:"So sánh (gõ cả câu): Dans mon pays, il fait … chaud en été … en hiver.",a:["dans mon pays, il fait plus chaud en été qu'en hiver"]},
+  {t:"f",q:"Sắp xếp thành câu: que / plus / est / voiture. / avion / L' / rapide / la",a:["l'avion est plus rapide que la voiture"]},
+  {t:"f",q:"Sắp xếp thành câu: vue / rue. / La / est / sur / mer / belle / que / vue / la / la / plus / sur",a:["la vue sur la mer est plus belle que la vue sur la rue","la vue sur la rue est plus belle que la vue sur la mer"]},
+  {t:"f",q:"Sắp xếp thành câu: le / moins / cher / petit déjeuner / que / Le / dîner. / est",a:["le petit déjeuner est moins cher que le dîner","le dîner est moins cher que le petit déjeuner"]},
+  {t:"f",q:"Đảo câu: Le vélo est plus écologique que la voiture. → La voiture …",a:["la voiture est moins écologique que le vélo"]},
+  {t:"f",q:"Đảo câu: Les vacances en ville sont moins sportives que les vacances à la montagne. → Les vacances à la montagne …",a:["les vacances à la montagne sont plus sportives que les vacances en ville"]},
+  {t:"f",q:"Đảo câu: Les croissants du supermarché sont moins bons que les croissants de l'hôtel. → Les croissants de l'hôtel …",a:["les croissants de l'hôtel sont meilleurs que les croissants du supermarché"]},
+  {t:"f",q:"Dịch: \"Léo cao hơn tôi.\"",a:["léo est plus grand que moi"]},
+  {t:"f",q:"Dịch: \"Máy bay nhanh bằng tàu hỏa.\" (aussi)",a:["l'avion est aussi rapide que le train"]},
+  {t:"f",q:"Dịch: \"Cắm trại rẻ hơn khách sạn.\" (moins cher)",a:["le camping est moins cher que l'hôtel"]},
+  {t:"f",q:"Dịch: \"Cô ấy nói tiếng Pháp giỏi hơn tôi.\"",a:["elle parle mieux français que moi","elle parle français mieux que moi","elle parle mieux le français que moi"]},
+  {t:"f",q:"Điền: Cette pizza est ___ que l'autre. (ngon hơn, la pizza giống cái)",a:["meilleure"]},
+  {t:"f",q:"Điền: Aujourd'hui, le temps est ___ qu'hier. (tệ hơn)",a:["pire","plus mauvais"]},
+  {t:"f",q:"Điền: Une chambre simple est moins grande ___ une chambre double.",a:["qu'"]},
+  {t:"m",q:"Câu nào <b>đúng</b>?",o:["Il est plus grand que je.","Il est plus grand que moi.","Il est grand plus que moi."],a:1,w:"plus đứng trước tính từ; sau que dùng moi."},
+  {t:"m",q:"\"plus + bon\" thành:",o:["plus bon","mieux","meilleur"],a:2,w:"bon → meilleur (tính từ); bien → mieux (trạng từ)."}
  ]
 },
 {
